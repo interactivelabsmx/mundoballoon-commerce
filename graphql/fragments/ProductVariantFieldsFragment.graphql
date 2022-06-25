@@ -1,0 +1,9 @@
+fragment ProductVariantFields on ProductVariant {
+  productVariantId
+
+  productId
+  sku
+  name
+  description
+  price
+}
