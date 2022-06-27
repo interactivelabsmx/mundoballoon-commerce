@@ -8,6 +8,7 @@ import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
 import merge from 'deepmerge';
 import isEqual from 'lodash.isequal';
+import { GRAPHQL_URL } from '@lib/utils/sharedConsts';
 import typePolicies from './typePolicies';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
@@ -16,15 +17,18 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 export interface ICreateApolloClient {
   // Server URL (must be absolute)
-  graphQLUrl: string;
-  getToken: () => Promise<string> | string;
+  graphQLUrl?: string;
+  getToken?: () => Promise<string> | string;
 }
 
-function createApolloClient({ graphQLUrl, getToken }: ICreateApolloClient) {
+function createApolloClient({
+  graphQLUrl = GRAPHQL_URL,
+  getToken,
+}: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
     // This means we set the auth inline for create user
     if (headers?.authorization) return { headers };
-    const token = await getToken();
+    const token = getToken && (await getToken());
     if (token)
       return {
         headers: {
@@ -46,10 +50,15 @@ function createApolloClient({ graphQLUrl, getToken }: ICreateApolloClient) {
   });
 }
 
-export function initializeApollo(
-  initialState: any,
-  options: ICreateApolloClient
-) {
+interface IInitializeApollo {
+  initialState?: any;
+  options?: ICreateApolloClient;
+}
+
+export function initializeApollo({
+  initialState,
+  options = {},
+}: IInitializeApollo) {
   const _apolloClient = apolloClient ?? createApolloClient(options);
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
@@ -91,7 +100,10 @@ export function addApolloState(
 }
 
 export function useApollo(pageProps: any, options: ICreateApolloClient) {
-  const state = pageProps[APOLLO_STATE_PROP_NAME];
-  const store = initializeApollo(state, options);
+  const initialState = pageProps[APOLLO_STATE_PROP_NAME];
+  const store = initializeApollo({ initialState, options });
   return store;
 }
+
+export const getClient = ({ initialState, options = {} }: IInitializeApollo) =>
+  initializeApollo({ initialState, options });

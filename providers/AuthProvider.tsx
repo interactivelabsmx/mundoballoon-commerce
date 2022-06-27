@@ -34,7 +34,7 @@ const AuthContext = createContext<IAuthContext>({
   logout: () => null,
 });
 
-interface IAuthProvider {
+export interface IAuthProvider {
   children: ReactNode;
 }
 

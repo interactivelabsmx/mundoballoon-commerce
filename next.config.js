@@ -1,4 +1,10 @@
-module.exports = {
+const BundleAnalyzer = require('@next/bundle-analyzer');
+
+const withBundleAnalyzer = BundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer({
   images: {
     domains: [
       'mundobimages.blob.core.windows.net',
@@ -8,4 +14,4 @@ module.exports = {
     ],
   },
   experimental: { images: { layoutRaw: true } },
-};
+});

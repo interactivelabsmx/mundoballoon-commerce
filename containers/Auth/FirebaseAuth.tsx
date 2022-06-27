@@ -1,18 +1,16 @@
 import { User } from '@firebase/auth';
-import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { setRecaptchaVerifier } from '@lib/firebaseAuth/phoneAuth';
-import { useAuth } from '@providers/AuthProvider';
 import { SimpleTextAlertType } from '@components/UI/alerts/AlertConfigTypes';
 import SimpleTextAlert from '@components/UI/alerts/SimpleTextAlert';
-import { useCreateUserMutation } from '@graphql/mutations/user/CreateUser';
+import { useCreateUserMutation } from '@graphql/mutations/users/CreateUser';
+import { setRecaptchaVerifier } from '@lib/firebaseAuth/phoneAuth';
+import { useAuth } from '@providers/AuthProvider';
 import FirebaseEmailAuth from './FirebaseEmailAuth';
 import FirebaseFacebookButton from './FirebaseFacebookButton';
 import FirebaseGoogleButton from './FirebaseGoogleButton';
 import FirebasePhoneAuth from './FirebasePhoneAuth';
 
 const FirebaseAuth = () => {
-  const { push } = useRouter();
   const { auth } = useAuth();
   const [requestError, setRequestError] = useState('');
   const [createUser, { loading, error }] = useCreateUserMutation();
@@ -22,7 +20,6 @@ const FirebaseAuth = () => {
       context: { headers: { authorization: `Bearer ${token}` } },
       variables: { userId: user.uid },
     });
-    push('/admin/dashboard');
   };
   const onDismissAlert = () => setRequestError('');
   useEffect(() => {

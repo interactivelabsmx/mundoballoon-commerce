@@ -1,3 +1,5 @@
+export const GRAPHQL_URL = 'https://localhost:5001/graphql/';
+
 export const SelectOne = { label: 'Select One', value: '' };
 
 export const PAGING_QUERY_DEFAULT = { first: 5, after: null };

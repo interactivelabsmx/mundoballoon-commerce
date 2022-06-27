@@ -4,12 +4,12 @@ import { ProductDetailsFragmentDoc } from '../../fragments/ProductDetailsFragmen
 import * as Types from '../../graphql';
 
 const defaultOptions = {} as const;
-export type AllProductsQueryVariables = Types.Exact<{
+export type GetAllProductsQueryVariables = Types.Exact<{
   first?: Types.InputMaybe<Types.Scalars['Int']>;
   after?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
-export type AllProductsQuery = {
+export type GetAllProductsQuery = {
   __typename?: 'Query';
   allProducts?: {
     __typename?: 'AllProductsConnection';
@@ -66,8 +66,8 @@ export type AllProductsQuery = {
   } | null;
 };
 
-export const AllProductsDocument = gql`
-  query AllProducts($first: Int = 5, $after: String) {
+export const GetAllProductsDocument = gql`
+  query GetAllProducts($first: Int = 5, $after: String) {
     allProducts(first: $first, after: $after, order: [{ price: ASC }]) {
       nodes {
         ...ProductDetails
@@ -84,51 +84,53 @@ export const AllProductsDocument = gql`
 `;
 
 /**
- * __useAllProductsQuery__
+ * __useGetAllProductsQuery__
  *
- * To run a query within a React component, call `useAllProductsQuery` and pass it any options that fit your needs.
- * When your component renders, `useAllProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAllProductsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useAllProductsQuery({
+ * const { data, loading, error } = useGetAllProductsQuery({
  *   variables: {
  *      first: // value for 'first'
  *      after: // value for 'after'
  *   },
  * });
  */
-export function useAllProductsQuery(
+export function useGetAllProductsQuery(
   baseOptions?: Apollo.QueryHookOptions<
-    AllProductsQuery,
-    AllProductsQueryVariables
+    GetAllProductsQuery,
+    GetAllProductsQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllProductsQuery, AllProductsQueryVariables>(
-    AllProductsDocument,
+  return Apollo.useQuery<GetAllProductsQuery, GetAllProductsQueryVariables>(
+    GetAllProductsDocument,
     options
   );
 }
-export function useAllProductsLazyQuery(
+export function useGetAllProductsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    AllProductsQuery,
-    AllProductsQueryVariables
+    GetAllProductsQuery,
+    GetAllProductsQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllProductsQuery, AllProductsQueryVariables>(
-    AllProductsDocument,
+  return Apollo.useLazyQuery<GetAllProductsQuery, GetAllProductsQueryVariables>(
+    GetAllProductsDocument,
     options
   );
 }
-export type AllProductsQueryHookResult = ReturnType<typeof useAllProductsQuery>;
-export type AllProductsLazyQueryHookResult = ReturnType<
-  typeof useAllProductsLazyQuery
+export type GetAllProductsQueryHookResult = ReturnType<
+  typeof useGetAllProductsQuery
 >;
-export type AllProductsQueryResult = Apollo.QueryResult<
-  AllProductsQuery,
-  AllProductsQueryVariables
+export type GetAllProductsLazyQueryHookResult = ReturnType<
+  typeof useGetAllProductsLazyQuery
+>;
+export type GetAllProductsQueryResult = Apollo.QueryResult<
+  GetAllProductsQuery,
+  GetAllProductsQueryVariables
 >;

@@ -1,5 +1,0 @@
-query GetProductCategories {
-  productCategories {
-    ...Category
-  }
-}

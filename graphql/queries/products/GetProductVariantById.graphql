@@ -1,5 +1,0 @@
-query GetProductVariantById($productVariantId: Int!) {
-  productVariantById(productVariantId: $productVariantId) {
-    ...ProductVariantDetails
-  }
-}

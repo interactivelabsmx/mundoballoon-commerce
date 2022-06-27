@@ -1,6 +1,6 @@
 import { ControllerRenderProps } from 'react-hook-form';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetCountryCodesQuery } from '@graphql/queries/collections/CountryCodes';
+import { useGetCountryCodesQuery } from '@graphql/queries/collections/GetCountryCodes';
 import { IUserPhoneForm } from './FirebasePhoneForm';
 
 interface ICountryCodeSelector {

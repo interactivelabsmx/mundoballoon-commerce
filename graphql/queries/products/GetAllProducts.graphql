@@ -1,4 +1,4 @@
-query AllProducts($first: Int = 5, $after: String) {
+query GetAllProducts($first: Int = 5, $after: String) {
   allProducts(first: $first, after: $after, order: [{ price: ASC }]) {
     nodes {
       ...ProductDetails

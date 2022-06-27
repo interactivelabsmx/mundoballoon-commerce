@@ -5,4 +5,11 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
   ],
+  theme: {
+    colors: {
+      purple: '#961E82',
+      orange: '#FFB400',
+      cyan: '#AAE6D2',
+    },
+  },
 };

@@ -2,6 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import { ReactNode } from 'react';
 import { useApollo } from '@lib/apollo/apolloClient';
 import { getCookieIdToken } from '@lib/firebaseAuth/utils';
+import { GRAPHQL_URL } from '@lib/utils/sharedConsts';
 
 interface IAppContexts {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface IAppContexts {
 
 const AppContexts = ({ children, pageProps }: IAppContexts) => {
   const apolloClient = useApollo(pageProps, {
-    graphQLUrl: 'https://localhost:5001/graphql/',
+    graphQLUrl: process.env.GRAPHQL_URL || GRAPHQL_URL,
     getToken: getCookieIdToken,
   });
   return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;

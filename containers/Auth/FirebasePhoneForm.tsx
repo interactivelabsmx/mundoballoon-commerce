@@ -4,12 +4,12 @@ import { Dispatch } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import type { Asserts } from 'yup';
-import { phoneCodeRequest } from '@lib/firebaseAuth/phoneAuth';
-import { useAuth } from '@providers/AuthProvider';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import ErrorText from '@components/UI/form/ErrorText';
 import LoadingText from '@components/UI/loading/LoadingText';
+import { phoneCodeRequest } from '@lib/firebaseAuth/phoneAuth';
+import { useAuth } from '@providers/AuthProvider';
 import CountryCodeSelector from './CountryCodeSelector';
 
 export const userPhoneSchema = yup

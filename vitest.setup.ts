@@ -12,6 +12,7 @@ const auth = {
     displayName: 'Test User',
   }),
 };
+
 const user = { getIdToken: () => '1234' };
 
 vi.mock('firebase-admin/app', () => ({
@@ -45,14 +46,5 @@ vi.mock('@firebase/auth', () => ({
   RecaptchaVerifier: vi.fn(),
 }));
 
-// MOCK ROUTER AND WINDOW FUNCTIONS
-// const IntersectionObserverMock = vi.fn(() => ({
-//   disconnect: vi.fn(),
-//   observe: vi.fn(),
-//   takeRecords: vi.fn(),
-//   unobserve: vi.fn(),
-// }));
-
-// vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 vi.mock('next/router', () => require('next-router-mock'));
 vi.mock('next/dist/client/router', () => require('next-router-mock'));
