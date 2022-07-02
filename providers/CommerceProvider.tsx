@@ -1,8 +1,4 @@
 import { createContext, ReactNode, useContext, useMemo } from 'react';
-import {
-  useGetAllProductsQuery,
-  GetAllProductsQueryHookResult,
-} from '@graphql/queries/products/GetAllProducts';
 
 export interface ICommerceConfig {
   locale: string;
@@ -39,9 +35,9 @@ export type Provider = ICommerceConfig & {
   //     useRemoveItem?: MutationHook<Customer.Address.RemoveItemHook>
   //   }
   // }
-  products?: {
-    useGetAllProducts?: GetAllProductsQueryHookResult;
-  };
+  // products?: {
+  //   useGetAllProducts?: GetAllProductsQueryHookResult;
+  // };
   // auth?: {
   //   useSignup?: MutationHook<Signup.SignupHook>
   //   useLogin?: MutationHook<Login.LoginHook>
@@ -63,10 +59,7 @@ interface ICommerce {
 }
 
 export function CommerceProvider({ children, options }: ICommerce) {
-  const value = useMemo(
-    () => ({ ...CommerceConfig, options, useGetAllProductsQuery }),
-    [options]
-  );
+  const value = useMemo(() => ({ ...CommerceConfig, options }), [options]);
 
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;
 }

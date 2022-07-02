@@ -1,4 +1,0 @@
-fragment PaymentProfile on UserPaymentProfile {
-  userProfileId
-  processorId
-}

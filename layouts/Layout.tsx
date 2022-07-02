@@ -10,7 +10,7 @@ const Layout = ({ children }: ILayout) => {
   return (
     <div className="h-full">
       <Navbar />
-      <main className="flex">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

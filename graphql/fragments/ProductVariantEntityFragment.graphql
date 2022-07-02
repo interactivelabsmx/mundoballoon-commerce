@@ -1,8 +1,0 @@
-fragment ProductVariantEntity on ProductVariantEntity {
-  productVariantId
-  sku
-  productId
-  name
-  description
-  price
-}

@@ -11,7 +11,8 @@ module.exports = withBundleAnalyzer({
       'images.unsplash.com',
       'tailwindui.com',
       'graph.facebook.com',
+      'placebear.com',
     ],
   },
-  experimental: { images: { layoutRaw: true } },
+  experimental: { images: { allowFutureImage: true } },
 });

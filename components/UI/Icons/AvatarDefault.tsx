@@ -1,7 +1,7 @@
 import { FC, SVGProps } from 'react';
 
 const AvatarDefault: FC<SVGProps<SVGSVGElement>> = () => (
-  <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+  <span className="inline-block h-8 w-8 rounded-full overflow-hidden bg-gray-100">
     <svg
       className="h-full w-full text-gray-300"
       fill="currentColor"

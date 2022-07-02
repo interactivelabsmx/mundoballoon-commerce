@@ -1,15 +1,15 @@
-import dynamic from 'next/dynamic';
+import { useState } from 'react';
+import NavbarMobileMenu from './NavbarMobileMenu';
+import NavbarTop from './NavbarTop';
 
-const NavbarUserProfileLoader = dynamic(
-  () => import('@components/User/NavbarUserProfile'),
-  { ssr: false }
-);
-
-const Navbar = () => (
-  <>
-    <div>Navbar Container</div>
-    <NavbarUserProfileLoader />
-  </>
-);
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <NavbarMobileMenu open={open} setOpen={setOpen} />
+      <NavbarTop setOpen={setOpen} />
+    </>
+  );
+};
 
 export default Navbar;

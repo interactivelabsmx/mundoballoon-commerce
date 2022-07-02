@@ -1,0 +1,6 @@
+fragment ProductsDictionary on KeyValuePairOfStringAndListOfProduct {
+  key
+  value {
+    ...ProductSimpleCard
+  }
+}

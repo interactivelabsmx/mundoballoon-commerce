@@ -1,8 +1,0 @@
-fragment Media on ProductVariantMedium {
-  productVariantMediaId
-  mediaType
-  quality
-  url
-  name
-  description
-}

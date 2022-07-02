@@ -1,0 +1,11 @@
+query GetHomepageProducts(
+  $includeBestSelling: Boolean = false
+  $includeNewest: Boolean = false
+) {
+  homepageProducts(
+    includeBestSellingProducts: $includeBestSelling
+    includeNewestProducts: $includeNewest
+  ) {
+    ...ProductsDictionary
+  }
+}

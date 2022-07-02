@@ -80,6 +80,12 @@ export type FirebaseUser = {
   userId: Scalars['String'];
 };
 
+export type KeyValuePairOfStringAndListOfProduct = {
+  __typename?: 'KeyValuePairOfStringAndListOfProduct';
+  key: Scalars['String'];
+  value: Array<Product>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createProduct: Product;
@@ -170,6 +176,21 @@ export type MutationUpdateProductArgs = {
 
 export type MutationUpdateProductVariantArgs = {
   input: ProductVariantEntityInput;
+};
+
+export type NavCategory = {
+  __typename?: 'NavCategory';
+  href: Scalars['String'];
+  imageAlt: Scalars['String'];
+  imageSrc: Scalars['String'];
+  name: Scalars['String'];
+};
+
+export type NavOption = {
+  __typename?: 'NavOption';
+  href?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  options?: Maybe<Array<NavCategory>>;
 };
 
 export type OcassionCartDetail = {
@@ -388,13 +409,14 @@ export type Query = {
   __typename?: 'Query';
   allProducts?: Maybe<AllProductsConnection>;
   countryCodes: Array<CountryCode>;
+  homepageProducts: Array<KeyValuePairOfStringAndListOfProduct>;
   loggedInUser?: Maybe<User>;
+  navOptions: Array<NavOption>;
   productById?: Maybe<Product>;
   productCategories: Array<ProductCategory>;
   productVariantById?: Maybe<ProductVariant>;
   productVariantsEntityById: Array<ProductVariantEntity>;
   productsEntity?: Maybe<ProductsEntityConnection>;
-  site: Site;
   userById?: Maybe<FirebaseUser>;
   users?: Maybe<UsersConnection>;
   variantValues: Array<VariantValue>;
@@ -407,6 +429,11 @@ export type QueryAllProductsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   order?: InputMaybe<Array<ProductSortInput>>;
+};
+
+export type QueryHomepageProductsArgs = {
+  includeBestSellingProducts: Scalars['Boolean'];
+  includeNewestProducts: Scalars['Boolean'];
 };
 
 export type QueryProductByIdArgs = {
@@ -442,14 +469,6 @@ export type QueryUsersArgs = {
 
 export type QueryVariantValuesArgs = {
   variantId: Scalars['Int'];
-};
-
-export type Site = {
-  __typename?: 'Site';
-  bestSellingProducts?: Maybe<Array<Product>>;
-  featuredProducts?: Maybe<Array<Product>>;
-  newestProducts?: Maybe<Array<Product>>;
-  products?: Maybe<Array<Product>>;
 };
 
 export enum SortEnumType {

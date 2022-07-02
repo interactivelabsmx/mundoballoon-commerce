@@ -20,7 +20,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, './components'),
-      '@containers': path.resolve(__dirname, './containers'),
       '@graphql': path.resolve(__dirname, './graphql'),
       '@hooks': path.resolve(__dirname, './hooks'),
       '@layouts': path.resolve(__dirname, './layouts'),

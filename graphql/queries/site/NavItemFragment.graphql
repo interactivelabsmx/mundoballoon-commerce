@@ -1,0 +1,14 @@
+fragment NavCategory on NavCategory {
+  name
+  href
+  imageSrc
+  imageAlt
+}
+
+fragment NavItem on NavOption {
+  name
+  href
+  options {
+    ...NavCategory
+  }
+}

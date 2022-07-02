@@ -1,30 +1,37 @@
 import { GetServerSideProps } from 'next';
-import { ProductDetailsFragment } from '@graphql/fragments/ProductDetailsFragment';
+import ProductListHero from '@components/Products/ProductLists/ProductListHero';
 import {
-  GetAllProductsDocument,
-  GetAllProductsQueryResult,
-} from '@graphql/queries/products/GetAllProducts';
+  GetHomepageProductsDocument,
+  GetHomepageProductsQuery,
+  GetHomepageProductsQueryVariables,
+} from '@graphql/queries/products/GetHomepageProducts';
+import { ProductsDictionaryFragment } from '@graphql/queries/products/ProductsDictionaryFragment';
 import Layout from '@layouts/Layout';
 import { getClient } from '@lib/apollo/apolloClient';
 
 interface IIndex {
-  products?: ProductDetailsFragment[] | null;
+  productDictionary?: ProductsDictionaryFragment[];
 }
 
-const Index = ({ products }: IIndex) => (
-  <Layout>MundoBallon Commerce {products?.length}</Layout>
+const Index = ({ productDictionary }: IIndex) => (
+  <Layout>
+    <ProductListHero productDictionary={productDictionary} />
+  </Layout>
 );
 
 export const getServerSideProps: GetServerSideProps<IIndex> = async () => {
   const client = getClient({});
-  const { data } = (await client.query({
-    query: GetAllProductsDocument,
-    variables: { first: 5, after: null },
-  })) as GetAllProductsQueryResult;
-  const products = data?.allProducts?.nodes;
+  const { data } = await client.query<
+    GetHomepageProductsQuery,
+    GetHomepageProductsQueryVariables
+  >({
+    query: GetHomepageProductsDocument,
+    variables: { includeBestSelling: true, includeNewest: true },
+  });
+  const productDictionary = data.homepageProducts;
   return {
     props: {
-      products,
+      productDictionary,
     },
   };
 };
