@@ -1,3 +1,5 @@
+export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
+
 export const GRAPHQL_URL = 'https://localhost:5001/graphql/';
 
 export const SelectOne = { label: 'Select One', value: '' };

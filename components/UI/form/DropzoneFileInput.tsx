@@ -2,7 +2,7 @@ import { PhotographIcon } from '@heroicons/react/outline';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { ControllerRenderProps, Path } from 'react-hook-form';
-import { Base } from '@lib/utils/baseType';
+import BaseObject from '@lib/utils/BaseObject';
 import ErrorText from './ErrorText';
 import InputFileList from './InputFileList';
 
@@ -13,7 +13,7 @@ interface IDropzoneFileInput<TFieldValues, TPath extends Path<TFieldValues>> {
 }
 
 const DropzoneFileInput = <
-  TFieldValues extends Base,
+  TFieldValues extends BaseObject,
   TPath extends Path<TFieldValues>
 >({
   field,

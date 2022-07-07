@@ -2,11 +2,12 @@ import { ApolloProvider } from '@apollo/client';
 import { ReactNode } from 'react';
 import { useApollo } from '@lib/apollo/apolloClient';
 import { getCookieIdToken } from '@lib/firebaseAuth/utils';
+import BaseObject from '@lib/utils/BaseObject';
 import { GRAPHQL_URL } from '@lib/utils/sharedConsts';
 
 interface IAppContexts {
   children: ReactNode;
-  pageProps: any;
+  pageProps: BaseObject;
 }
 
 const AppContexts = ({ children, pageProps }: IAppContexts) => {

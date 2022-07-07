@@ -1,6 +1,6 @@
 import React, { FC, Fragment } from 'react';
 import { Column, Row, useExpanded, useTable } from 'react-table';
-import { Base } from '@lib/utils/baseType';
+import BaseObject from '@lib/utils/BaseObject';
 
 export interface IExpandableRow<T extends object> {
   row: Row<T>;
@@ -11,13 +11,13 @@ export interface IBaseTableOptions<T extends object> {
   expandableComponent?: FC<IExpandableRow<T>>;
 }
 
-export interface IBaseTable<T extends Base> {
+export interface IBaseTable<T extends BaseObject> {
   columns: Readonly<Column<T>[]>;
   data: Readonly<T[]>;
   options?: IBaseTableOptions<T>;
 }
 
-const BaseTable = <T extends Base>({
+const BaseTable = <T extends BaseObject>({
   columns,
   data,
   options,

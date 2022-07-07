@@ -4,41 +4,46 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { parseCookies, destroyCookie } from 'nookies';
 import { cleanObject, FI } from './utils';
 
-type IncomingGSSP<P> = (
+type IGetServerSideProps<P> = (
   ctx: GetServerSidePropsContext,
-  user: Partial<UserRecord> | null
-) => Promise<P>;
+  user?: Partial<UserRecord> | null
+) => Promise<GetServerSidePropsResult<P>>;
 
-type WithAuthServerSidePropsResult = GetServerSidePropsResult<{
-  [key: string]: any;
-}>;
-
-type WithAuthServerSidePropsOptions = {
-  allowAll?: boolean;
-};
-
-if (getApps().length < 1) {
-  initializeApp({
-    credential: cert(JSON.parse(process.env.FIREBASE_PRIVATE_KEY || '{}')),
-    projectId: 'mundoballoon-dev',
-  });
+interface WithAuthServerSidePropsOptions {
+  authorize?: boolean;
 }
 
-export default function withAuthServer(
-  incomingGSSP?: IncomingGSSP<WithAuthServerSidePropsResult> | null,
-  options?: WithAuthServerSidePropsOptions
-) {
+interface WithAuthServerProps<T> {
+  getServerSideProps?: IGetServerSideProps<T>;
+  options?: WithAuthServerSidePropsOptions;
+}
+
+export interface WithAuthServerResult {
+  user?: Partial<UserRecord> | null;
+}
+
+export default function withAuthServer<P extends WithAuthServerResult>({
+  getServerSideProps,
+  options,
+}: WithAuthServerProps<P>) {
   return async (
     ctx: GetServerSidePropsContext
-  ): Promise<WithAuthServerSidePropsResult> => {
+  ): Promise<GetServerSidePropsResult<P>> => {
+    if (getApps().length < 1) {
+      initializeApp({
+        credential: cert(JSON.parse(process.env.FIREBASE_PRIVATE_KEY || '{}')),
+        projectId: 'mundoballoon-dev',
+      });
+    }
+
     const { req } = ctx;
     const cookies = parseCookies({ req });
+    const fi = cookies[FI];
     const auth = getAuth();
     let userRecord: UserRecord | null = null;
-    const fi = cookies[FI];
 
     // No authcookie and not allow all (login page allows all)
-    if (!fi && !options?.allowAll)
+    if (!fi && options?.authorize)
       return { redirect: { destination: '/login', permanent: false } };
 
     if (fi) {
@@ -51,36 +56,14 @@ export default function withAuthServer(
       }
     }
 
-    // If allow all and already logged in go to dashboard
-    if (options?.allowAll && userRecord)
-      return {
-        redirect: { destination: '/admin/dashboard', permanent: false },
-      };
-
-    // No user record and allow all
-    const user: Partial<UserRecord> | null = userRecord
-      ? cleanObject(userRecord)
-      : null;
-    if (incomingGSSP) {
-      const incomingGSSPResult = await incomingGSSP(ctx, user);
-
-      if ('props' in incomingGSSPResult) {
-        return { props: { ...incomingGSSPResult.props, user } };
-      }
-
-      if ('redirect' in incomingGSSPResult) {
-        return { redirect: { ...incomingGSSPResult.redirect } };
-      }
-
-      if ('notFound' in incomingGSSPResult) {
-        return { notFound: incomingGSSPResult.notFound };
-      }
+    const user: Partial<UserRecord> | null = cleanObject(userRecord);
+    if (getServerSideProps) {
+      const result = await getServerSideProps(ctx, user);
+      if ('props' in result) return { props: { ...result.props, user } as P };
+      if ('redirect' in result) return { redirect: { ...result.redirect } };
+      if ('notFound' in result) return { notFound: result.notFound };
     }
 
-    return {
-      props: {
-        user,
-      },
-    };
+    return { props: { user } as P };
   };
 }

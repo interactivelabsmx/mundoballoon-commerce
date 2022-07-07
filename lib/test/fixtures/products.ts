@@ -1,21 +1,33 @@
 import {
-  randProductDescription,
   randProductName,
   randFloat,
   randNumber,
+  randDepartment,
+  randImg,
 } from '@ngneat/falso';
-import { ProductEntityFragment } from '@graphql/fragments/ProductEntityFragment';
+import { ProductSimpleCardFragment } from '@graphql/queries/products/ProductSimpleCardFragment';
 
-export const getFixtureProduct = (): ProductEntityFragment => ({
-  description: randProductDescription(),
+export const getFixtureProduct = (): ProductSimpleCardFragment => ({
+  productId: randNumber(),
   name: randProductName(),
   price: randFloat(),
-  productCategoryId: randNumber(),
-  productId: randNumber(),
+  category: {
+    name: randDepartment(),
+  },
+  variants: [
+    {
+      media: [
+        {
+          url: randImg(),
+          mediaType: 'image',
+        },
+      ],
+    },
+  ],
 });
 
-export const getFixtureProducts = (count = 5): ProductEntityFragment[] => {
-  const products: ProductEntityFragment[] = [];
+export const getFixtureProducts = (count = 5): ProductSimpleCardFragment[] => {
+  const products: ProductSimpleCardFragment[] = [];
   for (let index = 0; index < count; index++) {
     products.push(getFixtureProduct());
   }

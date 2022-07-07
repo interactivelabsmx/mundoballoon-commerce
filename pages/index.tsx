@@ -1,39 +1,22 @@
-import { GetServerSideProps } from 'next';
 import ProductListHero from '@components/Products/ProductLists/ProductListHero';
-import {
-  GetHomepageProductsDocument,
-  GetHomepageProductsQuery,
-  GetHomepageProductsQueryVariables,
-} from '@graphql/queries/products/GetHomepageProducts';
-import { ProductsDictionaryFragment } from '@graphql/queries/products/ProductsDictionaryFragment';
+import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+import LoadingText from '@components/UI/loading/LoadingText';
+import { useGetHomepageProductsQuery } from '@graphql/queries/products/GetHomepageProducts';
 import Layout from '@layouts/Layout';
-import { getClient } from '@lib/apollo/apolloClient';
+import getServerSidePreFetch from '@lib/getServerSidePreFetch';
 
-interface IIndex {
-  productDictionary?: ProductsDictionaryFragment[];
-}
-
-const Index = ({ productDictionary }: IIndex) => (
-  <Layout>
-    <ProductListHero productDictionary={productDictionary} />
-  </Layout>
-);
-
-export const getServerSideProps: GetServerSideProps<IIndex> = async () => {
-  const client = getClient({});
-  const { data } = await client.query<
-    GetHomepageProductsQuery,
-    GetHomepageProductsQueryVariables
-  >({
-    query: GetHomepageProductsDocument,
-    variables: { includeBestSelling: true, includeNewest: true },
-  });
-  const productDictionary = data.homepageProducts;
-  return {
-    props: {
-      productDictionary,
-    },
-  };
+const Index = () => {
+  const { loading, error, data } = useGetHomepageProductsQuery();
+  if (loading) return <LoadingText />;
+  if (error) return <SimpleTextError text={error.message} />;
+  const { homepageProducts } = data || {};
+  return (
+    <Layout>
+      <ProductListHero productDictionary={homepageProducts} />
+    </Layout>
+  );
 };
+
+export const getServerSideProps = getServerSidePreFetch({ Page: Index });
 
 export default Index;

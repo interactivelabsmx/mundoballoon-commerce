@@ -60,7 +60,6 @@ interface ICommerce {
 
 export function CommerceProvider({ children, options }: ICommerce) {
   const value = useMemo(() => ({ ...CommerceConfig, options }), [options]);
-
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;
 }
 

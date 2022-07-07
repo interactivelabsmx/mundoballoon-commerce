@@ -4,7 +4,7 @@ import {
   InputHTMLAttributes,
   ReactNode,
 } from 'react';
-import { Base } from '@lib/utils/baseType';
+import BaseObject from '@lib/utils/BaseObject';
 import classNames from '@lib/utils/classnames';
 import ErrorText from './ErrorText';
 import LabelBase from './LabeBase';
@@ -23,7 +23,7 @@ type ISelectNative<T> = InputHTMLAttributes<HTMLSelectElement> & {
   addToOptionsComponent?: ReactNode;
 };
 
-const SelectNative = <T extends Base>(
+const SelectNative = <T extends BaseObject>(
   {
     label,
     error,

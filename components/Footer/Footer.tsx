@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import LogoSmall from '@components/UI/logo/LogoSmall';
+import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
 
 const footerNavigation = {
   Products: [
@@ -43,14 +45,14 @@ const Footer = () => (
               <div key={`footer-nav-${key}`}>
                 <h3 className="text-sm font-medium text-gray-900">{key}</h3>
                 <ul role="list" className="mt-6 space-y-6">
-                  {footerNavigation[key].map((item) => (
+                  {/* @ts-expect-error TODO: not typed yet */}
+                  {footerNavigation[key].map((item: NavItemFragment) => (
                     <li key={item.name} className="text-sm">
-                      <a
-                        href={item.href}
-                        className="text-gray-500 hover:text-gray-600"
-                      >
-                        {item.name}
-                      </a>
+                      <Link href={item.href || '/'}>
+                        <a className="text-gray-500 hover:text-gray-600">
+                          {item.name}
+                        </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -59,7 +61,6 @@ const Footer = () => (
           </div>
         </div>
       </div>
-
       <div className="border-t border-gray-100 py-10 text-center">
         <p className="text-sm text-gray-500">
           &copy; 2022 ChamBear All rights reserved.
