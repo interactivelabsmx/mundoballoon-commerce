@@ -6,8 +6,8 @@ const LogoSmall = () => (
     <a>
       <span className="sr-only">Logo</span>
       <Image
-        width="100%"
-        height="100%"
+        width={32}
+        height={32}
         className="h-8 w-auto"
         src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
         alt="Workflow"

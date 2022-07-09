@@ -1,35 +1,13 @@
-import Link from 'next/link';
 import LogoSmall from '@components/UI/logo/LogoSmall';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
+import { NavCategoryFragment } from '@graphql/queries/site/NavItemFragment';
+import FooterLink from './FooterLink';
 
-const footerNavigation = {
-  Products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
-  ],
-  Company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
-  ],
-  'Customer Service': [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
-  ],
-};
+interface IFooter {
+  navOptions: NavItemFragment[];
+}
 
-const Footer = () => (
+const Footer = ({ navOptions }: IFooter) => (
   <footer aria-labelledby="footer-heading" className="bg-gray-50">
     <h2 id="footer-heading" className="sr-only">
       Footer
@@ -41,19 +19,15 @@ const Footer = () => (
             <LogoSmall />
           </div>
           <div className="mt-10 col-span-10 grid grid-cols-4 gap-8 sm:grid-cols-3 md:mt-0 md:row-start-1 md:col-start-3 md:col-span-8 lg:col-start-2 lg:col-span-6">
-            {Object.keys(footerNavigation).map((key) => (
-              <div key={`footer-nav-${key}`}>
-                <h3 className="text-sm font-medium text-gray-900">{key}</h3>
+            {navOptions.map((option) => (
+              <div key={`footer-nav-${option.name}`}>
+                <h3 className="text-sm font-medium text-gray-900">
+                  {option.name}
+                </h3>
                 <ul role="list" className="mt-6 space-y-6">
-                  {/* @ts-expect-error TODO: not typed yet */}
-                  {footerNavigation[key].map((item: NavItemFragment) => (
-                    <li key={item.name} className="text-sm">
-                      <Link href={item.href || '/'}>
-                        <a className="text-gray-500 hover:text-gray-600">
-                          {item.name}
-                        </a>
-                      </Link>
-                    </li>
+                  <FooterLink option={option} />
+                  {option.options?.map((item: NavCategoryFragment) => (
+                    <FooterLink option={item} key={item.name} />
                   ))}
                 </ul>
               </div>

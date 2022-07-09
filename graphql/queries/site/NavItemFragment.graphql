@@ -1,4 +1,5 @@
 fragment NavCategory on NavCategory {
+  order
   name
   href
   imageSrc
@@ -6,6 +7,7 @@ fragment NavCategory on NavCategory {
 }
 
 fragment NavItem on NavOption {
+  order
   name
   href
   options {

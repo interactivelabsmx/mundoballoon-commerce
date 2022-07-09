@@ -10,10 +10,12 @@ export type GetNavOptionsQuery = {
   __typename?: 'Query';
   navOptions: Array<{
     __typename?: 'NavOption';
+    order: number;
     name: string;
     href?: string | null;
     options?: Array<{
       __typename?: 'NavCategory';
+      order: number;
       name: string;
       href: string;
       imageSrc: string;

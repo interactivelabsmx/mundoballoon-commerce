@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ProductSimpleCardFragment } from '@graphql/queries/products/ProductSimpleCardFragment';
 import { getFirstMedia } from '@lib/products/getFirstMedia';
@@ -12,8 +12,9 @@ const ProductCardSimple = ({ product }: IProductCardSimple) => (
     <a className="group text-sm">
       <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
         <Image
-          src={getFirstMedia(product).url}
+          layout="fill"
           alt={product.name}
+          src={getFirstMedia(product).url}
           className="w-full h-full object-center object-cover"
         />
       </div>

@@ -5,6 +5,9 @@ import {
 } from '@heroicons/react/outline';
 import dynamic from 'next/dynamic';
 import { Dispatch } from 'react';
+import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+import LoadingText from '@components/UI/loading/LoadingText';
+import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
 
@@ -15,21 +18,23 @@ const NavbarUserProfileLoader = dynamic(
 
 interface INavbarTop {
   setOpen: Dispatch<boolean>;
+  navOptions: NavItemFragment[];
+  loading: boolean;
+  error?: string;
 }
 
-const NavbarTop = ({ setOpen }: INavbarTop) => (
+const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => (
   <header className="relative">
     <nav aria-label="Top">
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-16 flex items-center justify-between">
-            {/* Logo Desktop */}
             <div className="hidden lg:flex-1 lg:flex lg:items-center">
               <NavbarLogo />
             </div>
-
-            <NavbarDesktopFlyout />
-
+            {error && <SimpleTextError text={error} />}
+            {loading && <LoadingText text="Loading Menu" />}
+            <NavbarDesktopFlyout navOptions={navOptions} />
             <div className="flex-1 flex items-center lg:hidden">
               <button
                 type="button"
@@ -49,9 +54,7 @@ const NavbarTop = ({ setOpen }: INavbarTop) => (
                 <span className="sr-only">Search</span>
                 <SearchIcon className="w-6 h-6" aria-hidden="true" />
               </button>
-
               <NavbarUserProfileLoader />
-
               <div className="flex items-center lg:ml-8">
                 <span
                   className="mx-4 h-6 w-px bg-gray-400 lg:mx-6"

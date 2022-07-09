@@ -16,9 +16,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The `DateTime` scalar represents an ISO-8601 compliant date time type. */
   DateTime: any;
-  /** The `Upload` scalar type represents a file upload. */
   Upload: any;
 };
 
@@ -184,6 +182,7 @@ export type NavCategory = {
   imageAlt: Scalars['String'];
   imageSrc: Scalars['String'];
   name: Scalars['String'];
+  order: Scalars['Int'];
 };
 
 export type NavOption = {
@@ -191,6 +190,7 @@ export type NavOption = {
   href?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   options?: Maybe<Array<NavCategory>>;
+  order: Scalars['Int'];
 };
 
 export type OcassionCartDetail = {
