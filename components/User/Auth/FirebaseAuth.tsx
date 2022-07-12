@@ -27,7 +27,7 @@ const FirebaseAuth = () => {
   }, [auth]);
 
   return auth ? (
-    <>
+    <div className="py-8">
       {loading && <div>Authenticating</div>}
       {(requestError || error) && (
         <SimpleTextAlert
@@ -75,7 +75,7 @@ const FirebaseAuth = () => {
           setRequestError={setRequestError}
         />
       </div>
-    </>
+    </div>
   ) : null;
 };
 

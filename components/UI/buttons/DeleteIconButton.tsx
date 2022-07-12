@@ -1,4 +1,4 @@
-import { TrashIcon } from '@heroicons/react/solid';
+import { TrashIcon } from '@heroicons/react/outline';
 import { ButtonHTMLAttributes } from 'react';
 import SecundaryButton from './SecundaryButton';
 

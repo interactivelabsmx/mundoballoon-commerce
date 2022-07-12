@@ -11,8 +11,8 @@ import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
 
-const NavbarUserProfileLoader = dynamic(
-  () => import('@components/Navbar/NavbarUserProfile'),
+const NavbarUserMenuLoader = dynamic(
+  () => import('@components/Navbar/NavbarUserMenu'),
   { ssr: false }
 );
 
@@ -54,7 +54,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => (
                 <span className="sr-only">Search</span>
                 <SearchIcon className="w-6 h-6" aria-hidden="true" />
               </button>
-              <NavbarUserProfileLoader />
+              <NavbarUserMenuLoader />
               <div className="flex items-center lg:ml-8">
                 <span
                   className="mx-4 h-6 w-px bg-gray-400 lg:mx-6"

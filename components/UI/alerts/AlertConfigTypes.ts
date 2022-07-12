@@ -2,7 +2,7 @@ import {
   CheckCircleIcon,
   ExclamationIcon,
   XCircleIcon,
-} from '@heroicons/react/solid';
+} from '@heroicons/react/outline';
 
 export enum SimpleTextAlertType {
   SUCCESS,

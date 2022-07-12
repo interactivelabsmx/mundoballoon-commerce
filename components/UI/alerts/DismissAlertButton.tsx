@@ -1,4 +1,4 @@
-import { XIcon } from '@heroicons/react/solid';
+import { XIcon } from '@heroicons/react/outline';
 import {
   DismissAlertButtonColors,
   SimpleTextAlertType,
