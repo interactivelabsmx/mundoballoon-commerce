@@ -10,7 +10,7 @@ import merge from 'deepmerge';
 import isEqual from 'lodash.isequal';
 import { useMemo } from 'react';
 import BaseObject from '@lib/utils/BaseObject';
-import { APOLLO_STATE_PROP_NAME, GRAPHQL_URL } from '@lib/utils/sharedConsts';
+import { APOLLO_STATE_PROP_NAME, getGraphqlURL } from '@lib/utils/sharedConsts';
 import typePolicies from './typePolicies';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
@@ -21,7 +21,7 @@ export interface ICreateApolloClient {
 }
 
 function createApolloClient({
-  graphQLUrl = GRAPHQL_URL,
+  graphQLUrl = getGraphqlURL(),
   getToken,
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
