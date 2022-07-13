@@ -1,4 +1,3 @@
-import useTranslation from 'next-translate/useTranslation';
 import ProductListHero from '@components/Products/ProductLists/ProductListHero';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
@@ -7,14 +6,12 @@ import Layout from '@layouts/Layout';
 import getServerSidePreFetch from '@lib/getServerSidePreFetch';
 
 const Index = () => {
-  const { t } = useTranslation('index');
   const { loading, error, data } = useGetHomepageProductsQuery();
   if (loading) return <LoadingText />;
   if (error) return <SimpleTextError text={error.message} />;
   const { homepageProducts } = data || {};
   return (
     <Layout>
-      <h1>{t('welcome_index')}</h1>
       <ProductListHero productDictionary={homepageProducts} />
     </Layout>
   );
