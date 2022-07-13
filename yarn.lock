@@ -5602,6 +5602,11 @@ next-router-mock@^0.7.4:
   resolved "https://registry.yarnpkg.com/next-router-mock/-/next-router-mock-0.7.4.tgz#6af31bdc3383d29050901bb6a71ad50eefe0fe5b"
   integrity sha512-phYLFXOQ9klg6gxVRJJdH0QoD+5bAbAdDYM9O3YdGZ+IFEbvIoIns+o9SoSfTkCjzoU2R1ARoFc8WHp0+hnD8A==
 
+next-translate@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/next-translate/-/next-translate-1.5.0.tgz#b1e5c4a8e55e31b3ed1b9428529f27c289c6b7bc"
+  integrity sha512-6amnuJWw22XbaM2DVhsYaOXelFLjTbMqTgqvB+h9VfE/H2aQ/edfT06ONQLQbsVV/I7Hn+93LTaV1/qOo6Kf9A==
+
 next@12.2.2:
   version "12.2.2"
   resolved "https://registry.yarnpkg.com/next/-/next-12.2.2.tgz#029bf5e4a18a891ca5d05b189b7cd983fd22c072"

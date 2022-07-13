@@ -1,5 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { LogoutIcon } from '@heroicons/react/outline';
+import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { Fragment, useMemo, useState } from 'react';
@@ -17,6 +18,7 @@ const FirebaseAuthLoader = dynamic(
 );
 
 const NavbarUserMenu = () => {
+  const { lang } = useTranslation();
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
@@ -64,6 +66,17 @@ const NavbarUserMenu = () => {
                       >
                         Profile
                       </a>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`w-full ${getNavbarUserMenuLinkStyle(
+                          active
+                        )}`}
+                      >
+                        Lang: {lang}
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
