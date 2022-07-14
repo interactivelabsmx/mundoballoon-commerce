@@ -33,3 +33,14 @@ export const getFixtureProducts = (count = 5): ProductSimpleCardFragment[] => {
   }
   return products;
 };
+
+export const getHomePageProducts = () => [
+  {
+    key: 'Featured',
+    value: [...getFixtureProducts(5)],
+  },
+  {
+    key: 'Best Selling',
+    value: [...getFixtureProducts(5)],
+  },
+];

@@ -48,3 +48,6 @@ vi.mock('@firebase/auth', () => ({
 
 vi.mock('next/router', () => require('next-router-mock'));
 vi.mock('next/dist/client/router', () => require('next-router-mock'));
+// TODO: Remove once the future image fix is released
+// https://github.com/vercel/next.js/pull/38569
+vi.mock('next/future/image', () => require('next/image'));
