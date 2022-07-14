@@ -71,17 +71,6 @@ const NavbarUserMenu = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <button
-                        className={`w-full ${getNavbarUserMenuLinkStyle(
-                          active
-                        )}`}
-                      >
-                        Lang: {lang}
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
                         className={`w-full flex items-center justify-between ${getNavbarUserMenuLinkStyle(
                           active
                         )}`}
@@ -117,6 +106,15 @@ const NavbarUserMenu = () => {
                   </Menu.Item>
                 ))
               )}
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
+                  >
+                    Lang: {lang}
+                  </button>
+                )}
+              </Menu.Item>
             </Menu.Items>
           </Transition>
         </Menu>
