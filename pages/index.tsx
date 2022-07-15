@@ -12,6 +12,7 @@ const Index = () => {
   const { homepageProducts } = data || {};
   return (
     <Layout>
+      <div>Hola</div>
       <ProductListHero productDictionary={homepageProducts} />
     </Layout>
   );
