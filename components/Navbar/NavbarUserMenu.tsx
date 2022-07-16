@@ -17,11 +17,24 @@ const FirebaseAuthLoader = dynamic(
   { ssr: false }
 );
 
+function handleClick(this: any, lang: string) {
+  if (lang == 'es') {
+    location.href = '/en';
+    lang = 'en';
+  } else {
+    location.href = '/es';
+    lang = 'es';
+  }
+}
 const NavbarUserMenu = () => {
+  const { t } = useTranslation('common');
   const { lang } = useTranslation();
+  const Profile = t('Profile');
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
+  const Lang = t('Lang');
+  const Sign_Out = t('Sign Out');
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(onClick),
     []
@@ -64,7 +77,7 @@ const NavbarUserMenu = () => {
                         href="/profile"
                         className={getNavbarUserMenuLinkStyle(active)}
                       >
-                        Profile
+                        {Profile}
                       </a>
                     )}
                   </Menu.Item>
@@ -76,7 +89,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        Sign Out <LogoutIcon className="h-6 w-6" />
+                        {Sign_Out} <LogoutIcon className="h-6 w-6" />
                       </button>
                     )}
                   </Menu.Item>
@@ -110,8 +123,9 @@ const NavbarUserMenu = () => {
                 {({ active }) => (
                   <button
                     className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
+                    onClick={() => handleClick(lang)}
                   >
-                    Lang: {lang}
+                    {Lang}: {lang}
                   </button>
                 )}
               </Menu.Item>

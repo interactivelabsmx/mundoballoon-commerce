@@ -10,6 +10,8 @@ import LoadingText from '@components/UI/loading/LoadingText';
 import unifiedEmailPasswordAuth from '@lib/firebaseAuth/unifiedEmailPasswordAuth';
 import { useAuth } from '@providers/AuthProvider';
 
+//const { t } = useTranslation('common');
+const password = 'Password';
 export const userPwdSchema = yup
   .object({
     email: yup.string().required(),
@@ -82,7 +84,7 @@ const FirebaseEmailAuth = ({
           render={({ field }) => (
             <Input
               {...field}
-              label="Password"
+              label={password}
               type="password"
               error={errors?.password?.message}
             />
