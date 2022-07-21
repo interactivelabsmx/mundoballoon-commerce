@@ -1,10 +1,8 @@
-import { useRouter } from 'next/router';
 import {
   createContext,
   Dispatch,
   ReactNode,
   useContext,
-  useEffect,
   useState,
 } from 'react';
 
@@ -32,17 +30,4 @@ export function CommerceProvider({ children }: ICommerce) {
 
 export function useCommerce() {
   return useContext(Commerce);
-}
-
-export function usePersistLocaleCookie() {
-  const { locale, defaultLocale } = useRouter();
-  useEffect(persistLocaleCookie, [locale, defaultLocale]);
-  function persistLocaleCookie() {
-    if (locale !== defaultLocale) {
-      const date = new Date();
-      const expireMs = 100 * 24 * 60 * 60 * 100;
-      date.setTime(date.getTime() + expireMs);
-      document.cookie = `NEXT_LOCALE=${locale};expires=${date.toUTCString()};path=/`;
-    }
-  }
 }

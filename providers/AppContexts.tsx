@@ -4,8 +4,9 @@ import { useApollo } from '@lib/apollo/apolloClient';
 import { getCookieIdToken } from '@lib/firebaseAuth/utils';
 import BaseObject from '@lib/utils/BaseObject';
 import { getGraphqlURL } from '@lib/utils/sharedConsts';
+import { useCommerce } from './CommerceProvider';
 
-//import { useCommerce, usePersistLocaleCookie } from './CommerceProvider';
+//import { useCommerce } from './CommerceProvider';
 
 interface IAppContexts {
   children: ReactNode;
@@ -13,11 +14,11 @@ interface IAppContexts {
 }
 
 const AppContexts = ({ children, pageProps }: IAppContexts) => {
-  // const { locale } = useCommerce();
+  const { locale } = useCommerce();
   const apolloClient = useApollo(pageProps, {
     graphQLUrl: getGraphqlURL(),
     getToken: getCookieIdToken,
-    //locale, //Error
+    locale,
   });
   return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;
 };
