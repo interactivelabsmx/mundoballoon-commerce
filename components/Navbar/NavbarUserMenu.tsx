@@ -3,7 +3,9 @@ import { LogoutIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment, useMemo, useState } from 'react';
+import React from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import {
@@ -12,13 +14,18 @@ import {
 } from '@lib/utils/userNavigation';
 import { useAuth } from '@providers/AuthProvider';
 
+//const { locales } = i18nConfig;
+
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
   { ssr: false }
 );
 
 const NavbarUserMenu = () => {
-  const { lang } = useTranslation();
+  const { t } = useTranslation('common');
+  const Profile = t('Profile');
+  const Lang = t('Language');
+  const Sign_Out = t('Sign Out');
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
@@ -26,6 +33,8 @@ const NavbarUserMenu = () => {
     () => getLogedOutUserNavigation(onClick),
     []
   );
+  //return locales.map((lng) => {
+  //if (lng === lang) return null;
   return (
     <div className="flex bg-gray p-4 justify-around">
       <div className="flex items-center">
@@ -64,7 +73,7 @@ const NavbarUserMenu = () => {
                         href="/profile"
                         className={getNavbarUserMenuLinkStyle(active)}
                       >
-                        Profile
+                        {Profile}
                       </a>
                     )}
                   </Menu.Item>
@@ -76,7 +85,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        Sign Out <LogoutIcon className="h-6 w-6" />
+                        {Sign_Out} <LogoutIcon className="h-6 w-6" />
                       </button>
                     )}
                   </Menu.Item>
@@ -107,13 +116,9 @@ const NavbarUserMenu = () => {
                 ))
               )}
               <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
-                  >
-                    Lang: {lang}
-                  </button>
-                )}
+                <Link href="/" locale={Lang} key={Lang}>
+                  {t(`${Lang}: ${Lang}`)}
+                </Link>
               </Menu.Item>
             </Menu.Items>
           </Transition>

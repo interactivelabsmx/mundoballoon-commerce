@@ -18,11 +18,13 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 export interface ICreateApolloClient {
   graphQLUrl?: string;
   getToken?: () => Promise<string> | string;
+  locale: string;
 }
 
 function createApolloClient({
   graphQLUrl = getGraphqlURL(),
   getToken,
+  locale,
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
     // This means we set the auth inline for create user
@@ -33,6 +35,7 @@ function createApolloClient({
         headers: {
           ...headers,
           authorization: `Bearer ${token}`,
+          locale,
         },
       };
     return { headers };
@@ -56,7 +59,9 @@ interface IInitializeApollo {
 
 export function initializeApollo({
   initialState,
-  options = {},
+  options = {
+    locale: 'EN-US',
+  },
 }: IInitializeApollo) {
   const _apolloClient = apolloClient ?? createApolloClient(options);
 
