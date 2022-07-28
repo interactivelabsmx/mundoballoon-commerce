@@ -28,17 +28,28 @@ function createApolloClient({
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
     // This means we set the auth inline for create user
-    if (headers?.authorization) return { headers };
+    if (headers?.authorization)
+      return {
+        headers: {
+          ...headers,
+          'Accept-Language': locale,
+        },
+      };
     const token = getToken && (await getToken());
     if (token)
       return {
         headers: {
           ...headers,
           authorization: `Bearer ${token}`,
-          locale,
+          'Accept-Language': locale,
         },
       };
-    return { headers };
+    return {
+      headers: {
+        ...headers,
+        'Accept-Language': locale,
+      },
+    };
   });
   const link = createUploadLink({
     uri: graphQLUrl,

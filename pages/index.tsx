@@ -3,7 +3,6 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useGetHomepageProductsQuery } from '@graphql/queries/products/GetHomepageProducts';
 import Layout from '@layouts/Layout';
-import getServerSidePreFetch from '@lib/getServerSidePreFetch';
 
 const Index = () => {
   const { loading, error, data } = useGetHomepageProductsQuery();
@@ -17,6 +16,6 @@ const Index = () => {
   );
 };
 
-export const getServerSideProps = getServerSidePreFetch({ Page: Index });
+//export const getServerSideProps = getServerSidePreFetch({ Page: Index });
 
 export default Index;

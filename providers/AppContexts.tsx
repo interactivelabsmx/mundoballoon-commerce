@@ -6,8 +6,6 @@ import BaseObject from '@lib/utils/BaseObject';
 import { getGraphqlURL } from '@lib/utils/sharedConsts';
 import { useCommerce } from './CommerceProvider';
 
-//import { useCommerce } from './CommerceProvider';
-
 interface IAppContexts {
   children: ReactNode;
   pageProps: BaseObject;

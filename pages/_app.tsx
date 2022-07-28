@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -14,21 +15,23 @@ const AuthProviderLoader = dynamic<IAuthProvider>(
   }
 );
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <AuthProviderLoader>
-    <AppContexts pageProps={pageProps}>
-      <CommerceProvider>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <title>Mundo Balloon</title>
-        </Head>
-        <Component {...pageProps} />
-      </CommerceProvider>
-    </AppContexts>
-  </AuthProviderLoader>
-);
-
+const App = ({ Component, pageProps }: AppProps) => {
+  const { lang } = useTranslation('common');
+  return (
+    <AuthProviderLoader>
+      <AppContexts pageProps={pageProps}>
+        <CommerceProvider lang={lang}>
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+            <title>Mundo Balloon</title>
+          </Head>
+          <Component {...pageProps} />
+        </CommerceProvider>
+      </AppContexts>
+    </AuthProviderLoader>
+  );
+};
 export default App;

@@ -1,11 +1,10 @@
 import { Menu, Transition } from '@headlessui/react';
 import { LogoutIcon } from '@heroicons/react/outline';
+import setLanguage from 'next-translate/setLanguage';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Fragment, useMemo, useState } from 'react';
-import React from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import {
@@ -14,27 +13,31 @@ import {
 } from '@lib/utils/userNavigation';
 import { useAuth } from '@providers/AuthProvider';
 
-//const { locales } = i18nConfig;
-
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
   { ssr: false }
 );
 
 const NavbarUserMenu = () => {
+  let langs = '';
   const { t } = useTranslation('common');
+  const { lang } = useTranslation();
   const Profile = t('Profile');
-  const Lang = t('Language');
-  const Sign_Out = t('Sign Out');
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
+  const Lang = t('Lang');
+  const Sign_Out = t('Sign Out');
+  if (lang == 'es') {
+    langs = 'en';
+  } else {
+    langs = 'es';
+  }
+
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(onClick),
     []
   );
-  //return locales.map((lng) => {
-  //if (lng === lang) return null;
   return (
     <div className="flex bg-gray p-4 justify-around">
       <div className="flex items-center">
@@ -116,9 +119,14 @@ const NavbarUserMenu = () => {
                 ))
               )}
               <Menu.Item>
-                <Link href="/" locale={Lang} key={Lang}>
-                  {t(`${Lang}: ${Lang}`)}
-                </Link>
+                {({ active }) => (
+                  <button
+                    className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
+                    onClick={async () => await setLanguage(langs)}
+                  >
+                    {Lang}: {lang}
+                  </button>
+                )}
               </Menu.Item>
             </Menu.Items>
           </Transition>
@@ -132,5 +140,4 @@ const NavbarUserMenu = () => {
     </div>
   );
 };
-
 export default NavbarUserMenu;

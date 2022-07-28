@@ -1,30 +1,31 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  useContext,
-  useState,
-} from 'react';
+import setLanguage from 'next-translate/setLanguage';
+import { createContext, ReactNode, useContext } from 'react';
 
-interface ICommerceProvider {
+export interface ICommerceProvider {
   locale: string;
-  setLocale: Dispatch<string>;
+  setLocale: (newLang: string) => void;
 }
 
-const defaultLocale = 'en-US';
-
+const defaultLocale = 'ES-MX';
 const Commerce = createContext<ICommerceProvider>({
   locale: defaultLocale,
-  setLocale: () => null,
+  setLocale: () => undefined,
 });
 
 interface ICommerce {
   children: ReactNode;
+  lang: string;
 }
 
-export function CommerceProvider({ children }: ICommerce) {
-  const [locale, setLocale] = useState<string>(defaultLocale);
-  const value = { locale, setLocale };
+export function CommerceProvider({ children, lang }: ICommerce) {
+  const locale = lang;
+  const setLocale = (newlang: string) => {
+    setLanguage(newlang);
+  };
+  const value = {
+    locale: locale,
+    setLocale,
+  };
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;
 }
 
