@@ -16,7 +16,6 @@ const FirebaseAuth = () => {
   const { auth } = useAuth();
   const [requestError, setRequestError] = useState('');
   const [createUser, { loading, error }] = useCreateUserMutation();
-  const Or_continue_with = t('Or continue with');
   const onAuthComplete = async (user: User) => {
     const token = await user.getIdToken(true);
     await createUser({
@@ -66,7 +65,7 @@ const FirebaseAuth = () => {
           </div>
           <div className="relative flex justify-center text-sm">
             <span className="px-2 bg-gray-100 text-gray-500">
-              {Or_continue_with}
+              {t('Or_continue_with')}
             </span>
           </div>
         </div>

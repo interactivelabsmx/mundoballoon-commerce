@@ -10,7 +10,6 @@ import LoadingText from '@components/UI/loading/LoadingText';
 import unifiedEmailPasswordAuth from '@lib/firebaseAuth/unifiedEmailPasswordAuth';
 import { useAuth } from '@providers/AuthProvider';
 
-//const { t } = useTranslation('common');
 const password = 'Password';
 export const userPwdSchema = yup
   .object({

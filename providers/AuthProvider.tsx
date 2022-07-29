@@ -5,7 +5,6 @@ import {
   User,
   getAuth,
 } from '@firebase/auth';
-import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { destroyCookie, setCookie } from 'nookies';
 import React, {
@@ -78,22 +77,6 @@ export function AuthProvider({ children }: IAuthProvider) {
       {children}
     </AuthContext.Provider>
   );
-}
-export interface ICommerceProvider {
-  locale: string;
-  setLocale: (newLang: string) => void;
-}
-export function LocaleCookie(): void {
-  const { lang } = useTranslation('common');
-  const { locale, defaultLocale } = useRouter();
-  useEffect(persistLocaleCookie, [locale, defaultLocale]);
-  function persistLocaleCookie() {
-    if (locale != defaultLocale) {
-      setCookie({}, FI, 'value', {
-        path: '/' + lang,
-      });
-    }
-  }
 }
 
 export const useAuth = () => useContext(AuthContext);

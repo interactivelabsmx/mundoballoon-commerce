@@ -15,7 +15,7 @@ const ProductListHero = ({ productDictionary }: IProductListHero) => {
           <div className="py-16 sm:py-24 lg:max-w-7xl lg:mx-auto lg:px-8">
             <div className="py-8 px-4 flex items-center justify-between sm:px-6 lg:px-0">
               <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-                {t(productsItem.key)}
+                {productsItem.key}
               </h2>
               <a
                 href="#"

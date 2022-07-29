@@ -19,21 +19,13 @@ const FirebaseAuthLoader = dynamic(
 );
 
 const NavbarUserMenu = () => {
-  let langs = '';
-  const { t } = useTranslation('common');
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation('common');
   const Profile = t('Profile');
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
   const Lang = t('Lang');
   const Sign_Out = t('Sign Out');
-  if (lang == 'es') {
-    langs = 'en';
-  } else {
-    langs = 'es';
-  }
-
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(onClick),
     []
@@ -122,7 +114,9 @@ const NavbarUserMenu = () => {
                 {({ active }) => (
                   <button
                     className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
-                    onClick={async () => await setLanguage(langs)}
+                    onClick={async () =>
+                      await setLanguage(lang === 'es' ? 'en' : 'es')
+                    }
                   >
                     {Lang}: {lang}
                   </button>
