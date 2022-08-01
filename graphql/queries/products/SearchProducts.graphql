@@ -1,0 +1,10 @@
+query SearchProducts($where: ProductFilterInput, $order: [ProductSortInput!]) {
+  searchProducts(where: $where, order: $order) {
+    pageInfo {
+      hasNextPage
+    }
+    nodes {
+      ...ProductSimpleCard
+    }
+  }
+}

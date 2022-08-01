@@ -24,7 +24,7 @@ interface INavbarTop {
 }
 
 const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => (
-  <header className="relative">
+  <header className="relative z-20">
     <nav aria-label="Top">
       <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
