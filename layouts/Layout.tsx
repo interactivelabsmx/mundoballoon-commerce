@@ -4,7 +4,7 @@ import Navbar from '@components/Navbar';
 import { useGetNavOptionsQuery } from '@graphql/queries/site/GetNavOptions';
 
 interface ILayout {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
 }
 
 const Layout = ({ children }: ILayout) => {

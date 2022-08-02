@@ -25,17 +25,13 @@ function createApolloClient({
   getToken,
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
+    const newHeaders = { ...headers };
     // This means we set the auth inline for create user
-    if (headers?.authorization) return { headers };
-    const token = getToken && (await getToken());
-    if (token)
-      return {
-        headers: {
-          ...headers,
-          authorization: `Bearer ${token}`,
-        },
-      };
-    return { headers };
+    if (!headers?.authorization) {
+      const token = getToken && (await getToken());
+      if (token) newHeaders.authorization = `Bearer ${token}`;
+    }
+    return { headers: newHeaders };
   });
   const link = createUploadLink({
     uri: graphQLUrl,

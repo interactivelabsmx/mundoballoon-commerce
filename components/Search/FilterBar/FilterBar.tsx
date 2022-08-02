@@ -1,5 +1,6 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
+import useTranslation from 'next-translate/useTranslation';
 import { Fragment, useState } from 'react';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
 import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters';
@@ -23,6 +24,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
   const { variants, productCategories, sortOptions } = searchFilters;
   const [open, setOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState<IActiveFilter[]>([]);
+  const { t } = useTranslation('search');
   const isSelected = (id: string) => !!activeFilters.find((af) => af.id === id);
   const onFilterChanges = (filters: IActiveFilter[]) => {
     setActiveFilters(filters);
@@ -49,15 +51,17 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
       />
       <section aria-labelledby="filter-heading">
         <h2 id="filter-heading" className="sr-only">
-          Filters
+          {t('filters')}
         </h2>
         <div className="relative bg-white border-b border-gray-200 pb-4">
           <div className="max-w-7xl mx-auto px-4 flex items-center justify-between sm:px-6 lg:px-8">
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                  Sort
-                  <FilterOpenChevronDesktop />
+                  <>
+                    {t('sort')}
+                    <FilterOpenChevronDesktop />
+                  </>
                 </Menu.Button>
               </div>
               <Transition
@@ -97,7 +101,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
               className="inline-block text-sm font-medium text-gray-700 hover:text-gray-900 sm:hidden"
               onClick={() => setOpen(true)}
             >
-              Filters
+              {t('filters')}
             </button>
             <div className="hidden sm:block">
               <div className="flow-root">
@@ -129,7 +133,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
         <div className="bg-gray-100">
           <div className="max-w-7xl mx-auto py-3 px-4 sm:flex sm:items-center sm:px-6 lg:px-8">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-              Filters
+              {t('filters')}
               <span className="sr-only">, active</span>
             </h3>
             <div
@@ -150,7 +154,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
                       onClick={() => removeFilter(activeFilter.id)}
                     >
                       <span className="sr-only">
-                        Remove filter for {activeFilter.label}
+                        {t('remove_filter_sr', { filter: activeFilter.label })}
                       </span>
                       <XIcon className="h-4 w-4" aria-hidden="true" />
                     </button>

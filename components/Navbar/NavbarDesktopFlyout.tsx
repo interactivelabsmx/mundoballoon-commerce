@@ -1,4 +1,5 @@
 import { Popover, Transition } from '@headlessui/react';
+import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
@@ -11,6 +12,7 @@ interface INavbarDesktopFlyout {
 }
 
 const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
+  const { t } = useTranslation('common');
   const featuredTabOptions = navOptions.filter((option) =>
     hasFeaturedOptions(option)
   );
@@ -36,15 +38,14 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                     >
                       {category.name}
                       <span
+                        aria-hidden="true"
                         className={classNames(
                           open ? 'bg-indigo-600' : '',
                           'absolute z-20 -bottom-px inset-x-0 h-0.5 transition ease-out duration-200'
                         )}
-                        aria-hidden="true"
                       />
                     </Popover.Button>
                   </div>
-
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-200"
@@ -94,7 +95,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                                     </a>
                                   </Link>
                                   <p aria-hidden="true" className="mt-1">
-                                    Shop now
+                                    {t('shop_now')}
                                   </p>
                                 </div>
                               ))}
@@ -107,7 +108,6 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
               )}
             </Popover>
           ))}
-
           {linkOptions.map((page) => (
             <Link href={page.href || ''} key={page.name}>
               <a className="flex items-center text-sm font-semibold text-gray-700 hover:text-gray-800 tracking-wider">

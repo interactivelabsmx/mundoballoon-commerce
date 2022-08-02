@@ -53,10 +53,14 @@ const ProductListSearch = ({ activeFilters }: IProductListSearch) => {
   if (!searchProducts?.nodes) return <LoadingText />;
   const { nodes: products } = searchProducts;
   return (
-    <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
-      {products?.map((product) => (
-        <ProductCardSimple key={product.productId} product={product} />
-      ))}
+    <div className="bg-white">
+      <div className="py-16 sm:py-24 lg:max-w-7xl lg:mx-auto lg:px-8">
+        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+          {products?.map((product) => (
+            <ProductCardSimple key={product.productId} product={product} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

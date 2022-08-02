@@ -1,5 +1,6 @@
 import { Dialog, Tab, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
+import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/future/image';
 import Link from 'next/link';
 import { Dispatch, Fragment } from 'react';
@@ -24,6 +25,7 @@ const NavbarMobileMenu = ({
   loading,
   error,
 }: INavbarMobile) => {
+  const { t } = useTranslation('common');
   const featuredTabOptions = navOptions.filter((option) =>
     hasFeaturedOptions(option)
   );
@@ -63,12 +65,12 @@ const NavbarMobileMenu = ({
                   className="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="sr-only">Close menu</span>
+                  <span className="sr-only">{t('close_menu')}</span>
                   <XIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
               {error && <SimpleTextError text={error} />}
-              {loading && <LoadingText text="Loading Menu" />}
+              {loading && <LoadingText />}
               {featuredTabOptions.length > 0 && (
                 <Tab.Group as="div" className="mt-2">
                   <div className="border-b border-gray-200">
@@ -122,7 +124,7 @@ const NavbarMobileMenu = ({
                                   aria-hidden="true"
                                   className="mt-1 text-sm text-gray-500"
                                 >
-                                  Shop now
+                                  {t('show_now')}
                                 </p>
                               </div>
                             ))}
@@ -146,7 +148,7 @@ const NavbarMobileMenu = ({
               <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                 <div className="flow-root">
                   <button className="-m-2 p-2 block font-medium text-gray-900">
-                    Sign in
+                    {t('sign_in')}
                   </button>
                 </div>
               </div>

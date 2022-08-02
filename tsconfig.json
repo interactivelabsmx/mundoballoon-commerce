@@ -21,6 +21,7 @@
       "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
       "@lib/*": ["lib/*"],
+      "@locales/*": ["locales/*"],
       "@pages/*": ["pages/*"],
       "@providers/*": ["providers/*"]
     }

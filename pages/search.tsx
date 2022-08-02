@@ -15,7 +15,7 @@ const Search = () => {
   };
   return (
     <Layout>
-      {loading && <LoadingText text="Loading Filter Options" />}
+      {loading && <LoadingText />}
       {data && (
         <FilterBar searchFilters={data} onFilterChange={onFilterChange} />
       )}

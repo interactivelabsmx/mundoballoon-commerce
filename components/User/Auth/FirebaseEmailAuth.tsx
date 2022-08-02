@@ -44,7 +44,7 @@ const FirebaseEmailAuth = ({
     onAuth(user);
   };
 
-  if (!auth) return <LoadingText text="Loading Login..." />;
+  if (!auth) return <LoadingText />;
   const onSubmit: SubmitHandler<IUserPwdForm> = ({ email, password }) => {
     setRequestError('');
     unifiedEmailPasswordAuth({

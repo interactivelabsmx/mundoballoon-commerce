@@ -33,7 +33,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => (
               <NavbarLogo />
             </div>
             {error && <SimpleTextError text={error} />}
-            {loading && <LoadingText text="Loading Menu" />}
+            {loading && <LoadingText />}
             <NavbarDesktopFlyout navOptions={navOptions} />
             <div className="flex-1 flex items-center lg:hidden">
               <button

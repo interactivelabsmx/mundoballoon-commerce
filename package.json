@@ -30,8 +30,8 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next dev",
-    "dev:tls": "NODE_TLS_REJECT_UNAUTHORIZED=0 USE_TLS=true yarn dev",
+    "dev": "USE_TLS=false next dev",
+    "dev:tls": "NODE_TLS_REJECT_UNAUTHORIZED=0 yarn dev",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
     "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css",
     "format": "prettier --loglevel=warn --write .",

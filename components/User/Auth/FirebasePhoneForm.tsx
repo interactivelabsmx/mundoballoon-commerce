@@ -44,7 +44,7 @@ const FirebasePhoneForm = ({
 
   const onError = (error: AuthError) => setRequestError(error.message);
 
-  if (!auth) return <LoadingText text="Loading Login..." />;
+  if (!auth) return <LoadingText />;
   const onSubmit: SubmitHandler<IUserPhoneForm> = ({
     countryCode,
     phoneNumber,
