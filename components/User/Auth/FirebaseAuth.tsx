@@ -1,4 +1,5 @@
 import { User } from '@firebase/auth';
+import useTranslation from 'next-translate/useTranslation';
 import { useState, useEffect } from 'react';
 import { SimpleTextAlertType } from '@components/UI/alerts/AlertConfigTypes';
 import SimpleTextAlert from '@components/UI/alerts/SimpleTextAlert';
@@ -11,6 +12,7 @@ import FirebaseGoogleButton from './FirebaseGoogleButton';
 import FirebasePhoneAuth from './FirebasePhoneAuth';
 
 const FirebaseAuth = () => {
+  const { t } = useTranslation('auth');
   const { auth } = useAuth();
   const [requestError, setRequestError] = useState('');
   const [createUser, { loading, error }] = useCreateUserMutation();
@@ -28,7 +30,7 @@ const FirebaseAuth = () => {
 
   return auth ? (
     <div className="py-8">
-      {loading && <div>Authenticating</div>}
+      {loading && <div>{t('authenticating')}</div>}
       {(requestError || error) && (
         <SimpleTextAlert
           text={requestError || error?.message}
@@ -63,7 +65,7 @@ const FirebaseAuth = () => {
           </div>
           <div className="relative flex justify-center text-sm">
             <span className="px-2 bg-gray-100 text-gray-500">
-              Or continue with
+              {t('or_methods')}
             </span>
           </div>
         </div>

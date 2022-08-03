@@ -134,7 +134,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
           <div className="max-w-7xl mx-auto py-3 px-4 sm:flex sm:items-center sm:px-6 lg:px-8">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
               {t('filters')}
-              <span className="sr-only">, active</span>
+              <span className="sr-only">{t('sr_active')}</span>
             </h3>
             <div
               aria-hidden="true"

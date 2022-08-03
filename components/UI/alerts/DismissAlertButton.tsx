@@ -1,4 +1,5 @@
 import { XIcon } from '@heroicons/react/outline';
+import useTranslation from 'next-translate/useTranslation';
 import {
   DismissAlertButtonColors,
   SimpleTextAlertType,
@@ -9,19 +10,22 @@ interface IDismissAlertButton {
   onClick: () => void;
 }
 
-const DismissAlertButton = ({ type, onClick }: IDismissAlertButton) => (
-  <div className="-mx-1.5 -my-1.5">
-    <button
-      type="button"
-      onClick={onClick}
-      className={`inline-flex ${DismissAlertButtonColors[type].map(
-        (k) => ` ${k} `
-      )} rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 `}
-    >
-      <span className="sr-only">Dismiss</span>
-      <XIcon className="h-5 w-5" aria-hidden="true" />
-    </button>
-  </div>
-);
+const DismissAlertButton = ({ type, onClick }: IDismissAlertButton) => {
+  const { t } = useTranslation('common');
+  return (
+    <div className="-mx-1.5 -my-1.5">
+      <button
+        type="button"
+        onClick={onClick}
+        className={`inline-flex ${DismissAlertButtonColors[type].map(
+          (k) => ` ${k} `
+        )} rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 `}
+      >
+        <span className="sr-only">{t('dismiss')}</span>
+        <XIcon className="h-5 w-5" aria-hidden="true" />
+      </button>
+    </div>
+  );
+};
 
 export default DismissAlertButton;

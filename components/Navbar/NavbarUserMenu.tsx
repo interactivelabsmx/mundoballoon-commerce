@@ -18,13 +18,13 @@ const FirebaseAuthLoader = dynamic(
 );
 
 const NavbarUserMenu = () => {
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation();
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
   const LogedOutUserNavigation = useMemo(
-    () => getLogedOutUserNavigation(onClick),
-    []
+    () => getLogedOutUserNavigation(t, onClick),
+    [t]
   );
   return (
     <div className="flex bg-gray p-4 justify-around">
@@ -32,7 +32,7 @@ const NavbarUserMenu = () => {
         <Menu as="div" className="flex-shrink-0 relative ml-5">
           <div>
             <Menu.Button className="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
-              <span className="sr-only">Open user menu</span>
+              <span className="sr-only">{t('user_menu')}</span>
               {user?.photoURL ? (
                 <Image
                   className="inline-block h-10 w-10 rounded-full"
@@ -64,7 +64,7 @@ const NavbarUserMenu = () => {
                         href="/profile"
                         className={getNavbarUserMenuLinkStyle(active)}
                       >
-                        Profile
+                        {t('common:profile')}
                       </a>
                     )}
                   </Menu.Item>
@@ -76,7 +76,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        Sign Out <LogoutIcon className="h-6 w-6" />
+                        {t('auth:sign_out')} <LogoutIcon className="h-6 w-6" />
                       </button>
                     )}
                   </Menu.Item>

@@ -1,4 +1,5 @@
 import { ControllerRenderProps } from 'react-hook-form';
+import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useGetCountryCodesQuery } from '@graphql/queries/collections/GetCountryCodes';
 import { IUserPhoneForm } from './FirebasePhoneForm';
@@ -9,12 +10,12 @@ interface ICountryCodeSelector {
 }
 
 const CountryCodeSelector = ({ field, label }: ICountryCodeSelector) => {
-  const { loading, error: loadError, data } = useGetCountryCodesQuery();
+  const { loading, error, data } = useGetCountryCodesQuery();
 
-  if (loading) return <LoadingText />;
-  if (loadError) return <div className="mt-1 text-red-500">Error loading</div>;
+  if (loading || !data) return <LoadingText />;
+  if (error) return <SimpleTextError text={error.message} />;
 
-  const countryCodes = data?.countryCodes;
+  const { countryCodes } = data;
 
   return (
     <div className="absolute inset-y-0 left-0 flex items-center">

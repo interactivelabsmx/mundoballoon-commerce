@@ -1,5 +1,6 @@
 import { AuthError, User } from '@firebase/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useTranslation from 'next-translate/useTranslation';
 import { Dispatch } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
@@ -28,6 +29,7 @@ const FirebaseEmailAuth = ({
   onAuthComplete,
   setRequestError,
 }: IFirebaseEmailAuth) => {
+  const { t } = useTranslation('auth');
   const { auth, onAuth } = useAuth();
   const {
     control,
@@ -96,13 +98,13 @@ const FirebaseEmailAuth = ({
             href="/forgotpwd"
             className="font-medium text-indigo-600 hover:text-indigo-500"
           >
-            Forgot your password?
+            {t('forgot_password')}
           </a>
         </div>
       </div>
 
       <div>
-        <PrimaryButton type="submit">Sign in</PrimaryButton>
+        <PrimaryButton type="submit">{t('sign_in')}</PrimaryButton>
       </div>
     </form>
   );

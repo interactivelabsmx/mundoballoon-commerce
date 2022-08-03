@@ -1,4 +1,5 @@
 import { GoogleAuthProvider, User } from '@firebase/auth';
+import useTranslation from 'next-translate/useTranslation';
 import { Dispatch } from 'react';
 import GoogleIcon from '@components/UI/Icons/GoogleIcon';
 import FirebaseSocialButton, {
@@ -14,11 +15,12 @@ const FirebaseGoogleButton = ({
   onAuthComplete,
   setRequestError,
 }: IFirebaseGoogleButton) => {
+  const { t } = useTranslation('auth');
   const SocialButtonProps: IFirebaseSocialButton = {
     onAuthComplete,
     setRequestError,
     provider: new GoogleAuthProvider(),
-    label: 'Sign in with Google',
+    label: t('google_button_label'),
   };
   return <FirebaseSocialButton {...SocialButtonProps} Icon={GoogleIcon} />;
 };

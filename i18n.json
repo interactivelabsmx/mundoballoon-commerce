@@ -2,7 +2,8 @@
   "locales": ["en", "es"],
   "defaultLocale": "en",
   "pages": {
-    "*": ["common"],
-    "/": ["index"]
+    "*": ["common", "auth"],
+    "/": ["index"],
+    "/search": ["search"]
   }
 }
