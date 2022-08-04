@@ -9,25 +9,11 @@ export const FI_COOKIE_OPTIONS = {
   sameSite: true,
   secure: true,
 };
-
-export const FII_TTL = 60 * 60;
-export const FII_COOKIE_OPTIONS = {
-  path: '/',
-  maxAge: FII_TTL,
-  sameSite: true,
-  secure: true,
-};
-
 export const FI = 'fi';
-export const FII = 'fii';
 
 export const getCookieIdToken = () => {
   const cookies = parseCookies();
   return cookies[FI];
-};
-export const getCookieLanguage = () => {
-  const cookies = parseCookies();
-  return cookies[FII];
 };
 
 export function cleanObject(object: BaseObject | null) {
@@ -50,11 +36,4 @@ export const checkForExpiredCookieToken = (refreshIdToken: () => void) => {
     const cookie = getCookieIdToken();
     if (!cookie) refreshIdToken();
   }, FI_TTL * 1000);
-};
-
-export const ckeckForExpiredCookieLanguage = (refreshLanguage: () => void) => {
-  setInterval(() => {
-    const cookie = getCookieLanguage();
-    if (!cookie) refreshLanguage();
-  }, FII_TTL * 10000);
 };

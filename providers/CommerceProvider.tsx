@@ -1,29 +1,13 @@
 import setLanguage from 'next-translate/setLanguage';
 import { setCookie } from 'nookies';
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-} from 'react';
-import {
-  FII,
-  FII_COOKIE_OPTIONS,
-  ckeckForExpiredCookieLanguage,
-} from '@lib/firebaseAuth/utils';
+import { createContext, ReactNode, useCallback, useContext } from 'react';
 
 export interface ICommerceProvider {
-  locale: string;
   setLocale: (newLang: string) => void;
-  LocaleCookie: () => void;
 }
 
-const defaultLocale = 'ES-MX';
 const Commerce = createContext<ICommerceProvider>({
-  locale: defaultLocale,
   setLocale: () => undefined,
-  LocaleCookie: () => undefined,
 });
 
 interface ICommerce {
@@ -31,31 +15,31 @@ interface ICommerce {
   lang: string;
 }
 
+export const UL = 'NEXT_LOCALE';
+export const UL_TTL = 600 * 6000;
+
+export const UL_COOKIE_OPTIONS = {
+  path: '/',
+  maxAge: UL_TTL,
+  sameSite: true,
+  secure: true,
+};
+
 export function CommerceProvider({ children, lang }: ICommerce) {
-  const LocaleCookie = useCallback(async () => {
-    setCookie({}, FII, '', FII_COOKIE_OPTIONS);
-  }, [lang]);
-  const refreshLanguage = useCallback(async () => {
-    setCookie({}, FII, '', FII_COOKIE_OPTIONS);
-  }, [lang]);
-  useEffect(
-    () => ckeckForExpiredCookieLanguage(refreshLanguage),
-    [refreshLanguage]
+  const setLanguageCookie = useCallback(
+    async (locale: string) => {
+      setCookie({}, UL, locale, UL_COOKIE_OPTIONS);
+    },
+    [lang]
   );
-  const locale = lang;
-  const setLocale = (newlang: string) => {
-    setLanguage(newlang);
+  const setLocale = (locale: string) => {
+    setLanguage(locale);
+    setLanguageCookie(locale);
   };
   const value = {
-    locale: locale,
     setLocale,
-    LocaleCookie,
   };
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;
-}
-export interface ICommerceProvider {
-  locale: string;
-  setLocale: (newLang: string) => void;
 }
 
 export function useCommerce() {

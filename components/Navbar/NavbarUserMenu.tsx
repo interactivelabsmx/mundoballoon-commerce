@@ -1,17 +1,18 @@
 import { Menu, Transition } from '@headlessui/react';
 import { LogoutIcon } from '@heroicons/react/outline';
-import setLanguage from 'next-translate/setLanguage';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { Fragment, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
+import { Locales } from '@lib/utils/sharedConsts';
 import {
   getLogedOutUserNavigation,
   getNavbarUserMenuLinkStyle,
 } from '@lib/utils/userNavigation';
 import { useAuth } from '@providers/AuthProvider';
+import { useCommerce } from '@providers/CommerceProvider';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
@@ -20,12 +21,11 @@ const FirebaseAuthLoader = dynamic(
 
 const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
+  const { setLocale } = useCommerce();
   const Profile = t('Profile');
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
-  const Lang = t('Lang');
-  const Sign_Out = t('Sign Out');
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(onClick),
     []
@@ -80,7 +80,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        {Sign_Out} <LogoutIcon className="h-6 w-6" />
+                        Sign_Out <LogoutIcon className="h-6 w-6" />
                       </button>
                     )}
                   </Menu.Item>
@@ -114,11 +114,11 @@ const NavbarUserMenu = () => {
                 {({ active }) => (
                   <button
                     className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
-                    onClick={async () =>
-                      await setLanguage(lang === 'es' ? 'en' : 'es')
+                    onClick={() =>
+                      setLocale(lang === Locales.es ? Locales.en : Locales.es)
                     }
                   >
-                    {Lang}: {lang}
+                    Lang: {lang}
                   </button>
                 )}
               </Menu.Item>

@@ -16,7 +16,7 @@ const AuthProviderLoader = dynamic<IAuthProvider>(
 );
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const { lang } = useTranslation('common');
+  const { lang } = useTranslation();
   return (
     <AuthProviderLoader>
       <AppContexts pageProps={pageProps}>

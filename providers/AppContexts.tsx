@@ -1,10 +1,10 @@
 import { ApolloProvider } from '@apollo/client';
+import useTranslation from 'next-translate/useTranslation';
 import { ReactNode } from 'react';
 import { useApollo } from '@lib/apollo/apolloClient';
 import { getCookieIdToken } from '@lib/firebaseAuth/utils';
 import BaseObject from '@lib/utils/BaseObject';
 import { getGraphqlURL } from '@lib/utils/sharedConsts';
-import { useCommerce } from './CommerceProvider';
 
 interface IAppContexts {
   children: ReactNode;
@@ -12,11 +12,18 @@ interface IAppContexts {
 }
 
 const AppContexts = ({ children, pageProps }: IAppContexts) => {
-  const { locale } = useCommerce();
+  let langs = '';
+  const { lang } = useTranslation();
+  if (lang == 'es') {
+    langs = 'es-MX';
+  }
+  if (lang == 'en') {
+    langs = 'en-US';
+  }
   const apolloClient = useApollo(pageProps, {
     graphQLUrl: getGraphqlURL(),
     getToken: getCookieIdToken,
-    locale,
+    locale: langs,
   });
   return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;
 };

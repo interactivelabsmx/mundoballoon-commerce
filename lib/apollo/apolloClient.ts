@@ -18,7 +18,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 export interface ICreateApolloClient {
   graphQLUrl?: string;
   getToken?: () => Promise<string> | string;
-  locale: string;
+  locale?: string;
 }
 
 function createApolloClient({
