@@ -1,7 +1,8 @@
-import { Menu, Popover, Transition } from '@headlessui/react';
+import { Menu, Popover } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
+import TransitionEase from '@components/UI/transitions/TransitionEase';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
 import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters';
 import classNames from '@lib/utils/classnames';
@@ -64,15 +65,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
                   </>
                 </Menu.Button>
               </div>
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
+              <TransitionEase>
                 <Menu.Items className="origin-top-left absolute left-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1">
                     {sortOptions.map((option: string) => (
@@ -94,7 +87,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
                     ))}
                   </div>
                 </Menu.Items>
-              </Transition>
+              </TransitionEase>
             </Menu>
             <button
               type="button"

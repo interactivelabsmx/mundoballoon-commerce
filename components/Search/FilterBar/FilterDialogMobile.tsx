@@ -24,7 +24,7 @@ const FilterDialogMobile = ({
   getSectionCount,
   searchFilters: { variants, productCategories },
 }: IFilterDialogMobile) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('search');
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-40 sm:hidden" onClose={setOpen}>
