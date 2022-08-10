@@ -1,7 +1,7 @@
 import { forwardRef, InputHTMLAttributes, LegacyRef, ReactNode } from 'react';
 import classNames from '@lib/utils/classnames';
 import ErrorText from './ErrorText';
-import LabelBase from './LabeBase';
+import LabelBase from './LabelBase';
 
 type IInput = InputHTMLAttributes<HTMLInputElement> & {
   label: string;

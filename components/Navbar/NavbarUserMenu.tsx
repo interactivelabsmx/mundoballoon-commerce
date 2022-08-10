@@ -3,10 +3,11 @@ import { LogoutIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
-import TransitionEase from '@components/UI/transitions/TransitionEase';
+import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
 import {
   getLogedOutUserNavigation,
   getNavbarUserMenuLinkStyle,
@@ -47,18 +48,17 @@ const NavbarUserMenu = () => {
               )}
             </Menu.Button>
           </div>
-          <TransitionEase>
+          <TransitionSmallDropdown>
             <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
               {user ? (
                 <>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="/profile"
-                        className={getNavbarUserMenuLinkStyle(active)}
-                      >
-                        {t('common:profile')}
-                      </a>
+                      <Link href="/profile">
+                        <a className={getNavbarUserMenuLinkStyle(active)}>
+                          {t('common:profile')}
+                        </a>
+                      </Link>
                     )}
                   </Menu.Item>
                   <Menu.Item>
@@ -79,18 +79,17 @@ const NavbarUserMenu = () => {
                   <Menu.Item key={item.name}>
                     {({ active }) =>
                       item.href ? (
-                        <a
-                          href={item.href || ''}
-                          className={getNavbarUserMenuLinkStyle(active)}
-                        >
-                          {item.name}
-                        </a>
+                        <Link href={item.href || ''}>
+                          <a className={getNavbarUserMenuLinkStyle(active)}>
+                            {item.name}
+                          </a>
+                        </Link>
                       ) : (
                         <button
+                          onClick={item.onClick}
                           className={`w-full text-left ${getNavbarUserMenuLinkStyle(
                             active
                           )}`}
-                          onClick={item.onClick}
                         >
                           {item.name}
                         </button>
@@ -109,7 +108,7 @@ const NavbarUserMenu = () => {
                 )}
               </Menu.Item>
             </Menu.Items>
-          </TransitionEase>
+          </TransitionSmallDropdown>
         </Menu>
         {!user && (
           <Modal open={openAuth} setOpen={setOpenAuth}>

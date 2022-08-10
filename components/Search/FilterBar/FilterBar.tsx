@@ -2,7 +2,7 @@ import { Menu, Popover } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
-import TransitionEase from '@components/UI/transitions/TransitionEase';
+import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
 import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters';
 import classNames from '@lib/utils/classnames';
@@ -65,7 +65,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
                   </>
                 </Menu.Button>
               </div>
-              <TransitionEase>
+              <TransitionSmallDropdown>
                 <Menu.Items className="origin-top-left absolute left-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1">
                     {sortOptions.map((option: string) => (
@@ -87,7 +87,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
                     ))}
                   </div>
                 </Menu.Items>
-              </TransitionEase>
+              </TransitionSmallDropdown>
             </Menu>
             <button
               type="button"

@@ -91,7 +91,6 @@ const FirebasePhoneForm = ({
           fieldName="phoneNumber"
         />
       )}
-      <div></div>
       <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
         <PrimaryButton type="submit" className="mx-4">
           {t('get_code')}

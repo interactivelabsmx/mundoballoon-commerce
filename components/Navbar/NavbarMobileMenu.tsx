@@ -6,6 +6,10 @@ import Link from 'next/link';
 import { Dispatch, Fragment } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
+import {
+  getTransitionFadeInLinearProps,
+  getTransitionLeftSlideInProps,
+} from '@components/UI/transitions/transitionPropsConstants';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
 import classNames from '@lib/utils/classnames';
 import hasFeaturedOptions from '@lib/utils/hasFeaturedOptions';
@@ -36,28 +40,12 @@ const NavbarMobileMenu = ({
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
-        <Transition.Child
-          as={Fragment}
-          enter="transition-opacity ease-linear duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity ease-linear duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
+        <Transition.Child as={Fragment} {...getTransitionFadeInLinearProps()}>
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
         <div className="fixed inset-0 flex z-40">
-          <Transition.Child
-            as={Fragment}
-            enter="transition ease-in-out duration-300 transform"
-            enterFrom="-translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition ease-in-out duration-300 transform"
-            leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
+          <Transition.Child as={Fragment} {...getTransitionLeftSlideInProps()}>
             <Dialog.Panel className="relative max-w-xs w-full bg-gray-100 shadow-xl pb-12 flex flex-col overflow-y-auto">
               <div className="px-4 pt-5 pb-2 flex">
                 <button

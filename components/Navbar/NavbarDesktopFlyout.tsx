@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
+import { getTransitionFadeInProps } from '@components/UI/transitions/transitionPropsConstants';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
 import classNames from '@lib/utils/classnames';
 import hasFeaturedOptions from '@lib/utils/hasFeaturedOptions';
@@ -46,15 +47,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                       />
                     </Popover.Button>
                   </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-200"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="transition ease-in duration-150"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
+                  <Transition as={Fragment} {...getTransitionFadeInProps(200)}>
                     <Popover.Panel className="absolute z-10 top-full inset-x-0 bg-white text-sm text-gray-500">
                       <div
                         className="absolute inset-0 top-1/2 bg-white shadow"

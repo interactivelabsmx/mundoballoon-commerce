@@ -1,6 +1,6 @@
 import { Popover } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
-import TransitionEase from '@components/UI/transitions/TransitionEase';
+import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
 import { IActiveFilter } from './FilterBar';
 import FilterBarCheckbox from './FilterBarCheckbox';
@@ -61,7 +61,7 @@ const FilterPopoverDesktop = ({
         getSectionCount={getSectionCount}
       />
     </Popover.Button>
-    <TransitionEase>
+    <TransitionSmallDropdown>
       <Popover.Panel className="origin-top-right absolute right-0 mt-2 bg-white rounded-md shadow-2xl p-4 ring-1 ring-black ring-opacity-5 focus:outline-none">
         <form className="space-y-4">
           {options?.map((option) => {
@@ -79,7 +79,7 @@ const FilterPopoverDesktop = ({
           })}
         </form>
       </Popover.Panel>
-    </TransitionEase>
+    </TransitionSmallDropdown>
   </Popover>
 );
 
