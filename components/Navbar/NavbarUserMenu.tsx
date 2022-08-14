@@ -1,13 +1,13 @@
-import { Menu } from '@headlessui/react';
+import { Menu, Transition } from '@headlessui/react';
 import { LogoutIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
-import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
+import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
 import {
   getLogedOutUserNavigation,
   getNavbarUserMenuLinkStyle,
@@ -20,7 +20,7 @@ const FirebaseAuthLoader = dynamic(
 );
 
 const NavbarUserMenu = () => {
-  const { t, lang } = useTranslation();
+  const { t, lang } = useTranslation('common');
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
@@ -32,23 +32,21 @@ const NavbarUserMenu = () => {
     <div className="flex bg-gray p-4 justify-around">
       <div className="flex items-center">
         <Menu as="div" className="flex-shrink-0 relative ml-5">
-          <div>
-            <Menu.Button className="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
-              <span className="sr-only">{t('user_menu')}</span>
-              {user?.photoURL ? (
-                <Image
-                  className="inline-block h-10 w-10 rounded-full"
-                  src={user?.photoURL}
-                  alt="Profile Photo"
-                  height={40}
-                  width={40}
-                />
-              ) : (
-                <AvatarDefault dark={!!user} />
-              )}
-            </Menu.Button>
-          </div>
-          <TransitionSmallDropdown>
+          <Menu.Button className="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
+            <span className="sr-only">{t('user_menu')}</span>
+            {user?.photoURL ? (
+              <Image
+                className="inline-block h-10 w-10 rounded-full"
+                src={user?.photoURL}
+                alt="Profile Photo"
+                height={40}
+                width={40}
+              />
+            ) : (
+              <AvatarDefault dark={!!user} />
+            )}
+          </Menu.Button>
+          <Transition as={Fragment} {...getTransitionSmallDropdownProps()}>
             <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
               {user ? (
                 <>
@@ -108,7 +106,7 @@ const NavbarUserMenu = () => {
                 )}
               </Menu.Item>
             </Menu.Items>
-          </TransitionSmallDropdown>
+          </Transition>
         </Menu>
         {!user && (
           <Modal open={openAuth} setOpen={setOpenAuth}>

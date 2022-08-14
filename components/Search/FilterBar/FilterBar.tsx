@@ -1,15 +1,12 @@
-import { Menu, Popover } from '@headlessui/react';
+import { Popover } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
-import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
 import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters';
-import classNames from '@lib/utils/classnames';
+import FilterBarSort, { SortOption } from './FilterBarSort';
 import FilterDialogMobile from './FilterDialogMobile';
-import FilterPopoverDesktop, {
-  FilterOpenChevronDesktop,
-} from './FilterPopoverDesktop';
+import FilterPopoverDesktop from './FilterPopoverDesktop';
 
 export interface IActiveFilter {
   id: string;
@@ -19,9 +16,14 @@ export interface IActiveFilter {
 export interface IFilterBar {
   searchFilters: GetSearchFiltersQuery;
   onFilterChange: (activeFilters: IActiveFilter[]) => void;
+  onSetSort: (sort: SortOption) => void;
 }
 
-const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
+const FilterBar = ({
+  searchFilters,
+  onFilterChange,
+  onSetSort,
+}: IFilterBar) => {
   const { variants, productCategories, sortOptions } = searchFilters;
   const [open, setOpen] = useState(false);
   const [activeFilters, setActiveFilters] = useState<IActiveFilter[]>([]);
@@ -56,39 +58,7 @@ const FilterBar = ({ searchFilters, onFilterChange }: IFilterBar) => {
         </h2>
         <div className="relative bg-white border-b border-gray-200 pb-4">
           <div className="max-w-7xl mx-auto px-4 flex items-center justify-between sm:px-6 lg:px-8">
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                  <>
-                    {t('sort')}
-                    <FilterOpenChevronDesktop />
-                  </>
-                </Menu.Button>
-              </div>
-              <TransitionSmallDropdown>
-                <Menu.Items className="origin-top-left absolute left-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <div className="py-1">
-                    {sortOptions.map((option: string) => (
-                      <Menu.Item key={option}>
-                        {({ active }) => (
-                          <button
-                            className={classNames(
-                              option
-                                ? 'font-medium text-gray-900'
-                                : 'text-gray-500',
-                              active ? 'bg-gray-100' : '',
-                              'w-full text-start block px-4 py-2 text-sm'
-                            )}
-                          >
-                            {option}
-                          </button>
-                        )}
-                      </Menu.Item>
-                    ))}
-                  </div>
-                </Menu.Items>
-              </TransitionSmallDropdown>
-            </Menu>
+            <FilterBarSort sortOptions={sortOptions} onSetSort={onSetSort} />
             <button
               type="button"
               className="inline-block text-sm font-medium text-gray-700 hover:text-gray-900 sm:hidden"
