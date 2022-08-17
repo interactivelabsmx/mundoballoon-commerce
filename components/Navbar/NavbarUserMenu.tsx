@@ -24,7 +24,6 @@ const FirebaseAuthLoader = dynamic(
 const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
-  const { t, lang } = useTranslation();
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
