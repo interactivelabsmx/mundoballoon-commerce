@@ -1,65 +1,44 @@
-import { createContext, ReactNode, useContext, useMemo } from 'react';
+import setLanguage from 'next-translate/setLanguage';
+import { setCookie } from 'nookies';
+import { createContext, ReactNode, useCallback, useContext } from 'react';
 
-export interface ICommerceConfig {
-  locale: string;
+export interface ICommerceProvider {
+  setLocale: (newLang: string) => void;
 }
 
-export type Provider = ICommerceConfig & {
-  // cart?: {
-  //   useCart?: SWRHook<Cart.GetCartHook>
-  //   useAddItem?: MutationHook<Cart.AddItemHook>
-  //   useUpdateItem?: MutationHook<Cart.UpdateItemHook>
-  //   useRemoveItem?: MutationHook<Cart.RemoveItemHook>
-  // }
-  // checkout?: {
-  //   useCheckout?: SWRHook<Checkout.GetCheckoutHook>
-  //   useSubmitCheckout?: MutationHook<Checkout.SubmitCheckoutHook>
-  // }
-  // wishlist?: {
-  //   useWishlist?: SWRHook<Wishlist.GetWishlistHook>
-  //   useAddItem?: MutationHook<Wishlist.AddItemHook>
-  //   useRemoveItem?: MutationHook<Wishlist.RemoveItemHook>
-  // }
-  // customer?: {
-  //   useCustomer?: SWRHook<Customer.CustomerHook>
-  //   card?: {
-  //     useCards?: SWRHook<Customer.Card.GetCardsHook>
-  //     useAddItem?: MutationHook<Customer.Card.AddItemHook>
-  //     useUpdateItem?: MutationHook<Customer.Card.UpdateItemHook>
-  //     useRemoveItem?: MutationHook<Customer.Card.RemoveItemHook>
-  //   }
-  //   address?: {
-  //     useAddresses?: SWRHook<Customer.Address.GetAddressesHook>
-  //     useAddItem?: MutationHook<Customer.Address.AddItemHook>
-  //     useUpdateItem?: MutationHook<Customer.Address.UpdateItemHook>
-  //     useRemoveItem?: MutationHook<Customer.Address.RemoveItemHook>
-  //   }
-  // }
-  // products?: {
-  //   useGetAllProducts?: GetAllProductsQueryHookResult;
-  // };
-  // auth?: {
-  //   useSignup?: MutationHook<Signup.SignupHook>
-  //   useLogin?: MutationHook<Login.LoginHook>
-  //   useLogout?: MutationHook<Logout.LogoutHook>
-  // }
-};
-
-const CommerceConfig = {
-  locale: 'en-US',
-};
-
-const Commerce = createContext<Provider>({
-  ...CommerceConfig,
+const Commerce = createContext<ICommerceProvider>({
+  setLocale: () => undefined,
 });
 
 interface ICommerce {
   children: ReactNode;
-  options?: Partial<ICommerceConfig>;
+  lang: string;
 }
 
-export function CommerceProvider({ children, options }: ICommerce) {
-  const value = useMemo(() => ({ ...CommerceConfig, options }), [options]);
+export const UL = 'NEXT_LOCALE';
+export const UL_TTL = 600 * 6000;
+
+export const UL_COOKIE_OPTIONS = {
+  path: '/',
+  maxAge: UL_TTL,
+  sameSite: true,
+  secure: true,
+};
+
+export function CommerceProvider({ children, lang }: ICommerce) {
+  const setLanguageCookie = useCallback(
+    async (locale: string) => {
+      setCookie({}, UL, locale, UL_COOKIE_OPTIONS);
+    },
+    [lang]
+  );
+  const setLocale = (locale: string) => {
+    setLanguage(locale);
+    setLanguageCookie(locale);
+  };
+  const value = {
+    setLocale,
+  };
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;
 }
 

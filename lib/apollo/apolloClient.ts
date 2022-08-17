@@ -18,20 +18,38 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 export interface ICreateApolloClient {
   graphQLUrl?: string;
   getToken?: () => Promise<string> | string;
+  locale?: string;
 }
 
 function createApolloClient({
   graphQLUrl = getGraphqlURL(),
   getToken,
+  locale,
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
-    const newHeaders = { ...headers };
     // This means we set the auth inline for create user
-    if (!headers?.authorization) {
-      const token = getToken && (await getToken());
-      if (token) newHeaders.authorization = `Bearer ${token}`;
-    }
-    return { headers: newHeaders };
+    if (headers?.authorization)
+      return {
+        headers: {
+          ...headers,
+          'Accept-Language': locale,
+        },
+      };
+    const token = getToken && (await getToken());
+    if (token)
+      return {
+        headers: {
+          ...headers,
+          authorization: `Bearer ${token}`,
+          'Accept-Language': locale,
+        },
+      };
+    return {
+      headers: {
+        ...headers,
+        'Accept-Language': locale,
+      },
+    };
   });
   const link = createUploadLink({
     uri: graphQLUrl,
@@ -52,7 +70,9 @@ interface IInitializeApollo {
 
 export function initializeApollo({
   initialState,
-  options = {},
+  options = {
+    locale: 'EN-US',
+  },
 }: IInitializeApollo) {
   const _apolloClient = apolloClient ?? createApolloClient(options);
 

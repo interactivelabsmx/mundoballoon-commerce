@@ -12,7 +12,7 @@ import FirebaseGoogleButton from './FirebaseGoogleButton';
 import FirebasePhoneAuth from './FirebasePhoneAuth';
 
 const FirebaseAuth = () => {
-  const { t } = useTranslation('auth');
+  const { t } = useTranslation('common');
   const { auth } = useAuth();
   const [requestError, setRequestError] = useState('');
   const [createUser, { loading, error }] = useCreateUserMutation();

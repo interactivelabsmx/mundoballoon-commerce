@@ -8,11 +8,13 @@ import { Fragment, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
+import { Locales } from '@lib/utils/sharedConsts';
 import {
   getLogedOutUserNavigation,
   getNavbarUserMenuLinkStyle,
 } from '@lib/utils/userNavigation';
 import { useAuth } from '@providers/AuthProvider';
+import { useCommerce } from '@providers/CommerceProvider';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
@@ -21,6 +23,7 @@ const FirebaseAuthLoader = dynamic(
 
 const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
+  const { setLocale } = useCommerce();
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
@@ -100,6 +103,9 @@ const NavbarUserMenu = () => {
                 {({ active }) => (
                   <button
                     className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
+                    onClick={() =>
+                      setLocale(lang === Locales.es ? Locales.en : Locales.es)
+                    }
                   >
                     Lang: {lang}
                   </button>
@@ -117,5 +123,4 @@ const NavbarUserMenu = () => {
     </div>
   );
 };
-
 export default NavbarUserMenu;

@@ -1,6 +1,6 @@
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-const GRAPHQL_URL = 'https://localhost:5001/graphql/';
+const GRAPHQL_URL = 'https://localhost:5000/graphql/';
 
 const GRAPHQL_URL_NO_TLS = 'http://localhost:5000/graphql/';
 
@@ -12,6 +12,11 @@ export const getGraphqlURL = () =>
 export const SelectOne = { label: 'Select One', value: '' };
 
 export const PAGING_QUERY_DEFAULT = { first: 5, after: null };
+
+export enum Locales {
+  en = 'en',
+  es = 'es',
+}
 
 // MIME types
 // .mp4	MP4 video	video/mp4

@@ -9,7 +9,6 @@ export const FI_COOKIE_OPTIONS = {
   sameSite: true,
   secure: true,
 };
-
 export const FI = 'fi';
 
 export const getCookieIdToken = () => {
