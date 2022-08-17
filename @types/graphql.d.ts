@@ -47,10 +47,28 @@ declare module '*/ProductsDictionaryFragment.graphql' {
 }
     
 
+declare module '*/SearchProducts.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const SearchProducts: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetNavOptions.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetNavOptions: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetSearchFilters.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetSearchFilters: DocumentNode;
 
   export default defaultDocument;
 }

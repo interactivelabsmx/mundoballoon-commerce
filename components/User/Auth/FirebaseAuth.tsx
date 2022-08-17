@@ -30,7 +30,7 @@ const FirebaseAuth = () => {
 
   return auth ? (
     <div className="py-8">
-      {loading && <div>Authenticating</div>}
+      {loading && <div>{t('authenticating')}</div>}
       {(requestError || error) && (
         <SimpleTextAlert
           text={requestError || error?.message}
@@ -64,8 +64,8 @@ const FirebaseAuth = () => {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-gray-100 text-gray-500">
-              {t('Or_continue_with')}
+            <span className="px-2 bg-white text-gray-500">
+              {t('or_methods')}
             </span>
           </div>
         </div>

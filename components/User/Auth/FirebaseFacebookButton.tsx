@@ -1,4 +1,5 @@
 import { FacebookAuthProvider, User } from '@firebase/auth';
+import useTranslation from 'next-translate/useTranslation';
 import { Dispatch } from 'react';
 import FacebookIcon from '@components/UI/Icons/FacebookIcon';
 import FirebaseSocialButton, {
@@ -14,11 +15,12 @@ const FirebaseFacebookButton = ({
   onAuthComplete,
   setRequestError,
 }: IFirebaseFacebookButton) => {
+  const { t } = useTranslation('auth');
   const SocialButtonProps: IFirebaseSocialButton = {
     onAuthComplete,
     setRequestError,
     provider: new FacebookAuthProvider(),
-    label: 'Sign in with Facebook',
+    label: t('fb_button_label'),
   };
   return <FirebaseSocialButton {...SocialButtonProps} Icon={FacebookIcon} />;
 };

@@ -1,0 +1,15 @@
+query GetSearchFilters {
+  variants {
+    variantId
+    name
+    variantValues {
+      variantValueId
+      value
+    }
+  }
+  productCategories {
+    productCategoryId
+    name
+  }
+  sortOptions
+}

@@ -7,5 +7,20 @@
   "Lang": "Language",
   "Sign Out": "Sign Out",
   "Or continue with": "Or continue with",
-  "Password": "Password"
+  "Password": "Password",
+  "loading": "Loading",
+  "footer": "Footer",
+  "show_now": "Show now",
+  "close_modal": "Close modal",
+  "close_menu": "Close menu",
+  "open_menu": "Open menu",
+  "user_menu": "Open user menu",
+  "profile": "Profile",
+  "search": "Search",
+  "sr_cart_count": "items in cart, view bag",
+  "sr_active": ", active",
+  "dismiss": "Dismiss",
+  "something_wrong": "Something went wrong, please try again latter.",
+  "cancel": "Cancel",
+  "confirm": "Confirm"
 }

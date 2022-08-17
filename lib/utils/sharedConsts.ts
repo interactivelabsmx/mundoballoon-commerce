@@ -5,9 +5,9 @@ const GRAPHQL_URL = 'https://localhost:5000/graphql/';
 const GRAPHQL_URL_NO_TLS = 'http://localhost:5000/graphql/';
 
 export const getGraphqlURL = () =>
-  process.env.GRAPHQL_URL || process.env.USE_TLS
-    ? GRAPHQL_URL
-    : GRAPHQL_URL_NO_TLS;
+  process.env.GRAPHQL_URL || process.env.USE_TLS === 'false'
+    ? GRAPHQL_URL_NO_TLS
+    : GRAPHQL_URL;
 
 export const SelectOne = { label: 'Select One', value: '' };
 

@@ -28,7 +28,7 @@ const FirebaseSocialButton = ({
   const onError = (error: AuthError) => {
     setRequestError(error.message);
   };
-  if (!auth) return <LoadingText text="Loading Login..." />;
+  if (!auth) return <LoadingText />;
   const openSignInWithPopup = getOpenSignInWithPopupFuction({
     auth,
     provider,

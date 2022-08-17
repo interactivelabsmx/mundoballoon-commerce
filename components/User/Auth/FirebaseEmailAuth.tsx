@@ -1,5 +1,7 @@
 import { AuthError, User } from '@firebase/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 import { Dispatch } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
@@ -29,6 +31,7 @@ const FirebaseEmailAuth = ({
   onAuthComplete,
   setRequestError,
 }: IFirebaseEmailAuth) => {
+  const { t } = useTranslation('auth');
   const { auth, onAuth } = useAuth();
   const {
     control,
@@ -45,7 +48,7 @@ const FirebaseEmailAuth = ({
     onAuth(user);
   };
 
-  if (!auth) return <LoadingText text="Loading Login..." />;
+  if (!auth) return <LoadingText />;
   const onSubmit: SubmitHandler<IUserPwdForm> = ({ email, password }) => {
     setRequestError('');
     unifiedEmailPasswordAuth({
@@ -92,19 +95,13 @@ const FirebaseEmailAuth = ({
       </div>
 
       <div className="flex items-end">
-        <div className="text-sm">
-          <a
-            href="/forgotpwd"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Forgot your password?
+        <Link href="/forgotpwd">
+          <a className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+            {t('forgot_password')}
           </a>
-        </div>
+        </Link>
       </div>
-
-      <div>
-        <PrimaryButton type="submit">Sign in</PrimaryButton>
-      </div>
+      <PrimaryButton type="submit">{t('sign_in')}</PrimaryButton>
     </form>
   );
 };

@@ -9,6 +9,7 @@ module.exports = () => {
   const plugins = [withBundleAnalyzer, nextTranslate];
   return plugins.reduce((acc, next) => next(acc), {
     images: {
+      dangerouslyAllowSVG: true,
       domains: [
         'mundobimages.blob.core.windows.net',
         'images.unsplash.com',

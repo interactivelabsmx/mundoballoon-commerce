@@ -20,30 +20,70 @@ export type Scalars = {
   Upload: any;
 };
 
-/** A connection to a list of items. */
-export type AllProductsConnection = {
-  __typename?: 'AllProductsConnection';
-  /** A list of edges. */
-  edges?: Maybe<Array<AllProductsEdge>>;
-  /** A flattened list of the nodes. */
-  nodes?: Maybe<Array<Product>>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-/** An edge in a connection. */
-export type AllProductsEdge = {
-  __typename?: 'AllProductsEdge';
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: Product;
-};
-
 export enum ApplyPolicy {
   AfterResolver = 'AFTER_RESOLVER',
   BeforeResolver = 'BEFORE_RESOLVER',
 }
+
+export type ComparableDoubleOperationFilterInput = {
+  eq?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  neq?: InputMaybe<Scalars['Float']>;
+  ngt?: InputMaybe<Scalars['Float']>;
+  ngte?: InputMaybe<Scalars['Float']>;
+  nin?: InputMaybe<Array<Scalars['Float']>>;
+  nlt?: InputMaybe<Scalars['Float']>;
+  nlte?: InputMaybe<Scalars['Float']>;
+};
+
+export type ComparableInt32OperationFilterInput = {
+  eq?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<Scalars['Int']>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  neq?: InputMaybe<Scalars['Int']>;
+  ngt?: InputMaybe<Scalars['Int']>;
+  ngte?: InputMaybe<Scalars['Int']>;
+  nin?: InputMaybe<Array<Scalars['Int']>>;
+  nlt?: InputMaybe<Scalars['Int']>;
+  nlte?: InputMaybe<Scalars['Int']>;
+};
+
+export type ComparableNullableOfDateTimeOperationFilterInput = {
+  eq?: InputMaybe<Scalars['DateTime']>;
+  gt?: InputMaybe<Scalars['DateTime']>;
+  gte?: InputMaybe<Scalars['DateTime']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  lt?: InputMaybe<Scalars['DateTime']>;
+  lte?: InputMaybe<Scalars['DateTime']>;
+  neq?: InputMaybe<Scalars['DateTime']>;
+  ngt?: InputMaybe<Scalars['DateTime']>;
+  ngte?: InputMaybe<Scalars['DateTime']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  nlt?: InputMaybe<Scalars['DateTime']>;
+  nlte?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ComparableNullableOfInt32OperationFilterInput = {
+  eq?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  neq?: InputMaybe<Scalars['Int']>;
+  ngt?: InputMaybe<Scalars['Int']>;
+  ngte?: InputMaybe<Scalars['Int']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  nlt?: InputMaybe<Scalars['Int']>;
+  nlte?: InputMaybe<Scalars['Int']>;
+};
 
 export type CountryCode = {
   __typename?: 'CountryCode';
@@ -82,6 +122,34 @@ export type KeyValuePairOfStringAndListOfProduct = {
   __typename?: 'KeyValuePairOfStringAndListOfProduct';
   key: Scalars['String'];
   value: Array<Product>;
+};
+
+export type ListFilterInputTypeOfProductVariantFilterInput = {
+  all?: InputMaybe<ProductVariantFilterInput>;
+  any?: InputMaybe<Scalars['Boolean']>;
+  none?: InputMaybe<ProductVariantFilterInput>;
+  some?: InputMaybe<ProductVariantFilterInput>;
+};
+
+export type ListFilterInputTypeOfProductVariantMediumFilterInput = {
+  all?: InputMaybe<ProductVariantMediumFilterInput>;
+  any?: InputMaybe<Scalars['Boolean']>;
+  none?: InputMaybe<ProductVariantMediumFilterInput>;
+  some?: InputMaybe<ProductVariantMediumFilterInput>;
+};
+
+export type ListFilterInputTypeOfProductVariantValueFilterInput = {
+  all?: InputMaybe<ProductVariantValueFilterInput>;
+  any?: InputMaybe<Scalars['Boolean']>;
+  none?: InputMaybe<ProductVariantValueFilterInput>;
+  some?: InputMaybe<ProductVariantValueFilterInput>;
+};
+
+export type ListFilterInputTypeOfVariantValueFilterInput = {
+  all?: InputMaybe<VariantValueFilterInput>;
+  any?: InputMaybe<Scalars['Boolean']>;
+  none?: InputMaybe<VariantValueFilterInput>;
+  some?: InputMaybe<VariantValueFilterInput>;
 };
 
 export type Mutation = {
@@ -230,11 +298,13 @@ export type PageInfo = {
 export type Product = {
   __typename?: 'Product';
   category?: Maybe<ProductCategory>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
   name: Scalars['String'];
   price: Scalars['Float'];
   productCategoryId: Scalars['Int'];
   productId?: Maybe<Scalars['Int']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
   variants?: Maybe<Array<ProductVariant>>;
 };
 
@@ -243,6 +313,14 @@ export type ProductCategory = {
   description: Scalars['String'];
   name: Scalars['String'];
   productCategoryId?: Maybe<Scalars['Int']>;
+};
+
+export type ProductCategoryFilterInput = {
+  and?: InputMaybe<Array<ProductCategoryFilterInput>>;
+  description?: InputMaybe<StringOperationFilterInput>;
+  name?: InputMaybe<StringOperationFilterInput>;
+  or?: InputMaybe<Array<ProductCategoryFilterInput>>;
+  productCategoryId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
 };
 
 export type ProductCategoryInput = {
@@ -282,23 +360,41 @@ export type ProductEntitySortInput = {
   productId?: InputMaybe<SortEnumType>;
 };
 
+export type ProductFilterInput = {
+  and?: InputMaybe<Array<ProductFilterInput>>;
+  category?: InputMaybe<ProductCategoryFilterInput>;
+  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  description?: InputMaybe<StringOperationFilterInput>;
+  name?: InputMaybe<StringOperationFilterInput>;
+  or?: InputMaybe<Array<ProductFilterInput>>;
+  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
+  productCategoryId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  productId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  variants?: InputMaybe<ListFilterInputTypeOfProductVariantFilterInput>;
+};
+
 export type ProductInput = {
   category?: InputMaybe<ProductCategoryInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
   name: Scalars['String'];
   price: Scalars['Float'];
   productCategoryId: Scalars['Int'];
   productId?: InputMaybe<Scalars['Int']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   variants?: InputMaybe<Array<ProductVariantInput>>;
 };
 
 export type ProductSortInput = {
   category?: InputMaybe<ProductCategorySortInput>;
+  createdAt?: InputMaybe<SortEnumType>;
   description?: InputMaybe<SortEnumType>;
   name?: InputMaybe<SortEnumType>;
   price?: InputMaybe<SortEnumType>;
   productCategoryId?: InputMaybe<SortEnumType>;
   productId?: InputMaybe<SortEnumType>;
+  updatedAt?: InputMaybe<SortEnumType>;
 };
 
 export type ProductVariant = {
@@ -332,6 +428,19 @@ export type ProductVariantEntityInput = {
   sku: Scalars['String'];
 };
 
+export type ProductVariantFilterInput = {
+  and?: InputMaybe<Array<ProductVariantFilterInput>>;
+  description?: InputMaybe<StringOperationFilterInput>;
+  media?: InputMaybe<ListFilterInputTypeOfProductVariantMediumFilterInput>;
+  name?: InputMaybe<StringOperationFilterInput>;
+  or?: InputMaybe<Array<ProductVariantFilterInput>>;
+  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
+  productId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  productVariantId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  sku?: InputMaybe<StringOperationFilterInput>;
+  variantValues?: InputMaybe<ListFilterInputTypeOfProductVariantValueFilterInput>;
+};
+
 export type ProductVariantInput = {
   description: Scalars['String'];
   media?: InputMaybe<Array<ProductVariantMediumInput>>;
@@ -355,6 +464,19 @@ export type ProductVariantMedium = {
   url?: Maybe<Scalars['String']>;
 };
 
+export type ProductVariantMediumFilterInput = {
+  and?: InputMaybe<Array<ProductVariantMediumFilterInput>>;
+  description?: InputMaybe<StringOperationFilterInput>;
+  mediaType?: InputMaybe<StringOperationFilterInput>;
+  name?: InputMaybe<StringOperationFilterInput>;
+  or?: InputMaybe<Array<ProductVariantMediumFilterInput>>;
+  productVariant?: InputMaybe<ProductVariantFilterInput>;
+  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  productVariantMediaId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  quality?: InputMaybe<StringOperationFilterInput>;
+  url?: InputMaybe<StringOperationFilterInput>;
+};
+
 export type ProductVariantMediumInput = {
   description?: InputMaybe<Scalars['String']>;
   mediaType: Scalars['String'];
@@ -374,6 +496,17 @@ export type ProductVariantValue = {
   variantId: Scalars['Int'];
   variantValue?: Maybe<VariantValue>;
   variantValueId: Scalars['Int'];
+};
+
+export type ProductVariantValueFilterInput = {
+  and?: InputMaybe<Array<ProductVariantValueFilterInput>>;
+  or?: InputMaybe<Array<ProductVariantValueFilterInput>>;
+  productVariant?: InputMaybe<ProductVariantFilterInput>;
+  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variant?: InputMaybe<VariantFilterInput>;
+  variantId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variantValue?: InputMaybe<VariantValueFilterInput>;
+  variantValueId?: InputMaybe<ComparableInt32OperationFilterInput>;
 };
 
 export type ProductVariantValueInput = {
@@ -407,7 +540,6 @@ export type ProductsEntityEdge = {
 
 export type Query = {
   __typename?: 'Query';
-  allProducts?: Maybe<AllProductsConnection>;
   countryCodes: Array<CountryCode>;
   homepageProducts: Array<KeyValuePairOfStringAndListOfProduct>;
   loggedInUser?: Maybe<User>;
@@ -417,18 +549,12 @@ export type Query = {
   productVariantById?: Maybe<ProductVariant>;
   productVariantsEntityById: Array<ProductVariantEntity>;
   productsEntity?: Maybe<ProductsEntityConnection>;
+  searchProducts?: Maybe<SearchProductsConnection>;
+  sortOptions: Array<Scalars['String']>;
   userById?: Maybe<FirebaseUser>;
   users?: Maybe<UsersConnection>;
   variantValues: Array<VariantValue>;
   variants: Array<Variant>;
-};
-
-export type QueryAllProductsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  order?: InputMaybe<Array<ProductSortInput>>;
 };
 
 export type QueryHomepageProductsArgs = {
@@ -456,6 +582,15 @@ export type QueryProductsEntityArgs = {
   order?: InputMaybe<Array<ProductEntitySortInput>>;
 };
 
+export type QuerySearchProductsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Array<ProductSortInput>>;
+  where?: InputMaybe<ProductFilterInput>;
+};
+
 export type QueryUserByIdArgs = {
   userId: Scalars['String'];
 };
@@ -471,10 +606,45 @@ export type QueryVariantValuesArgs = {
   variantId: Scalars['Int'];
 };
 
+/** A connection to a list of items. */
+export type SearchProductsConnection = {
+  __typename?: 'SearchProductsConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<SearchProductsEdge>>;
+  /** A flattened list of the nodes. */
+  nodes?: Maybe<Array<Product>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+/** An edge in a connection. */
+export type SearchProductsEdge = {
+  __typename?: 'SearchProductsEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Product;
+};
+
 export enum SortEnumType {
   Asc = 'ASC',
   Desc = 'DESC',
 }
+
+export type StringOperationFilterInput = {
+  and?: InputMaybe<Array<StringOperationFilterInput>>;
+  contains?: InputMaybe<Scalars['String']>;
+  endsWith?: InputMaybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ncontains?: InputMaybe<Scalars['String']>;
+  nendsWith?: InputMaybe<Scalars['String']>;
+  neq?: InputMaybe<Scalars['String']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  nstartsWith?: InputMaybe<Scalars['String']>;
+  or?: InputMaybe<Array<StringOperationFilterInput>>;
+  startsWith?: InputMaybe<Scalars['String']>;
+};
 
 export type User = {
   __typename?: 'User';
@@ -540,6 +710,15 @@ export type Variant = {
   variantValues?: Maybe<Array<VariantValue>>;
 };
 
+export type VariantFilterInput = {
+  and?: InputMaybe<Array<VariantFilterInput>>;
+  name?: InputMaybe<StringOperationFilterInput>;
+  or?: InputMaybe<Array<VariantFilterInput>>;
+  type?: InputMaybe<StringOperationFilterInput>;
+  variantId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  variantValues?: InputMaybe<ListFilterInputTypeOfVariantValueFilterInput>;
+};
+
 export type VariantInput = {
   name: Scalars['String'];
   type: Scalars['String'];
@@ -553,6 +732,15 @@ export type VariantValue = {
   value: Scalars['String'];
   variantId: Scalars['Int'];
   variantValueId?: Maybe<Scalars['Int']>;
+};
+
+export type VariantValueFilterInput = {
+  and?: InputMaybe<Array<VariantValueFilterInput>>;
+  or?: InputMaybe<Array<VariantValueFilterInput>>;
+  productVariantValues?: InputMaybe<ListFilterInputTypeOfProductVariantValueFilterInput>;
+  value?: InputMaybe<StringOperationFilterInput>;
+  variantId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variantValueId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
 };
 
 export type VariantValueInput = {

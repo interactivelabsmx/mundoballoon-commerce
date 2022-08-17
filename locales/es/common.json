@@ -7,5 +7,20 @@
   "Lang": "Idioma",
   "Sign Out": "Cerrar sesión",
   "Or continue with": "O continua con",
-  "Password": "Contraseña"
+  "Password": "Contraseña",
+  "loading": "Cargando",
+  "footer": "Pie de página",
+  "show_now": "Compra ahora",
+  "close_modal": "Cerrar ventana",
+  "close_menu": "Cerrar menú",
+  "open_menu": "Abrir menú",
+  "user_menu": "Abrir menú de usuario",
+  "profile": "Perfil",
+  "search": "Buscar",
+  "sr_cart_count": "articulos en el carrito, ver carrito",
+  "sr_active": ", activos",
+  "dismiss": "Ocultar",
+  "something_wrong": "Algo salio mal, intentalo mas tarde.",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar"
 }

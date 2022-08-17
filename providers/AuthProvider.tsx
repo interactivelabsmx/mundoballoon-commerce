@@ -5,7 +5,6 @@ import {
   User,
   getAuth,
 } from '@firebase/auth';
-import { useRouter } from 'next/router';
 import { destroyCookie, setCookie } from 'nookies';
 import React, {
   useState,
@@ -41,7 +40,6 @@ export interface IAuthProvider {
 export function AuthProvider({ children }: IAuthProvider) {
   const [auth, setAuth] = useState<Auth | undefined>(undefined);
   const [user, setUser] = useState<User | undefined>(undefined);
-  const { push } = useRouter();
 
   const onAuth = useCallback(
     async (user: User) => {
@@ -56,10 +54,13 @@ export function AuthProvider({ children }: IAuthProvider) {
   }, [user]);
 
   const logout = useCallback(() => {
-    if (auth) signOut(auth).then(() => push('/'));
+    if (auth)
+      signOut(auth).then(() => {
+        // TODO: Inform User of Logout
+      });
     destroyCookie(null, FI, { path: '/' });
     setUser(undefined);
-  }, [setUser, auth, push]);
+  }, [setUser, auth]);
 
   useEffect(() => checkForExpiredCookieToken(refreshIdToken), [refreshIdToken]);
 

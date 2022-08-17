@@ -1,12 +1,14 @@
-import { Menu, Transition } from '@headlessui/react';
+import { Menu } from '@headlessui/react';
 import { LogoutIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Fragment, useMemo, useState } from 'react';
+import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { Locales } from '@lib/utils/sharedConsts';
+import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
 import {
   getLogedOutUserNavigation,
   getNavbarUserMenuLinkStyle,
@@ -22,13 +24,13 @@ const FirebaseAuthLoader = dynamic(
 const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
-  const Profile = t('Profile');
+  const { t, lang } = useTranslation();
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
   const LogedOutUserNavigation = useMemo(
-    () => getLogedOutUserNavigation(onClick),
-    []
+    () => getLogedOutUserNavigation(t, onClick),
+    [t]
   );
   return (
     <div className="flex bg-gray p-4 justify-around">
@@ -36,7 +38,7 @@ const NavbarUserMenu = () => {
         <Menu as="div" className="flex-shrink-0 relative ml-5">
           <div>
             <Menu.Button className="bg-white rounded-full flex focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
-              <span className="sr-only">Open user menu</span>
+              <span className="sr-only">{t('user_menu')}</span>
               {user?.photoURL ? (
                 <Image
                   className="inline-block h-10 w-10 rounded-full"
@@ -50,26 +52,17 @@ const NavbarUserMenu = () => {
               )}
             </Menu.Button>
           </div>
-          <Transition
-            as={Fragment}
-            enter="transition ease-out duration-100"
-            enterFrom="transform opacity-0 scale-95"
-            enterTo="transform opacity-100 scale-100"
-            leave="transition ease-in duration-75"
-            leaveFrom="transform opacity-100 scale-100"
-            leaveTo="transform opacity-0 scale-95"
-          >
+          <TransitionSmallDropdown>
             <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
               {user ? (
                 <>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="/profile"
-                        className={getNavbarUserMenuLinkStyle(active)}
-                      >
-                        {Profile}
-                      </a>
+                      <Link href="/profile">
+                        <a className={getNavbarUserMenuLinkStyle(active)}>
+                          {t('common:profile')}
+                        </a>
+                      </Link>
                     )}
                   </Menu.Item>
                   <Menu.Item>
@@ -80,7 +73,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        Sign_Out <LogoutIcon className="h-6 w-6" />
+                        {t('auth:sign_out')} <LogoutIcon className="h-6 w-6" />
                       </button>
                     )}
                   </Menu.Item>
@@ -90,18 +83,17 @@ const NavbarUserMenu = () => {
                   <Menu.Item key={item.name}>
                     {({ active }) =>
                       item.href ? (
-                        <a
-                          href={item.href || ''}
-                          className={getNavbarUserMenuLinkStyle(active)}
-                        >
-                          {item.name}
-                        </a>
+                        <Link href={item.href || ''}>
+                          <a className={getNavbarUserMenuLinkStyle(active)}>
+                            {item.name}
+                          </a>
+                        </Link>
                       ) : (
                         <button
+                          onClick={item.onClick}
                           className={`w-full text-left ${getNavbarUserMenuLinkStyle(
                             active
                           )}`}
-                          onClick={item.onClick}
                         >
                           {item.name}
                         </button>
@@ -123,7 +115,7 @@ const NavbarUserMenu = () => {
                 )}
               </Menu.Item>
             </Menu.Items>
-          </Transition>
+          </TransitionSmallDropdown>
         </Menu>
         {!user && (
           <Modal open={openAuth} setOpen={setOpenAuth}>

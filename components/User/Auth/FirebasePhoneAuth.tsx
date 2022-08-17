@@ -1,5 +1,6 @@
 import { ConfirmationResult, User } from '@firebase/auth';
 import { PhoneIcon } from '@heroicons/react/outline';
+import useTranslation from 'next-translate/useTranslation';
 import { Dispatch, useState } from 'react';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import Modal from '@components/UI/modal/Modal';
@@ -15,6 +16,7 @@ const FirebasePhoneAuth = ({
   onAuthComplete,
   setRequestError,
 }: IFirebasePhoneAuth) => {
+  const { t } = useTranslation('auth');
   const [confirmationResult, setConfirmationResult] =
     useState<ConfirmationResult | null>(null);
   const [open, setOpen] = useState(false);
@@ -25,7 +27,7 @@ const FirebasePhoneAuth = ({
   return (
     <>
       <SecundaryButton onClick={openModal}>
-        <span className="sr-only">Phone</span>
+        <span className="sr-only">{t('phone_number')}</span>
         <PhoneIcon height={20} />
       </SecundaryButton>
       <div id="recaptcha-verifier-container" />

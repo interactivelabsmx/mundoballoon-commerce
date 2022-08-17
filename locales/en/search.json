@@ -1,0 +1,6 @@
+{
+  "filters": "Filters",
+  "sort": "Sort",
+  "remove_filter_sr": "Remove filter for {{filter}}",
+  "loading_filters": "Cargando las opciones de filtrado"
+}

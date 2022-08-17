@@ -1,5 +1,6 @@
 import { AuthError, User, ConfirmationResult } from '@firebase/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useTranslation from 'next-translate/useTranslation';
 import { Dispatch } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
@@ -28,6 +29,7 @@ const FirebasePhoneCodeForm = ({
   confirmationResult,
   onCancel,
 }: IFirebasePhoneCodeForm) => {
+  const { t } = useTranslation('auth');
   const { onAuth } = useAuth();
   const {
     control,
@@ -61,9 +63,9 @@ const FirebasePhoneCodeForm = ({
           render={({ field }) => (
             <Input
               {...field}
-              label="Code"
               type="text"
               placeholder=""
+              label={t('code')}
               error={errors?.code?.message}
             />
           )}
@@ -71,10 +73,10 @@ const FirebasePhoneCodeForm = ({
       </div>
       <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
         <PrimaryButton type="submit" className="mx-4">
-          Confirm
+          {t('common:confirm')}
         </PrimaryButton>
         <SecundaryButton onClick={onCancel} className="mx-4">
-          Cancel
+          {t('common:cancel')}
         </SecundaryButton>
       </div>
     </form>
