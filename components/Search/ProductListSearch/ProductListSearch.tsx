@@ -48,7 +48,7 @@ const ProductListSearch = ({ activeFilters, sort }: IProductListSearch) => {
   const addFilter = !!(categoryFilters.length || variantFilters.length);
   const { data, loading, error } = useSearchProductsQuery({
     variables: {
-      order: order,
+      order,
       where: addFilter ? where : null,
     },
   });

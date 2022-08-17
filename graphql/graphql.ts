@@ -93,7 +93,7 @@ export type CountryCode = {
   dial: Scalars['String'];
   ds: Scalars['String'];
   fifa: Scalars['String'];
-  geonameId: Scalars['Int'];
+  geoNameId: Scalars['Int'];
   ioc: Scalars['String'];
   isDeleted: Scalars['Boolean'];
   itu: Scalars['String'];
@@ -261,8 +261,18 @@ export type NavOption = {
   order: Scalars['Int'];
 };
 
-export type OcassionCartDetail = {
-  __typename?: 'OcassionCartDetail';
+export type OccasionCart = {
+  __typename?: 'OccasionCart';
+  cartDetails?: Maybe<Array<OccasionCartDetail>>;
+  description: Scalars['String'];
+  dropOffStage: Scalars['String'];
+  occasionCartId?: Maybe<Scalars['Int']>;
+  title: Scalars['String'];
+  userOccasionId: Scalars['Int'];
+};
+
+export type OccasionCartDetail = {
+  __typename?: 'OccasionCartDetail';
   label: Scalars['String'];
   occasionCartId: Scalars['Int'];
   price: Scalars['Float'];
@@ -270,16 +280,6 @@ export type OcassionCartDetail = {
   quantity: Scalars['Float'];
   sku: Scalars['String'];
   variant?: Maybe<ProductVariant>;
-};
-
-export type OccasionCart = {
-  __typename?: 'OccasionCart';
-  cartDetails?: Maybe<Array<OcassionCartDetail>>;
-  description: Scalars['String'];
-  dropOffStage: Scalars['String'];
-  occasionCartId?: Maybe<Scalars['Int']>;
-  title: Scalars['String'];
-  userOccasionId: Scalars['Int'];
 };
 
 /** Information about pagination in a connection. */

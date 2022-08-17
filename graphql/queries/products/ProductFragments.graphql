@@ -1,0 +1,17 @@
+fragment VariantValue on ProductVariantValue {
+  variant {
+    name
+  }
+  variantValue {
+    value
+  }
+}
+
+fragment Variant on ProductVariant {
+  media {
+    ...MediaUrlAndType
+  }
+  variantValues {
+    ...VariantValue
+  }
+}

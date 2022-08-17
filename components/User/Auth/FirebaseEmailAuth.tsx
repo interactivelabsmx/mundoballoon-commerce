@@ -1,13 +1,13 @@
 import { AuthError, User } from '@firebase/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
 import { Dispatch } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import type { Asserts } from 'yup';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import Input from '@components/UI/form/Input';
+import PrimaryLink from '@components/UI/links/PrimaryLink';
 import LoadingText from '@components/UI/loading/LoadingText';
 import unifiedEmailPasswordAuth from '@lib/firebaseAuth/unifiedEmailPasswordAuth';
 import { useAuth } from '@providers/AuthProvider';
@@ -94,11 +94,7 @@ const FirebaseEmailAuth = ({
       </div>
 
       <div className="flex items-end">
-        <Link href="/forgotpwd">
-          <a className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-            {t('forgot_password')}
-          </a>
-        </Link>
+        <PrimaryLink href="/forgotpwd">{t('forgot_password')}</PrimaryLink>
       </div>
       <PrimaryButton type="submit">{t('sign_in')}</PrimaryButton>
     </form>

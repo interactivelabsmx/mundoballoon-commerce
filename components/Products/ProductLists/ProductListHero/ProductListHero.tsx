@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
 import ProductCardSimple from '@components/Products/ProductCards/ProductCardSimple';
+import PrimaryLink from '@components/UI/links/PrimaryLink';
 import { ProductsDictionaryFragment } from '@graphql/queries/products/ProductsDictionaryFragment';
 
 interface IProductListHero {
@@ -18,12 +18,10 @@ const ProductListHero = ({ productDictionary }: IProductListHero) => {
               <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
                 {productsItem.key}
               </h2>
-              <Link href="/search">
-                <a className="hidden sm:block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
-                  {t('see_everything')}
-                  <span aria-hidden="true"> &rarr;</span>
-                </a>
-              </Link>
+              <PrimaryLink href="/search">
+                {t('see_everything')}
+                <span aria-hidden="true"> &rarr;</span>
+              </PrimaryLink>
             </div>
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
               {productsItem?.value.map((product) => (

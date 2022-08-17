@@ -26,6 +26,34 @@ declare module '*/GetHomepageProducts.graphql' {
 }
     
 
+declare module '*/GetProductByIdQuickView.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetProductById: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/ProductFragments.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const VariantValue: DocumentNode;
+export const Variant: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/ProductQuickViewFragment.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ProductQuickView: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ProductSimpleCardFragment.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

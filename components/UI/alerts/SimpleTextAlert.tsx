@@ -1,4 +1,3 @@
-import en from '@locales/en/common.json';
 import {
   SimpleTextAlertType,
   SimpleTextAlertTypeConfig,
@@ -12,7 +11,7 @@ interface ISimpleTextAlert {
 }
 
 const SimpleTextAlert = ({
-  text = en.something_wrong,
+  text = 'Something went wrong, please try again latter.',
   type,
   onDismissAlert,
 }: ISimpleTextAlert) => {
