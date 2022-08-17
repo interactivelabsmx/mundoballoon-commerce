@@ -1,0 +1,5 @@
+query GetProductById($productId: Int!) {
+  productById(productId: $productId) {
+    ...ProductQuickView
+  }
+}

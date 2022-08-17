@@ -1,12 +1,14 @@
 import ProductCardSimple from '@components/Products/ProductCards/ProductCardSimple';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { ProductFilterInput, SortEnumType } from '@graphql/graphql';
+import { ProductFilterInput, ProductSortInput } from '@graphql/graphql';
 import { useSearchProductsQuery } from '@graphql/queries/products/SearchProducts';
 import { IActiveFilter } from '../FilterBar/FilterBar';
+import { SortOption } from '../FilterBar/FilterBarSort';
 
 interface IProductListSearch {
   activeFilters: IActiveFilter[];
+  sort?: SortOption;
 }
 
 const getNumberId = (afId: string) => {
@@ -29,9 +31,12 @@ const getVariantFilters = (activeFilters: IActiveFilter[]) =>
     []
   );
 
-const ProductListSearch = ({ activeFilters }: IProductListSearch) => {
+const ProductListSearch = ({ activeFilters, sort }: IProductListSearch) => {
   const categoryFilters = getCategoryFilters(activeFilters);
   const variantFilters = getVariantFilters(activeFilters);
+  const order: ProductSortInput | null = sort
+    ? { [sort.option]: sort.direction }
+    : null;
   const where: ProductFilterInput = {};
   if (categoryFilters.length) where.productCategoryId = { in: categoryFilters };
   if (variantFilters.length)
@@ -43,7 +48,7 @@ const ProductListSearch = ({ activeFilters }: IProductListSearch) => {
   const addFilter = !!(categoryFilters.length || variantFilters.length);
   const { data, loading, error } = useSearchProductsQuery({
     variables: {
-      order: { price: SortEnumType.Asc },
+      order,
       where: addFilter ? where : null,
     },
   });

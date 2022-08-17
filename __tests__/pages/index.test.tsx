@@ -13,7 +13,7 @@ describe('Index', () => {
         homepageProducts: () => getHomePageProducts(),
       },
     });
-    expect(screen.getByText('Loading...')).not.toBeNull();
+    expect(screen.getByText('Loading')).not.toBeNull();
     const title = await screen.findByText('Featured');
     expect(title).not.toBeNull();
   });

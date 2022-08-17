@@ -1,6 +1,7 @@
-import { Popover } from '@headlessui/react';
+import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
-import TransitionSmallDropdown from '@components/UI/transitions/TransitionSmallDropdown';
+import { Fragment } from 'react';
+import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
 import { IActiveFilter } from './FilterBar';
 import FilterBarCheckbox from './FilterBarCheckbox';
@@ -61,7 +62,7 @@ const FilterPopoverDesktop = ({
         getSectionCount={getSectionCount}
       />
     </Popover.Button>
-    <TransitionSmallDropdown>
+    <Transition as={Fragment} {...getTransitionSmallDropdownProps()}>
       <Popover.Panel className="origin-top-right absolute right-0 mt-2 bg-white rounded-md shadow-2xl p-4 ring-1 ring-black ring-opacity-5 focus:outline-none">
         <form className="space-y-4">
           {options?.map((option) => {
@@ -79,7 +80,7 @@ const FilterPopoverDesktop = ({
           })}
         </form>
       </Popover.Panel>
-    </TransitionSmallDropdown>
+    </Transition>
   </Popover>
 );
 

@@ -23,7 +23,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
   return (
     <div className="hidden h-full lg:flex">
       <Popover.Group className="px-4 bottom-0 inset-x-0">
-        <div className="h-full flex justify-center space-x-8 font-Advent">
+        <div className="h-full flex justify-center space-x-8">
           {featuredTabOptions.map((category) => (
             <Popover key={category.name} className="flex">
               {({ open }) => (

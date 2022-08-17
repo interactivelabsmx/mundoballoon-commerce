@@ -1,0 +1,9 @@
+fragment ProductQuickView on Product {
+  productId
+  name
+  description
+  price
+  variants {
+    ...Variant
+  }
+}
