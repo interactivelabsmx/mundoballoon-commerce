@@ -27,7 +27,6 @@ function createApolloClient({
   locale,
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
-    const newHeaders = { ...headers };
     // This means we set the auth inline for create user
     if (headers?.authorization)
       return {
