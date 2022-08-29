@@ -1,4 +1,4 @@
-import { XIcon } from '@heroicons/react/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { Dispatch } from 'react';
 
@@ -16,7 +16,7 @@ const CloseModalButtonIcon = ({ setOpen }: ICloseModalButtonIcon) => {
         onClick={() => setOpen(false)}
       >
         <span className="sr-only">{t('close_modal')}</span>
-        <XIcon className="h-6 w-6" aria-hidden="true" />
+        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
       </button>
     </div>
   );

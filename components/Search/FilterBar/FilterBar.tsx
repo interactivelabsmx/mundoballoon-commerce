@@ -1,5 +1,5 @@
 import { Popover } from '@headlessui/react';
-import { XIcon } from '@heroicons/react/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
@@ -119,7 +119,7 @@ const FilterBar = ({
                       <span className="sr-only">
                         {t('remove_filter_sr', { filter: activeFilter.label })}
                       </span>
-                      <XIcon className="h-4 w-4" aria-hidden="true" />
+                      <XMarkIcon className="h-4 w-4" aria-hidden="true" />
                     </button>
                   </span>
                 ))}

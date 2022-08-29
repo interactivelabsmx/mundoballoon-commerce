@@ -1,5 +1,5 @@
 import { Dialog, Tab, Transition } from '@headlessui/react';
-import { XIcon } from '@heroicons/react/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/future/image';
 import Link from 'next/link';
@@ -54,7 +54,7 @@ const NavbarMobileMenu = ({
                   onClick={() => setOpen(false)}
                 >
                   <span className="sr-only">{t('close_menu')}</span>
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
               {error && <SimpleTextError text={error} />}

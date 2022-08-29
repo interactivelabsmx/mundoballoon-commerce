@@ -1,8 +1,8 @@
 import {
-  MenuIcon,
-  SearchIcon,
+  Bars3Icon,
+  MagnifyingGlassIcon,
   ShoppingCartIcon,
-} from '@heroicons/react/outline';
+} from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import { Dispatch } from 'react';
@@ -45,17 +45,17 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                   onClick={() => setOpen(true)}
                 >
                   <span className="sr-only">{t('open_menu')}</span>
-                  <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                 </button>
                 <button className="ml-2 p-2 text-gray-400 hover:text-gray-500">
                   <span className="sr-only">{t('search')}</span>
-                  <SearchIcon className="w-6 h-6" aria-hidden="true" />
+                  <MagnifyingGlassIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
               </div>
               <div className="flex-1 flex items-center justify-end">
                 <button className="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">
                   <span className="sr-only">{t('search')}</span>
-                  <SearchIcon className="w-6 h-6" aria-hidden="true" />
+                  <MagnifyingGlassIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
                 <NavbarUserMenuLoader />
                 <div className="flex items-center lg:ml-8">

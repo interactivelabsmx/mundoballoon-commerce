@@ -1,4 +1,4 @@
-import { UserIcon } from '@heroicons/react/outline';
+import { UserIcon } from '@heroicons/react/24/outline';
 
 interface IAvatarDefault {
   dark?: boolean;

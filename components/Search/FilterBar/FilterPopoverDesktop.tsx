@@ -1,5 +1,5 @@
 import { Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { Fragment } from 'react';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
 import { ProductCategory, VariantValue } from '@graphql/graphql';

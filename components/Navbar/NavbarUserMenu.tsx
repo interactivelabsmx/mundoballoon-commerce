@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react';
-import { LogoutIcon, PlusIcon } from '@heroicons/react/outline';
+import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -85,7 +85,8 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        {t('auth:sign_out')} <LogoutIcon className="h-6 w-6" />
+                        {t('auth:sign_out')}{' '}
+                        <ArrowRightOnRectangleIcon className="h-6 w-6" />
                       </button>
                     )}
                   </Menu.Item>

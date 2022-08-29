@@ -1,5 +1,5 @@
 import { ConfirmationResult, User } from '@firebase/auth';
-import { PhoneIcon } from '@heroicons/react/outline';
+import { PhoneIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { Dispatch, useState } from 'react';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';

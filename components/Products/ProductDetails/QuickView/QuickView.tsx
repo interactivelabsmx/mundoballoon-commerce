@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
-import { useGetProductByIdLazyQuery } from '@graphql/queries/products/GetProductByIdQuickView';
 // import { getProductVariantNames } from '@lib/products/variantDataFormating';
+import { Product } from '@graphql/graphql';
+import { useGetProductByIdLazyQuery } from '@graphql/queries/products/GetProductByIdQuickView';
+import { getFirstMedia } from '@lib/products/getFirstMedia';
 import classNames from '@lib/utils/classnames';
 
 const product = {
@@ -54,6 +56,8 @@ const QuickView = ({ productId }: IQuickView) => {
 
   const { productById } = data;
 
+  const media = getFirstMedia(productById as Product);
+  console.log(media);
   // if (productById?.variants)
   // console.log(getProductVariantNames(productById?.variants));
 
