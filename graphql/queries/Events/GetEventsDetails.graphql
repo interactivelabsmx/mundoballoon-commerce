@@ -1,0 +1,10 @@
+query GetEventByUser($userEventId: Int!) {
+  eventByUser(userEventId: $userEventId) {
+    userEventId
+    name
+    date
+    details
+    createdAt
+    updatedAt
+  }
+}
