@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react';
-import { LogoutIcon } from '@heroicons/react/outline';
+import { LogoutIcon, PlusIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -8,6 +8,7 @@ import { Fragment, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
+import { UserEventCardFragment } from '@graphql/queries/Events/NavbarUserMenu';
 import { Locales } from '@lib/utils/sharedConsts';
 import {
   getLogedOutUserNavigation,
@@ -18,15 +19,24 @@ import { useCommerce } from '@providers/CommerceProvider';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
+
   { ssr: false }
 );
+const EventsViewLoader = dynamic(
+  () => import('@components/Navbar/Events/Events')
+);
+interface IUserEvent {
+  userEventId: UserEventCardFragment;
+}
 
-const NavbarUserMenu = () => {
+const NavbarUserMenu = ({ userEventId }: IUserEvent) => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
   const { user, logout } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
   const onClick = () => setOpenAuth(true);
+  const [eventsOpen, setEventsOpen] = useState(false);
+  const openEvents = () => setEventsOpen(true);
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(t, onClick),
     [t]
@@ -60,6 +70,18 @@ const NavbarUserMenu = () => {
                           {t('common:profile')}
                         </a>
                       </Link>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`w-full flex items-center justify-between ${getNavbarUserMenuLinkStyle(
+                          active
+                        )}`}
+                        onClick={openEvents}
+                      >
+                        {t('auth:events')} <PlusIcon className="h-6 w-6" />
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
@@ -119,6 +141,11 @@ const NavbarUserMenu = () => {
             <FirebaseAuthLoader />
           </Modal>
         )}
+        <Modal open={eventsOpen} setOpen={setEventsOpen}>
+          {eventsOpen && (
+            <EventsViewLoader userEventId={userEventId.userEventid} />
+          )}
+        </Modal>
       </div>
     </div>
   );

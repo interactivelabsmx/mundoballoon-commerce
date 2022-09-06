@@ -1,8 +1,8 @@
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-const GRAPHQL_URL = 'https://localhost:5000/graphql/';
+const GRAPHQL_URL = 'https://localhost:5001/graphql/';
 
-const GRAPHQL_URL_NO_TLS = 'http://localhost:5000/graphql/';
+const GRAPHQL_URL_NO_TLS = 'http://localhost:5001/graphql/';
 
 export const getGraphqlURL = () =>
   process.env.GRAPHQL_URL || process.env.USE_TLS === 'false'
