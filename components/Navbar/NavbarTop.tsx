@@ -58,16 +58,16 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                   <SearchIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
                 <NavbarUserMenuLoader
-                  userEventId={{
-                    __typename: undefined,
-                    userEventid: 0,
-                    event_Name: '',
-                    event_Date: '',
-                    event_Details: '',
-                    created_At: '',
-                    updated_At: '',
-                    isDeleted: '',
-                    category: undefined,
+                  userEvent={{
+                    __typename: 'UserEvent',
+                    userEventId: 0,
+                    userId: '',
+                    eventName: '',
+                    eventDate: '',
+                    eventDetails: '',
+                    createdAt: '',
+                    updatedAt: '',
+                    isDeleted: 0,
                   }}
                 />
                 <div className="flex items-center lg:ml-8">

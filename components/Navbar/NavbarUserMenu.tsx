@@ -22,14 +22,14 @@ const FirebaseAuthLoader = dynamic(
 
   { ssr: false }
 );
-const EventsViewLoader = dynamic(
-  () => import('@components/Navbar/Events/Events')
+const UserEventsViewLoader = dynamic(
+  () => import('@components/Navbar/Events/UserEventsCard')
 );
 interface IUserEvent {
-  userEventId: UserEventCardFragment;
+  userEvent: UserEventCardFragment;
 }
 
-const NavbarUserMenu = ({ userEventId }: IUserEvent) => {
+const NavbarUserMenu = ({ userEvent }: IUserEvent) => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
   const { user, logout } = useAuth();
@@ -142,8 +142,8 @@ const NavbarUserMenu = ({ userEventId }: IUserEvent) => {
           </Modal>
         )}
         <Modal open={eventsOpen} setOpen={setEventsOpen}>
-          {eventsOpen && (
-            <EventsViewLoader userEventId={userEventId.userEventid} />
+          {userEvent.userEventId && (
+            <UserEventsViewLoader userEventId={userEvent.userEventId} />
           )}
         </Modal>
       </div>
