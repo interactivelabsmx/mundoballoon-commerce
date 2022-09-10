@@ -9,7 +9,7 @@ export type GetUserEventByIdQueryVariables = Types.Exact<{
 
 export type GetUserEventByIdQuery = {
   __typename?: 'Query';
-  userEventById?: {
+  eventByUser?: {
     __typename?: 'UserEvent';
     userEventId?: number | null;
     name: string;

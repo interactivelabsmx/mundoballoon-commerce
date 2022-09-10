@@ -1,10 +1,9 @@
-query GetEventByUser($userEventId: Int!) {
-  eventByUser(userEventId: $userEventId) {
+query GetUserEventById($userEventId: Int!) {
+  userEventById(userEventid: $userEventId) {
     userEventId
+    userId
     name
     date
     details
-    createdAt
-    updatedAt
   }
 }

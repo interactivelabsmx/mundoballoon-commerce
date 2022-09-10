@@ -1,0 +1,6 @@
+fragment EventsCard on EventsCard {
+  userEventId
+  name
+  date
+  details
+}
