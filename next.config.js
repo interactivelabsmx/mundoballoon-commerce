@@ -18,6 +18,5 @@ module.exports = () => {
         'placebear.com',
       ],
     },
-    experimental: { images: { allowFutureImage: true } },
   });
 };
