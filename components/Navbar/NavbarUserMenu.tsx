@@ -8,7 +8,6 @@ import { Fragment, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
-import { UserEventCardFragment } from '@graphql/queries/Events/NavbarUserMenu';
 import { Locales } from '@lib/utils/sharedConsts';
 import {
   getLogedOutUserNavigation,
@@ -23,13 +22,10 @@ const FirebaseAuthLoader = dynamic(
   { ssr: false }
 );
 const UserEventsViewLoader = dynamic(
-  () => import('@components/Navbar/Events/UserEventsCard')
+  () => import('@components/Navbar/Events/EventsCard')
 );
-interface IUserEvent {
-  userEvent: UserEventCardFragment;
-}
 
-const NavbarUserMenu = ({ userEvent }: IUserEvent) => {
+const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
   const { user, logout } = useAuth();
@@ -142,9 +138,7 @@ const NavbarUserMenu = ({ userEvent }: IUserEvent) => {
           </Modal>
         )}
         <Modal open={eventsOpen} setOpen={setEventsOpen}>
-          {userEvent.userEventId && (
-            <UserEventsViewLoader userEventId={userEvent.userEventId} />
-          )}
+          <UserEventsViewLoader />
         </Modal>
       </div>
     </div>

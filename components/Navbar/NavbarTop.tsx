@@ -57,19 +57,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                   <span className="sr-only">{t('search')}</span>
                   <SearchIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
-                <NavbarUserMenuLoader
-                  userEvent={{
-                    __typename: 'UserEvent',
-                    userEventId: 0,
-                    userId: '',
-                    eventName: '',
-                    eventDate: '',
-                    eventDetails: '',
-                    createdAt: '',
-                    updatedAt: '',
-                    isDeleted: 0,
-                  }}
-                />
+                <NavbarUserMenuLoader />
                 <div className="flex items-center lg:ml-8">
                   <span
                     className="mx-4 h-6 w-px bg-gray-400 lg:mx-6"

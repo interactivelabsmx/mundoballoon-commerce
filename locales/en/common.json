@@ -23,5 +23,13 @@
   "something_wrong": "Something went wrong, please try again latter.",
   "cancel": "Cancel",
   "confirm": "Confirm",
-  "shop_now": "Shop now"
+  "shop_now": "Shop now",
+  "View_details": "View Details",
+  "Event_Name": "Event Name",
+  "Date": "Date",
+  "Details": "Details",
+  "Add_Event": "Add Event",
+  "Events": "Events",
+  "Welcome_to_your_events": "Welcome to your events",
+  "Quick_View": "Quick view"
 }

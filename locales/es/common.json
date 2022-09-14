@@ -23,5 +23,13 @@
   "something_wrong": "Algo salio mal, intentalo mas tarde.",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
-  "shop_now": "Buscar productos"
+  "shop_now": "Buscar productos",
+  "View_details": "Ver Detalles",
+  "Event_Name": "Nombre del evento",
+  "Date": "Fecha",
+  "Details": "Detalles",
+  "Add_Event": "Agregar evento",
+  "Events": "Eventos",
+  "Welcome_to_your_events": "Bienvenido a tus eventos",
+  "Quick_View": "Vista rápida"
 }
