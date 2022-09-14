@@ -9,12 +9,13 @@ export type GetUserEventByIdQueryVariables = Types.Exact<{
 
 export type GetUserEventByIdQuery = {
   __typename?: 'Query';
-  eventByUser?: {
+  UserEventById?: {
     __typename?: 'UserEvent';
     userEventId?: number | null;
+    userId: number;
     name: string;
     date: string;
-    details: Date;
+    details: string;
   } | null;
 };
 
@@ -29,6 +30,7 @@ export const GetUserEventByIdDocument = gql`
     }
   }
 `;
+
 export function useGetUserEventByIdQuery(
   baseOptions: Apollo.QueryHookOptions<
     GetUserEventByIdQuery,

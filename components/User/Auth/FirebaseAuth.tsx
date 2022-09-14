@@ -12,7 +12,7 @@ import FirebaseGoogleButton from './FirebaseGoogleButton';
 import FirebasePhoneAuth from './FirebasePhoneAuth';
 
 const FirebaseAuth = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('auth');
   const { auth } = useAuth();
   const [requestError, setRequestError] = useState('');
   const [createUser, { loading, error }] = useCreateUserMutation();
@@ -29,7 +29,7 @@ const FirebaseAuth = () => {
   }, [auth]);
 
   return auth ? (
-    <div className="py-8">
+    <div className="py-8 lg:w-80">
       {loading && <div>{t('authenticating')}</div>}
       {(requestError || error) && (
         <SimpleTextAlert

@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,6 +18,7 @@ interface IProductCardSimple {
 }
 
 const ProductCardSimple = ({ product }: IProductCardSimple) => {
+  const { t } = useTranslation('common');
   const [quickViewOpen, setQuickViewOpen] = useState(false);
   const openQuickView = () => setQuickViewOpen(true);
   return (
@@ -42,10 +44,10 @@ const ProductCardSimple = ({ product }: IProductCardSimple) => {
       </Link>
       <div className="mt-4 flex justify-between">
         <PrimaryTextButton onClick={openQuickView}>
-          Quick View
+          {t('Quick_View')}
         </PrimaryTextButton>
         <PrimaryLink href={`products/detail/${product.productId}`}>
-          Details
+          {t('Details')}
         </PrimaryLink>
       </div>
       <Modal open={quickViewOpen} setOpen={setQuickViewOpen}>
