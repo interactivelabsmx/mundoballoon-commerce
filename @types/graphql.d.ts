@@ -33,7 +33,7 @@ declare module '*/GetProductByIdQuickView.graphql' {
 
   export default defaultDocument;
 }
-    
+
 
 declare module '*/ProductFragments.graphql' {
   import { DocumentNode } from 'graphql';
