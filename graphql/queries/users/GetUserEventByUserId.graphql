@@ -1,0 +1,9 @@
+query GetUserEventByUserId($userId: String!) {
+  userEventByUserId(userId: $userId) {
+    userEventId
+    userId
+    name
+    date
+    details
+  }
+}

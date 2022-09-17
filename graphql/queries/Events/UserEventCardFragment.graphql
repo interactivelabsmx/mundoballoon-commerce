@@ -1,9 +1,0 @@
-query GetUserEventById($userEventId: Int!) {
-  userEventById(userEventid: $userEventId) {
-    userEventId
-    userId
-    name
-    date
-    details
-  }
-}

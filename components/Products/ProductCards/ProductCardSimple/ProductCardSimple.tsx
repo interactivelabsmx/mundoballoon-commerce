@@ -21,6 +21,7 @@ const ProductCardSimple = ({ product }: IProductCardSimple) => {
   const { t } = useTranslation('common');
   const [quickViewOpen, setQuickViewOpen] = useState(false);
   const openQuickView = () => setQuickViewOpen(true);
+
   return (
     <div>
       <Link href={`products/detail/${product.productId}`}>
