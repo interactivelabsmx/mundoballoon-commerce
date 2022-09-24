@@ -44,10 +44,10 @@ declare module '*/GetHomepageProducts.graphql' {
 }
     
 
-declare module '*/GetProductByIdQuickView.graphql' {
+declare module '*/GetProductQuickView.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const GetProductById: DocumentNode;
+  export const GetProductQuickView: DocumentNode;
 
   export default defaultDocument;
 }

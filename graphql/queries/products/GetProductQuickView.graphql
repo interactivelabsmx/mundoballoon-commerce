@@ -1,0 +1,16 @@
+query GetProductQuickView($productId: Int!) {
+  productQuickView(productId: $productId) {
+    product {
+      ...ProductQuickView
+    }
+    variantValues {
+      value
+      productVariantValues {
+        variant {
+          type
+          name
+        }
+      }
+    }
+  }
+}
