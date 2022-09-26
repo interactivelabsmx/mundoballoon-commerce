@@ -17,18 +17,12 @@ import { useAuth } from '@providers/AuthProvider';
 import { useCommerce } from '@providers/CommerceProvider';
 import EventsCard from './Users/EventsCard';
 
-//import { UserEventCardFragment } from '@graphql/queries/users/UserEventCardFragment';
-
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
 
   { ssr: false }
 );
-/*
-interface IEventCard {
-  userEvent?: UserEventCardFragment[]|null ;
-}*/
-const NavbarUserMenu = (/*{userEvent}:IEventCard*/) => {
+const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
   const { user, logout } = useAuth();
@@ -142,7 +136,7 @@ const NavbarUserMenu = (/*{userEvent}:IEventCard*/) => {
         )}
 
         <Modal open={eventsOpen} setOpen={setEventsOpen}>
-          <EventsCard userId="" />
+          <EventsCard userId={user?.uid} />
         </Modal>
       </div>
     </div>

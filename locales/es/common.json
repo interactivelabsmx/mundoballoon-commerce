@@ -31,5 +31,14 @@
   "Add_Event": "Agregar evento",
   "Events": "Eventos",
   "Welcome_to_your_events": "Bienvenido a tus eventos",
-  "Quick_View": "Vista rápida"
+  "Quick_View": "Vista rápida",
+  "Delete": "Eliminar",
+  "Add_your_event": "¡Agrega tu evento!",
+  "More_Details": "Más Detalles",
+  "Continue_to_Payment": "Continuar con el pago",
+  "Event_Details": "Detalles del Evento",
+  "Here_you_can_find_details": "Aquí puedes encontrar detalles sobre tu evento",
+  "Cart": "Carrito",
+  "Creation_date": "Fecha de creación",
+  "List_of_events": "Listado de los eventos que has creado"
 }
