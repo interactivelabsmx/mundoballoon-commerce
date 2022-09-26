@@ -1,19 +1,15 @@
-import { PlusIcon } from '@heroicons/react/outline';
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
+import Modal from '@components/UI/modal/Modal';
 import { useGetUserEventByUserIdLazyQuery } from '@graphql/queries/users/GetUserEventByUserId';
+import AddEvent from './AddEvent';
+import DeleteEvent from './DeleteEvent';
+import Details from './Details';
 
-const people = [
-  {
-    name: 'Lindsay Walton',
-    title: 'Front-end Developer',
-    email: 'lindsay.walton@example.com',
-  },
-];
 interface IEventCard {
-  userId: string;
+  userId: string | undefined;
 }
 const EventsCard = ({ userId }: IEventCard) => {
   const { t } = useTranslation('common');
@@ -21,98 +17,136 @@ const EventsCard = ({ userId }: IEventCard) => {
     useGetUserEventByUserIdLazyQuery({
       variables: { userId },
     });
+  const [DetailsOpen, setDetailsOpen] = useState(false);
+  const openDetails = () => setDetailsOpen(true);
+  const [DeleteOpen, setDeleteOpen] = useState(false);
+  const openDelete = () => setDeleteOpen(true);
   useEffect(() => {
     loadGreeting();
   }, [loadGreeting]);
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-
-  const { userEventById } = data;
-
+  const { userEventByUserId } = data;
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-          <br />
-          <h1 className="text-xl font-semibold text-gray-900">{t('Events')}</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            {t('Welcome_to_your_events')}
-          </p>
-        </div>
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <br />
-          <button
-            type="button"
-            className="inline-flex items-center px-5 py-2 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <PlusIcon className="h-6 w-6" aria-hidden="true" />
-            {t('Add_Event')}
-          </button>
-        </div>
-      </div>
-      <div className="mt-8 flex flex-col">
-        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-300">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6"
-                    >
-                      {t('Event_Name')}
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500"
-                    >
-                      {t('Date')}
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500"
-                    >
-                      {t('Details')}
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500"
-                    >
-                      {t('More_details')}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={userEventById?.userId}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {userEventById?.name}
-                      </td>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {userEventById?.date}
-                      </td>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {userEventById?.details}
-                      </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          {t('Details')}
-                          <span className="sr-only">, {person.name}</span>
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+    <>
+      <div>
+        <div className="md:grid md:grid-cols-3 md:gap-6">
+          <AddEvent />
+          <div className="mt-5 md:col-span-2 md:mt-0  ">
+            <div className="px-4 sm:px-6 lg:px-8">
+              <br />
+              <br />
+              <div className="sm:flex sm:items-center">
+                <div className="sm:flex-auto">
+                  <p className="mt-2 text-sm text-gray-700">
+                    {t('List_of_events')}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 flex flex-col">
+                <div className="-my-2 -mx-6 overflow-x-auto sm:-mx-10 lg:-mx-8">
+                  <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-12">
+                    <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                      <table className="min-w-full divide-y divide-gray-300 ">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-6"
+                            >
+                              {t('Event_Name')}
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              {t('Date')}
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              {t('Details')}
+                            </th>
+                            <th
+                              scope="col"
+                              className="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                            >
+                              <span className="sr-only"></span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200 bg-white">
+                          {userEventByUserId.map((event) => (
+                            <tr key={event.userEventId}>
+                              <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                                <div className="flex items-center">
+                                  <div className="h-10 w-10 flex-shrink-0">
+                                    <img
+                                      className="h-10 w-10 rounded-full"
+                                      src={
+                                        'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+                                      }
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div className="ml-4">
+                                    <div className="font-medium text-gray-900">
+                                      {event.name}
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                                  {event.date}
+                                </span>
+                              </td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                <div className="text-gray-900">
+                                  {event.details}
+                                </div>
+                              </td>
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                <span className="isolate inline-flex rounded-md shadow-sm">
+                                  <button
+                                    onClick={openDetails}
+                                    type="button"
+                                    className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                                  >
+                                    {t('More_Details')}
+                                  </button>
+                                  <button
+                                    onClick={openDelete}
+                                    type="button"
+                                    className="relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 bg-red-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                                  >
+                                    {t('Delete')}
+                                  </button>
+                                </span>
+                              </td>
+                              <Modal
+                                open={DetailsOpen}
+                                setOpen={setDetailsOpen}
+                              >
+                                <Details userEventId={event.userEventId} />
+                              </Modal>
+                              <Modal open={DeleteOpen} setOpen={setDeleteOpen}>
+                                <DeleteEvent userEventId={event.userEventId} />
+                              </Modal>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default EventsCard;

@@ -4,20 +4,19 @@ import * as Types from '../../graphql';
 
 const defaultOptions = {} as const;
 export type GetUserEventByUserIdQueryVariables = Types.Exact<{
-  userId: Types.Scalars['String'];
+  userId: Types.Scalars['String'] | undefined;
 }>;
 
 export type GetUserEventByUserIdQuery = {
   __typename?: 'Query';
-  userEventById?: {
-    __typename?: 'Product';
-    userId?: string | null;
+  userEventByUserId: Array<{
+    __typename?: 'UserEvent';
     userEventId: number;
+    userId: string;
     name: string;
-    date: string;
+    date?: any | null;
     details: string;
-    price: number;
-  } | null;
+  }>;
 };
 
 export const GetUserEventByUserIdDocument = gql`

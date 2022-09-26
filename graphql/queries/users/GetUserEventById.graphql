@@ -1,0 +1,18 @@
+query GetUserEventById($userEventId: Int!) {
+  userEventById(userEventid: $userEventId) {
+    userEventId
+    userId
+    name
+    date
+    details
+    carts {
+      eventCartId
+      sku
+      productVariantId
+      userEventId
+      quantity
+      price
+      label
+    }
+  }
+}

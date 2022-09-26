@@ -2,11 +2,11 @@ import { gql } from '@apollo/client';
 import * as Types from '../../graphql';
 
 export type UserEventCardFragment = {
-  __typename?: 'UserEventCard';
+  __typename?: 'UserEvent';
   userId: string;
   userEventId: number;
   name: string;
-  date: string;
+  date?: any | null;
   details: string;
 };
 

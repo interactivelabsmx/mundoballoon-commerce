@@ -1,0 +1,8 @@
+mutation CreateUserEvent($name: String!, $userId: String!, $details: String!) {
+  createUserEvent(name: $name, userId: $userId, details: $details) {
+    userId
+    name
+    details
+    date
+  }
+}

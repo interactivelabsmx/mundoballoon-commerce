@@ -31,5 +31,14 @@
   "Add_Event": "Add Event",
   "Events": "Events",
   "Welcome_to_your_events": "Welcome to your events",
-  "Quick_View": "Quick view"
+  "Quick_View": "Quick view",
+  "Delete": "Delete",
+  "Add_your_event": "Add your event!",
+  "More_Details": "More Details",
+  "Continue_to_Payment": "Continue to Payment",
+  "Event_Details": "Event Details",
+  "Here_you_can_find_details": "Here you can find details about your event",
+  "Cart": "Cart",
+  "Creation_date": "Creation date",
+  "List_of_events": "List of events you have created"
 }

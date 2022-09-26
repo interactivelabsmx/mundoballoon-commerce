@@ -8,6 +8,24 @@ declare module '*/CreateUser.graphql' {
 }
     
 
+declare module '*/CreateUserEvent.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const CreateUserEvent: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/DeleteEvent.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const DeleteUSerEvent: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetCountryCodes.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -33,7 +51,7 @@ declare module '*/GetProductByIdQuickView.graphql' {
 
   export default defaultDocument;
 }
-
+    
 
 declare module '*/ProductFragments.graphql' {
   import { DocumentNode } from 'graphql';
@@ -107,6 +125,33 @@ declare module '*/NavItemFragment.graphql' {
   const defaultDocument: DocumentNode;
   export const NavCategory: DocumentNode;
 export const NavItem: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetUserEventById.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserEventById: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetUserEventByUserId.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserEventByUserId: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/UserEventCardFragment.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const UserEventCard: DocumentNode;
 
   export default defaultDocument;
 }
