@@ -309,6 +309,7 @@ export type MutationDeleteUserArgs = {
 
 export type MutationDeleteUserEventArgs = {
   userEventId: Scalars['Int'];
+  userId: Scalars['String'];
 };
 
 export type MutationGrantAdminUserArgs = {

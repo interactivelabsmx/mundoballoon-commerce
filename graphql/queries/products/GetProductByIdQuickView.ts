@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as Types from '../../graphql';
+import { ProductQuickViewFragmentDoc } from './ProductQuickViewFragment';
 
 const defaultOptions = {} as const;
 export type GetProductByIdQueryVariables = Types.Exact<{
@@ -19,7 +20,7 @@ export type GetProductByIdQuery = {
       __typename?: 'ProductVariant';
       media?: Array<{
         __typename?: 'ProductVariantMedium';
-        url?: string | null;
+        url: string;
         mediaType: string;
       }> | null;
       variantValues?: Array<{
@@ -34,26 +35,10 @@ export type GetProductByIdQuery = {
 export const GetProductByIdDocument = gql`
   query GetProductById($productId: Int!) {
     productById(productId: $productId) {
-      productId
-      name
-      description
-      price
-      variants {
-        media {
-          url
-          mediaType
-        }
-        variantValues {
-          variant {
-            name
-          }
-          variantValue {
-            value
-          }
-        }
-      }
+      ...ProductQuickView
     }
   }
+  ${ProductQuickViewFragmentDoc}
 `;
 
 /**

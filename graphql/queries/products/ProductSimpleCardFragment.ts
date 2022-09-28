@@ -8,7 +8,7 @@ export type CategoryNameFragment = {
 
 export type MediaUrlAndTypeFragment = {
   __typename?: 'ProductVariantMedium';
-  url?: string | null;
+  url: string;
   mediaType: string;
 };
 
@@ -16,7 +16,7 @@ export type ProductVariantsMediaOnlyFragment = {
   __typename?: 'ProductVariant';
   media?: Array<{
     __typename?: 'ProductVariantMedium';
-    url?: string | null;
+    url: string;
     mediaType: string;
   }> | null;
 };
@@ -31,7 +31,7 @@ export type ProductSimpleCardFragment = {
     __typename?: 'ProductVariant';
     media?: Array<{
       __typename?: 'ProductVariantMedium';
-      url?: string | null;
+      url: string;
       mediaType: string;
     }> | null;
   }> | null;

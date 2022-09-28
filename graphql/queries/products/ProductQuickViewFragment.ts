@@ -12,7 +12,7 @@ export type ProductQuickViewFragment = {
     __typename?: 'ProductVariant';
     media?: Array<{
       __typename?: 'ProductVariantMedium';
-      url?: string | null;
+      url: string;
       mediaType: string;
     }> | null;
     variantValues?: Array<{
