@@ -1,6 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useEffect } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+import PrimaryButton from '@components/UI/buttons/PrimaryButton';
+import SecundaryButton from '@components/UI/buttons/SecundaryButton';
+import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useGetUserEventByIdLazyQuery } from '@graphql/queries/users/GetUserEventById';
 
@@ -27,47 +30,38 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
           <h3 className="text-lg font-medium leading-6 text-gray-900">
             {t('Event_Details')}
           </h3>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">
-            {t('Here_you_can_find_details')}
-          </p>
+          <br />
+          <LabelBase
+            htmlFor={''}
+            label={t('Here_you_can_find_details')}
+          ></LabelBase>
         </div>
         <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
           <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
             <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">
-                {t('Event_Name')}
-              </dt>
+              <LabelBase htmlFor={''} label={t('Event_Name')}></LabelBase>
               <dd className="mt-1 text-sm text-gray-900">
                 {userEventById?.name}
               </dd>
             </div>
             <div className="sm:col-span-1">
-              <dt className="text-sm font-medium text-gray-500">
-                {t('Creation_date')}
-              </dt>
+              <LabelBase htmlFor={''} label={t('Creation_Date')}></LabelBase>
               <dd className="mt-1 text-sm text-gray-900">
                 {userEventById?.date}
               </dd>
             </div>
             <div className="sm:col-span-2">
-              <dt className="text-sm font-medium text-gray-500">
-                {t('Details')}
-              </dt>
+              <LabelBase htmlFor={''} label={t('Details')}></LabelBase>
               <dd className="mt-1 text-sm text-gray-900">
                 {userEventById?.details}
               </dd>
             </div>
           </dl>
-
           <form className="relative flex w-full flex-col overflow-hidden bg-white pt-6 pb-8 sm:rounded-lg sm:pb-6 lg:py-8">
             <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8">
-              <h2 className="text-lg font-medium text-gray-900">{t('Cart')}</h2>
+              <LabelBase htmlFor={''} label={t('Cart')}></LabelBase>
             </div>
             <section aria-labelledby="cart-heading">
-              <h2 id="cart-heading" className="sr-only">
-                Items in your shopping cart
-              </h2>
-
               <ul
                 role="list"
                 className="divide-y divide-gray-200 px-4 sm:px-6 lg:px-8"
@@ -77,11 +71,7 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
                     key={event.eventCartId}
                     className="flex py-8 text-sm sm:items-center"
                   >
-                    <img
-                      src={''}
-                      alt={''}
-                      className="h-24 w-24 flex-none rounded-lg border border-gray-200 sm:h-32 sm:w-32"
-                    />
+                    <img className="h-24 w-24 flex-none rounded-lg border border-gray-200 sm:h-32 sm:w-32" />
                     <div className="ml-4 grid flex-auto grid-cols-1 grid-rows-1 items-start gap-y-3 gap-x-5 sm:ml-6 sm:flex sm:items-center sm:gap-0">
                       <div className="row-end-1 flex-auto sm:pr-6">
                         <h3 className="font-medium text-gray-900">
@@ -99,27 +89,9 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
                         >
                           Quantity, {event.quantity}
                         </label>
-                        <select
-                          id={`quantity-${event}`}
-                          name={`quantity-${event}`}
-                          className="block max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                        >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
-                        </select>
-
-                        <button
-                          type="button"
-                          className="ml-4 font-medium text-indigo-600 hover:text-indigo-500 sm:ml-0 sm:mt-2"
-                        >
-                          <span>Remove</span>
-                        </button>
+                        <SecundaryButton type="button">
+                          {t('Remove')}
+                        </SecundaryButton>
                       </div>
                     </div>
                   </li>
@@ -160,16 +132,10 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
                   </dl>
                 </div>
               </div>
-            </section>
-
-            <div className="mt-8 flex justify-end px-4 sm:px-6 lg:px-8">
-              <button
-                type="submit"
-                className="rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-              >
+              <PrimaryButton type="submit">
                 {t('Continue_to_Payment')}
-              </button>
-            </div>
+              </PrimaryButton>
+            </section>
           </form>
         </div>
       </div>

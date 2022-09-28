@@ -1,17 +1,23 @@
 import { ExclamationIcon } from '@heroicons/react/outline';
+import useTranslation from 'next-translate/useTranslation';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useDeleteUSerEventMutation } from '@graphql/mutations/users/DeleteEvent';
+import { useAuth } from '@providers/AuthProvider';
 
 interface IDeleteEvent {
   userEventId: number;
 }
 const DeleteEvent = ({ userEventId }: IDeleteEvent) => {
+  const { t } = useTranslation('common');
   const [deleteUSerEventMutation, { data, loading, error }] =
     useDeleteUSerEventMutation();
+  const { user } = useAuth();
   const deletetheevent = () => {
     deleteUSerEventMutation({
       variables: {
+        userId: user?.uid,
         userEventId: userEventId,
       },
     });
@@ -24,19 +30,13 @@ const DeleteEvent = ({ userEventId }: IDeleteEvent) => {
         <ExclamationIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
       </div>
       <h3 className="text-lg font-medium leading-6 text-gray-900">
-        Delete event
+        {t('Delete_event')}
       </h3>
-      <div className="mt-2 max-w-xl text-sm text-gray-500">
-        <p>Are you sure you want to delete this event?</p>
-      </div>
+      <p>{t('Are_you_sure')}</p>
       <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-        <button
-          type="button"
-          className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-          onClick={deletetheevent}
-        >
-          Delete
-        </button>
+        <PrimaryButton type="button" onClick={deletetheevent}>
+          {t('Delete')}
+        </PrimaryButton>
       </div>
     </div>
   );

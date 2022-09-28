@@ -1,6 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+import PrimaryButton from '@components/UI/buttons/PrimaryButton';
+import Input from '@components/UI/form/Input';
+import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useCreateUserEventMutation } from '@graphql/mutations/users/CreateUserEvent';
 import { useAuth } from '@providers/AuthProvider';
@@ -45,52 +48,25 @@ const AddEvent = () => {
                   method="POST"
                 >
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      {t('Event_Name')}
-                    </label>
-                    <div className="mt-2 ">
-                      <input
-                        onChange={(event) => setEventName(event.target.value)}
-                        id="nameEvent"
-                        name="nameEvent"
-                        type="nameEvent"
-                        autoComplete="nameEvent"
-                        required
-                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
+                    <LabelBase htmlFor={''} label={t('Event_Name')}></LabelBase>
+                    <Input
+                      onChange={(event) => setEventName(event.target.value)}
+                      name={'nameEvent'}
+                      label={''}
+                      required
+                    ></Input>
                   </div>
                   <div>
-                    <label
-                      htmlFor="details"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      {t('Details')}
-                    </label>
-                    <div className="mt-1">
-                      <textarea
-                        onChange={(event) =>
-                          setEventDetails(event.target.value)
-                        }
-                        id="Details"
-                        name="Details"
-                        rows={3}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                        defaultValue={''}
-                      />
-                    </div>
+                    <LabelBase htmlFor={''} label={t('Details')}></LabelBase>
+                    <Input
+                      onChange={(event) => setEventDetails(event.target.value)}
+                      name={'details'}
+                      label={''}
+                      required
+                    ></Input>
                   </div>
-                  <div>
-                    <button
-                      type="submit"
-                      className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                      {t('Add_Event')}
-                    </button>
-                  </div>
+                  <PrimaryButton type="submit">{t('Add_Event')}</PrimaryButton>
+                  <div></div>
                 </form>
               </div>
             </div>

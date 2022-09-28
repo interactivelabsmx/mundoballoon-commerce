@@ -40,5 +40,7 @@
   "Here_you_can_find_details": "Here you can find details about your event",
   "Cart": "Cart",
   "Creation_date": "Creation date",
-  "List_of_events": "List of events you have created"
+  "List_of_events": "List of events you have created",
+  "Delete_event": "Delete event",
+  "Are_you_sure": "Are you sure you want to delete this event?"
 }

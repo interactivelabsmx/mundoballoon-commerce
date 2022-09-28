@@ -15,7 +15,7 @@ export type ProductsDictionaryFragment = {
       __typename?: 'ProductVariant';
       media?: Array<{
         __typename?: 'ProductVariantMedium';
-        url?: string | null;
+        url: string;
         mediaType: string;
       }> | null;
     }> | null;
