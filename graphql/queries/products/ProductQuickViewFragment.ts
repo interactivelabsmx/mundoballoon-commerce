@@ -7,6 +7,7 @@ export type ProductQuickViewFragment = {
   name: string;
   description: string;
   price: number;
+  category?: { __typename?: 'ProductCategory'; name: string } | null;
   variants?: Array<{
     __typename?: 'ProductVariant';
     media?: Array<{
@@ -23,6 +24,9 @@ export const ProductQuickViewFragmentDoc = gql`
     name
     description
     price
+    category {
+      name
+    }
     variants {
       media {
         url

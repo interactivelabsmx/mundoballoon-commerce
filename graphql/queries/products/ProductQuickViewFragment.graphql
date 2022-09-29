@@ -3,6 +3,9 @@ fragment ProductQuickView on Product {
   name
   description
   price
+  category {
+    name
+  }
   variants {
     media {
       url

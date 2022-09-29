@@ -18,6 +18,7 @@ export type GetProductQuickViewQuery = {
       name: string;
       description: string;
       price: number;
+      category?: { __typename?: 'ProductCategory'; name: string } | null;
       variants?: Array<{
         __typename?: 'ProductVariant';
         media?: Array<{
@@ -27,14 +28,11 @@ export type GetProductQuickViewQuery = {
         }> | null;
       }> | null;
     };
-    variantValues: Array<{
+    variants?: Array<{ __typename?: 'Variant'; name: string }> | null;
+    variantValues?: Array<{
       __typename?: 'VariantValue';
       value: string;
-      productVariantValues?: Array<{
-        __typename?: 'ProductVariantValue';
-        variant?: { __typename?: 'Variant'; type: string; name: string } | null;
-      }> | null;
-    }>;
+    }> | null;
   };
 };
 
@@ -44,14 +42,11 @@ export const GetProductQuickViewDocument = gql`
       product {
         ...ProductQuickView
       }
+      variants {
+        name
+      }
       variantValues {
         value
-        productVariantValues {
-          variant {
-            type
-            name
-          }
-        }
       }
     }
   }

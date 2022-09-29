@@ -3,14 +3,11 @@ query GetProductQuickView($productId: Int!) {
     product {
       ...ProductQuickView
     }
+    variants {
+      name
+    }
     variantValues {
       value
-      productVariantValues {
-        variant {
-          type
-          name
-        }
-      }
     }
   }
 }
