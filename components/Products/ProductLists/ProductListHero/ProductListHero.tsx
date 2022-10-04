@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
 import ProductCardSimple from '@components/Products/ProductCards/ProductCardSimple';
 import PrimaryLink from '@components/UI/links/PrimaryLink';
-import { ProductsDictionaryFragment } from '@graphql/queries/products/ProductsDictionaryFragment';
+import { ProductsDictionaryFragment } from '@graphql/queries/products/ProductsDictionaryFragment.graphql';
 
 interface IProductListHero {
   productDictionary?: ProductsDictionaryFragment[] | null;

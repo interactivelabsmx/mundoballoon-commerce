@@ -1,14 +1,14 @@
 import { RadioGroup } from '@headlessui/react';
-import Image from 'next/future/image';
+// import Image from 'next/future/image';
 import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
-import { useGetProductQuickViewLazyQuery } from '@graphql/queries/products/GetProductQuickView';
-// import { getProductVariantNames } from '@lib/products/variantDataFormating';
-// import { Product } from '@graphql/graphql';
 // import { getFirstMedia } from '@lib/products/getFirstMedia';
 import classNames from '@lib/utils/classnames';
+import VariantColors from '../VariantsDisplay/VariantColors';
+import { useGetProductQuickViewLazyQuery } from './GetProductQuickView.graphql';
+import { VariantValueDisplayFragment } from './ProductQuickViewFragment.graphql';
 
 const PRODUCT = {
   name: 'Basic Tee 6-Pack ',
@@ -41,23 +41,26 @@ interface IQuickView {
 }
 
 const QuickView = ({ productId }: IQuickView) => {
-  const [selectedColor, setSelectedColor] = useState(PRODUCT.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(PRODUCT.sizes[2]);
-  const [loadGreeting, { loading, error, data }] =
+  const [selectedColor, setSelectedColor] =
+    useState<VariantValueDisplayFragment>();
+  const [selectedSize, setSelectedSize] = useState();
+  const [loadProductQuickView, { loading, error, data }] =
     useGetProductQuickViewLazyQuery({
       variables: { productId },
     });
 
   useEffect(() => {
-    loadGreeting();
-  }, [loadGreeting]);
+    loadProductQuickView();
+  }, [loadProductQuickView]);
 
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
 
   const {
-    productQuickView: { product, variants },
+    productQuickView: { product, variantValues },
   } = data;
+
+  if (!product) return <SimpleTextError />;
 
   // const media = getFirstMedia(product as Product);
   // console.log(media);
@@ -67,12 +70,12 @@ const QuickView = ({ productId }: IQuickView) => {
   return (
     <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
       <div className="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
-        <Image
-          src={PRODUCT.imageSrc}
-          alt={PRODUCT.imageAlt}
+        {/* <Image
+          src={}
+          alt={}
           className="object-center object-cover"
           fill
-        />
+        /> */}
       </div>
       <div className="sm:col-span-8 lg:col-span-7">
         <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
@@ -104,6 +107,14 @@ const QuickView = ({ productId }: IQuickView) => {
 
           <form>
             {/* Colors */}
+            {variantValues && (
+              <VariantColors
+                colors={variantValues}
+                selectedColor={selectedColor}
+                setSelectedColor={setSelectedColor}
+              />
+            )}
+
             <div>
               <h4 className="text-sm text-gray-900 font-medium">Color</h4>
 
@@ -149,12 +160,6 @@ const QuickView = ({ productId }: IQuickView) => {
             <div className="mt-10">
               <div className="flex items-center justify-between">
                 <h4 className="text-sm text-gray-900 font-medium">Size</h4>
-                <a
-                  href="#"
-                  className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Size guide
-                </a>
               </div>
 
               <RadioGroup

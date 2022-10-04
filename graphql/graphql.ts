@@ -460,6 +460,16 @@ export type ProductInput = {
   variants?: InputMaybe<Array<ProductVariantInput>>;
 };
 
+<<<<<<< HEAD
+=======
+export type ProductQuickView = {
+  __typename?: 'ProductQuickView';
+  product?: Maybe<Product>;
+  variantValues?: Maybe<Array<VariantValue>>;
+  variants?: Maybe<Array<Variant>>;
+};
+
+>>>>>>> eea98ae (Updated config to read graphql.ts and moved quick view to in folder location)
 export type ProductSortInput = {
   category?: InputMaybe<ProductCategorySortInput>;
   createdAt?: InputMaybe<SortEnumType>;

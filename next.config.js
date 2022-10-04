@@ -3,6 +3,7 @@ const nextTranslate = require('next-translate');
 
 const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
 });
 
 module.exports = () => {
@@ -17,6 +18,10 @@ module.exports = () => {
         'graph.facebook.com',
         'placebear.com',
       ],
+    },
+    webpack: (config) => {
+      config.resolve.extensionAlias = { '.graphql': ['.graphql.ts'] };
+      return config;
     },
   });
 };

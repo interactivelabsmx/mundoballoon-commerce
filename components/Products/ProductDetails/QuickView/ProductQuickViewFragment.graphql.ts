@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
-import * as Types from '../../graphql';
+
+export type VariantDisplayFragment = {
+  __typename?: 'Variant';
+  variantId?: number | null;
+  name: string;
+};
+
+export type VariantValueDisplayFragment = {
+  __typename?: 'VariantValue';
+  variantId: number;
+  value: string;
+};
 
 export type ProductQuickViewFragment = {
   __typename?: 'Product';
@@ -18,6 +29,18 @@ export type ProductQuickViewFragment = {
   }> | null;
 };
 
+export const VariantDisplayFragmentDoc = gql`
+  fragment VariantDisplay on Variant {
+    variantId
+    name
+  }
+`;
+export const VariantValueDisplayFragmentDoc = gql`
+  fragment VariantValueDisplay on VariantValue {
+    variantId
+    value
+  }
+`;
 export const ProductQuickViewFragmentDoc = gql`
   fragment ProductQuickView on Product {
     productId

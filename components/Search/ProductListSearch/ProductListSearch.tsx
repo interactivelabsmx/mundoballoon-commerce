@@ -2,7 +2,7 @@ import ProductCardSimple from '@components/Products/ProductCards/ProductCardSimp
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { ProductFilterInput, ProductSortInput } from '@graphql/graphql';
-import { useSearchProductsQuery } from '@graphql/queries/products/SearchProducts';
+import { useSearchProductsQuery } from '@graphql/queries/products/SearchProducts.graphql';
 import { IActiveFilter } from '../FilterBar/FilterBar';
 import { SortOption } from '../FilterBar/FilterBarSort';
 

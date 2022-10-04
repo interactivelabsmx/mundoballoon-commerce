@@ -10,11 +10,7 @@ interface ISimpleTextAlert {
   onDismissAlert?: () => void;
 }
 
-const SimpleTextAlert = ({
-  text = 'Something went wrong, please try again latter.',
-  type,
-  onDismissAlert,
-}: ISimpleTextAlert) => {
+const SimpleTextAlert = ({ text, type, onDismissAlert }: ISimpleTextAlert) => {
   const Icon = SimpleTextAlertTypeConfig[type].Icon;
   return (
     <div

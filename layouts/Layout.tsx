@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Footer from '@components/Footer';
 import Navbar from '@components/Navbar';
-import { useGetNavOptionsQuery } from '@graphql/queries/site/GetNavOptions';
+import { useGetNavOptionsQuery } from '@graphql/queries/site/GetNavOptions.graphql';
 
 interface ILayout {
   children: ReactNode | ReactNode[];

@@ -1,4 +1,24 @@
 
+declare module '*/GetProductQuickView.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetProductQuickView: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/ProductQuickViewFragment.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const VariantDisplay: DocumentNode;
+export const VariantValueDisplay: DocumentNode;
+export const ProductQuickView: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/CreateUser.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -44,29 +64,11 @@ declare module '*/GetHomepageProducts.graphql' {
 }
     
 
-declare module '*/GetProductQuickView.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const GetProductQuickView: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/ProductFragments.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const VariantValue: DocumentNode;
 export const Variant: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/ProductQuickViewFragment.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const ProductQuickView: DocumentNode;
 
   export default defaultDocument;
 }

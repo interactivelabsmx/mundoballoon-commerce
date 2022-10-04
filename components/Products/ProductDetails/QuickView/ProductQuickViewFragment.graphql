@@ -1,3 +1,13 @@
+fragment VariantDisplay on Variant {
+  variantId
+  name
+}
+
+fragment VariantValueDisplay on VariantValue {
+  variantId
+  value
+}
+
 fragment ProductQuickView on Product {
   productId
   name

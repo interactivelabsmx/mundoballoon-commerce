@@ -4,7 +4,7 @@ import { IActiveFilter } from '@components/Search/FilterBar/FilterBar';
 import { SortOption } from '@components/Search/FilterBar/FilterBarSort';
 import ProductListSearch from '@components/Search/ProductListSearch';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters';
+import { useGetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
 import Layout from '@layouts/Layout';
 import getServerSidePreFetch from '@lib/getServerSidePreFetch';
 

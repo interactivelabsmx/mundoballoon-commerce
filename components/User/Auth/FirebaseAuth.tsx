@@ -1,9 +1,8 @@
 import { User } from '@firebase/auth';
 import useTranslation from 'next-translate/useTranslation';
 import { useState, useEffect } from 'react';
-import { SimpleTextAlertType } from '@components/UI/alerts/AlertConfigTypes';
-import SimpleTextAlert from '@components/UI/alerts/SimpleTextAlert';
-import { useCreateUserMutation } from '@graphql/mutations/users/CreateUser';
+import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+import { useCreateUserMutation } from '@graphql/mutations/users/CreateUser.graphql';
 import { setRecaptchaVerifier } from '@lib/firebaseAuth/phoneAuth';
 import { useAuth } from '@providers/AuthProvider';
 import FirebaseEmailAuth from './FirebaseEmailAuth';
@@ -32,9 +31,8 @@ const FirebaseAuth = () => {
     <div className="py-8 lg:w-80">
       {loading && <div>{t('authenticating')}</div>}
       {(requestError || error) && (
-        <SimpleTextAlert
+        <SimpleTextError
           text={requestError || error?.message}
-          type={SimpleTextAlertType.ERROR}
           onDismissAlert={onDismissAlert}
         />
       )}

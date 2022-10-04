@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
 import LogoSmall from '@components/UI/logo/LogoSmall';
-import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
-import { NavCategoryFragment } from '@graphql/queries/site/NavItemFragment';
+import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import { NavCategoryFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import FooterLink from './FooterLink';
 
 interface IFooter {

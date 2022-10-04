@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as Types from '../../graphql';
-import { ProductsDictionaryFragmentDoc } from './ProductsDictionaryFragment';
+import { ProductsDictionaryFragmentDoc } from './ProductsDictionaryFragment.graphql';
 
 const defaultOptions = {} as const;
 export type GetHomepageProductsQueryVariables = Types.Exact<{

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Types from '../../graphql';
-import { MediaUrlAndTypeFragmentDoc } from './ProductSimpleCardFragment';
+import { MediaUrlAndTypeFragmentDoc } from './ProductSimpleCardFragment.graphql';
 
 export type VariantValueFragment = {
   __typename?: 'ProductVariantValue';

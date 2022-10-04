@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Types from '../../graphql';
-import { ProductSimpleCardFragmentDoc } from './ProductSimpleCardFragment';
+import { ProductSimpleCardFragmentDoc } from './ProductSimpleCardFragment.graphql';
 
 export type ProductsDictionaryFragment = {
   __typename?: 'KeyValuePairOfStringAndListOfProduct';

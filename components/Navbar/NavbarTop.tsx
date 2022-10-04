@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import { Dispatch } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { NavItemFragment } from '@graphql/queries/site/NavItemFragment';
+import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
 

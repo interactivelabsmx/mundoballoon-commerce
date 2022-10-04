@@ -1,7 +1,11 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import * as Types from '../../graphql';
-import { ProductQuickViewFragmentDoc } from './ProductQuickViewFragment';
+import * as Types from '../../../../graphql/graphql';
+import {
+  ProductQuickViewFragmentDoc,
+  VariantDisplayFragmentDoc,
+  VariantValueDisplayFragmentDoc,
+} from './ProductQuickViewFragment.graphql';
 
 const defaultOptions = {} as const;
 export type GetProductQuickViewQueryVariables = Types.Exact<{
@@ -12,7 +16,7 @@ export type GetProductQuickViewQuery = {
   __typename?: 'Query';
   productQuickView: {
     __typename?: 'ProductQuickView';
-    product: {
+    product?: {
       __typename?: 'Product';
       productId?: number | null;
       name: string;
@@ -27,10 +31,15 @@ export type GetProductQuickViewQuery = {
           mediaType: string;
         }> | null;
       }> | null;
-    };
-    variants?: Array<{ __typename?: 'Variant'; name: string }> | null;
+    } | null;
+    variants?: Array<{
+      __typename?: 'Variant';
+      variantId?: number | null;
+      name: string;
+    }> | null;
     variantValues?: Array<{
       __typename?: 'VariantValue';
+      variantId: number;
       value: string;
     }> | null;
   };
@@ -43,14 +52,16 @@ export const GetProductQuickViewDocument = gql`
         ...ProductQuickView
       }
       variants {
-        name
+        ...VariantDisplay
       }
       variantValues {
-        value
+        ...VariantValueDisplay
       }
     }
   }
   ${ProductQuickViewFragmentDoc}
+  ${VariantDisplayFragmentDoc}
+  ${VariantValueDisplayFragmentDoc}
 `;
 
 /**

@@ -1,7 +1,7 @@
 import {
   VariantFragment,
   VariantValueFragment,
-} from '@graphql/queries/products/ProductFragments';
+} from '@graphql/queries/products/ProductFragments.graphql';
 
 export const getProductVariantValuesNames = (
   variants: VariantValueFragment[],

@@ -4,10 +4,10 @@ query GetProductQuickView($productId: Int!) {
       ...ProductQuickView
     }
     variants {
-      name
+      ...VariantDisplay
     }
     variantValues {
-      value
+      ...VariantValueDisplay
     }
   }
 }

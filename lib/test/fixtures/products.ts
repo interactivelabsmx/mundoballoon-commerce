@@ -5,7 +5,7 @@ import {
   randDepartment,
   randImg,
 } from '@ngneat/falso';
-import { ProductSimpleCardFragment } from '@graphql/queries/products/ProductSimpleCardFragment';
+import { ProductSimpleCardFragment } from '@graphql/queries/products/ProductSimpleCardFragment.graphql';
 
 export const getFixtureProduct = (): ProductSimpleCardFragment => ({
   productId: randNumber(),

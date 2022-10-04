@@ -1,7 +1,7 @@
 import ProductListHero from '@components/Products/ProductLists/ProductListHero';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetHomepageProductsQuery } from '@graphql/queries/products/GetHomepageProducts';
+import { useGetHomepageProductsQuery } from '@graphql/queries/products/GetHomepageProducts.graphql';
 import Layout from '@layouts/Layout';
 import getServerSidePreFetch from '@lib/getServerSidePreFetch';
 

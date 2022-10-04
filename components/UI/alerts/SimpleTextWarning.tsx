@@ -3,10 +3,15 @@ import SimpleTextAlert from './SimpleTextAlert';
 
 interface ISimpleTextWarning {
   text: string;
+  onDismissAlert?: () => void;
 }
 
-const SimpleTextWarning = ({ text }: ISimpleTextWarning) => (
-  <SimpleTextAlert type={SimpleTextAlertType.WARNING} text={text} />
+const SimpleTextWarning = ({ text, onDismissAlert }: ISimpleTextWarning) => (
+  <SimpleTextAlert
+    text={text}
+    type={SimpleTextAlertType.WARNING}
+    onDismissAlert={onDismissAlert}
+  />
 );
 
 export default SimpleTextWarning;
