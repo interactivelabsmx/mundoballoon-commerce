@@ -4,7 +4,6 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useDeleteUSerEventMutation } from '@graphql/mutations/users/DeleteEvent';
-import { useAuth } from '@providers/AuthProvider';
 
 interface IDeleteEvent {
   userEventId: number;
@@ -13,11 +12,9 @@ const DeleteEvent = ({ userEventId }: IDeleteEvent) => {
   const { t } = useTranslation('common');
   const [deleteUSerEventMutation, { data, loading, error }] =
     useDeleteUSerEventMutation();
-  const { user } = useAuth();
   const deletetheevent = () => {
     deleteUSerEventMutation({
       variables: {
-        userId: user?.uid,
         userEventId: userEventId,
       },
     });

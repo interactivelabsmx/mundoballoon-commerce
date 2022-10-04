@@ -136,7 +136,7 @@ const NavbarUserMenu = () => {
         )}
 
         <Modal open={eventsOpen} setOpen={setEventsOpen}>
-          <EventsCard userId={user?.uid} />
+          <EventsCard />
         </Modal>
       </div>
     </div>

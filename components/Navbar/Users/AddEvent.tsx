@@ -1,27 +1,38 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import useTranslation from 'next-translate/useTranslation';
-import { useState } from 'react';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import type { Asserts } from 'yup';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import Input from '@components/UI/form/Input';
-import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useCreateUserEventMutation } from '@graphql/mutations/users/CreateUserEvent';
-import { useAuth } from '@providers/AuthProvider';
 
+export const userEventSchema = yup
+  .object({
+    eventName: yup.string().required(),
+    details: yup.string().required(),
+  })
+  .required();
+
+interface IAddEventForm extends Asserts<typeof userEventSchema> {}
 const AddEvent = () => {
   const { t } = useTranslation('common');
-  const [EventName, setEventName] = useState('');
-  const [EventDetails, setEventDetails] = useState('');
-  const { user } = useAuth();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IAddEventForm>({
+    resolver: yupResolver(userEventSchema),
+  });
   const [createUserEventMutation, { data, loading, error }] =
     useCreateUserEventMutation();
-  const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault;
+  const onSubmit: SubmitHandler<IAddEventForm> = ({ eventName, details }) => {
     createUserEventMutation({
       variables: {
-        name: EventName,
-        userId: user?.uid || '',
-        details: EventDetails,
+        name: eventName,
+        details: details,
       },
     });
     if (error) return <SimpleTextError text={error.message} />;
@@ -42,28 +53,36 @@ const AddEvent = () => {
           <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-6">
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md m:px-0">
               <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-8">
-                <form
-                  className="space-y-6"
-                  onSubmit={handleSubmit}
-                  method="POST"
-                >
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <LabelBase htmlFor={''} label={t('Event_Name')}></LabelBase>
-                    <Input
-                      onChange={(event) => setEventName(event.target.value)}
-                      name={'nameEvent'}
-                      label={''}
-                      required
-                    ></Input>
+                    <Controller
+                      name="eventName"
+                      control={control}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          label={t('Event_Name')}
+                          placeholder=""
+                          type="text"
+                          autoComplete=""
+                          error={errors?.eventName?.message}
+                        />
+                      )}
+                    />
                   </div>
                   <div>
-                    <LabelBase htmlFor={''} label={t('Details')}></LabelBase>
-                    <Input
-                      onChange={(event) => setEventDetails(event.target.value)}
-                      name={'details'}
-                      label={''}
-                      required
-                    ></Input>
+                    <Controller
+                      name="details"
+                      control={control}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          label={t('Details')}
+                          type="text"
+                          error={errors?.details?.message}
+                        />
+                      )}
+                    />
                   </div>
                   <PrimaryButton type="submit">{t('Add_Event')}</PrimaryButton>
                   <div></div>

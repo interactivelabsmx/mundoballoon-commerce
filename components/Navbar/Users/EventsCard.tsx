@@ -10,15 +10,10 @@ import AddEvent from './AddEvent';
 import DeleteEvent from './DeleteEvent';
 import Details from './Details';
 
-interface IEventCard {
-  userId: string | undefined;
-}
-const EventsCard = ({ userId }: IEventCard) => {
+const EventsCard = () => {
   const { t } = useTranslation('common');
   const [loadGreeting, { loading, error, data }] =
-    useGetUserEventByUserIdLazyQuery({
-      variables: { userId },
-    });
+    useGetUserEventByUserIdLazyQuery();
   const [DetailsOpen, setDetailsOpen] = useState(false);
   const openDetails = () => setDetailsOpen(true);
   const [DeleteOpen, setDeleteOpen] = useState(false);

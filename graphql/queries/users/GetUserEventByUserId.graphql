@@ -1,5 +1,5 @@
-query GetUserEventByUserId($userId: String!) {
-  userEventByUserId(userId: $userId) {
+query GetUserEventByUserId {
+  userEventByUserId {
     userEventId
     userId
     name
