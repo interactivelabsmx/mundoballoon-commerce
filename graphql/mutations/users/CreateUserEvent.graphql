@@ -1,5 +1,5 @@
-mutation CreateUserEvent($name: String!, $userId: String!, $details: String!) {
-  createUserEvent(name: $name, userId: $userId, details: $details) {
+mutation CreateUserEvent($name: String!, $details: String!) {
+  createUserEvent(name: $name, details: $details) {
     userId
     name
     details

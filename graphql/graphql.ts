@@ -274,7 +274,6 @@ export type MutationCreateUserArgs = {
 export type MutationCreateUserEventArgs = {
   details: Scalars['String'];
   name: Scalars['String'];
-  userId: Scalars['String'];
 };
 
 export type MutationCreateVariantArgs = {
@@ -309,7 +308,6 @@ export type MutationDeleteUserArgs = {
 
 export type MutationDeleteUserEventArgs = {
   userEventId: Scalars['Int'];
-  userId: Scalars['String'];
 };
 
 export type MutationGrantAdminUserArgs = {
@@ -717,10 +715,6 @@ export type QueryUserByIdArgs = {
 
 export type QueryUserEventByIdArgs = {
   userEventid: Scalars['Int'];
-};
-
-export type QueryUserEventByUserIdArgs = {
-  userId: Scalars['String'];
 };
 
 export type QueryUsersArgs = {

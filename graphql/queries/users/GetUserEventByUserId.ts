@@ -4,7 +4,7 @@ import * as Types from '../../graphql';
 
 const defaultOptions = {} as const;
 export type GetUserEventByUserIdQueryVariables = Types.Exact<{
-  userId: Types.Scalars['String'] | undefined;
+  [key: string]: never;
 }>;
 
 export type GetUserEventByUserIdQuery = {
@@ -20,8 +20,8 @@ export type GetUserEventByUserIdQuery = {
 };
 
 export const GetUserEventByUserIdDocument = gql`
-  query GetUserEventByUserId($userId: String!) {
-    userEventByUserId(userId: $userId) {
+  query GetUserEventByUserId {
+    userEventByUserId {
       userEventId
       userId
       name
@@ -43,12 +43,11 @@ export const GetUserEventByUserIdDocument = gql`
  * @example
  * const { data, loading, error } = useGetUserEventByUserIdQuery({
  *   variables: {
- *      userId: // value for 'userId'
  *   },
  * });
  */
 export function useGetUserEventByUserIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetUserEventByUserIdQuery,
     GetUserEventByUserIdQueryVariables
   >

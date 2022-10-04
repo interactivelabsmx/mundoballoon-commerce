@@ -5,7 +5,6 @@ import * as Types from '../../graphql';
 const defaultOptions = {} as const;
 export type CreateUserEventMutationVariables = Types.Exact<{
   name: Types.Scalars['String'];
-  userId: Types.Scalars['String'];
   details: Types.Scalars['String'];
 }>;
 
@@ -21,12 +20,8 @@ export type CreateUserEventMutation = {
 };
 
 export const CreateUserEventDocument = gql`
-  mutation CreateUserEvent(
-    $name: String!
-    $userId: String!
-    $details: String!
-  ) {
-    createUserEvent(name: $name, userId: $userId, details: $details) {
+  mutation CreateUserEvent($name: String!, $details: String!) {
+    createUserEvent(name: $name, details: $details) {
       userId
       name
       details
@@ -53,7 +48,6 @@ export type CreateUserEventMutationFn = Apollo.MutationFunction<
  * const [createUserEventMutation, { data, loading, error }] = useCreateUserEventMutation({
  *   variables: {
  *      name: // value for 'name'
- *      userId: // value for 'userId'
  *      details: // value for 'details'
  *   },
  * });

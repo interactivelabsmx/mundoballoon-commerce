@@ -5,7 +5,6 @@ import * as Types from '../../graphql';
 const defaultOptions = {} as const;
 export type DeleteUSerEventMutationVariables = Types.Exact<{
   userEventId: Types.Scalars['Int'];
-  userId: Types.Scalars['String'] | undefined;
 }>;
 
 export type DeleteUSerEventMutation = {
@@ -14,8 +13,8 @@ export type DeleteUSerEventMutation = {
 };
 
 export const DeleteUSerEventDocument = gql`
-  mutation DeleteUSerEvent($userEventId: Int!, $userId: String!) {
-    deleteUserEvent(userId: $userId, userEventId: $userEventId)
+  mutation DeleteUSerEvent($userEventId: Int!) {
+    deleteUserEvent(userEventId: $userEventId)
   }
 `;
 export type DeleteUSerEventMutationFn = Apollo.MutationFunction<
@@ -37,7 +36,6 @@ export type DeleteUSerEventMutationFn = Apollo.MutationFunction<
  * const [deleteUSerEventMutation, { data, loading, error }] = useDeleteUSerEventMutation({
  *   variables: {
  *      userEventId: // value for 'userEventId'
- *      userId: // value for 'userId'
  *   },
  * });
  */
