@@ -7,7 +7,7 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import Input from '@components/UI/form/Input';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useCreateUserEventMutation } from '@graphql/mutations/users/CreateUserEvent';
+import { useCreateUserEventMutation } from '@graphql/mutations/users/CreateUserEvent.graphql';
 
 export const userEventSchema = yup
   .object({

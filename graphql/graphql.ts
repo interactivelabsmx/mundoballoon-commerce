@@ -465,8 +465,6 @@ export type ProductInput = {
   variants?: InputMaybe<Array<ProductVariantInput>>;
 };
 
-<<<<<<< HEAD
-=======
 export type ProductQuickView = {
   __typename?: 'ProductQuickView';
   product?: Maybe<Product>;
@@ -474,7 +472,6 @@ export type ProductQuickView = {
   variants?: Maybe<Array<Variant>>;
 };
 
->>>>>>> eea98ae (Updated config to read graphql.ts and moved quick view to in folder location)
 export type ProductSortInput = {
   category?: InputMaybe<ProductCategorySortInput>;
   createdAt?: InputMaybe<SortEnumType>;
@@ -546,7 +543,7 @@ export type ProductVariantInput = {
 
 export type ProductVariantMedium = {
   __typename?: 'ProductVariantMedium';
-  description: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
   mediaType: Scalars['String'];
   name: Scalars['String'];
   productVariant?: Maybe<ProductVariant>;
@@ -570,7 +567,7 @@ export type ProductVariantMediumFilterInput = {
 };
 
 export type ProductVariantMediumInput = {
-  description: Scalars['String'];
+  description?: InputMaybe<Scalars['String']>;
   mediaType: Scalars['String'];
   name: Scalars['String'];
   productVariant?: InputMaybe<ProductVariantInput>;
@@ -677,6 +674,7 @@ export type Query = {
   navOptions: Array<NavOption>;
   productById?: Maybe<Product>;
   productCategories: Array<ProductCategory>;
+  productQuickView: ProductQuickView;
   productVariantById?: Maybe<ProductVariant>;
   productVariantsEntityById: Array<ProductVariantEntity>;
   productsEntity?: Maybe<ProductsEntityConnection>;
@@ -696,6 +694,10 @@ export type QueryHomepageProductsArgs = {
 };
 
 export type QueryProductByIdArgs = {
+  productId: Scalars['Int'];
+};
+
+export type QueryProductQuickViewArgs = {
   productId: Scalars['Int'];
 };
 

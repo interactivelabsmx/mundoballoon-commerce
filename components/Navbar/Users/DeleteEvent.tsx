@@ -1,9 +1,9 @@
-import { ExclamationIcon } from '@heroicons/react/outline';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useDeleteUSerEventMutation } from '@graphql/mutations/users/DeleteEvent';
+import { useDeleteUSerEventMutation } from '@graphql/mutations/users/DeleteEvent.graphql';
 
 interface IDeleteEvent {
   userEventId: number;
@@ -24,7 +24,10 @@ const DeleteEvent = ({ userEventId }: IDeleteEvent) => {
   return (
     <div className="px-4 py-5 sm:p-6">
       <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-        <ExclamationIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+        <ExclamationTriangleIcon
+          className="h-6 w-6 text-red-600"
+          aria-hidden="true"
+        />
       </div>
       <h3 className="text-lg font-medium leading-6 text-gray-900">
         {t('Delete_event')}

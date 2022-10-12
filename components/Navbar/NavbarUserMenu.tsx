@@ -1,5 +1,8 @@
 import { Menu, Transition } from '@headlessui/react';
-import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowRightOnRectangleIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';

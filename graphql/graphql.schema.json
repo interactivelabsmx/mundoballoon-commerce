@@ -4155,8 +4155,6 @@
         "possibleTypes": null
       },
       {
-<<<<<<< HEAD
-=======
         "kind": "OBJECT",
         "name": "ProductQuickView",
         "description": null,
@@ -4220,7 +4218,6 @@
         "possibleTypes": null
       },
       {
->>>>>>> eea98ae (Updated config to read graphql.ts and moved quick view to in folder location)
         "kind": "INPUT_OBJECT",
         "name": "ProductSortInput",
         "description": null,
@@ -5036,13 +5033,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -5318,13 +5311,9 @@
             "name": "description",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -6465,6 +6454,39 @@
                     "ofType": null
                   }
                 }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "productQuickView",
+            "description": null,
+            "args": [
+              {
+                "name": "productId",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ProductQuickView",
+                "ofType": null
               }
             },
             "isDeprecated": false,

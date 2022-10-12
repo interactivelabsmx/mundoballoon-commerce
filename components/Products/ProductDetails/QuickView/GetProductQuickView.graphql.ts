@@ -29,7 +29,7 @@ export type GetProductQuickViewQuery = {
           __typename?: 'ProductVariantMedium';
           url: string;
           mediaType: string;
-          description: string;
+          description?: string | null;
         }> | null;
       }> | null;
     } | null;

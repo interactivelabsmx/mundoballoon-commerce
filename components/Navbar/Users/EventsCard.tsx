@@ -5,7 +5,7 @@ import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
-import { useGetUserEventByUserIdLazyQuery } from '@graphql/queries/users/GetUserEventByUserId';
+import { useGetUserEventByUserIdLazyQuery } from '@graphql/queries/users/GetUserEventByUserId.graphql';
 import AddEvent from './AddEvent';
 import DeleteEvent from './DeleteEvent';
 import Details from './Details';

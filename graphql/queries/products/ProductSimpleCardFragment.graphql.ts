@@ -10,7 +10,7 @@ export type MediaUrlAndTypeFragment = {
   __typename?: 'ProductVariantMedium';
   url: string;
   mediaType: string;
-  description: string;
+  description?: string | null;
 };
 
 export type ProductVariantsMediaOnlyFragment = {
@@ -19,7 +19,7 @@ export type ProductVariantsMediaOnlyFragment = {
     __typename?: 'ProductVariantMedium';
     url: string;
     mediaType: string;
-    description: string;
+    description?: string | null;
   }> | null;
 };
 
@@ -35,7 +35,7 @@ export type ProductSimpleCardFragment = {
       __typename?: 'ProductVariantMedium';
       url: string;
       mediaType: string;
-      description: string;
+      description?: string | null;
     }> | null;
   }> | null;
 };
