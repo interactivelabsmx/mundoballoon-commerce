@@ -25,6 +25,11 @@ export enum ApplyPolicy {
   BeforeResolver = 'BEFORE_RESOLVER',
 }
 
+export type BooleanOperationFilterInput = {
+  eq?: InputMaybe<Scalars['Boolean']>;
+  neq?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type ComparableDoubleOperationFilterInput = {
   eq?: InputMaybe<Scalars['Float']>;
   gt?: InputMaybe<Scalars['Float']>;
@@ -778,6 +783,33 @@ export type StringOperationFilterInput = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export type UiRegistry = {
+  __typename?: 'UiRegistry';
+  componentId?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  deprecated: Scalars['Boolean'];
+  uiRegistryId: Scalars['Int'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type UiRegistryFilterInput = {
+  and?: InputMaybe<Array<UiRegistryFilterInput>>;
+  componentId?: InputMaybe<StringOperationFilterInput>;
+  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  deprecated?: InputMaybe<BooleanOperationFilterInput>;
+  or?: InputMaybe<Array<UiRegistryFilterInput>>;
+  uiRegistryId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+};
+
+export type UiRegistryInput = {
+  componentId?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  deprecated: Scalars['Boolean'];
+  uiRegistryId: Scalars['Int'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export type User = {
   __typename?: 'User';
   carts?: Maybe<Array<UserCart>>;
@@ -922,6 +954,8 @@ export type Variant = {
   __typename?: 'Variant';
   name: Scalars['String'];
   type: Scalars['String'];
+  uiRegistry?: Maybe<UiRegistry>;
+  uiRegistryId?: Maybe<Scalars['Int']>;
   variantId?: Maybe<Scalars['Int']>;
   variantValues?: Maybe<Array<VariantValue>>;
 };
@@ -931,6 +965,8 @@ export type VariantFilterInput = {
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<VariantFilterInput>>;
   type?: InputMaybe<StringOperationFilterInput>;
+  uiRegistry?: InputMaybe<UiRegistryFilterInput>;
+  uiRegistryId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
   variantId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
   variantValues?: InputMaybe<ListFilterInputTypeOfVariantValueFilterInput>;
 };
@@ -938,6 +974,8 @@ export type VariantFilterInput = {
 export type VariantInput = {
   name: Scalars['String'];
   type: Scalars['String'];
+  uiRegistry?: InputMaybe<UiRegistryInput>;
+  uiRegistryId?: InputMaybe<Scalars['Int']>;
   variantId?: InputMaybe<Scalars['Int']>;
   variantValues?: InputMaybe<Array<VariantValueInput>>;
 };

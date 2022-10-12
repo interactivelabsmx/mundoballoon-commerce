@@ -5,6 +5,7 @@ fragment CategoryName on ProductCategory {
 fragment MediaUrlAndType on ProductVariantMedium {
   url
   mediaType
+  description
 }
 
 fragment ProductVariantsMediaOnly on ProductVariant {

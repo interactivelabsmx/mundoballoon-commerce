@@ -1,9 +1,13 @@
 fragment VariantDisplay on Variant {
   variantId
   name
+  uiRegistry {
+    componentId
+  }
 }
 
 fragment VariantValueDisplay on VariantValue {
+  variantValueId
   variantId
   value
 }
@@ -18,8 +22,7 @@ fragment ProductQuickView on Product {
   }
   variants {
     media {
-      url
-      mediaType
+      ...MediaUrlAndType
     }
   }
 }

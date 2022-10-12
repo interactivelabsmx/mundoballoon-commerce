@@ -20,6 +20,7 @@ export const getFixtureProduct = (): ProductSimpleCardFragment => ({
         {
           url: randImg(),
           mediaType: 'image',
+          description: 'Some nice Image',
         },
       ],
     },

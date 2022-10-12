@@ -26,6 +26,7 @@ export type GetHomepageProductsQuery = {
           __typename?: 'ProductVariantMedium';
           url: string;
           mediaType: string;
+          description: string;
         }> | null;
       }> | null;
     }>;

@@ -28,6 +28,7 @@ export type SearchProductsQuery = {
           __typename?: 'ProductVariantMedium';
           url: string;
           mediaType: string;
+          description: string;
         }> | null;
       }> | null;
     }> | null;

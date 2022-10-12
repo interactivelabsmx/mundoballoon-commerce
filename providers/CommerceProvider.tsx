@@ -12,7 +12,6 @@ const Commerce = createContext<ICommerceProvider>({
 
 interface ICommerce {
   children: ReactNode;
-  lang: string;
 }
 
 export const UL = 'NEXT_LOCALE';
@@ -25,13 +24,10 @@ export const UL_COOKIE_OPTIONS = {
   secure: true,
 };
 
-export function CommerceProvider({ children, lang }: ICommerce) {
-  const setLanguageCookie = useCallback(
-    async (locale: string) => {
-      setCookie({}, UL, locale, UL_COOKIE_OPTIONS);
-    },
-    [lang]
-  );
+export function CommerceProvider({ children }: ICommerce) {
+  const setLanguageCookie = useCallback(async (locale: string) => {
+    setCookie({}, UL, locale, UL_COOKIE_OPTIONS);
+  }, []);
   const setLocale = (locale: string) => {
     setLanguage(locale);
     setLanguageCookie(locale);

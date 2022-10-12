@@ -29,6 +29,7 @@ export type GetProductQuickViewQuery = {
           __typename?: 'ProductVariantMedium';
           url: string;
           mediaType: string;
+          description: string;
         }> | null;
       }> | null;
     } | null;
@@ -36,9 +37,14 @@ export type GetProductQuickViewQuery = {
       __typename?: 'Variant';
       variantId?: number | null;
       name: string;
+      uiRegistry?: {
+        __typename?: 'UiRegistry';
+        componentId?: string | null;
+      } | null;
     }> | null;
     variantValues?: Array<{
       __typename?: 'VariantValue';
+      variantValueId?: number | null;
       variantId: number;
       value: string;
     }> | null;

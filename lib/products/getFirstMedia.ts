@@ -1,10 +1,18 @@
-import { Product } from '@graphql/graphql';
-import BaseObject from '@lib/utils/BaseObject';
+import { ProductQuickViewFragment } from '@components/Products/ProductDetails/QuickView/ProductQuickViewFragment.graphql';
+import {
+  MediaUrlAndTypeFragment,
+  ProductSimpleCardFragment,
+} from '@graphql/queries/products/ProductSimpleCardFragment.graphql';
 
-export const getFirstMedia = (product: Partial<Product> | BaseObject) => {
+export const getFirstMedia = (
+  product: ProductSimpleCardFragment | ProductQuickViewFragment
+): MediaUrlAndTypeFragment => {
   const firstVariant = product.variants && product.variants[0];
   const media = firstVariant?.media && firstVariant.media[0];
   return media?.url
     ? media
-    : { url: 'https://placebear.com/200/300', mediaType: 'image' };
+    : ({
+        url: '/img/products/balloon-placeholder.png',
+        mediaType: 'image',
+      } as MediaUrlAndTypeFragment);
 };

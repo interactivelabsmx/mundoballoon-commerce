@@ -10,6 +10,7 @@ export type MediaUrlAndTypeFragment = {
   __typename?: 'ProductVariantMedium';
   url: string;
   mediaType: string;
+  description: string;
 };
 
 export type ProductVariantsMediaOnlyFragment = {
@@ -18,6 +19,7 @@ export type ProductVariantsMediaOnlyFragment = {
     __typename?: 'ProductVariantMedium';
     url: string;
     mediaType: string;
+    description: string;
   }> | null;
 };
 
@@ -33,6 +35,7 @@ export type ProductSimpleCardFragment = {
       __typename?: 'ProductVariantMedium';
       url: string;
       mediaType: string;
+      description: string;
     }> | null;
   }> | null;
 };
@@ -46,6 +49,7 @@ export const MediaUrlAndTypeFragmentDoc = gql`
   fragment MediaUrlAndType on ProductVariantMedium {
     url
     mediaType
+    description
   }
 `;
 export const ProductVariantsMediaOnlyFragmentDoc = gql`

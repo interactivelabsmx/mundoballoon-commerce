@@ -1,0 +1,5 @@
+@layer components {
+  .base-button {
+    @apply inline-flex items-center justify-center px-3 py-2 border border-transparent leading-4 rounded-md shadow-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+}
