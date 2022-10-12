@@ -682,7 +682,7 @@ export type Query = {
   sortOptions: Array<Scalars['String']>;
   userById?: Maybe<FirebaseUser>;
   userEventById?: Maybe<UserEvent>;
-  userEventByUserId: Array<UserEvent>;
+  userEvents: Array<UserEvent>;
   users?: Maybe<UsersConnection>;
   variantValues: Array<VariantValue>;
   variants: Array<Variant>;

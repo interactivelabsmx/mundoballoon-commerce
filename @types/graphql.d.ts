@@ -141,10 +141,10 @@ declare module '*/GetUserEventById.graphql' {
 }
     
 
-declare module '*/GetUserEventByUserId.graphql' {
+declare module '*/GetUserEvents.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const GetUserEventByUserId: DocumentNode;
+  export const GetUserEvents: DocumentNode;
 
   export default defaultDocument;
 }

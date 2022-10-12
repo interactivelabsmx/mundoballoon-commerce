@@ -6819,7 +6819,7 @@
             "deprecationReason": null
           },
           {
-            "name": "userEventByUserId",
+            "name": "userEvents",
             "description": null,
             "args": [],
             "type": {

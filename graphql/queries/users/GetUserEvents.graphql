@@ -1,5 +1,5 @@
-query GetUserEventByUserId {
-  userEventByUserId {
+query GetUserEvents {
+  userEvents {
     userEventId
     userId
     name

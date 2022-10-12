@@ -5,15 +5,14 @@ import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
-import { useGetUserEventByUserIdLazyQuery } from '@graphql/queries/users/GetUserEventByUserId.graphql';
+import { useGetUserEventsLazyQuery } from '@graphql/queries/users/GetUserEvents.graphql';
 import AddEvent from './AddEvent';
 import DeleteEvent from './DeleteEvent';
 import Details from './Details';
 
 const EventsCard = () => {
   const { t } = useTranslation('common');
-  const [loadGreeting, { loading, error, data }] =
-    useGetUserEventByUserIdLazyQuery();
+  const [loadGreeting, { loading, error, data }] = useGetUserEventsLazyQuery();
   const [DetailsOpen, setDetailsOpen] = useState(false);
   const openDetails = () => setDetailsOpen(true);
   const [DeleteOpen, setDeleteOpen] = useState(false);
@@ -23,7 +22,7 @@ const EventsCard = () => {
   }, [loadGreeting]);
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-  const { userEventByUserId } = data;
+  const { userEvents } = data;
   return (
     <>
       <div>
@@ -69,7 +68,7 @@ const EventsCard = () => {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-200 bg-white">
-                        {userEventByUserId.map((event) => (
+                        {userEvents.map((event) => (
                           <tr key={event.userEventId}>
                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                               <div className="flex items-center">
