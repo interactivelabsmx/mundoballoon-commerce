@@ -1,11 +1,10 @@
 import {
   ApolloClient,
-  ApolloLink,
+  HttpLink,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { createUploadLink } from 'apollo-upload-client';
 import merge from 'deepmerge';
 import isEqual from 'lodash.isequal';
 import { useMemo } from 'react';
@@ -51,10 +50,10 @@ function createApolloClient({
       },
     };
   });
-  const link = createUploadLink({
+  const link = new HttpLink({
     uri: graphQLUrl,
     credentials: 'same-origin',
-  }) as unknown as ApolloLink;
+  });
   const cache = new InMemoryCache({ typePolicies });
   return new ApolloClient({
     cache,
