@@ -71,7 +71,6 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
                     key={event.eventCartId}
                     className="flex py-8 text-sm sm:items-center"
                   >
-                    <img className="h-24 w-24 flex-none rounded-lg border border-gray-200 sm:h-32 sm:w-32" />
                     <div className="ml-4 grid flex-auto grid-cols-1 grid-rows-1 items-start gap-y-3 gap-x-5 sm:ml-6 sm:flex sm:items-center sm:gap-0">
                       <div className="row-end-1 flex-auto sm:pr-6">
                         <h3 className="font-medium text-gray-900">

@@ -1,4 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';
@@ -72,13 +73,12 @@ const EventsCard = () => {
                           <tr key={event.userEventId}>
                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                               <div className="flex items-center">
-                                <div className="h-10 w-10 flex-shrink-0">
-                                  <img
-                                    className="h-10 w-10 rounded-full"
-                                    src={
-                                      'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-                                    }
-                                    alt=""
+                                <div className="h-10 w-10 flex-shrink-0 relative">
+                                  <Image
+                                    layout="fill"
+                                    className="rounded-full"
+                                    src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Event Image"
                                   />
                                 </div>
                                 <div className="ml-4">
