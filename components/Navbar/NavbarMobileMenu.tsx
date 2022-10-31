@@ -1,7 +1,7 @@
 import { Dialog, Tab, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Dispatch, Fragment } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
@@ -99,14 +99,15 @@ const NavbarMobileMenu = ({
                                     className="object-center object-cover"
                                   />
                                 </div>
-                                <Link href={item.href}>
-                                  <a className="mt-6 block text-sm font-medium text-gray-900">
-                                    <span
-                                      className="absolute z-10 inset-0"
-                                      aria-hidden="true"
-                                    />
-                                    {item.name}
-                                  </a>
+                                <Link
+                                  href={item.href}
+                                  className="mt-6 block text-sm font-medium text-gray-900"
+                                >
+                                  <span
+                                    className="absolute z-10 inset-0"
+                                    aria-hidden="true"
+                                  />
+                                  {item.name}
                                 </Link>
                                 <p
                                   aria-hidden="true"

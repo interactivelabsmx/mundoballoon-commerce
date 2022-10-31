@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { useEffect } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
@@ -37,10 +37,10 @@ const QuickView = ({ productId }: IQuickView) => {
     <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
       <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
         <Image
+          fill
           src={media.url}
           alt={media.description || 'Product Description'}
           className="object-center object-cover"
-          fill
         />
       </div>
       <div className="sm:col-span-8 lg:col-span-7">

@@ -24,24 +24,25 @@ const ProductCardSimple = ({ product }: IProductCardSimple) => {
 
   return (
     <div>
-      <Link href={`products/detail/${product.productId}`}>
-        <a className="group text-sm">
-          <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <Image
-              layout="fill"
-              alt={product.name}
-              src={getFirstMedia(product).url}
-              className="w-full h-full object-center object-cover"
-            />
+      <Link
+        href={`products/detail/${product.productId}`}
+        className="group text-sm"
+      >
+        <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+          <Image
+            fill
+            alt={product.name}
+            src={getFirstMedia(product).url}
+            className="w-full h-full object-center object-cover"
+          />
+        </div>
+        <div className="mt-4 flex justify-between">
+          <div>
+            <h3 className="font-medium text-gray-900">{product.name}</h3>
+            <p className="text-gray-500 italic">{product.category?.name}</p>
           </div>
-          <div className="mt-4 flex justify-between">
-            <div>
-              <h3 className="font-medium text-gray-900">{product.name}</h3>
-              <p className="text-gray-500 italic">{product.category?.name}</p>
-            </div>
-            <p className="text-lg text-gray-900">${product.price}</p>
-          </div>
-        </a>
+          <p className="text-lg text-gray-900">${product.price}</p>
+        </div>
       </Link>
       <div className="mt-4 flex justify-between">
         <PrimaryTextButton onClick={openQuickView}>

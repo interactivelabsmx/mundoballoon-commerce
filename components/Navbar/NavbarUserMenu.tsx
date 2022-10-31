@@ -61,10 +61,11 @@ const NavbarUserMenu = () => {
                 <>
                   <Menu.Item>
                     {({ active }) => (
-                      <Link href="/profile">
-                        <a className={getNavbarUserMenuLinkStyle(active)}>
-                          {t('common:profile')}
-                        </a>
+                      <Link
+                        href="/profile"
+                        className={getNavbarUserMenuLinkStyle(active)}
+                      >
+                        {t('common:profile')}
                       </Link>
                     )}
                   </Menu.Item>
@@ -99,10 +100,11 @@ const NavbarUserMenu = () => {
                   <Menu.Item key={item.name}>
                     {({ active }) =>
                       item.href ? (
-                        <Link href={item.href || ''}>
-                          <a className={getNavbarUserMenuLinkStyle(active)}>
-                            {item.name}
-                          </a>
+                        <Link
+                          href={item.href || ''}
+                          className={getNavbarUserMenuLinkStyle(active)}
+                        >
+                          {item.name}
                         </Link>
                       ) : (
                         <button
