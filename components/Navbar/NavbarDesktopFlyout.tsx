@@ -72,20 +72,20 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                                 <div key={item.name} className="group relative">
                                   <div className="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                     <Image
-                                      layout="fill"
                                       src={item.imageSrc}
                                       alt={item.imageAlt}
                                       className="object-center object-cover"
                                     />
                                   </div>
-                                  <Link href={item.href}>
-                                    <a className="mt-4 block font-medium text-gray-900">
-                                      <span
-                                        className="absolute z-10 inset-0"
-                                        aria-hidden="true"
-                                      />
-                                      {item.name}
-                                    </a>
+                                  <Link
+                                    href={item.href}
+                                    className="mt-4 block font-medium text-gray-900"
+                                  >
+                                    <span
+                                      className="absolute z-10 inset-0"
+                                      aria-hidden="true"
+                                    />
+                                    {item.name}
                                   </Link>
                                   <p aria-hidden="true" className="mt-1">
                                     {t('shop_now')}
@@ -102,10 +102,12 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
             </Popover>
           ))}
           {linkOptions.map((page) => (
-            <Link href={page.href || ''} key={page.name}>
-              <a className="flex items-center text-sm font-semibold text-gray-700 hover:text-gray-800 tracking-wider">
-                {page.name}
-              </a>
+            <Link
+              href={page.href || ''}
+              key={page.name}
+              className="flex items-center text-sm font-semibold text-gray-700 hover:text-gray-800 tracking-wider"
+            >
+              {page.name}
             </Link>
           ))}
         </div>

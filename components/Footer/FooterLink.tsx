@@ -10,8 +10,11 @@ interface IFooterLink {
 
 const FooterLink = ({ option }: IFooterLink) => (
   <li className="text-sm">
-    <Link href={option.href || '/'}>
-      <a className="text-gray-500 hover:text-gray-600">{option.name}</a>
+    <Link
+      href={option.href || '/'}
+      className="text-gray-500 hover:text-gray-600"
+    >
+      {option.name}
     </Link>
   </li>
 );
