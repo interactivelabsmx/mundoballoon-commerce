@@ -5,7 +5,7 @@ import {
 } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
-import { Dispatch } from 'react';
+import { Dispatch, Suspense } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
@@ -57,7 +57,9 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                   <span className="sr-only">{t('search')}</span>
                   <MagnifyingGlassIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
-                <NavbarUserMenuLoader />
+                <Suspense fallback="...Loading">
+                  <NavbarUserMenuLoader />
+                </Suspense>
                 <div className="flex items-center lg:ml-8">
                   <span
                     className="mx-4 h-6 w-px bg-gray-400 lg:mx-6"

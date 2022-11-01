@@ -103,11 +103,13 @@ const NavbarMobileMenu = ({
                                   href={item.href}
                                   className="mt-6 block text-sm font-medium text-gray-900"
                                 >
-                                  <span
-                                    className="absolute z-10 inset-0"
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
+                                  <>
+                                    <span
+                                      className="absolute z-10 inset-0"
+                                      aria-hidden="true"
+                                    />
+                                    {item.name}
+                                  </>
                                 </Link>
                                 <p
                                   aria-hidden="true"
@@ -126,10 +128,11 @@ const NavbarMobileMenu = ({
               <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                 {linkOptions.map((page) => (
                   <div key={page.name} className="flow-root">
-                    <Link href={page.href || ''}>
-                      <a className="-m-2 p-2 block font-medium text-gray-900">
-                        {page.name}
-                      </a>
+                    <Link
+                      href={page.href || ''}
+                      className="-m-2 p-2 block font-medium text-gray-900"
+                    >
+                      {page.name}
                     </Link>
                   </div>
                 ))}
