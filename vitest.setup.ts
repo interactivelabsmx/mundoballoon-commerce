@@ -46,5 +46,5 @@ vi.mock('@firebase/auth', () => ({
   RecaptchaVerifier: vi.fn(),
 }));
 
-vi.mock('next/router', () => require('next-router-mock'));
-vi.mock('next/dist/client/router', () => require('next-router-mock'));
+// vi.mock('next/router', () => require('next-router-mock'));
+// vi.mock('next/dist/client/router', () => require('next-router-mock'));

@@ -72,6 +72,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                                 <div key={item.name} className="group relative">
                                   <div className="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                     <Image
+                                      fill
                                       src={item.imageSrc}
                                       alt={item.imageAlt}
                                       className="object-center object-cover"
@@ -81,11 +82,13 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                                     href={item.href}
                                     className="mt-4 block font-medium text-gray-900"
                                   >
-                                    <span
-                                      className="absolute z-10 inset-0"
-                                      aria-hidden="true"
-                                    />
-                                    {item.name}
+                                    <>
+                                      <span
+                                        className="absolute z-10 inset-0"
+                                        aria-hidden="true"
+                                      />
+                                      {item.name}
+                                    </>
                                   </Link>
                                   <p aria-hidden="true" className="mt-1">
                                     {t('shop_now')}

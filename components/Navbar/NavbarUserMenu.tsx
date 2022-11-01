@@ -7,7 +7,7 @@ import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, Suspense, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
@@ -22,9 +22,9 @@ import EventsCard from './Users/EventsCard';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
-
   { ssr: false }
 );
+
 const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
@@ -136,9 +136,11 @@ const NavbarUserMenu = () => {
           </Transition>
         </Menu>
         {!user && (
-          <Modal open={openAuth} setOpen={setOpenAuth}>
-            <FirebaseAuthLoader />
-          </Modal>
+          <Suspense fallback="...Loading">
+            <Modal open={openAuth} setOpen={setOpenAuth}>
+              <FirebaseAuthLoader />
+            </Modal>
+          </Suspense>
         )}
 
         <Modal open={eventsOpen} setOpen={setEventsOpen}>

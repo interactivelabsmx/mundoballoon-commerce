@@ -7,11 +7,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   plugins: [react()],
   test: {
-    silent: true,
-    globals: true,
-    mockReset: true,
     environment: 'jsdom',
     setupFiles: './vitest.setup.ts',
+    alias: [{ find: /^(.*)\.graphql$/, replacement: '$1.graphql.ts' }],
     coverage: {
       lines: 10,
       statements: 10,
