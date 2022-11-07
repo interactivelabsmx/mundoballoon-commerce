@@ -42,5 +42,9 @@
   "Creation_date": "Fecha de creación",
   "List_of_events": "Listado de los eventos que has creado",
   "Delete_event": "Eliminar evento",
-  "Are_you_sure": "¿Estas seguro que quieres eliminar este evento?"
+  "Are_you_sure": "¿Estas seguro que quieres eliminar este evento?",
+  "Choose_this": "Elegir este evento como predeterminado",
+  "Add_to ": "Agregar a ",
+  "Quantity": "Cantidad",
+  "Add_To_Bag": "Agregar al carrito"
 }

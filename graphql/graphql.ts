@@ -271,6 +271,8 @@ export type ListFilterInputTypeOfVariantValueFilterInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   addProductVariantReview?: Maybe<ProductVariant>;
+  addToCart: UserCart;
+  addToEvent: EventCartDetail;
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -296,6 +298,20 @@ export type Mutation = {
 
 export type MutationAddProductVariantReviewArgs = {
   input: ProductVariantReviewInput;
+};
+
+export type MutationAddToCartArgs = {
+  price: Scalars['Float'];
+  productVariantId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  sku: Scalars['String'];
+  userId: Scalars['String'];
+};
+
+export type MutationAddToEventArgs = {
+  productVariantId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  userEventId: Scalars['Int'];
 };
 
 export type MutationCreateProductArgs = {
