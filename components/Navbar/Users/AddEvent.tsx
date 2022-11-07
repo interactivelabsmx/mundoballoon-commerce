@@ -13,6 +13,7 @@ export const userEventSchema = yup
   .object({
     eventName: yup.string().required(),
     details: yup.string().required(),
+    sDefault: yup.string().required(),
   })
   .required();
 
@@ -38,6 +39,7 @@ const AddEvent = () => {
     if (error) return <SimpleTextError text={error.message} />;
     if (loading || !data) return <LoadingText />;
   };
+
   return (
     <>
       <div className="md:col-span-1">
@@ -80,6 +82,21 @@ const AddEvent = () => {
                           label={t('Details')}
                           type="text"
                           error={errors?.details?.message}
+                        />
+                      )}
+                    />
+                  </div>
+                  <div>
+                    <Controller
+                      name="sDefault"
+                      control={control}
+                      render={({ field }) => (
+                        <Input
+                          {...field}
+                          label={t('Choose_this')}
+                          type="checkbox"
+                          error={errors?.sDefault?.message}
+                          className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
                         />
                       )}
                     />

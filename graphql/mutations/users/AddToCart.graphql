@@ -1,0 +1,21 @@
+mutation AddToCart(
+  $userId: String!
+  $sku: String!
+  $quantity: Float!
+  $price: Float!
+  $productVariantId: Int!
+) {
+  addToCart(
+    userId: $userId
+    sku: $sku
+    quantity: $quantity
+    price: $price
+    productVariantId: $productVariantId
+  ) {
+    userId
+    sku
+    quantity
+    price
+    productVariantId
+  }
+}
