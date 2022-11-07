@@ -14,13 +14,13 @@ interface IQuickView {
 }
 
 const QuickView = ({ productId }: IQuickView) => {
+  const [variantIndex, setVariantIndex] = useState(0);
   const { t } = useTranslation('common');
   const [quantity, setQuantity] = useState(0);
   const handleChange = (event: any) => {
     setQuantity(event.target.value as number);
   };
 
-  const [variantIndex, setVariantIndex] = useState(0);
   const [loadProductQuickView, { loading, error, data }] =
     useGetProductQuickViewLazyQuery({
       variables: { productId },
