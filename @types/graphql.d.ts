@@ -82,6 +82,24 @@ export const VariantValueDisplay: DocumentNode;
 }
     
 
+declare module '*/AddToCart.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddToCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/AddToEvent.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddToEvent: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/CreateUser.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
