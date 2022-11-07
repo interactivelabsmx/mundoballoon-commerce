@@ -1,11 +1,12 @@
+import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/future/image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
-import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
 import { getFirstMedia } from '@lib/products/getFirstMedia';
 import VariantsDisplay from '../VariantsDisplay';
+import AddToEvent from './AddToEvent';
 import { useGetProductQuickViewLazyQuery } from './GetProductQuickView.graphql';
 
 interface IQuickView {
@@ -13,24 +14,25 @@ interface IQuickView {
 }
 
 const QuickView = ({ productId }: IQuickView) => {
+  const { t } = useTranslation('common');
+  const [quantity, setQuantity] = useState(0);
+  const handleChange = (event: any) => {
+    setQuantity(event.target.value as number);
+  };
+
   const [loadProductQuickView, { loading, error, data }] =
     useGetProductQuickViewLazyQuery({
       variables: { productId },
     });
-
   useEffect(() => {
     loadProductQuickView();
   }, [loadProductQuickView]);
-
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-
   const {
     productQuickView: { product, variants, variantValues },
   } = data;
-
   if (!product) return <SimpleTextError />;
-
   const media = getFirstMedia(product);
 
   return (
@@ -47,7 +49,6 @@ const QuickView = ({ productId }: IQuickView) => {
         <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
           {product?.name}
         </h2>
-
         <section aria-labelledby="information-heading" className="mt-2">
           <h3 id="information-heading" className="sr-only">
             Product information
@@ -62,14 +63,28 @@ const QuickView = ({ productId }: IQuickView) => {
           </div>
           <div className="mt-6">
             <h4 className="sr-only">Description</h4>
-            <p className="text-sm text-gray-700">{product?.description}</p>
+            <span>{product?.description}</span>
           </div>
+          <br />
+          <span>{t('Quantity')}: </span>
+          <select
+            onChange={handleChange}
+            className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+            value={quantity}
+          >
+            <option value={1} selected>
+              1
+            </option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+            <option value={6}>6</option>
+            <option value={7}>7</option>
+            <option value={8}>8</option>
+          </select>
         </section>
-
         <section aria-labelledby="options-heading" className="mt-10">
-          <h3 id="options-heading" className="sr-only">
-            Product options
-          </h3>
           <form>
             {variants && variantValues && (
               <VariantsDisplay
@@ -77,9 +92,7 @@ const QuickView = ({ productId }: IQuickView) => {
                 variantValues={variantValues}
               />
             )}
-            <div className="mt-6">
-              <PrimaryButton className="w-full py-4">Add to bag</PrimaryButton>
-            </div>
+            <AddToEvent />
           </form>
         </section>
       </div>

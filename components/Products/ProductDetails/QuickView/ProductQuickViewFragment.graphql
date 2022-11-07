@@ -21,6 +21,7 @@ fragment ProductQuickView on Product {
     name
   }
   variants {
+    productVariantId
     media {
       ...MediaUrlAndType
     }

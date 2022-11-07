@@ -28,6 +28,7 @@ export type ProductQuickViewFragment = {
   category?: { __typename?: 'ProductCategory'; name: string } | null;
   variants?: Array<{
     __typename?: 'ProductVariant';
+    productVariantId?: number | null;
     media?: Array<{
       __typename?: 'ProductVariantMedium';
       url: string;
@@ -63,6 +64,7 @@ export const ProductQuickViewFragmentDoc = gql`
       name
     }
     variants {
+      productVariantId
       media {
         ...MediaUrlAndType
       }

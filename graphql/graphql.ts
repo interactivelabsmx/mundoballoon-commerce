@@ -112,12 +112,14 @@ export type CountryCode = {
 
 export type EventCartDetail = {
   __typename?: 'EventCartDetail';
+  createdAt?: Maybe<Scalars['DateTime']>;
   eventCartId: Scalars['Int'];
   label: Scalars['String'];
   price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
   sku: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
   userEvent?: Maybe<UserEvent>;
   userEventId?: Maybe<Scalars['Int']>;
   variant?: Maybe<ProductVariant>;
@@ -125,6 +127,7 @@ export type EventCartDetail = {
 
 export type EventCartDetailFilterInput = {
   and?: InputMaybe<Array<EventCartDetailFilterInput>>;
+  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   eventCartId?: InputMaybe<ComparableInt32OperationFilterInput>;
   label?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<EventCartDetailFilterInput>>;
@@ -132,18 +135,21 @@ export type EventCartDetailFilterInput = {
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
   quantity?: InputMaybe<ComparableDoubleOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
+  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   userEvent?: InputMaybe<UserEventFilterInput>;
   userEventId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
   variant?: InputMaybe<ProductVariantFilterInput>;
 };
 
 export type EventCartDetailInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
   eventCartId: Scalars['Int'];
   label: Scalars['String'];
   price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
   sku: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
   userEvent?: InputMaybe<UserEventInput>;
   userEventId?: InputMaybe<Scalars['Int']>;
   variant?: InputMaybe<ProductVariantInput>;
@@ -234,6 +240,8 @@ export type ListFilterInputTypeOfVariantValueFilterInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   addProductVariantReview?: Maybe<ProductVariant>;
+  addToCart: UserCart;
+  addToEvent: EventCartDetail;
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -258,6 +266,20 @@ export type Mutation = {
 
 export type MutationAddProductVariantReviewArgs = {
   input: ProductVariantReviewInput;
+};
+
+export type MutationAddToCartArgs = {
+  price: Scalars['Float'];
+  productVariantId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  sku: Scalars['String'];
+  userId: Scalars['String'];
+};
+
+export type MutationAddToEventArgs = {
+  productVariantId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  userEventId: Scalars['Int'];
 };
 
 export type MutationCreateProductArgs = {
