@@ -3,15 +3,15 @@ import * as Apollo from '@apollo/client';
 import * as Types from '../../graphql';
 
 const defaultOptions = {} as const;
-export type AddToEventMutationVariables = Types.Exact<{
+export type AddToEventCartMutationVariables = Types.Exact<{
   productVariantId: Types.Scalars['Int'];
   userEventId: Types.Scalars['Int'];
   quantity: Types.Scalars['Float'];
 }>;
 
-export type AddToEventMutation = {
+export type AddToEventCartMutation = {
   __typename?: 'Mutation';
-  addToEvent: {
+  AddToEventCart: {
     __typename?: 'EventCartDetail';
     productVariantId: number;
     userEventId?: number | null;
@@ -19,13 +19,13 @@ export type AddToEventMutation = {
   };
 };
 
-export const AddToEventDocument = gql`
-  mutation AddToEvent(
+export const AddToEventCartDocument = gql`
+  mutation AddToEventCart(
     $productVariantId: Int!
     $userEventId: Int!
     $quantity: Float!
   ) {
-    addToEvent(
+    AddToEventCart(
       productVariantId: $productVariantId
       userEventId: $userEventId
       quantity: $quantity
@@ -36,23 +36,23 @@ export const AddToEventDocument = gql`
     }
   }
 `;
-export type AddToEventMutationFn = Apollo.MutationFunction<
-  AddToEventMutation,
-  AddToEventMutationVariables
+export type AddToEventCartMutationFn = Apollo.MutationFunction<
+  AddToEventCartMutation,
+  AddToEventCartMutationVariables
 >;
 
 /**
- * __useAddToEventMutation__
+ * __useAddToEventCartMutation__
  *
- * To run a mutation, you first call `useAddToEventMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useAddToEventMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useAddToEventCartMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddToEventCartMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [addToEventMutation, { data, loading, error }] = useAddToEventMutation({
+ * const [AddToEventCartMutation, { data, loading, error }] = useAddToEventCartMutation({
  *   variables: {
  *      productVariantId: // value for 'productVariantId'
  *      userEventId: // value for 'userEventId'
@@ -60,24 +60,24 @@ export type AddToEventMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useAddToEventMutation(
+export function useAddToEventCartMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    AddToEventMutation,
-    AddToEventMutationVariables
+    AddToEventCartMutation,
+    AddToEventCartMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<AddToEventMutation, AddToEventMutationVariables>(
-    AddToEventDocument,
-    options
-  );
+  return Apollo.useMutation<
+    AddToEventCartMutation,
+    AddToEventCartMutationVariables
+  >(AddToEventCartDocument, options);
 }
-export type AddToEventMutationHookResult = ReturnType<
-  typeof useAddToEventMutation
+export type AddToEventCartMutationHookResult = ReturnType<
+  typeof useAddToEventCartMutation
 >;
-export type AddToEventMutationResult =
-  Apollo.MutationResult<AddToEventMutation>;
-export type AddToEventMutationOptions = Apollo.BaseMutationOptions<
-  AddToEventMutation,
-  AddToEventMutationVariables
+export type AddToEventCartMutationResult =
+  Apollo.MutationResult<AddToEventCartMutation>;
+export type AddToEventCartMutationOptions = Apollo.BaseMutationOptions<
+  AddToEventCartMutation,
+  AddToEventCartMutationVariables
 >;

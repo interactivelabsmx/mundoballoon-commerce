@@ -2721,7 +2721,7 @@
             "deprecationReason": null
           },
           {
-            "name": "addToEvent",
+            "name": "AddToEventCart",
             "description": null,
             "args": [
               {

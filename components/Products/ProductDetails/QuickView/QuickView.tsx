@@ -6,7 +6,7 @@ import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
 import { getFirstMedia } from '@lib/products/getFirstMedia';
 import VariantsDisplay from '../VariantsDisplay';
-import AddToEvent from './AddToEvent';
+import AddToEventCart from './AddToEventCart';
 import { useGetProductQuickViewLazyQuery } from './GetProductQuickView.graphql';
 
 interface IQuickView {
@@ -92,7 +92,7 @@ const QuickView = ({ productId }: IQuickView) => {
                 variantValues={variantValues}
               />
             )}
-            <AddToEvent />
+            <AddToEventCart />
           </form>
         </section>
       </div>
