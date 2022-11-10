@@ -1,9 +1,9 @@
-mutation AddToEvent(
+mutation AddToEventCart(
   $productVariantId: Int!
   $userEventId: Int!
   $quantity: Float!
 ) {
-  addToEvent(
+  AddToEventCart(
     productVariantId: $productVariantId
     userEventId: $userEventId
     quantity: $quantity

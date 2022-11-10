@@ -9,7 +9,7 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
-import { useAddToEventMutation } from '@graphql/mutations/users/AddToEvent.graphql';
+import { useAddToEventCartMutation } from '@graphql/mutations/users/AddToEventCart.graphql';
 import { useGetUserEventsLazyQuery } from '@graphql/queries/users/GetUserEvents.graphql';
 import classNames from '@lib/utils/classnames';
 import { useAuth } from '@providers/AuthProvider';
@@ -26,7 +26,7 @@ export const userEventSchema = yup
   })
   .required();
 
-const AddToEvent = () => {
+const AddToEventCart = () => {
   const { t } = useTranslation('common');
   const { user } = useAuth();
   const [openAuth, setOpenAuth] = useState(false);
@@ -48,13 +48,13 @@ const AddToEvent = () => {
     if (error) return <SimpleTextError text={error.message} />;
     if (loading || !data) return <LoadingText />;
   };*/
-  const [addToEventMutation] = useAddToEventMutation();
+  const [AddToEventCartMutation] = useAddToEventCartMutation();
   const onclick = () => {
     setCookie(null, 'optionEvent', 'cart', {
       maxAge: 30 * 24 * 60 * 60,
       path: '/',
     });
-    addToEventMutation({
+    AddToEventCartMutation({
       variables: {
         productVariantId: 2,
         userEventId: selected,
@@ -175,4 +175,4 @@ const AddToEvent = () => {
     </>
   );
 };
-export default AddToEvent;
+export default AddToEventCart;
