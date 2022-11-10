@@ -28,10 +28,10 @@ declare module '*/AddToCart.graphql' {
 }
     
 
-declare module '*/AddToEvent.graphql' {
+declare module '*/AddToEventCart.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const AddToEvent: DocumentNode;
+  export const AddToEventCart: DocumentNode;
 
   export default defaultDocument;
 }

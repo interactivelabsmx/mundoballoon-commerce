@@ -241,7 +241,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addProductVariantReview?: Maybe<ProductVariant>;
   addToCart: UserCart;
-  addToEvent: EventCartDetail;
+  AddToEventCart: EventCartDetail;
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -276,7 +276,7 @@ export type MutationAddToCartArgs = {
   userId: Scalars['String'];
 };
 
-export type MutationAddToEventArgs = {
+export type MutationAddToEventCartArgs = {
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
   userEventId: Scalars['Int'];
