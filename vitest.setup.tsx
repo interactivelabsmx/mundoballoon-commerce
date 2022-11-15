@@ -46,5 +46,11 @@ vi.mock('@firebase/auth', () => ({
   RecaptchaVerifier: vi.fn(),
 }));
 
-// vi.mock('next/router', () => require('next-router-mock'));
-// vi.mock('next/dist/client/router', () => require('next-router-mock'));
+vi.mock('next/link', () => ({
+  __esModule: true,
+  default: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a {...props}>{props.children}</a>
+  ),
+}));
+
+vi.mock('next/router', () => require('next-router-mock'));
