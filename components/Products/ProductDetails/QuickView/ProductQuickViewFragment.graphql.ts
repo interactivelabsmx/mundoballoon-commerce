@@ -24,15 +24,15 @@ export type ProductQuickViewFragment = {
   productId?: number | null;
   name: string;
   description: string;
-  price: number;
+  price: any;
   category?: { __typename?: 'ProductCategory'; name: string } | null;
   variants?: Array<{
     __typename?: 'ProductVariant';
     media?: Array<{
       __typename?: 'ProductVariantMedium';
-      url: string;
+      url?: string | null;
       mediaType: string;
-      description?: string | null;
+      description: string;
     }> | null;
   }> | null;
 };

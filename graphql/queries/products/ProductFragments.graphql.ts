@@ -12,9 +12,9 @@ export type VariantFragment = {
   __typename?: 'ProductVariant';
   media?: Array<{
     __typename?: 'ProductVariantMedium';
-    url: string;
+    url?: string | null;
     mediaType: string;
-    description?: string | null;
+    description: string;
   }> | null;
   variantValues?: Array<{
     __typename?: 'ProductVariantValue';

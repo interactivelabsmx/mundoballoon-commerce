@@ -8,18 +8,18 @@ export type CategoryNameFragment = {
 
 export type MediaUrlAndTypeFragment = {
   __typename?: 'ProductVariantMedium';
-  url: string;
+  url?: string | null;
   mediaType: string;
-  description?: string | null;
+  description: string;
 };
 
 export type ProductVariantsMediaOnlyFragment = {
   __typename?: 'ProductVariant';
   media?: Array<{
     __typename?: 'ProductVariantMedium';
-    url: string;
+    url?: string | null;
     mediaType: string;
-    description?: string | null;
+    description: string;
   }> | null;
 };
 
@@ -27,15 +27,15 @@ export type ProductSimpleCardFragment = {
   __typename?: 'Product';
   productId?: number | null;
   name: string;
-  price: number;
+  price: any;
   category?: { __typename?: 'ProductCategory'; name: string } | null;
   variants?: Array<{
     __typename?: 'ProductVariant';
     media?: Array<{
       __typename?: 'ProductVariantMedium';
-      url: string;
+      url?: string | null;
       mediaType: string;
-      description?: string | null;
+      description: string;
     }> | null;
   }> | null;
 };

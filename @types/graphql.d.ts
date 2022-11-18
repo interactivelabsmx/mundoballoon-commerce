@@ -1,4 +1,13 @@
 
+declare module '*/GetProductDetails.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetProductDetails: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetProductQuickView.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

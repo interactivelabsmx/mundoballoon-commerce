@@ -1,0 +1,37 @@
+query GetProductDetails($productId: Int!) {
+  productById(productId: $productId) {
+    productId
+    name
+    description
+    price
+    category {
+      name
+    }
+    variants {
+      productVariantId
+      sku
+      price
+      media {
+        url
+        quality
+        name
+        description
+      }
+      variantValues {
+        variant {
+          name
+          uiRegistry {
+            componentId
+          }
+        }
+        variantValue {
+          value
+        }
+      }
+      reviews {
+        rating
+        comments
+      }
+    }
+  }
+}

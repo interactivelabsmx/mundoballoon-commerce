@@ -6,7 +6,7 @@ export type UserEventCardFragment = {
   userId: string;
   userEventId: number;
   name: string;
-  date?: any | null;
+  date: any;
   details: string;
 };
 

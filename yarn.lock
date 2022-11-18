@@ -2396,10 +2396,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.0.3.tgz#7db0adbea7b4aafdbe2a7745d2c7c048903876ad"
   integrity sha512-IAptmSqA7k4tQzaw2NAkoEjj3+Dz9ceuvlEHwYh770MMDL4V0ku2m+UHrmn5HUCEDHhgwwjg2nyf6728q2jr1w==
 
-"@ngneat/falso@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@ngneat/falso/-/falso-6.1.0.tgz#580717c9d13791ba8f708cce6021f6eaa7f1e787"
-  integrity sha512-eka5OxW65B1RphpLJ04Pd4PEkrmTab/Ut50K0OceAdM+O+MZA7YF9xo51uZgkxbhg8bJ5zEh5vucDRMSofcqsw==
+"@ngneat/falso@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/falso/-/falso-6.2.0.tgz#bceb55df81c45168c5189d9e2b12c45435a34e9d"
+  integrity sha512-TNoLCjsWp0DqhrnvdFTAbVo7zqT0VhoxVrhRDFBnB0opGaSQLXOj8fteZKi8SBMfB6VrqIQtK7LZa7Zs7N6IkQ==
   dependencies:
     seedrandom "3.0.5"
     uuid "8.3.2"
@@ -4861,10 +4861,10 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-firebase-admin@11.2.1:
-  version "11.2.1"
-  resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-11.2.1.tgz#8f7cb1a208011a0e96cddc209246522b7dde2c1e"
-  integrity sha512-Tz1GiZXjXAWyTFjzHXvj6KKoT45FraimYCQ1tIUkXXBKSJRCNb6utnQX14EEH/M1IzTM1dEbeMOiUc1RMil1qg==
+firebase-admin@11.3.0:
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-11.3.0.tgz#0c80a47d85471f6b988ecef7439a706aca052b88"
+  integrity sha512-8ENXUu9Lm6YTc5zzOqlF222M/KwsV/EDZ5UwwPPEU5XfCa1Ebj7K/SgLFdinjGu1NxkSnqu07UDpPhmAtW3b5w==
   dependencies:
     "@fastify/busboy" "^1.1.0"
     "@firebase/database-compat" "^0.2.6"

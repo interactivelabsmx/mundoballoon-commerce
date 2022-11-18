@@ -1,9 +1,11 @@
 import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { getDataFromTree } from '@apollo/client/react/ssr';
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { ComponentType } from 'react';
 import { getClient } from '@lib/apollo/apolloClient';
 import { APOLLO_STATE_PROP_NAME } from '@lib/utils/sharedConsts';
+import getNextRouterFromCtx from './getNextRouterFromCtx';
 
 type IGetServerSideProps<P> = (
   ctx: GetServerSidePropsContext
@@ -25,10 +27,13 @@ export default function getServerSidePreFetch<
     ctx: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
     const client = getClient();
+    const router = getNextRouterFromCtx(ctx);
     await getDataFromTree(
-      <ApolloProvider client={client}>
-        <Page />
-      </ApolloProvider>
+      <RouterContext.Provider value={router}>
+        <ApolloProvider client={client}>
+          <Page />
+        </ApolloProvider>
+      </RouterContext.Provider>
     );
     const initialState = client.cache.extract();
 

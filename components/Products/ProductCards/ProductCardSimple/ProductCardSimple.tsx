@@ -33,7 +33,7 @@ const ProductCardSimple = ({ product }: IProductCardSimple) => {
             <Image
               fill
               alt={product.name}
-              src={getFirstMedia(product).url}
+              src={getFirstMedia(product).url || ''}
               className="w-full h-full object-center object-cover"
             />
           </div>
