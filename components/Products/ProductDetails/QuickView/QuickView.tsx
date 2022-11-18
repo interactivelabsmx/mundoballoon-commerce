@@ -38,7 +38,7 @@ const QuickView = ({ productId }: IQuickView) => {
       <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
         <Image
           fill
-          src={media.url}
+          src={media.url || ''}
           alt={media.description || 'Product Description'}
           className="object-center object-cover"
         />
