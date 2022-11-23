@@ -12,26 +12,20 @@ query GetProductDetails($productId: Int!) {
       sku
       price
       media {
-        url
-        quality
-        name
-        description
-      }
-      variantValues {
-        variant {
-          name
-          uiRegistry {
-            componentId
-          }
-        }
-        variantValue {
-          value
-        }
+        ...MediaFragment
       }
       reviews {
         rating
         comments
       }
+    }
+  }
+  productVariants(productId: $productId) {
+    variants {
+      ...VariantDisplay
+    }
+    variantValues {
+      ...VariantValueDisplay
     }
   }
 }

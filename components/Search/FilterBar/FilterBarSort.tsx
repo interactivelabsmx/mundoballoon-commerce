@@ -7,7 +7,7 @@ import { Fragment } from 'react';
 import { useState } from 'react';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
 import { ProductSortInput, SortEnumType } from '@graphql/graphql';
-import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
+import type { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
 import classNames from '@lib/utils/classnames';
 import { FilterOpenChevronDesktop } from './FilterPopoverDesktop';
 

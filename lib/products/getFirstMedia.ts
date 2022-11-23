@@ -5,10 +5,11 @@ import {
 } from '@graphql/queries/products/ProductSimpleCardFragment.graphql';
 
 export const getFirstMedia = (
-  product: ProductSimpleCardFragment | ProductQuickViewFragment
+  product: ProductSimpleCardFragment | ProductQuickViewFragment,
+  variantIndex = 0
 ): MediaUrlAndTypeFragment => {
-  const firstVariant = product.variants && product.variants[0];
-  const media = firstVariant?.media && firstVariant.media[0];
+  const firstVariant = product.variants && product.variants[variantIndex];
+  const media = firstVariant?.media && firstVariant.media[variantIndex];
   return media?.url
     ? media
     : ({

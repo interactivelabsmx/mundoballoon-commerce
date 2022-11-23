@@ -1,0 +1,8 @@
+fragment MediaFragment on ProductVariantMedium {
+  productVariantMediaId
+  url
+  quality
+  name
+  description
+  mediaType
+}

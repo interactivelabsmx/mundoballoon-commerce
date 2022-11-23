@@ -1,0 +1,13 @@
+fragment VariantDisplay on Variant {
+  variantId
+  name
+  uiRegistry {
+    componentId
+  }
+}
+
+fragment VariantValueDisplay on VariantValue {
+  variantValueId
+  variantId
+  value
+}

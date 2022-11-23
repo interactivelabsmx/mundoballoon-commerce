@@ -6,7 +6,7 @@ import { Suspense, useState } from 'react';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import PrimaryLink from '@components/UI/links/PrimaryLink';
 import Modal from '@components/UI/modal/Modal';
-import { ProductSimpleCardFragment } from '@graphql/queries/products/ProductSimpleCardFragment.graphql';
+import type { ProductSimpleCardFragment } from '@graphql/queries/products/ProductSimpleCardFragment.graphql';
 import { getFirstMedia } from '@lib/products/getFirstMedia';
 
 const QuickViewLoader = dynamic(

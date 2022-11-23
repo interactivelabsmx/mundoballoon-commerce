@@ -7,7 +7,7 @@ import {
   getTransitionRightSlideInProps,
 } from '@components/UI/transitions/transitionPropsConstants';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
-import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
+import type { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
 import { IActiveFilter } from './FilterBar';
 import FilterPopoverMobile from './FilterPopoverMobile';
 

@@ -10,7 +10,7 @@ import {
   getTransitionFadeInLinearProps,
   getTransitionLeftSlideInProps,
 } from '@components/UI/transitions/transitionPropsConstants';
-import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import type { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import classNames from '@lib/utils/classnames';
 import hasFeaturedOptions from '@lib/utils/hasFeaturedOptions';
 
