@@ -1,21 +1,21 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import * as Types from '../../graphql';
+import * as Types from '../../../../graphql/graphql';
 
 const defaultOptions = {} as const;
 export type AddToEventCartMutationVariables = Types.Exact<{
   productVariantId: Types.Scalars['Int'];
   userEventId: Types.Scalars['Int'];
-  quantity: Types.Scalars['Float'];
+  quantity: Types.Scalars['Decimal'];
 }>;
 
 export type AddToEventCartMutation = {
   __typename?: 'Mutation';
-  AddToEventCart: {
+  addToEventCart: {
     __typename?: 'EventCartDetail';
     productVariantId: number;
     userEventId?: number | null;
-    quantity: number;
+    quantity: any;
   };
 };
 
@@ -23,9 +23,9 @@ export const AddToEventCartDocument = gql`
   mutation AddToEventCart(
     $productVariantId: Int!
     $userEventId: Int!
-    $quantity: Float!
+    $quantity: Decimal!
   ) {
-    AddToEventCart(
+    addToEventCart(
       productVariantId: $productVariantId
       userEventId: $userEventId
       quantity: $quantity
@@ -52,7 +52,7 @@ export type AddToEventCartMutationFn = Apollo.MutationFunction<
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [AddToEventCartMutation, { data, loading, error }] = useAddToEventCartMutation({
+ * const [addToEventCartMutation, { data, loading, error }] = useAddToEventCartMutation({
  *   variables: {
  *      productVariantId: // value for 'productVariantId'
  *      userEventId: // value for 'userEventId'

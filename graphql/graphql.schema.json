@@ -2635,7 +2635,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Float",
+                    "name": "Decimal",
                     "ofType": null
                   }
                 },
@@ -2667,7 +2667,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Float",
+                    "name": "Decimal",
                     "ofType": null
                   }
                 },
@@ -2721,7 +2721,7 @@
             "deprecationReason": null
           },
           {
-            "name": "AddToEventCart",
+            "name": "addToEventCart",
             "description": null,
             "args": [
               {
@@ -2748,7 +2748,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Float",
+                    "name": "Decimal",
                     "ofType": null
                   }
                 },
@@ -5004,69 +5004,6 @@
           }
         ],
         "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "ProductQuickView",
-        "description": null,
-        "fields": [
-          {
-            "name": "product",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Product",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "variantValues",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "VariantValue",
-                  "ofType": null
-                }
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "variants",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Variant",
-                  "ofType": null
-                }
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -7825,7 +7762,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "ProductQuickView",
+                "name": "Product",
                 "ofType": null
               }
             },

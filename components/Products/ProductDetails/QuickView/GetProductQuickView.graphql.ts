@@ -15,25 +15,22 @@ export type GetProductQuickViewQueryVariables = Types.Exact<{
 export type GetProductQuickViewQuery = {
   __typename?: 'Query';
   productQuickView: {
-    __typename?: 'ProductQuickView';
-    product?: {
-      __typename?: 'Product';
-      productId?: number | null;
-      name: string;
-      description: string;
-      price: any;
-      category?: { __typename?: 'ProductCategory'; name: string } | null;
-      variants?: Array<{
-        __typename?: 'ProductVariant';
-        productVariantId?: number | null;
-        media?: Array<{
-          __typename?: 'ProductVariantMedium';
-          url?: string | null;
-          mediaType: string;
-          description: string;
-        }> | null;
+    __typename?: 'Product';
+    productId?: number | null;
+    name: string;
+    description: string;
+    price: any;
+    category?: { __typename?: 'ProductCategory'; name: string } | null;
+    variants?: Array<{
+      __typename?: 'ProductVariant';
+      productVariantId?: number | null;
+      media?: Array<{
+        __typename?: 'ProductVariantMedium';
+        url?: string | null;
+        mediaType: string;
+        description: string;
       }> | null;
-    } | null;
+    }> | null;
   };
   productVariants: {
     __typename?: 'ProductVariants';
@@ -58,9 +55,7 @@ export type GetProductQuickViewQuery = {
 export const GetProductQuickViewDocument = gql`
   query GetProductQuickView($productId: Int!) {
     productQuickView(productId: $productId) {
-      product {
-        ...ProductQuickView
-      }
+      ...ProductQuickView
     }
     productVariants(productId: $productId) {
       variants {
