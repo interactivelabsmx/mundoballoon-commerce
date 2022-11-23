@@ -1,4 +1,22 @@
 
+declare module '*/AddToCart.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddToCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/AddToEventCart.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddToEventCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetProductDetails.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -40,24 +58,6 @@ declare module '*/ProductVariantsFragments.graphql' {
   const defaultDocument: DocumentNode;
   export const VariantDisplay: DocumentNode;
 export const VariantValueDisplay: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/AddToCart.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const AddToCart: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/AddToEventCart.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const AddToEventCart: DocumentNode;
 
   export default defaultDocument;
 }

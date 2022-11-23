@@ -1,9 +1,9 @@
 mutation AddToEventCart(
   $productVariantId: Int!
   $userEventId: Int!
-  $quantity: Float!
+  $quantity: Decimal!
 ) {
-  AddToEventCart(
+  addToEventCart(
     productVariantId: $productVariantId
     userEventId: $userEventId
     quantity: $quantity

@@ -272,7 +272,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addProductVariantReview?: Maybe<ProductVariant>;
   addToCart: UserCart;
-  AddToEventCart: EventCartDetail;
+  addToEventCart: EventCartDetail;
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -301,16 +301,16 @@ export type MutationAddProductVariantReviewArgs = {
 };
 
 export type MutationAddToCartArgs = {
-  price: Scalars['Float'];
+  price: Scalars['Decimal'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Float'];
+  quantity: Scalars['Decimal'];
   sku: Scalars['String'];
   userId: Scalars['String'];
 };
 
 export type MutationAddToEventCartArgs = {
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Float'];
+  quantity: Scalars['Decimal'];
   userEventId: Scalars['Int'];
 };
 
@@ -545,13 +545,6 @@ export type ProductInput = {
   productId?: InputMaybe<Scalars['Int']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   variants?: InputMaybe<Array<ProductVariantInput>>;
-};
-
-export type ProductQuickView = {
-  __typename?: 'ProductQuickView';
-  product?: Maybe<Product>;
-  variantValues?: Maybe<Array<VariantValue>>;
-  variants?: Maybe<Array<Variant>>;
 };
 
 export type ProductSortInput = {
@@ -799,7 +792,7 @@ export type Query = {
   navOptions: Array<NavOption>;
   productById?: Maybe<Product>;
   productCategories: Array<ProductCategory>;
-  productQuickView: ProductQuickView;
+  productQuickView: Product;
   productVariantById?: Maybe<ProductVariant>;
   productVariants: ProductVariants;
   productVariantsEntityById: Array<ProductVariantEntity>;

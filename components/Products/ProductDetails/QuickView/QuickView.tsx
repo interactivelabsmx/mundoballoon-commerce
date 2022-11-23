@@ -5,8 +5,8 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
 import { getFirstMedia } from '@lib/products/getFirstMedia';
+import AddToEventCart from '../AddToEventCart';
 import VariantsDisplay from '../VariantsDisplay';
-import AddToEventCart from './AddToEventCart';
 import { useGetProductQuickViewLazyQuery } from './GetProductQuickView.graphql';
 
 interface IQuickView {
@@ -31,7 +31,7 @@ const QuickView = ({ productId }: IQuickView) => {
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
   const {
-    productQuickView: { product },
+    productQuickView: product,
     productVariants: { variants, variantValues },
   } = data;
   if (!product) return <SimpleTextError />;
