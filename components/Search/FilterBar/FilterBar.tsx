@@ -3,7 +3,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
 import { ProductCategory, VariantValue } from '@graphql/graphql';
-import { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
+import type { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
 import FilterBarSort, { SortOption } from './FilterBarSort';
 import FilterDialogMobile from './FilterDialogMobile';
 import FilterPopoverDesktop from './FilterPopoverDesktop';

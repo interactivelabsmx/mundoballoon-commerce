@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import type { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import NavbarMobileMenu from './NavbarMobileMenu';
 import NavbarTop from './NavbarTop';
 

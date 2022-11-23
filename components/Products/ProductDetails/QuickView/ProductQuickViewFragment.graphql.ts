@@ -2,23 +2,6 @@ import { gql } from '@apollo/client';
 import * as Types from '../../../../graphql/graphql';
 import { MediaUrlAndTypeFragmentDoc } from '../../../../graphql/queries/products/ProductSimpleCardFragment.graphql';
 
-export type VariantDisplayFragment = {
-  __typename?: 'Variant';
-  variantId?: number | null;
-  name: string;
-  uiRegistry?: {
-    __typename?: 'UiRegistry';
-    componentId?: string | null;
-  } | null;
-};
-
-export type VariantValueDisplayFragment = {
-  __typename?: 'VariantValue';
-  variantValueId?: number | null;
-  variantId: number;
-  value: string;
-};
-
 export type ProductQuickViewFragment = {
   __typename?: 'Product';
   productId?: number | null;
@@ -37,22 +20,6 @@ export type ProductQuickViewFragment = {
   }> | null;
 };
 
-export const VariantDisplayFragmentDoc = gql`
-  fragment VariantDisplay on Variant {
-    variantId
-    name
-    uiRegistry {
-      componentId
-    }
-  }
-`;
-export const VariantValueDisplayFragmentDoc = gql`
-  fragment VariantValueDisplay on VariantValue {
-    variantValueId
-    variantId
-    value
-  }
-`;
 export const ProductQuickViewFragmentDoc = gql`
   fragment ProductQuickView on Product {
     productId

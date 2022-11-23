@@ -1,8 +1,8 @@
 import { Dispatch } from 'react';
-import {
+import type {
   VariantDisplayFragment,
   VariantValueDisplayFragment,
-} from '../QuickView/ProductQuickViewFragment.graphql';
+} from '@graphql/fragments/ProductVariantsFragments.graphql';
 import VariantComponent from './VariantComponent';
 
 export interface IVariantValueDisplay {
@@ -14,6 +14,7 @@ export interface IVariantValueDisplay {
 interface IVariantsDisplay {
   variants: VariantDisplayFragment[];
   variantValues: VariantValueDisplayFragment[];
+  setVariantIndex: Dispatch<number>;
 }
 
 const VariantsDisplay = ({ variants, variantValues }: IVariantsDisplay) => (

@@ -3,6 +3,8 @@ query GetProductQuickView($productId: Int!) {
     product {
       ...ProductQuickView
     }
+  }
+  productVariants(productId: $productId) {
     variants {
       ...VariantDisplay
     }

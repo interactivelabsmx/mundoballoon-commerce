@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
@@ -13,6 +13,7 @@ interface IQuickView {
 }
 
 const QuickView = ({ productId }: IQuickView) => {
+  const [variantIndex, setVariantIndex] = useState(0);
   const [loadProductQuickView, { loading, error, data }] =
     useGetProductQuickViewLazyQuery({
       variables: { productId },
@@ -26,12 +27,13 @@ const QuickView = ({ productId }: IQuickView) => {
   if (loading || !data) return <LoadingText />;
 
   const {
-    productQuickView: { product, variants, variantValues },
+    productQuickView: { product },
+    productVariants: { variants, variantValues },
   } = data;
 
   if (!product) return <SimpleTextError />;
 
-  const media = getFirstMedia(product);
+  const media = getFirstMedia(product, variantIndex);
 
   return (
     <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
@@ -44,9 +46,9 @@ const QuickView = ({ productId }: IQuickView) => {
         />
       </div>
       <div className="sm:col-span-8 lg:col-span-7">
-        <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
+        <h1 className="text-2xl font-bold text-gray-900 sm:pr-12">
           {product?.name}
-        </h2>
+        </h1>
 
         <section aria-labelledby="information-heading" className="mt-2">
           <h3 id="information-heading" className="sr-only">
@@ -75,6 +77,7 @@ const QuickView = ({ productId }: IQuickView) => {
               <VariantsDisplay
                 variants={variants}
                 variantValues={variantValues}
+                setVariantIndex={setVariantIndex}
               />
             )}
             <div className="mt-6">

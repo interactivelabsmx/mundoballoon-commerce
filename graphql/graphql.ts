@@ -749,6 +749,12 @@ export type ProductVariantValueInput = {
   variantValueId: Scalars['Int'];
 };
 
+export type ProductVariants = {
+  __typename?: 'ProductVariants';
+  variantValues?: Maybe<Array<VariantValue>>;
+  variants?: Maybe<Array<Variant>>;
+};
+
 /** A connection to a list of items. */
 export type ProductsEntityConnection = {
   __typename?: 'ProductsEntityConnection';
@@ -779,6 +785,7 @@ export type Query = {
   productCategories: Array<ProductCategory>;
   productQuickView: ProductQuickView;
   productVariantById?: Maybe<ProductVariant>;
+  productVariants: ProductVariants;
   productVariantsEntityById: Array<ProductVariantEntity>;
   productsEntity?: Maybe<ProductsEntityConnection>;
   searchProducts?: Maybe<SearchProductsConnection>;
@@ -807,6 +814,10 @@ export type QueryProductQuickViewArgs = {
 
 export type QueryProductVariantByIdArgs = {
   productVariantId: Scalars['Int'];
+};
+
+export type QueryProductVariantsArgs = {
+  productId: Scalars['Int'];
 };
 
 export type QueryProductVariantsEntityByIdArgs = {

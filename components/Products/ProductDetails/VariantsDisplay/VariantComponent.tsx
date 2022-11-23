@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import {
+import type {
   VariantDisplayFragment,
   VariantValueDisplayFragment,
-} from '../QuickView/ProductQuickViewFragment.graphql';
+} from '@graphql/fragments/ProductVariantsFragments.graphql';
 import VariantComponentRegistry, {
   VariantComponentIds,
 } from './VariantComponentsRegistry';

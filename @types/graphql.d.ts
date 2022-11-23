@@ -20,9 +20,26 @@ declare module '*/GetProductQuickView.graphql' {
 declare module '*/ProductQuickViewFragment.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
+  export const ProductQuickView: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/MediaFragment.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MediaFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/ProductVariantsFragments.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
   export const VariantDisplay: DocumentNode;
 export const VariantValueDisplay: DocumentNode;
-export const ProductQuickView: DocumentNode;
 
   export default defaultDocument;
 }

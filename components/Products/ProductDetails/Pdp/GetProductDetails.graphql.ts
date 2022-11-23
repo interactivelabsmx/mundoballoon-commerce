@@ -1,5 +1,10 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+import { MediaFragmentFragmentDoc } from '../../../../graphql/fragments/MediaFragment.graphql';
+import {
+  VariantDisplayFragmentDoc,
+  VariantValueDisplayFragmentDoc,
+} from '../../../../graphql/fragments/ProductVariantsFragments.graphql';
 import * as Types from '../../../../graphql/graphql';
 
 const defaultOptions = {} as const;
@@ -23,22 +28,12 @@ export type GetProductDetailsQuery = {
       price: any;
       media?: Array<{
         __typename?: 'ProductVariantMedium';
+        productVariantMediaId?: number | null;
         url?: string | null;
         quality: string;
         name: string;
         description: string;
-      }> | null;
-      variantValues?: Array<{
-        __typename?: 'ProductVariantValue';
-        variant?: {
-          __typename?: 'Variant';
-          name: string;
-          uiRegistry?: {
-            __typename?: 'UiRegistry';
-            componentId?: string | null;
-          } | null;
-        } | null;
-        variantValue?: { __typename?: 'VariantValue'; value: string } | null;
+        mediaType: string;
       }> | null;
       reviews?: Array<{
         __typename?: 'ProductVariantReview';
@@ -47,6 +42,24 @@ export type GetProductDetailsQuery = {
       }> | null;
     }> | null;
   } | null;
+  productVariants: {
+    __typename?: 'ProductVariants';
+    variants?: Array<{
+      __typename?: 'Variant';
+      variantId?: number | null;
+      name: string;
+      uiRegistry?: {
+        __typename?: 'UiRegistry';
+        componentId?: string | null;
+      } | null;
+    }> | null;
+    variantValues?: Array<{
+      __typename?: 'VariantValue';
+      variantValueId?: number | null;
+      variantId: number;
+      value: string;
+    }> | null;
+  };
 };
 
 export const GetProductDetailsDocument = gql`
@@ -64,21 +77,7 @@ export const GetProductDetailsDocument = gql`
         sku
         price
         media {
-          url
-          quality
-          name
-          description
-        }
-        variantValues {
-          variant {
-            name
-            uiRegistry {
-              componentId
-            }
-          }
-          variantValue {
-            value
-          }
+          ...MediaFragment
         }
         reviews {
           rating
@@ -86,7 +85,18 @@ export const GetProductDetailsDocument = gql`
         }
       }
     }
+    productVariants(productId: $productId) {
+      variants {
+        ...VariantDisplay
+      }
+      variantValues {
+        ...VariantValueDisplay
+      }
+    }
   }
+  ${MediaFragmentFragmentDoc}
+  ${VariantDisplayFragmentDoc}
+  ${VariantValueDisplayFragmentDoc}
 `;
 
 /**
