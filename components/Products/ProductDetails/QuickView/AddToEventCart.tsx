@@ -33,13 +33,13 @@ const AddToEventCart = () => {
   const onClick = () => setOpenAuth(true);
   const [selected, setSelected] = useState(0);
 
-  /*const [addToCartMutation] = useAddToCartMutation();*/
-  /* const onSubmit = () => {
+  /*const [addToCartMutation] = useAddToCartMutation();
+   const onSubmit = () => {
     addToCartMutation({
       variables: {
         userId: user?.uid,
         sku: "A1A0001",
-        quantity: quantity,
+        quantity: 1,
         price: 3.50,
         productVariantId: 2
       },
@@ -47,7 +47,7 @@ const AddToEventCart = () => {
     );
     if (error) return <SimpleTextError text={error.message} />;
     if (loading || !data) return <LoadingText />;
-  };*/
+  }*/
   const [AddToEventCartMutation] = useAddToEventCartMutation();
   const onclick = () => {
     setCookie(null, 'optionEvent', 'cart', {
@@ -90,6 +90,7 @@ const AddToEventCart = () => {
                             <PrimaryButton
                               className="inline-flex items-center rounded-l-md border border-transparent bg-indigo-600 py-2 pl-3 pr-4 text-white shadow-sm"
                               type="button"
+                              onClick={onclick}
                             >
                               {t('Add_To_Bag')}
                             </PrimaryButton>

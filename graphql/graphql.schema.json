@@ -2423,7 +2423,7 @@
             "deprecationReason": null
           },
           {
-            "name": "AddToEventCart",
+            "name": "addToEventCart",
             "description": null,
             "args": [
               {
@@ -7018,6 +7018,35 @@
             "type": {
               "kind": "OBJECT",
               "name": "FirebaseUser",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "userCart",
+            "description": null,
+            "args": [
+              {
+                "name": "userId",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "UserCart",
               "ofType": null
             },
             "isDeprecated": false,

@@ -5,10 +5,12 @@ import {
 } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
-import { Dispatch } from 'react';
+import { Dispatch, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
+import Modal from '@components/UI/modal/Modal';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import ModalCart from '../Cart/ModalCart';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
 
@@ -16,7 +18,6 @@ const NavbarUserMenuLoader = dynamic(
   () => import('@components/Navbar/NavbarUserMenu'),
   { ssr: false }
 );
-
 interface INavbarTop {
   setOpen: Dispatch<boolean>;
   navOptions: NavItemFragment[];
@@ -26,6 +27,8 @@ interface INavbarTop {
 
 const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
   const { t } = useTranslation('common');
+  const [cartOpen, setCartOpen] = useState(false);
+  const openCart = () => setCartOpen(true);
   return (
     <header className="relative z-20">
       <nav aria-label="Top">
@@ -68,6 +71,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                       <ShoppingCartIcon
                         className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                         aria-hidden="true"
+                        onClick={openCart}
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                         0
@@ -78,6 +82,9 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                 </div>
               </div>
             </div>
+            <Modal open={cartOpen} setOpen={setCartOpen}>
+              <ModalCart />
+            </Modal>
           </div>
         </div>
       </nav>
