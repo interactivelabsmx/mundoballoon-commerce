@@ -799,6 +799,7 @@ export type Query = {
   searchProducts?: Maybe<SearchProductsConnection>;
   sortOptions: Array<Scalars['String']>;
   userById?: Maybe<FirebaseUser>;
+  userCart?: Maybe<UserCart>;
   userEventById?: Maybe<UserEvent>;
   userEvents: Array<UserEvent>;
   users?: Maybe<UsersConnection>;
@@ -850,6 +851,10 @@ export type QuerySearchProductsArgs = {
 };
 
 export type QueryUserByIdArgs = {
+  userId: Scalars['String'];
+};
+
+export type QueryUserCartArgs = {
   userId: Scalars['String'];
 };
 
