@@ -1,11 +1,11 @@
 mutation AddToEventCart(
-  $productVariantId: Int!
   $userEventId: Int!
+  $productVariantId: Int!
   $quantity: Float!
 ) {
-  AddToEventCart(
-    productVariantId: $productVariantId
+  addToEventCart(
     userEventId: $userEventId
+    productVariantId: $productVariantId
     quantity: $quantity
   ) {
     productVariantId
