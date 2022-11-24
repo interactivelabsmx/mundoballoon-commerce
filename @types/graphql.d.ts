@@ -195,6 +195,15 @@ export const NavItem: DocumentNode;
 }
     
 
+declare module '*/GetUserCart.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserEventById.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

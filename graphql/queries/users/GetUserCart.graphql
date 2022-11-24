@@ -1,0 +1,17 @@
+query GetUserCart($userId: String!) {
+  userCart(userId: $userId) {
+    userId
+    sku
+    quantity
+    productVariantId
+    price
+    variant {
+      description
+      name
+      price
+      productId
+      productVariantId
+      sku
+    }
+  }
+}
