@@ -1,11 +1,9 @@
-import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import { useEffect } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useGetUserCartLazyQuery } from '@graphql/queries/users/GetUserCart.graphql';
-import { useAuth } from '@providers/AuthProvider';
 
 const policies = [
   {
@@ -39,17 +37,14 @@ const policies = [
 ];
 
 export default function Example() {
-  /*const [setOpen] = useState(false);*/
-  const { user } = useAuth();
   const { t } = useTranslation('common');
-  const [loadGreeting, { loading, error, data }] = useGetUserCartLazyQuery({
-    variables: { userId: user?.uid },
-  });
+  const [loadGreeting, { loading, error, data }] = useGetUserCartLazyQuery();
   useEffect(() => {
     loadGreeting();
   }, [loadGreeting]);
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
+  const { userCart } = data;
 
   return (
     <div className="bg-white">
@@ -61,24 +56,7 @@ export default function Example() {
         >
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center justify-between">
-              <div className="flex flex-1 items-center lg:hidden">
-                <button
-                  type="button"
-                  className="-ml-2 rounded-md bg-white p-2 text-gray-400"
-                >
-                  {/*onClick={() => setOpen(true)}*/}
-                  <span className="sr-only">Open menu</span>
-                  <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
-                <a
-                  href="#"
-                  className="ml-2 p-2 text-gray-400 hover:text-gray-500"
-                >
-                  <span className="sr-only">Search</span>
-                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              </div>
+              <div className="flex flex-1 items-center lg:hidden"></div>
               <a href="#" className="flex">
                 <span className="sr-only">Mundo Ballon</span>
                 <img
@@ -100,9 +78,50 @@ export default function Example() {
 
           <form className="mt-12">
             <section aria-labelledby="cart-heading">
-              <h2 id="cart-heading" className="sr-only">
-                Items in your shopping cart
-              </h2>
+              <ul
+                role="list"
+                className="divide-y divide-gray-200 border-t border-b border-gray-200"
+              >
+                {userCart.map((event) => (
+                  <li key={event.productVariantId} className="flex py-6">
+                    <div className="flex-shrink-0">
+                      <img
+                        src="https://images.unsplash.com/photo-1572355286138-8dae8e7ba20d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+                        className="h-24 w-24 rounded-md object-cover object-center sm:h-32 sm:w-32"
+                      />
+                    </div>
+
+                    <div className="ml-4 flex flex-1 flex-col sm:ml-6">
+                      <div>
+                        <div className="flex justify-between">
+                          <h4 className="text-sm">
+                            <a className="font-medium text-gray-700 hover:text-gray-800">
+                              {event.variant?.name}
+                            </a>
+                          </h4>
+                          <p className="ml-4 text-sm font-medium text-gray-900">
+                            ${event.variant?.price}
+                          </p>
+                        </div>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {event.variant?.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-4 flex flex-1 items-end justify-between">
+                        <div className="ml-4">
+                          <button
+                            type="button"
+                            className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                          >
+                            <span>{t('Remove')}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </section>
             <section aria-labelledby="summary-heading" className="mt-10">
               <h2 id="summary-heading" className="sr-only">
@@ -121,7 +140,7 @@ export default function Example() {
                   </div>
                 </dl>
                 <p className="mt-1 text-sm text-gray-500">
-                  Shipping and taxes will be calculated at checkout.
+                  {t('Shipping_And_Taxes')}.
                 </p>
               </div>
 
@@ -134,7 +153,7 @@ export default function Example() {
                     type="button"
                     className="w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                   >
-                    Checkout
+                    {t('Checkout')}
                   </PrimaryButton>
                 </a>
               </div>
@@ -145,10 +164,6 @@ export default function Example() {
           aria-labelledby="policies-heading"
           className="border-t border-gray-200 bg-gray-50"
         >
-          <h2 id="policies-heading" className="sr-only">
-            Our policies
-          </h2>
-
           <div className="mx-auto max-w-7xl py-24 px-4 sm:px-6 sm:py-32 lg:px-8">
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-0">
               {policies.map((policy) => (
