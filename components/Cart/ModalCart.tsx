@@ -36,7 +36,7 @@ const policies = [
   },
 ];
 
-export default function Example() {
+const ModalCart = () => {
   const { t } = useTranslation('common');
   const [loadGreeting, { loading, error, data }] = useGetUserCartLazyQuery();
   useEffect(() => {
@@ -209,4 +209,5 @@ export default function Example() {
       </footer>
     </div>
   );
-}
+};
+export default ModalCart;
