@@ -1,0 +1,5 @@
+fragment UserEventSelect on UserEvent {
+  userEventId
+  name
+  details
+}

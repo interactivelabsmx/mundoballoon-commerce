@@ -1,18 +1,15 @@
 mutation AddToCart(
-  $userId: String!
   $sku: String!
   $quantity: Decimal!
   $price: Decimal!
   $productVariantId: Int!
 ) {
   addToCart(
-    userId: $userId
     sku: $sku
     quantity: $quantity
     price: $price
     productVariantId: $productVariantId
   ) {
-    userId
     sku
     quantity
     price

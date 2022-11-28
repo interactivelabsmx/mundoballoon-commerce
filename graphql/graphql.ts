@@ -305,7 +305,6 @@ export type MutationAddToCartArgs = {
   productVariantId: Scalars['Int'];
   quantity: Scalars['Decimal'];
   sku: Scalars['String'];
-  userId: Scalars['String'];
 };
 
 export type MutationAddToEventCartArgs = {

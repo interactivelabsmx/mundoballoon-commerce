@@ -17,6 +17,24 @@ declare module '*/AddToEventCart.graphql' {
 }
     
 
+declare module '*/GetUserEventsSelect.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserEventsSelect: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/UserEventSelectFragment.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const UserEventSelect: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetProductDetails.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -38,7 +56,8 @@ declare module '*/GetProductQuickView.graphql' {
 declare module '*/ProductQuickViewFragment.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const ProductQuickView: DocumentNode;
+  export const ProductVariantQuickview: DocumentNode;
+export const ProductQuickView: DocumentNode;
 
   export default defaultDocument;
 }

@@ -1,6 +1,6 @@
-import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import PrimarySelectMenu from '@components/UI/SelectMenus/PrimarySelectMenu';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
@@ -13,14 +13,21 @@ interface IQuickView {
   productId: number;
 }
 
+const publishingOptions = [
+  {
+    title: 'Published',
+    description: 'This job posting can be viewed by anyone who has the link.',
+    current: true,
+  },
+  {
+    title: 'Draft',
+    description: 'This job posting will no longer be publicly accessible.',
+    current: false,
+  },
+];
+
 const QuickView = ({ productId }: IQuickView) => {
   const [variantIndex, setVariantIndex] = useState(0);
-  const { t } = useTranslation('common');
-  const [quantity, setQuantity] = useState(0);
-  const handleChange = (event: any) => {
-    setQuantity(event.target.value as number);
-  };
-
   const [loadProductQuickView, { loading, error, data }] =
     useGetProductQuickViewLazyQuery({
       variables: { productId },
@@ -37,6 +44,8 @@ const QuickView = ({ productId }: IQuickView) => {
   if (!product) return <SimpleTextError />;
 
   const media = getFirstMedia(product, variantIndex);
+
+  const productVariant = product.variants && product.variants[variantIndex];
 
   return (
     <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
@@ -70,35 +79,22 @@ const QuickView = ({ productId }: IQuickView) => {
             <span>{product?.description}</span>
           </div>
           <br />
-          <span>{t('Quantity')}: </span>
-          <select
-            onChange={handleChange}
-            className="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-            value={quantity}
-          >
-            <option value={1} selected>
-              1
-            </option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-            <option value={6}>6</option>
-            <option value={7}>7</option>
-            <option value={8}>8</option>
-          </select>
         </section>
         <section aria-labelledby="options-heading" className="mt-10">
-          <form>
-            {variants && variantValues && (
-              <VariantsDisplay
-                variants={variants}
-                variantValues={variantValues}
-                setVariantIndex={setVariantIndex}
-              />
-            )}
-            <AddToEventCart />
-          </form>
+          {variants && variantValues && (
+            <VariantsDisplay
+              variants={variants}
+              variantValues={variantValues}
+              setVariantIndex={setVariantIndex}
+            />
+          )}
+          {productVariant && <AddToEventCart productVariant={productVariant} />}
+          <PrimarySelectMenu
+            options={publishingOptions}
+            label="Publising Option"
+            title="title"
+            description="description"
+          />
         </section>
       </div>
     </div>

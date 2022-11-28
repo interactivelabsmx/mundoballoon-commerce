@@ -2,6 +2,21 @@ import { gql } from '@apollo/client';
 import * as Types from '../../../../graphql/graphql';
 import { MediaUrlAndTypeFragmentDoc } from '../../../../graphql/queries/products/ProductSimpleCardFragment.graphql';
 
+export type ProductVariantQuickviewFragment = {
+  __typename?: 'ProductVariant';
+  productVariantId?: number | null;
+  sku: string;
+  price: any;
+  name: string;
+  description: string;
+  media?: Array<{
+    __typename?: 'ProductVariantMedium';
+    url?: string | null;
+    mediaType: string;
+    description: string;
+  }> | null;
+};
+
 export type ProductQuickViewFragment = {
   __typename?: 'Product';
   productId?: number | null;
@@ -12,6 +27,10 @@ export type ProductQuickViewFragment = {
   variants?: Array<{
     __typename?: 'ProductVariant';
     productVariantId?: number | null;
+    sku: string;
+    price: any;
+    name: string;
+    description: string;
     media?: Array<{
       __typename?: 'ProductVariantMedium';
       url?: string | null;
@@ -21,6 +40,19 @@ export type ProductQuickViewFragment = {
   }> | null;
 };
 
+export const ProductVariantQuickviewFragmentDoc = gql`
+  fragment ProductVariantQuickview on ProductVariant {
+    productVariantId
+    sku
+    price
+    name
+    description
+    media {
+      ...MediaUrlAndType
+    }
+  }
+  ${MediaUrlAndTypeFragmentDoc}
+`;
 export const ProductQuickViewFragmentDoc = gql`
   fragment ProductQuickView on Product {
     productId
@@ -31,11 +63,8 @@ export const ProductQuickViewFragmentDoc = gql`
       name
     }
     variants {
-      productVariantId
-      media {
-        ...MediaUrlAndType
-      }
+      ...ProductVariantQuickview
     }
   }
-  ${MediaUrlAndTypeFragmentDoc}
+  ${ProductVariantQuickviewFragmentDoc}
 `;
