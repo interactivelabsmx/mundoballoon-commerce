@@ -24,6 +24,10 @@ export type GetProductQuickViewQuery = {
     variants?: Array<{
       __typename?: 'ProductVariant';
       productVariantId?: number | null;
+      sku: string;
+      price: any;
+      name: string;
+      description: string;
       media?: Array<{
         __typename?: 'ProductVariantMedium';
         url?: string | null;

@@ -1,5 +1,4 @@
 fragment UserEventCard on UserEvent {
-  userId
   userEventId
   name
   date

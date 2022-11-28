@@ -4,7 +4,6 @@ import * as Types from '../../../../graphql/graphql';
 
 const defaultOptions = {} as const;
 export type AddToCartMutationVariables = Types.Exact<{
-  userId: Types.Scalars['String'];
   sku: Types.Scalars['String'];
   quantity: Types.Scalars['Decimal'];
   price: Types.Scalars['Decimal'];
@@ -15,7 +14,6 @@ export type AddToCartMutation = {
   __typename?: 'Mutation';
   addToCart: {
     __typename?: 'UserCart';
-    userId: string;
     sku: string;
     quantity: any;
     price: any;
@@ -25,20 +23,17 @@ export type AddToCartMutation = {
 
 export const AddToCartDocument = gql`
   mutation AddToCart(
-    $userId: String!
     $sku: String!
     $quantity: Decimal!
     $price: Decimal!
     $productVariantId: Int!
   ) {
     addToCart(
-      userId: $userId
       sku: $sku
       quantity: $quantity
       price: $price
       productVariantId: $productVariantId
     ) {
-      userId
       sku
       quantity
       price
@@ -64,7 +59,6 @@ export type AddToCartMutationFn = Apollo.MutationFunction<
  * @example
  * const [addToCartMutation, { data, loading, error }] = useAddToCartMutation({
  *   variables: {
- *      userId: // value for 'userId'
  *      sku: // value for 'sku'
  *      quantity: // value for 'quantity'
  *      price: // value for 'price'
