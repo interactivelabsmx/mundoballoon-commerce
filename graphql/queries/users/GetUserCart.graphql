@@ -1,5 +1,5 @@
-query GetUserCart($userId: String!) {
-  userCart(userId: $userId) {
+query GetUserCart {
+  userCart {
     userId
     sku
     quantity

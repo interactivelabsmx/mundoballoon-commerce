@@ -4,7 +4,7 @@ import * as Types from '../../graphql';
 
 const defaultOptions = {} as const;
 export type AddToCartMutationVariables = Types.Exact<{
-  userId: Types.Scalars['String'] | undefined;
+  userId: Types.Scalars['String'];
   sku: Types.Scalars['String'];
   quantity: Types.Scalars['Float'];
   price: Types.Scalars['Float'];
