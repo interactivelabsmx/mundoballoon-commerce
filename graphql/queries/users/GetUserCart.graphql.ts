@@ -3,13 +3,11 @@ import * as Apollo from '@apollo/client';
 import * as Types from '../../graphql';
 
 const defaultOptions = {} as const;
-export type GetUserCartQueryVariables = Types.Exact<{
-  userId: Types.Scalars['String'] | undefined;
-}>;
+export type GetUserCartQueryVariables = Types.Exact<{ [key: string]: never }>;
 
 export type GetUserCartQuery = {
   __typename?: 'Query';
-  userCart?: {
+  userCart: Array<{
     __typename?: 'UserCart';
     userId: string;
     sku: string;
@@ -25,12 +23,12 @@ export type GetUserCartQuery = {
       productVariantId?: number | null;
       sku: string;
     } | null;
-  } | null;
+  }>;
 };
 
 export const GetUserCartDocument = gql`
-  query GetUserCart($userId: String!) {
-    userCart(userId: $userId) {
+  query GetUserCart {
+    userCart {
       userId
       sku
       quantity
@@ -60,12 +58,11 @@ export const GetUserCartDocument = gql`
  * @example
  * const { data, loading, error } = useGetUserCartQuery({
  *   variables: {
- *      userId: // value for 'userId'
  *   },
  * });
  */
 export function useGetUserCartQuery(
-  baseOptions: Apollo.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetUserCartQuery,
     GetUserCartQueryVariables
   >

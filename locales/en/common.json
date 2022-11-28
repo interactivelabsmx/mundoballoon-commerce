@@ -48,5 +48,19 @@
   "Quantity": "Quantity",
   "Add_To_Bag": "Add to bag",
   "Shopping_Cart": "Shopping Cart",
-  "Continue_Shopping": " Continue Shopping"
+  "Continue_Shopping": " Continue Shopping",
+  "Email_Adress": "Email Adress",
+  "Phone_Number": "Phone Number",
+  "Review": "Review",
+  "Shipping_Address": "Shipping address",
+  "Payment_Details": "Payment details",
+  "Contact_Information": "Contact information",
+  "I_Have_Read": "I have read the terms and conditions",
+  "Continue": "Continuar",
+  "Checkout": "Checkout",
+  "Summary": "Summary",
+  "Taxes": "Taxes",
+  "Shipping": "Shipping",
+  "Remove": "Remove",
+  "Shipping_And_Taxes": "Shipping and taxes will be calculated at checkout"
 }

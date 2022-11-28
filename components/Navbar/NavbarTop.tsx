@@ -5,11 +5,12 @@ import {
 } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
-import { Dispatch, useState } from 'react';
+import { Dispatch, useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import { useGetUserCartLazyQuery } from '@graphql/queries/users/GetUserCart.graphql';
 import ModalCart from '../Cart/ModalCart';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
@@ -28,6 +29,13 @@ interface INavbarTop {
 const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
   const { t } = useTranslation('common');
   const [cartOpen, setCartOpen] = useState(false);
+  const [loadGreeting, { data }] = useGetUserCartLazyQuery();
+  useEffect(() => {
+    loadGreeting();
+  }, [loadGreeting]);
+  if (error) return <SimpleTextError text={error} />;
+  if (loading || !data) return <LoadingText />;
+  const { userCart } = data;
   const openCart = () => setCartOpen(true);
   return (
     <header className="relative z-20">
@@ -74,7 +82,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                         onClick={openCart}
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        0
+                        {userCart.length}
                       </span>
                       <span className="sr-only">{t('sr_cart_count')}</span>
                     </button>
