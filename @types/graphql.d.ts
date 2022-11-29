@@ -109,6 +109,15 @@ declare module '*/DeleteEvent.graphql' {
 }
     
 
+declare module '*/DeleteProductUser.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const DeleteUserCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetCountryCodes.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

@@ -26,6 +26,7 @@ const CheckoutCard = () => {
   } = useForm<ICheckoutCart>({
     resolver: yupResolver(userEventSchema),
   });
+
   const { t } = useTranslation('common');
   const [loadGreeting, { loading, error, data }] = useGetUserCartLazyQuery();
   useEffect(() => {
@@ -34,7 +35,13 @@ const CheckoutCard = () => {
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
   const { userCart } = data;
-
+  /* const deleteProduct = () => {
+    const [deleteUserCartMutation] = useDeleteUserCartMutation({
+      variables: {
+        sku: '',
+      },
+    });
+  };*/
   return (
     <div className="bg-white">
       <br />
@@ -50,10 +57,7 @@ const CheckoutCard = () => {
             <div className="flow-root">
               <ul role="list" className="-my-6 divide-y divide-gray-200">
                 {userCart.map((event) => (
-                  <li
-                    key={event.productVariantId}
-                    className="flex space-x-6 py-6"
-                  >
+                  <li key={event.sku} className="flex space-x-6 py-6">
                     <img
                       src="https://images.unsplash.com/photo-1536185752-9dc80dd63510?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
                       className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
@@ -79,6 +83,7 @@ const CheckoutCard = () => {
                             <BaseLink
                               type="button"
                               className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                              /*onClick={deleteProduct}*/
                             >
                               {t('Remove')}
                             </BaseLink>
