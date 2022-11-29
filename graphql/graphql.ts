@@ -282,6 +282,7 @@ export type Mutation = {
   createVariantValue: VariantValue;
   createVariantsType: VariantsType;
   deleteProduct: Scalars['Boolean'];
+  deleteProductUser: Scalars['Boolean'];
   deleteProductVariant: Scalars['Boolean'];
   deleteProductVariantMedia: Scalars['Boolean'];
   deleteProductVariantValue: Scalars['Boolean'];
@@ -348,6 +349,10 @@ export type MutationCreateVariantsTypeArgs = {
 
 export type MutationDeleteProductArgs = {
   productId: Scalars['Int'];
+};
+
+export type MutationDeleteProductUserArgs = {
+  sku: Scalars['String'];
 };
 
 export type MutationDeleteProductVariantArgs = {
