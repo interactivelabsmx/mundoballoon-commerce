@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import PrimarySelectMenu from '@components/UI/SelectMenus/PrimarySelectMenu';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
@@ -12,19 +11,6 @@ import { useGetProductQuickViewLazyQuery } from './GetProductQuickView.graphql';
 interface IQuickView {
   productId: number;
 }
-
-const publishingOptions = [
-  {
-    title: 'Published',
-    description: 'This job posting can be viewed by anyone who has the link.',
-    current: true,
-  },
-  {
-    title: 'Draft',
-    description: 'This job posting will no longer be publicly accessible.',
-    current: false,
-  },
-];
 
 const QuickView = ({ productId }: IQuickView) => {
   const [variantIndex, setVariantIndex] = useState(0);
@@ -89,12 +75,6 @@ const QuickView = ({ productId }: IQuickView) => {
             />
           )}
           {productVariant && <AddToEventCart productVariant={productVariant} />}
-          <PrimarySelectMenu
-            options={publishingOptions}
-            label="Publising Option"
-            title="title"
-            description="description"
-          />
         </section>
       </div>
     </div>

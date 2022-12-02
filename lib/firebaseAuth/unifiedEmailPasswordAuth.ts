@@ -15,19 +15,19 @@ const unifiedEmailPasswordAuth = ({
   auth,
   email,
   password,
-  onAuth,
+  onOAuth,
   onError,
 }: IUnifiedEmailPasswordAuth) =>
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential: UserCredential) => {
-      onAuth(userCredential.user);
+      onOAuth(userCredential.user);
       return [userCredential, null];
     })
     .catch((createError) => {
       if (createError.code === AuthErrorCodes.EMAIL_EXISTS) {
         return signInWithEmailAndPassword(auth, email, password)
           .then((userCredential: UserCredential) => {
-            onAuth(userCredential.user);
+            onOAuth(userCredential.user);
             return [userCredential, null];
           })
           .catch((loginError) => {

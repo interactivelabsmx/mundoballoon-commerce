@@ -28,14 +28,14 @@ const FirebaseAuthLoader = dynamic(
 const NavbarUserMenu = () => {
   const { t, lang } = useTranslation('common');
   const { setLocale } = useCommerce();
-  const { user, logout } = useAuth();
-  const [openAuth, setOpenAuth] = useState(false);
-  const onClick = () => setOpenAuth(true);
+  const { user, logout, authModalOpen, openAuthModal, closeAuthModal } =
+    useAuth();
+  const onClick = useMemo(() => openAuthModal, [openAuthModal]);
   const [eventsOpen, setEventsOpen] = useState(false);
   const openEvents = () => setEventsOpen(true);
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(t, onClick),
-    [t]
+    [t, onClick]
   );
   return (
     <div className="flex bg-gray p-4 justify-around">
@@ -137,7 +137,7 @@ const NavbarUserMenu = () => {
         </Menu>
         {!user && (
           <Suspense fallback="...Loading">
-            <Modal open={openAuth} setOpen={setOpenAuth}>
+            <Modal open={authModalOpen} setOpen={closeAuthModal}>
               <FirebaseAuthLoader />
             </Modal>
           </Suspense>

@@ -6,10 +6,10 @@ interface IGetOpenSignInWithPopupFuction extends IBaeFunctionAuth {
 }
 
 const getOpenSignInWithPopupFuction =
-  ({ auth, provider, onAuth, onError }: IGetOpenSignInWithPopupFuction) =>
+  ({ auth, provider, onOAuth, onError }: IGetOpenSignInWithPopupFuction) =>
   () =>
     signInWithPopup(auth, provider)
-      .then(({ user }) => onAuth(user))
+      .then(({ user }) => onOAuth(user))
       .catch((error) => onError(error));
 
 export default getOpenSignInWithPopupFuction;

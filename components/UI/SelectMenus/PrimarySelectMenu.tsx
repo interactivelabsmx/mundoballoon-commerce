@@ -10,7 +10,7 @@ interface IPrimarySelectMenu<T> {
   options: T[];
   title: keyof T;
   description: keyof T;
-  onChange: (value: T) => void;
+  onChange?: (value: T) => void;
   onSelectedClick?: (value: T) => void;
 }
 
@@ -25,9 +25,12 @@ export default function PrimarySelectMenu<T extends BaseObject>({
   const [selected, setSelected] = useState<T>(options[0]);
 
   const handleChange = (value: T) => {
-    onChange(value);
+    onChange && onChange(value);
     setSelected(value);
   };
+
+  const handleSelectedClick = () =>
+    onSelectedClick && onSelectedClick(selected);
 
   return (
     <Listbox value={selected} onChange={handleChange}>
@@ -37,7 +40,10 @@ export default function PrimarySelectMenu<T extends BaseObject>({
           <div className="relative">
             <div className="flex divide-x divide-indigo-700 rounded-md shadow-sm w-full">
               <div className="flex divide-x divide-indigo-700 rounded-md shadow-sm w-full">
-                <PrimaryButton className="w-full rounded-r-none">
+                <PrimaryButton
+                  className="w-full rounded-r-none"
+                  onClick={handleSelectedClick}
+                >
                   {selected[title]}
                 </PrimaryButton>
                 <Listbox.Button className="inline-flex items-center rounded-l-none rounded-r-md bg-indigo-600 p-2 text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-gray-50">

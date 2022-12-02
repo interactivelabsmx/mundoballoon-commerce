@@ -34,7 +34,7 @@ const FirebasePhoneForm = ({
   onCancel,
 }: IFirebasePhoneForm) => {
   const { t } = useTranslation('auth');
-  const { auth, onAuth } = useAuth();
+  const { auth, onOAuth } = useAuth();
   const {
     register,
     control,
@@ -55,7 +55,7 @@ const FirebasePhoneForm = ({
     phoneCodeRequest({
       auth,
       phoneNumber: `+${countryCode}${phoneNumber}`,
-      onAuth,
+      onOAuth,
       onError,
       onCodeSent: setConfirmationResult,
     });

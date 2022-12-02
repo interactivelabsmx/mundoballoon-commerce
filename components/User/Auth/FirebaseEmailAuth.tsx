@@ -32,7 +32,7 @@ const FirebaseEmailAuth = ({
   setRequestError,
 }: IFirebaseEmailAuth) => {
   const { t } = useTranslation('auth');
-  const { auth, onAuth } = useAuth();
+  const { auth, onOAuth } = useAuth();
   const {
     control,
     handleSubmit,
@@ -45,7 +45,7 @@ const FirebaseEmailAuth = ({
 
   const handleAuh = (user: User) => {
     onAuthComplete(user);
-    onAuth(user);
+    onOAuth(user);
   };
 
   if (!auth) return <LoadingText />;
@@ -55,7 +55,7 @@ const FirebaseEmailAuth = ({
       auth,
       email,
       password,
-      onAuth: handleAuh,
+      onOAuth: handleAuh,
       onError,
     });
   };

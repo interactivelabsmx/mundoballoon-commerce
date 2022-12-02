@@ -2,7 +2,6 @@ import { randNumber, randText } from '@ngneat/falso';
 import { UserEventCardFragment } from '@graphql/queries/users/UserEventCardFragment.graphql';
 
 export const getFixtureUserEvent = (): UserEventCardFragment => ({
-  userId: '6LGqXFEX3MNbp1BxI5mVAuweA2T2',
   userEventId: randNumber(),
   name: randText(),
   date: '2011-11-11 00:00:00.000000',

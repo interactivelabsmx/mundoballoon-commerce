@@ -32,9 +32,7 @@ export function CommerceProvider({ children }: ICommerce) {
     setLanguage(locale);
     setLanguageCookie(locale);
   };
-  const value = {
-    setLocale,
-  };
+  const value = { setLocale };
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;
 }
 
