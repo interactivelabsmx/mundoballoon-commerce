@@ -23,32 +23,24 @@ export interface ICreateApolloClient {
 function createApolloClient({
   graphQLUrl = getGraphqlURL(),
   getToken,
-  locale,
+  locale = 'EN-US',
 }: ICreateApolloClient) {
   const setAuthorizationLink = setContext(async (_, { headers }) => {
+    const baseHeaders = {
+      ...headers,
+      'Accept-Language': locale,
+    };
     // This means we set the auth inline for create user
-    if (headers?.authorization)
-      return {
-        headers: {
-          ...headers,
-          'Accept-Language': locale,
-        },
-      };
+    if (headers?.authorization) return { headers: baseHeaders };
     const token = getToken && (await getToken());
     if (token)
       return {
         headers: {
-          ...headers,
+          ...baseHeaders,
           authorization: `Bearer ${token}`,
-          'Accept-Language': locale,
         },
       };
-    return {
-      headers: {
-        ...headers,
-        'Accept-Language': locale,
-      },
-    };
+    return { headers: baseHeaders };
   });
   const link = new HttpLink({
     uri: graphQLUrl,
@@ -69,9 +61,7 @@ interface IInitializeApollo {
 
 export function initializeApollo({
   initialState,
-  options = {
-    locale: 'EN-US',
-  },
+  options = {},
 }: IInitializeApollo) {
   const _apolloClient = apolloClient ?? createApolloClient(options);
 

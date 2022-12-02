@@ -14,6 +14,7 @@ export const getLogedOutUserNavigation = (
   { name: t('auth:sign_in'), onClick },
   { name: t('common:see_everything'), href: '/search' },
 ];
+
 export const getNavbarUserMenuLinkStyle = (active: boolean) =>
   classNames(
     active ? 'bg-gray-100' : '',

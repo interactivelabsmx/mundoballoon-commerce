@@ -30,7 +30,7 @@ const FirebasePhoneCodeForm = ({
   onCancel,
 }: IFirebasePhoneCodeForm) => {
   const { t } = useTranslation('auth');
-  const { onAuth } = useAuth();
+  const { onOAuth } = useAuth();
   const {
     control,
     handleSubmit,
@@ -43,7 +43,7 @@ const FirebasePhoneCodeForm = ({
 
   const handleAuh = (user: User) => {
     onAuthComplete(user);
-    onAuth(user);
+    onOAuth(user);
   };
 
   const onSubmit: SubmitHandler<IUserCodeForm> = ({ code }) => {

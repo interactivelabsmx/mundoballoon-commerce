@@ -20,10 +20,10 @@ const FirebaseSocialButton = ({
   label,
   Icon,
 }: IFirebaseSocialButton) => {
-  const { auth, onAuth } = useAuth();
+  const { auth, onOAuth } = useAuth();
   const handleAuh = (user: User) => {
     onAuthComplete(user);
-    onAuth(user);
+    onOAuth(user);
   };
   const onError = (error: AuthError) => {
     setRequestError(error.message);
@@ -32,7 +32,7 @@ const FirebaseSocialButton = ({
   const openSignInWithPopup = getOpenSignInWithPopupFuction({
     auth,
     provider,
-    onAuth: handleAuh,
+    onOAuth: handleAuh,
     onError,
   });
   return (
