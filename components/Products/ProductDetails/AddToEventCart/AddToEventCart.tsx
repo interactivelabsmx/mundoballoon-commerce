@@ -29,6 +29,10 @@ const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
   const [loadUserEvents, { loading, error, data }] =
     useGetUserEventsSelectLazyQuery();
 
+  useEffect(() => {
+    if (user) loadUserEvents();
+  }, [user, loadUserEvents]);
+
   const addToCartData = useMemo(
     () => ({
       quantity: 1,
@@ -66,14 +70,11 @@ const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
 
   const onSelectedClick = (event: UserEventSelectFragment) => {
     if (event.userEventId === 0) {
-      return onAddToCart();
+      onAddToCart();
+    } else {
+      addToEventCart(event);
     }
-    addToEventCart(event);
   };
-
-  useEffect(() => {
-    if (user) loadUserEvents();
-  }, [user, loadUserEvents]);
 
   if (error) return <SimpleTextError text={error.message} />;
   if (errorCart) return <SimpleTextError text={errorCart.message} />;
@@ -88,8 +89,8 @@ const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
     events = [
       {
         userEventId: 0,
-        name: 'Cart',
-        details: 'Regular Cart',
+        name: 'Add To Bag',
+        details: 'Add To Bag',
       },
       ...userEvents,
     ];

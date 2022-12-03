@@ -25,7 +25,7 @@ export default function PrimarySelectMenu<T extends BaseObject>({
   const [selected, setSelected] = useState<T>(options[0]);
 
   const handleChange = (value: T) => {
-    onChange && onChange(value);
+    if (onChange) onChange(value);
     setSelected(value);
   };
 

@@ -142,7 +142,6 @@ const NavbarUserMenu = () => {
             </Modal>
           </Suspense>
         )}
-
         <Modal open={eventsOpen} setOpen={setEventsOpen}>
           <EventsCard />
         </Modal>
