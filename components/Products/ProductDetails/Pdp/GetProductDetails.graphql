@@ -11,6 +11,8 @@ query GetProductDetails($productId: Int!) {
       productVariantId
       sku
       price
+      name
+      description
       media {
         ...MediaFragment
       }

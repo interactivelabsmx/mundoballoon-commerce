@@ -1,10 +1,8 @@
-import { HeartIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
-import IconButton from '@components/UI/buttons/IconButton';
-import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
+import AddToEventCart from '../AddToEventCart';
 import VariantsDisplay from '../VariantsDisplay';
 import AditionalDetails, { detailsMock } from './AditionalDetails';
 import { useGetProductDetailsQuery } from './GetProductDetails.graphql';
@@ -27,7 +25,8 @@ const Pdp = ({ productId }: IPdp) => {
 
   if (!product || !variantValues) return <SimpleTextError />;
 
-  const media = product.variants && product.variants[variantIndex].media;
+  const productVariant = product.variants && product.variants[variantIndex];
+  const media = productVariant?.media;
 
   return (
     <div className="mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8">
@@ -56,7 +55,6 @@ const Pdp = ({ productId }: IPdp) => {
                 <p className="text-sm text-gray-700">{product?.description}</p>
               </div>
             </section>
-
             <section aria-labelledby="options-heading" className="mt-10">
               <h3 id="options-heading" className="sr-only">
                 Product options
@@ -70,15 +68,9 @@ const Pdp = ({ productId }: IPdp) => {
                   />
                 )}
                 <div className="mt-6 flex">
-                  <PrimaryButton className="w-full py-4">
-                    Add to bag
-                  </PrimaryButton>
-                  <IconButton label="Add To Favorites">
-                    <HeartIcon
-                      className="h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                  </IconButton>
+                  {productVariant && (
+                    <AddToEventCart productVariant={productVariant} />
+                  )}
                 </div>
               </form>
             </section>
