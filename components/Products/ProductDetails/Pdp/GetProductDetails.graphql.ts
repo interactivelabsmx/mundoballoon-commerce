@@ -26,6 +26,8 @@ export type GetProductDetailsQuery = {
       productVariantId?: number | null;
       sku: string;
       price: any;
+      name: string;
+      description: string;
       media?: Array<{
         __typename?: 'ProductVariantMedium';
         productVariantMediaId?: number | null;
@@ -76,6 +78,8 @@ export const GetProductDetailsDocument = gql`
         productVariantId
         sku
         price
+        name
+        description
         media {
           ...MediaFragment
         }
