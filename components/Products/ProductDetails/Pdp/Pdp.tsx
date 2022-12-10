@@ -67,7 +67,7 @@ const Pdp = ({ productId }: IPdp) => {
                     setVariantIndex={setVariantIndex}
                   />
                 )}
-                <div className="mt-6 flex">
+                <div className="mt-6">
                   {productVariant && (
                     <AddToEventCart productVariant={productVariant} />
                   )}
