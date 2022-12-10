@@ -9,12 +9,12 @@ export type DeleteUserCartMutationVariables = Types.Exact<{
 
 export type DeleteUserCartMutation = {
   __typename?: 'Mutation';
-  deleteProductUser: boolean;
+  deleteUserCartProduct: boolean;
 };
 
 export const DeleteUserCartDocument = gql`
   mutation DeleteUserCart($sku: String!) {
-    deleteProductUser(sku: $sku)
+    deleteUserCartProduct(sku: $sku)
   }
 `;
 export type DeleteUserCartMutationFn = Apollo.MutationFunction<

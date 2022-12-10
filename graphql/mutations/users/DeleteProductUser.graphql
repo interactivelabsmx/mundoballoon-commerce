@@ -1,3 +1,3 @@
 mutation DeleteUserCart($sku: String!) {
-  deleteProductUser(sku: $sku)
+  deleteUserCartProduct(sku: $sku)
 }

@@ -4,8 +4,8 @@ import * as Types from '../../../../graphql/graphql';
 
 const defaultOptions = {} as const;
 export type AddToEventCartMutationVariables = Types.Exact<{
-  productVariantId: Types.Scalars['Int'];
   userEventId: Types.Scalars['Int'];
+  productVariantId: Types.Scalars['Int'];
   quantity: Types.Scalars['Decimal'];
 }>;
 
@@ -21,13 +21,13 @@ export type AddToEventCartMutation = {
 
 export const AddToEventCartDocument = gql`
   mutation AddToEventCart(
-    $productVariantId: Int!
     $userEventId: Int!
+    $productVariantId: Int!
     $quantity: Decimal!
   ) {
     addToEventCart(
-      productVariantId: $productVariantId
       userEventId: $userEventId
+      productVariantId: $productVariantId
       quantity: $quantity
     ) {
       productVariantId
@@ -54,8 +54,8 @@ export type AddToEventCartMutationFn = Apollo.MutationFunction<
  * @example
  * const [addToEventCartMutation, { data, loading, error }] = useAddToEventCartMutation({
  *   variables: {
- *      productVariantId: // value for 'productVariantId'
  *      userEventId: // value for 'userEventId'
+ *      productVariantId: // value for 'productVariantId'
  *      quantity: // value for 'quantity'
  *   },
  * });
