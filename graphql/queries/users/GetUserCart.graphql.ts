@@ -11,14 +11,14 @@ export type GetUserCartQuery = {
     __typename?: 'UserCart';
     userId: string;
     sku: string;
-    quantity: any;
+    quantity: number;
     productVariantId: number;
-    price: any;
+    price: number;
     variant?: {
       __typename?: 'ProductVariant';
       description: string;
       name: string;
-      price: any;
+      price: number;
       productId: number;
       productVariantId?: number | null;
       sku: string;

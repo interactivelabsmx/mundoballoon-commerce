@@ -12,7 +12,7 @@ export type GetUserEventsQuery = {
     userEventId: number;
     userId: string;
     name: string;
-    date: any;
+    date?: any | null;
     details: string;
   }>;
 };

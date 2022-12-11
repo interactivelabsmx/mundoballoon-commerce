@@ -17,8 +17,6 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
-  Decimal: any;
-  Short: any;
   Upload: any;
 };
 
@@ -32,49 +30,19 @@ export type BooleanOperationFilterInput = {
   neq?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type ComparableDateTimeOperationFilterInput = {
-  eq?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<Scalars['DateTime']>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  neq?: InputMaybe<Scalars['DateTime']>;
-  ngt?: InputMaybe<Scalars['DateTime']>;
-  ngte?: InputMaybe<Scalars['DateTime']>;
-  nin?: InputMaybe<Array<Scalars['DateTime']>>;
-  nlt?: InputMaybe<Scalars['DateTime']>;
-  nlte?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type ComparableDecimalOperationFilterInput = {
-  eq?: InputMaybe<Scalars['Decimal']>;
-  gt?: InputMaybe<Scalars['Decimal']>;
-  gte?: InputMaybe<Scalars['Decimal']>;
-  in?: InputMaybe<Array<Scalars['Decimal']>>;
-  lt?: InputMaybe<Scalars['Decimal']>;
-  lte?: InputMaybe<Scalars['Decimal']>;
-  neq?: InputMaybe<Scalars['Decimal']>;
-  ngt?: InputMaybe<Scalars['Decimal']>;
-  ngte?: InputMaybe<Scalars['Decimal']>;
-  nin?: InputMaybe<Array<Scalars['Decimal']>>;
-  nlt?: InputMaybe<Scalars['Decimal']>;
-  nlte?: InputMaybe<Scalars['Decimal']>;
-};
-
-export type ComparableInt16OperationFilterInput = {
-  eq?: InputMaybe<Scalars['Short']>;
-  gt?: InputMaybe<Scalars['Short']>;
-  gte?: InputMaybe<Scalars['Short']>;
-  in?: InputMaybe<Array<Scalars['Short']>>;
-  lt?: InputMaybe<Scalars['Short']>;
-  lte?: InputMaybe<Scalars['Short']>;
-  neq?: InputMaybe<Scalars['Short']>;
-  ngt?: InputMaybe<Scalars['Short']>;
-  ngte?: InputMaybe<Scalars['Short']>;
-  nin?: InputMaybe<Array<Scalars['Short']>>;
-  nlt?: InputMaybe<Scalars['Short']>;
-  nlte?: InputMaybe<Scalars['Short']>;
+export type ComparableDoubleOperationFilterInput = {
+  eq?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<Scalars['Float']>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  neq?: InputMaybe<Scalars['Float']>;
+  ngt?: InputMaybe<Scalars['Float']>;
+  ngte?: InputMaybe<Scalars['Float']>;
+  nin?: InputMaybe<Array<Scalars['Float']>>;
+  nlt?: InputMaybe<Scalars['Float']>;
+  nlte?: InputMaybe<Scalars['Float']>;
 };
 
 export type ComparableInt32OperationFilterInput = {
@@ -127,7 +95,6 @@ export type CountryCode = {
   createdAt?: Maybe<Scalars['DateTime']>;
   dial: Scalars['String'];
   fifa: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   officialNameEn: Scalars['String'];
   officialNameEs: Scalars['String'];
   supported: Scalars['Boolean'];
@@ -139,11 +106,10 @@ export type EventCartDetail = {
   __typename?: 'EventCartDetail';
   createdAt?: Maybe<Scalars['DateTime']>;
   eventCartId: Scalars['Int'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   label: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
   userEvent?: Maybe<UserEvent>;
@@ -155,12 +121,11 @@ export type EventCartDetailFilterInput = {
   and?: InputMaybe<Array<EventCartDetailFilterInput>>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   eventCartId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   label?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<EventCartDetailFilterInput>>;
-  price?: InputMaybe<ComparableDecimalOperationFilterInput>;
+  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  quantity?: InputMaybe<ComparableDecimalOperationFilterInput>;
+  quantity?: InputMaybe<ComparableDoubleOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
   updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   userEvent?: InputMaybe<UserEventFilterInput>;
@@ -171,11 +136,10 @@ export type EventCartDetailFilterInput = {
 export type EventCartDetailInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   eventCartId: Scalars['Int'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   label: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   userEvent?: InputMaybe<UserEventInput>;
@@ -187,15 +151,12 @@ export type FirebaseUser = {
   __typename?: 'FirebaseUser';
   carts?: Maybe<Array<UserCart>>;
   claims?: Maybe<Array<Maybe<Scalars['String']>>>;
-  createdAt?: Maybe<Scalars['DateTime']>;
   displayName?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
   events?: Maybe<Array<UserEvent>>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   paymentProfiles?: Maybe<Array<UserPaymentProfile>>;
   phoneNumber?: Maybe<Scalars['String']>;
   reviews?: Maybe<Array<ProductVariantReview>>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
   userId: Scalars['String'];
 };
 
@@ -302,15 +263,15 @@ export type MutationAddProductVariantReviewArgs = {
 };
 
 export type MutationAddToCartArgs = {
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
 };
 
 export type MutationAddToEventCartArgs = {
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   userEventId: Scalars['Int'];
 };
 
@@ -441,9 +402,8 @@ export type Product = {
   category?: Maybe<ProductCategory>;
   createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productCategoryId: Scalars['Int'];
   productId?: Maybe<Scalars['Int']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -452,75 +412,54 @@ export type Product = {
 
 export type ProductCategory = {
   __typename?: 'ProductCategory';
-  createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   name: Scalars['String'];
   productCategoryId?: Maybe<Scalars['Int']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type ProductCategoryFilterInput = {
   and?: InputMaybe<Array<ProductCategoryFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   description?: InputMaybe<StringOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductCategoryFilterInput>>;
   productCategoryId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
 };
 
 export type ProductCategoryInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
   productCategoryId?: InputMaybe<Scalars['Int']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ProductCategorySortInput = {
-  createdAt?: InputMaybe<SortEnumType>;
   description?: InputMaybe<SortEnumType>;
-  isDeleted?: InputMaybe<SortEnumType>;
   name?: InputMaybe<SortEnumType>;
   productCategoryId?: InputMaybe<SortEnumType>;
-  updatedAt?: InputMaybe<SortEnumType>;
 };
 
 export type ProductEntity = {
   __typename?: 'ProductEntity';
-  createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productCategoryId: Scalars['Int'];
   productId: Scalars['Int'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type ProductEntityInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productCategoryId: Scalars['Int'];
   productId: Scalars['Int'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ProductEntitySortInput = {
-  createdAt?: InputMaybe<SortEnumType>;
   description?: InputMaybe<SortEnumType>;
-  isDeleted?: InputMaybe<SortEnumType>;
   name?: InputMaybe<SortEnumType>;
   price?: InputMaybe<SortEnumType>;
   productCategoryId?: InputMaybe<SortEnumType>;
   productId?: InputMaybe<SortEnumType>;
-  updatedAt?: InputMaybe<SortEnumType>;
 };
 
 export type ProductFilterInput = {
@@ -528,10 +467,9 @@ export type ProductFilterInput = {
   category?: InputMaybe<ProductCategoryFilterInput>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   description?: InputMaybe<StringOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductFilterInput>>;
-  price?: InputMaybe<ComparableDecimalOperationFilterInput>;
+  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
   productCategoryId?: InputMaybe<ComparableInt32OperationFilterInput>;
   productId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
   updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
@@ -542,9 +480,8 @@ export type ProductInput = {
   category?: InputMaybe<ProductCategoryInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productCategoryId: Scalars['Int'];
   productId?: InputMaybe<Scalars['Int']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -555,7 +492,6 @@ export type ProductSortInput = {
   category?: InputMaybe<ProductCategorySortInput>;
   createdAt?: InputMaybe<SortEnumType>;
   description?: InputMaybe<SortEnumType>;
-  isDeleted?: InputMaybe<SortEnumType>;
   name?: InputMaybe<SortEnumType>;
   price?: InputMaybe<SortEnumType>;
   productCategoryId?: InputMaybe<SortEnumType>;
@@ -565,97 +501,77 @@ export type ProductSortInput = {
 
 export type ProductVariant = {
   __typename?: 'ProductVariant';
-  createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   media?: Maybe<Array<ProductVariantMedium>>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productId: Scalars['Int'];
   productVariantId?: Maybe<Scalars['Int']>;
   reviews?: Maybe<Array<ProductVariantReview>>;
   sku: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
   variantValues?: Maybe<Array<ProductVariantValue>>;
 };
 
 export type ProductVariantEntity = {
   __typename?: 'ProductVariantEntity';
-  createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productId: Scalars['Int'];
   productVariantId: Scalars['Int'];
   sku: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type ProductVariantEntityInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productId: Scalars['Int'];
   productVariantId: Scalars['Int'];
   sku: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ProductVariantFilterInput = {
   and?: InputMaybe<Array<ProductVariantFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   description?: InputMaybe<StringOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   media?: InputMaybe<ListFilterInputTypeOfProductVariantMediumFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantFilterInput>>;
-  price?: InputMaybe<ComparableDecimalOperationFilterInput>;
+  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
   productId?: InputMaybe<ComparableInt32OperationFilterInput>;
   productVariantId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
   reviews?: InputMaybe<ListFilterInputTypeOfProductVariantReviewFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   variantValues?: InputMaybe<ListFilterInputTypeOfProductVariantValueFilterInput>;
 };
 
 export type ProductVariantInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   media?: InputMaybe<Array<ProductVariantMediumInput>>;
   name: Scalars['String'];
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productId: Scalars['Int'];
   productVariantId?: InputMaybe<Scalars['Int']>;
   reviews?: InputMaybe<Array<ProductVariantReviewInput>>;
   sku: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   variantValues?: InputMaybe<Array<ProductVariantValueInput>>;
 };
 
 export type ProductVariantMedium = {
   __typename?: 'ProductVariantMedium';
-  createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   mediaType: Scalars['String'];
   name: Scalars['String'];
   productVariant?: Maybe<ProductVariant>;
   productVariantId: Scalars['Int'];
   productVariantMediaId?: Maybe<Scalars['Int']>;
   quality: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
   url?: Maybe<Scalars['String']>;
 };
 
 export type ProductVariantMediumFilterInput = {
   and?: InputMaybe<Array<ProductVariantMediumFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   description?: InputMaybe<StringOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   mediaType?: InputMaybe<StringOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantMediumFilterInput>>;
@@ -663,21 +579,17 @@ export type ProductVariantMediumFilterInput = {
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
   productVariantMediaId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
   quality?: InputMaybe<StringOperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   url?: InputMaybe<StringOperationFilterInput>;
 };
 
 export type ProductVariantMediumInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   mediaType: Scalars['String'];
   name: Scalars['String'];
   productVariant?: InputMaybe<ProductVariantInput>;
   productVariantId: Scalars['Int'];
   productVariantMediaId?: InputMaybe<Scalars['Int']>;
   quality: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   url?: InputMaybe<Scalars['String']>;
 };
 
@@ -685,11 +597,10 @@ export type ProductVariantReview = {
   __typename?: 'ProductVariantReview';
   comments?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   productVariant?: Maybe<ProductVariant>;
   productVariantId: Scalars['Int'];
   productVariantReviewId: Scalars['Int'];
-  rating: Scalars['Short'];
+  rating: Scalars['Int'];
   updatedAt?: Maybe<Scalars['DateTime']>;
   user?: Maybe<User>;
   userId: Scalars['String'];
@@ -699,12 +610,11 @@ export type ProductVariantReviewFilterInput = {
   and?: InputMaybe<Array<ProductVariantReviewFilterInput>>;
   comments?: InputMaybe<StringOperationFilterInput>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantReviewFilterInput>>;
   productVariant?: InputMaybe<ProductVariantFilterInput>;
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
   productVariantReviewId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  rating?: InputMaybe<ComparableInt16OperationFilterInput>;
+  rating?: InputMaybe<ComparableInt32OperationFilterInput>;
   updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   user?: InputMaybe<UserFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
@@ -713,11 +623,10 @@ export type ProductVariantReviewFilterInput = {
 export type ProductVariantReviewInput = {
   comments?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   productVariant?: InputMaybe<ProductVariantInput>;
   productVariantId: Scalars['Int'];
   productVariantReviewId: Scalars['Int'];
-  rating: Scalars['Short'];
+  rating: Scalars['Int'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   user?: InputMaybe<UserInput>;
   userId: Scalars['String'];
@@ -725,11 +634,8 @@ export type ProductVariantReviewInput = {
 
 export type ProductVariantValue = {
   __typename?: 'ProductVariantValue';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   productVariant?: Maybe<ProductVariant>;
   productVariantId: Scalars['Int'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
   variant?: Maybe<Variant>;
   variantId: Scalars['Int'];
   variantValue?: Maybe<VariantValue>;
@@ -738,12 +644,9 @@ export type ProductVariantValue = {
 
 export type ProductVariantValueFilterInput = {
   and?: InputMaybe<Array<ProductVariantValueFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantValueFilterInput>>;
   productVariant?: InputMaybe<ProductVariantFilterInput>;
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   variant?: InputMaybe<VariantFilterInput>;
   variantId?: InputMaybe<ComparableInt32OperationFilterInput>;
   variantValue?: InputMaybe<VariantValueFilterInput>;
@@ -751,11 +654,8 @@ export type ProductVariantValueFilterInput = {
 };
 
 export type ProductVariantValueInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   productVariant?: InputMaybe<ProductVariantInput>;
   productVariantId: Scalars['Int'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   variant?: InputMaybe<VariantInput>;
   variantId: Scalars['Int'];
   variantValue?: InputMaybe<VariantValueInput>;
@@ -919,7 +819,6 @@ export type UiRegistry = {
   componentId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   deprecated: Scalars['Boolean'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   uiRegistryId: Scalars['Int'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -929,7 +828,6 @@ export type UiRegistryFilterInput = {
   componentId?: InputMaybe<StringOperationFilterInput>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   deprecated?: InputMaybe<BooleanOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<UiRegistryFilterInput>>;
   uiRegistryId?: InputMaybe<ComparableInt32OperationFilterInput>;
   updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
@@ -939,7 +837,6 @@ export type UiRegistryInput = {
   componentId?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   deprecated: Scalars['Boolean'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   uiRegistryId: Scalars['Int'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -947,50 +844,38 @@ export type UiRegistryInput = {
 export type User = {
   __typename?: 'User';
   carts?: Maybe<Array<UserCart>>;
-  createdAt?: Maybe<Scalars['DateTime']>;
   events?: Maybe<Array<UserEvent>>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   paymentProfiles?: Maybe<Array<UserPaymentProfile>>;
   reviews?: Maybe<Array<ProductVariantReview>>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
   userId: Scalars['String'];
 };
 
 export type UserCart = {
   __typename?: 'UserCart';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
   userId: Scalars['String'];
   variant?: Maybe<ProductVariant>;
 };
 
 export type UserCartFilterInput = {
   and?: InputMaybe<Array<UserCartFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<UserCartFilterInput>>;
-  price?: InputMaybe<ComparableDecimalOperationFilterInput>;
+  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  quantity?: InputMaybe<ComparableDecimalOperationFilterInput>;
+  quantity?: InputMaybe<ComparableDoubleOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
   variant?: InputMaybe<ProductVariantFilterInput>;
 };
 
 export type UserCartInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   userId: Scalars['String'];
   variant?: InputMaybe<ProductVariantInput>;
 };
@@ -999,9 +884,8 @@ export type UserEvent = {
   __typename?: 'UserEvent';
   carts?: Maybe<Array<EventCartDetail>>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  date: Scalars['DateTime'];
+  date?: Maybe<Scalars['DateTime']>;
   details: Scalars['String'];
-  isDeleted?: Maybe<Scalars['Boolean']>;
   name: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
   user?: Maybe<User>;
@@ -1013,9 +897,8 @@ export type UserEventFilterInput = {
   and?: InputMaybe<Array<UserEventFilterInput>>;
   carts?: InputMaybe<ListFilterInputTypeOfEventCartDetailFilterInput>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  date?: InputMaybe<ComparableDateTimeOperationFilterInput>;
+  date?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   details?: InputMaybe<StringOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<UserEventFilterInput>>;
   updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
@@ -1027,9 +910,8 @@ export type UserEventFilterInput = {
 export type UserEventInput = {
   carts?: InputMaybe<Array<EventCartDetailInput>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  date: Scalars['DateTime'];
+  date?: InputMaybe<Scalars['DateTime']>;
   details: Scalars['String'];
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   user?: InputMaybe<UserInput>;
@@ -1040,33 +922,24 @@ export type UserEventInput = {
 export type UserFilterInput = {
   and?: InputMaybe<Array<UserFilterInput>>;
   carts?: InputMaybe<ListFilterInputTypeOfUserCartFilterInput>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   events?: InputMaybe<ListFilterInputTypeOfUserEventFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<UserFilterInput>>;
   paymentProfiles?: InputMaybe<ListFilterInputTypeOfUserPaymentProfileFilterInput>;
   reviews?: InputMaybe<ListFilterInputTypeOfProductVariantReviewFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
 };
 
 export type UserInput = {
   carts?: InputMaybe<Array<UserCartInput>>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   events?: InputMaybe<Array<UserEventInput>>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   paymentProfiles?: InputMaybe<Array<UserPaymentProfileInput>>;
   reviews?: InputMaybe<Array<ProductVariantReviewInput>>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   userId: Scalars['String'];
 };
 
 export type UserPaymentProfile = {
   __typename?: 'UserPaymentProfile';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   processorId: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
   user?: Maybe<User>;
   userId: Scalars['String'];
   userProfileId: Scalars['Int'];
@@ -1074,21 +947,15 @@ export type UserPaymentProfile = {
 
 export type UserPaymentProfileFilterInput = {
   and?: InputMaybe<Array<UserPaymentProfileFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<UserPaymentProfileFilterInput>>;
   processorId?: InputMaybe<StringOperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   user?: InputMaybe<UserFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
   userProfileId?: InputMaybe<ComparableInt32OperationFilterInput>;
 };
 
 export type UserPaymentProfileInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   processorId: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   user?: InputMaybe<UserInput>;
   userId: Scalars['String'];
   userProfileId: Scalars['Int'];
@@ -1117,7 +984,6 @@ export type UsersEdge = {
 export type Variant = {
   __typename?: 'Variant';
   createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   name: Scalars['String'];
   uiRegistry?: Maybe<UiRegistry>;
   uiRegistryId?: Maybe<Scalars['Int']>;
@@ -1131,7 +997,6 @@ export type Variant = {
 export type VariantFilterInput = {
   and?: InputMaybe<Array<VariantFilterInput>>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<VariantFilterInput>>;
   uiRegistry?: InputMaybe<UiRegistryFilterInput>;
@@ -1145,7 +1010,6 @@ export type VariantFilterInput = {
 
 export type VariantInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
   uiRegistry?: InputMaybe<UiRegistryInput>;
   uiRegistryId?: InputMaybe<Scalars['Int']>;
@@ -1158,10 +1022,7 @@ export type VariantInput = {
 
 export type VariantValue = {
   __typename?: 'VariantValue';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   productVariantValues?: Maybe<Array<ProductVariantValue>>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
   value: Scalars['String'];
   variantId: Scalars['Int'];
   variantValueId?: Maybe<Scalars['Int']>;
@@ -1169,21 +1030,15 @@ export type VariantValue = {
 
 export type VariantValueFilterInput = {
   and?: InputMaybe<Array<VariantValueFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<VariantValueFilterInput>>;
   productVariantValues?: InputMaybe<ListFilterInputTypeOfProductVariantValueFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   value?: InputMaybe<StringOperationFilterInput>;
   variantId?: InputMaybe<ComparableInt32OperationFilterInput>;
   variantValueId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
 };
 
 export type VariantValueInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   productVariantValues?: InputMaybe<Array<ProductVariantValueInput>>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
   value: Scalars['String'];
   variantId: Scalars['Int'];
   variantValueId?: InputMaybe<Scalars['Int']>;
@@ -1192,7 +1047,6 @@ export type VariantValueInput = {
 export type VariantsType = {
   __typename?: 'VariantsType';
   createdAt?: Maybe<Scalars['DateTime']>;
-  isDeleted?: Maybe<Scalars['Boolean']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   variantType?: Maybe<Scalars['String']>;
   variantTypeId: Scalars['Int'];
@@ -1201,7 +1055,6 @@ export type VariantsType = {
 export type VariantsTypeFilterInput = {
   and?: InputMaybe<Array<VariantsTypeFilterInput>>;
   createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  isDeleted?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<VariantsTypeFilterInput>>;
   updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
   variantType?: InputMaybe<StringOperationFilterInput>;
@@ -1210,7 +1063,6 @@ export type VariantsTypeFilterInput = {
 
 export type VariantsTypeInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  isDeleted?: InputMaybe<Scalars['Boolean']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   variantType?: InputMaybe<Scalars['String']>;
   variantTypeId: Scalars['Int'];

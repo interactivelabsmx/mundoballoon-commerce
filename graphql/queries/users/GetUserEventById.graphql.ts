@@ -14,7 +14,7 @@ export type GetUserEventByIdQuery = {
     userEventId: number;
     userId: string;
     name: string;
-    date: any;
+    date?: any | null;
     details: string;
     carts?: Array<{
       __typename?: 'EventCartDetail';
@@ -22,8 +22,8 @@ export type GetUserEventByIdQuery = {
       sku: string;
       productVariantId: number;
       userEventId?: number | null;
-      quantity: any;
-      price: any;
+      quantity: number;
+      price: number;
       label: string;
     }> | null;
   } | null;

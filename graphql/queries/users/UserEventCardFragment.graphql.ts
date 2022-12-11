@@ -5,7 +5,7 @@ export type UserEventCardFragment = {
   __typename?: 'UserEvent';
   userEventId: number;
   name: string;
-  date: any;
+  date?: any | null;
   details: string;
 };
 

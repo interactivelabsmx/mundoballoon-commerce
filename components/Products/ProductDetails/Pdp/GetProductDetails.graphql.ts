@@ -19,13 +19,13 @@ export type GetProductDetailsQuery = {
     productId?: number | null;
     name: string;
     description: string;
-    price: any;
+    price: number;
     category?: { __typename?: 'ProductCategory'; name: string } | null;
     variants?: Array<{
       __typename?: 'ProductVariant';
       productVariantId?: number | null;
       sku: string;
-      price: any;
+      price: number;
       name: string;
       description: string;
       media?: Array<{
@@ -39,7 +39,7 @@ export type GetProductDetailsQuery = {
       }> | null;
       reviews?: Array<{
         __typename?: 'ProductVariantReview';
-        rating: any;
+        rating: number;
         comments?: string | null;
       }> | null;
     }> | null;
