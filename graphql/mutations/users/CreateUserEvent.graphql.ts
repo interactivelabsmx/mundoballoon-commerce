@@ -15,7 +15,7 @@ export type CreateUserEventMutation = {
     userId: string;
     name: string;
     details: string;
-    date: any;
+    date?: any | null;
   };
 };
 

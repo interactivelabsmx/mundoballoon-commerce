@@ -27,7 +27,7 @@ export type ProductSimpleCardFragment = {
   __typename?: 'Product';
   productId?: number | null;
   name: string;
-  price: any;
+  price: number;
   category?: { __typename?: 'ProductCategory'; name: string } | null;
   variants?: Array<{
     __typename?: 'ProductVariant';
