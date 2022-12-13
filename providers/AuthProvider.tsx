@@ -55,7 +55,7 @@ export function AuthProvider({ children }: IAuthProvider) {
   const onOAuth = useCallback(
     async (user: User) => {
       setUser(user);
-      if (onAuth.current) {
+      if (onAuth.current && typeof onAuth.current === 'function') {
         onAuth.current(user);
         onAuth.current = undefined;
       }

@@ -9,7 +9,6 @@ import { Dispatch, useEffect, useState } from 'react';
 import { useGetUserCartLazyQuery } from '@components/Cart/GetUserCart.graphql';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import Modal from '@components/UI/modal/Modal';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import { useAuth } from '@providers/AuthProvider';
 import ModalCart from '../Cart/ModalCart';
@@ -20,6 +19,7 @@ const NavbarUserMenuLoader = dynamic(
   () => import('@components/Navbar/NavbarUserMenu'),
   { ssr: false }
 );
+
 interface INavbarTop {
   setOpen: Dispatch<boolean>;
   navOptions: NavItemFragment[];
@@ -92,9 +92,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                 </div>
               </div>
             </div>
-            <Modal open={cartOpen} setOpen={setCartOpen}>
-              <ModalCart />
-            </Modal>
+            <ModalCart cartOpen={cartOpen} setCartOpen={setCartOpen} />
           </div>
         </div>
       </nav>
