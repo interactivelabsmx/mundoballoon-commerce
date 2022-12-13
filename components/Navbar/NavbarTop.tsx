@@ -11,6 +11,7 @@ import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import { useGetUserCartLazyQuery } from '@graphql/queries/users/GetUserCart.graphql';
+import { useAuth } from '@providers/AuthProvider';
 import ModalCart from '../Cart/ModalCart';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
@@ -29,13 +30,14 @@ interface INavbarTop {
 const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
   const { t } = useTranslation('common');
   const [cartOpen, setCartOpen] = useState(false);
-  const [loadGreeting, { data }] = useGetUserCartLazyQuery();
+  const { user } = useAuth();
+  const [loadUserCart, { data }] = useGetUserCartLazyQuery();
   useEffect(() => {
-    loadGreeting();
-  }, [loadGreeting]);
+    if (user) loadUserCart();
+  }, [user, loadUserCart]);
   if (error) return <SimpleTextError text={error} />;
-  if (loading || !data) return <LoadingText />;
-  const { userCart } = data;
+  if (loading || (user && !data)) return <LoadingText />;
+  const { userCart } = data || {};
   const openCart = () => setCartOpen(true);
   return (
     <header className="relative z-20">
@@ -82,7 +84,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                         onClick={openCart}
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        {userCart.length}
+                        {userCart?.length}
                       </span>
                       <span className="sr-only">{t('sr_cart_count')}</span>
                     </button>
