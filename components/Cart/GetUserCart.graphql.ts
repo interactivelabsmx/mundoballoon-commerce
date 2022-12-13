@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import * as Types from '../../graphql';
+import * as Types from '../../graphql/graphql';
 
 const defaultOptions = {} as const;
 export type GetUserCartQueryVariables = Types.Exact<{ [key: string]: never }>;
@@ -9,19 +9,18 @@ export type GetUserCartQuery = {
   __typename?: 'Query';
   userCart: Array<{
     __typename?: 'UserCart';
-    userId: string;
-    sku: string;
     quantity: number;
-    productVariantId: number;
     price: number;
     variant?: {
       __typename?: 'ProductVariant';
-      description: string;
-      name: string;
-      price: number;
-      productId: number;
-      productVariantId?: number | null;
       sku: string;
+      name: string;
+      description: string;
+      media?: Array<{
+        __typename?: 'ProductVariantMedium';
+        url?: string | null;
+        description: string;
+      }> | null;
     } | null;
   }>;
 };
@@ -29,18 +28,16 @@ export type GetUserCartQuery = {
 export const GetUserCartDocument = gql`
   query GetUserCart {
     userCart {
-      userId
-      sku
       quantity
-      productVariantId
       price
       variant {
-        description
-        name
-        price
-        productId
-        productVariantId
         sku
+        name
+        description
+        media {
+          url
+          description
+        }
       }
     }
   }

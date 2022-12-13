@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect } from 'react';
+import Image from 'next/image';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import type { Asserts } from 'yup';
@@ -9,7 +9,7 @@ import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import Input from '@components/UI/form/Input';
 import BaseLink from '@components/UI/links/BaseLink';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetUserCartLazyQuery } from '@graphql/queries/users/GetUserCart.graphql';
+import { useGetUserCartQuery } from './GetUserCart.graphql';
 
 export const userEventSchema = yup
   .object({
@@ -18,7 +18,9 @@ export const userEventSchema = yup
     terms: yup.string().required(),
   })
   .required();
+
 interface ICheckoutCart extends Asserts<typeof userEventSchema> {}
+
 const CheckoutCard = () => {
   const {
     control,
@@ -28,20 +30,10 @@ const CheckoutCard = () => {
   });
 
   const { t } = useTranslation('common');
-  const [loadGreeting, { loading, error, data }] = useGetUserCartLazyQuery();
-  useEffect(() => {
-    loadGreeting();
-  }, [loadGreeting]);
+  const { loading, error, data } = useGetUserCartQuery();
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
   const { userCart } = data;
-  /* const deleteProduct = () => {
-    const [deleteUserCartMutation] = useDeleteUserCartMutation({
-      variables: {
-        sku: '',
-      },
-    });
-  };*/
   return (
     <div className="bg-white">
       <br />
@@ -56,43 +48,50 @@ const CheckoutCard = () => {
 
             <div className="flow-root">
               <ul role="list" className="-my-6 divide-y divide-gray-200">
-                {userCart.map((event) => (
-                  <li key={event.sku} className="flex space-x-6 py-6">
-                    <img
-                      src="https://images.unsplash.com/photo-1536185752-9dc80dd63510?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                      className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
-                    />
-                    <div className="flex-auto">
-                      <div className="space-y-1 sm:flex sm:items-start sm:justify-between sm:space-x-6">
-                        <div className="flex-auto space-y-1 text-sm font-medium">
-                          <h3 className="text-gray-900">
-                            <a>{event.variant?.name}</a>
-                          </h3>
-                          <p className="text-gray-900">
-                            $ {event.variant?.price}
-                          </p>
-                          <p className="hidden text-gray-500 sm:block">
-                            {event.variant?.sku}
-                          </p>
-                          <p className="hidden text-gray-500 sm:block">
-                            {event.variant?.description}
-                          </p>
-                        </div>
-                        <div className="flex flex-none space-x-4">
-                          <div className="flex border-l border-gray-300 pl-4">
-                            <BaseLink
-                              type="button"
-                              className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                              /*onClick={deleteProduct}*/
-                            >
-                              {t('Remove')}
-                            </BaseLink>
+                {userCart.map(
+                  (event) =>
+                    event.variant && (
+                      <li
+                        key={event.variant.sku}
+                        className="flex space-x-6 py-6"
+                      >
+                        {event.variant.media && (
+                          <Image
+                            src={event.variant.media.url || ''}
+                            alt={event.variant.media.description || ''}
+                            className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
+                          />
+                        )}
+                        <div className="flex-auto">
+                          <div className="space-y-1 sm:flex sm:items-start sm:justify-between sm:space-x-6">
+                            <div className="flex-auto space-y-1 text-sm font-medium">
+                              <h3 className="text-gray-900">
+                                <a>{event.variant?.name}</a>
+                              </h3>
+                              <p className="text-gray-900">$ {event.price}</p>
+                              <p className="hidden text-gray-500 sm:block">
+                                {event.variant.sku}
+                              </p>
+                              <p className="hidden text-gray-500 sm:block">
+                                {event.variant.description}
+                              </p>
+                            </div>
+                            <div className="flex flex-none space-x-4">
+                              <div className="flex border-l border-gray-300 pl-4">
+                                <BaseLink
+                                  type="button"
+                                  className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                                  /*onClick={deleteProduct}*/
+                                >
+                                  {t('Remove')}
+                                </BaseLink>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
+                      </li>
+                    )
+                )}
               </ul>
             </div>
             <br />

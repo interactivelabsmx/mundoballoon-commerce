@@ -6,11 +6,11 @@ import {
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import { Dispatch, useEffect, useState } from 'react';
+import { useGetUserCartLazyQuery } from '@components/Cart/GetUserCart.graphql';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
 import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
-import { useGetUserCartLazyQuery } from '@graphql/queries/users/GetUserCart.graphql';
 import { useAuth } from '@providers/AuthProvider';
 import ModalCart from '../Cart/ModalCart';
 import NavbarLogo from '../UI/logo/LogoSmall';

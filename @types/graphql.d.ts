@@ -1,4 +1,13 @@
 
+declare module '*/GetUserCart.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/AddToCart.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -199,15 +208,6 @@ declare module '*/NavItemFragment.graphql' {
   const defaultDocument: DocumentNode;
   export const NavCategory: DocumentNode;
 export const NavItem: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/GetUserCart.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const GetUserCart: DocumentNode;
 
   export default defaultDocument;
 }
