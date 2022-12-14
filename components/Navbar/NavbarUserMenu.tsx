@@ -1,8 +1,4 @@
 import { Menu, Transition } from '@headlessui/react';
-import {
-  ArrowRightOnRectangleIcon,
-  PlusIcon,
-} from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -11,6 +7,7 @@ import { Fragment, Suspense, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
+import EventsCard from '@components/User/Events/EventsCard';
 import { Locales } from '@lib/utils/sharedConsts';
 import {
   getLogedOutUserNavigation,
@@ -18,7 +15,6 @@ import {
 } from '@lib/utils/userNavigation';
 import { useAuth } from '@providers/AuthProvider';
 import { useCommerce } from '@providers/CommerceProvider';
-import EventsCard from './Users/EventsCard';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
@@ -77,7 +73,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={openEvents}
                       >
-                        {t('auth:events')} <PlusIcon className="h-6 w-6" />
+                        {t('auth:events')}
                       </button>
                     )}
                   </Menu.Item>
@@ -89,8 +85,7 @@ const NavbarUserMenu = () => {
                         )}`}
                         onClick={logout}
                       >
-                        {t('auth:sign_out')}{' '}
-                        <ArrowRightOnRectangleIcon className="h-6 w-6" />
+                        {t('auth:sign_out')}
                       </button>
                     )}
                   </Menu.Item>
@@ -123,12 +118,14 @@ const NavbarUserMenu = () => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    className={`w-full ${getNavbarUserMenuLinkStyle(active)}`}
+                    className={`w-full text-left ${getNavbarUserMenuLinkStyle(
+                      active
+                    )}`}
                     onClick={() =>
                       setLocale(lang === Locales.es ? Locales.en : Locales.es)
                     }
                   >
-                    Lang: {lang}
+                    {lang}
                   </button>
                 )}
               </Menu.Item>
