@@ -3,27 +3,28 @@ import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, Suspense, useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import AvatarDefault from '@components/UI/Icons/AvatarDefault';
 import Modal from '@components/UI/modal/Modal';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
-import EventsCard from '@components/User/Events/EventsCard';
-import { Locales } from '@lib/utils/sharedConsts';
 import {
   getLogedOutUserNavigation,
   getNavbarUserMenuLinkStyle,
 } from '@lib/utils/userNavigation';
 import { useAuth } from '@providers/AuthProvider';
-import { useCommerce } from '@providers/CommerceProvider';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
   { ssr: false }
 );
 
+const EventsCardLoader = dynamic(
+  () => import('@components/User/Events/EventsCard'),
+  { ssr: false }
+);
+
 const NavbarUserMenu = () => {
-  const { t, lang } = useTranslation('common');
-  const { setLocale } = useCommerce();
+  const { t } = useTranslation('common');
   const { user, logout, authModalOpen, openAuthModal, closeAuthModal } =
     useAuth();
   const onClick = useMemo(() => openAuthModal, [openAuthModal]);
@@ -115,33 +116,19 @@ const NavbarUserMenu = () => {
                   </Menu.Item>
                 ))
               )}
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`w-full text-left ${getNavbarUserMenuLinkStyle(
-                      active
-                    )}`}
-                    onClick={() =>
-                      setLocale(lang === Locales.es ? Locales.en : Locales.es)
-                    }
-                  >
-                    {lang}
-                  </button>
-                )}
-              </Menu.Item>
             </Menu.Items>
           </Transition>
         </Menu>
         {!user && (
-          <Suspense fallback="...Loading">
-            <Modal open={authModalOpen} setOpen={closeAuthModal}>
-              <FirebaseAuthLoader />
-            </Modal>
-          </Suspense>
+          <Modal open={authModalOpen} setOpen={closeAuthModal}>
+            <FirebaseAuthLoader />
+          </Modal>
         )}
-        <Modal open={eventsOpen} setOpen={setEventsOpen}>
-          <EventsCard />
-        </Modal>
+        {user && (
+          <Modal open={eventsOpen} setOpen={setEventsOpen}>
+            <EventsCardLoader />
+          </Modal>
+        )}
       </div>
     </div>
   );
