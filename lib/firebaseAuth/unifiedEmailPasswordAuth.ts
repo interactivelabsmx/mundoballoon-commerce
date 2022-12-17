@@ -1,10 +1,10 @@
+import type { UserCredential } from '@firebase/auth';
 import {
   AuthErrorCodes,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  UserCredential,
 } from '@firebase/auth';
-import { IBaeFunctionAuth } from './firebaseAuthTypes';
+import type { IBaeFunctionAuth } from './firebaseAuthTypes';
 
 interface IUnifiedEmailPasswordAuth extends IBaeFunctionAuth {
   email: string;

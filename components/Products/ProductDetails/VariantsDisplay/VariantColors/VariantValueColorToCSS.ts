@@ -1,4 +1,4 @@
-import BaseObject from '@lib/utils/BaseObject';
+import type BaseObject from '@lib/utils/BaseObject';
 
 export const BgVariantValueColorToCSS: BaseObject = {
   Rojo: 'bg-red-700',

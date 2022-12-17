@@ -1,17 +1,12 @@
-import {
-  Auth,
-  User,
-  signOut,
-  getAuth,
-  onAuthStateChanged,
-} from '@firebase/auth';
+import type { Auth, User } from '@firebase/auth';
+import { signOut, getAuth, onAuthStateChanged } from '@firebase/auth';
 import { destroyCookie, setCookie } from 'nookies';
+import type { ReactNode } from 'react';
 import React, {
   useState,
   useEffect,
   useContext,
   createContext,
-  ReactNode,
   useCallback,
   useRef,
 } from 'react';

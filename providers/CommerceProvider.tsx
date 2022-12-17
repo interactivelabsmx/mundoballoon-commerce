@@ -1,6 +1,7 @@
 import setLanguage from 'next-translate/setLanguage';
 import { setCookie } from 'nookies';
-import { createContext, ReactNode, useCallback, useContext } from 'react';
+import type { ReactNode } from 'react';
+import { createContext, useCallback, useContext } from 'react';
 
 export interface ICommerceProvider {
   setLocale: (newLang: string) => void;

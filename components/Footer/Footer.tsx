@@ -1,8 +1,10 @@
 import useTranslation from 'next-translate/useTranslation';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import LogoSmall from '@components/UI/logo/LogoSmall';
-import type { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
-import type { NavCategoryFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import type {
+  NavCategoryFragment,
+  NavItemFragment,
+} from '@layouts/NavItemFragment.graphql';
 import { Locales } from '@lib/utils/sharedConsts';
 import { useCommerce } from '@providers/CommerceProvider';
 import FooterLink from './FooterLink';

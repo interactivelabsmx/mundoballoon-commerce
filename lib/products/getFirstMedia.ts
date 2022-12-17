@@ -1,5 +1,5 @@
-import { ProductQuickViewFragment } from '@components/Products/ProductDetails/QuickView/ProductQuickViewFragment.graphql';
-import {
+import type { ProductQuickViewFragment } from '@components/Products/ProductDetails/QuickView/ProductQuickViewFragment.graphql';
+import type {
   MediaUrlAndTypeFragment,
   ProductSimpleCardFragment,
 } from '@graphql/queries/products/ProductSimpleCardFragment.graphql';

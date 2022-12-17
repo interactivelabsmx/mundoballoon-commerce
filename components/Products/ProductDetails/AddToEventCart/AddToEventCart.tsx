@@ -1,4 +1,4 @@
-import { User } from '@firebase/auth';
+import type { User } from '@firebase/auth';
 import useTranslation from 'next-translate/useTranslation';
 import { useEffect, useMemo } from 'react';
 import PrimarySelectMenu from '@components/UI/SelectMenus/PrimarySelectMenu';
@@ -6,11 +6,11 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useAuth } from '@providers/AuthProvider';
-import { ProductVariantQuickviewFragment } from '../QuickView/ProductQuickViewFragment.graphql';
+import type { ProductVariantQuickviewFragment } from '../QuickView/ProductQuickViewFragment.graphql';
 import { useAddToCartMutation } from './AddToCart.graphql';
 import { useAddToEventCartMutation } from './AddToEventCart.graphql';
 import { useGetUserEventsSelectLazyQuery } from './GetUserEventsSelect.graphql';
-import { UserEventSelectFragment } from './UserEventSelectFragment.graphql';
+import type { UserEventSelectFragment } from './UserEventSelectFragment.graphql';
 
 interface IAddToEventCart {
   productVariant: ProductVariantQuickviewFragment;

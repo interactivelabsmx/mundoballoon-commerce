@@ -1,5 +1,5 @@
 import { parseCookies } from 'nookies';
-import BaseObject from '@lib/utils/BaseObject';
+import type BaseObject from '@lib/utils/BaseObject';
 
 export const FI_TTL = 60 * 60;
 

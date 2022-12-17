@@ -1,5 +1,5 @@
 import { randNumber, randText } from '@ngneat/falso';
-import { UserEventCardFragment } from '@graphql/queries/users/UserEventCardFragment.graphql';
+import type { UserEventCardFragment } from '@components/User/Events/UserEventCardFragment.graphql';
 
 export const getFixtureUserEvent = (): UserEventCardFragment => ({
   userEventId: randNumber(),

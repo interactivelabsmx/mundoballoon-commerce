@@ -1,10 +1,10 @@
-import { GoogleAuthProvider, User } from '@firebase/auth';
+import type { User } from '@firebase/auth';
+import { GoogleAuthProvider } from '@firebase/auth';
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch } from 'react';
+import type { Dispatch } from 'react';
 import GoogleIcon from '@components/UI/Icons/GoogleIcon';
-import FirebaseSocialButton, {
-  IFirebaseSocialButton,
-} from './FirebaseSoccialButton';
+import type { IFirebaseSocialButton } from './FirebaseSoccialButton';
+import FirebaseSocialButton from './FirebaseSoccialButton';
 
 interface IFirebaseGoogleButton {
   onAuthComplete: (user: User) => void;

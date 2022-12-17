@@ -1,7 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { Fragment, useState } from 'react';
-import BaseObject from '@lib/utils/BaseObject';
+import type BaseObject from '@lib/utils/BaseObject';
 import classNames from '@lib/utils/classnames';
 import PrimaryButton from '../buttons/PrimaryButton';
 

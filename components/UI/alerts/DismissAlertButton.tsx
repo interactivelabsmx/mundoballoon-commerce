@@ -1,9 +1,7 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
-import {
-  DismissAlertButtonColors,
-  SimpleTextAlertType,
-} from './AlertConfigTypes';
+import type { SimpleTextAlertType } from './AlertConfigTypes';
+import { DismissAlertButtonColors } from './AlertConfigTypes';
 
 interface IDismissAlertButton {
   type: SimpleTextAlertType;

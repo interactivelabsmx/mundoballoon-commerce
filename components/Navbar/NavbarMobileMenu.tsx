@@ -3,14 +3,15 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dispatch, Fragment } from 'react';
+import type { Dispatch } from 'react';
+import { Fragment } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import {
   getTransitionFadeInLinearProps,
   getTransitionLeftSlideInProps,
 } from '@components/UI/transitions/transitionPropsConstants';
-import type { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import type { NavItemFragment } from '@layouts/NavItemFragment.graphql';
 import classNames from '@lib/utils/classnames';
 import hasFeaturedOptions from '@lib/utils/hasFeaturedOptions';
 

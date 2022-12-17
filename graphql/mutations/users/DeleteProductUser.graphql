@@ -1,3 +1,0 @@
-mutation DeleteUserCart($sku: String!) {
-  deleteUserCartProduct(sku: $sku)
-}

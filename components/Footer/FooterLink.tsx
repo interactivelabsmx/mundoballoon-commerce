@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type {
   NavCategoryFragment,
   NavItemFragment,
-} from '@graphql/queries/site/NavItemFragment.graphql';
+} from '@layouts/NavItemFragment.graphql';
 
 interface IFooterLink {
   option: NavItemFragment | NavCategoryFragment;

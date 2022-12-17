@@ -1,6 +1,6 @@
 import { RadioGroup } from '@headlessui/react';
 import classNames from '@lib/utils/classnames';
-import { IVariantValueDisplay } from '../VariantsDisplay';
+import type { IVariantValueDisplay } from '../VariantsDisplay';
 import {
   BgVariantValueColorToCSS,
   SelectedVariantValueColorToCSS,

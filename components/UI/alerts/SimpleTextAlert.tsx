@@ -1,7 +1,5 @@
-import {
-  SimpleTextAlertType,
-  SimpleTextAlertTypeConfig,
-} from './AlertConfigTypes';
+import type { SimpleTextAlertType } from './AlertConfigTypes';
+import { SimpleTextAlertTypeConfig } from './AlertConfigTypes';
 import DismissAlertButton from './DismissAlertButton';
 
 interface ISimpleTextAlert {

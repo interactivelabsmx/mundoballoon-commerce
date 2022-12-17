@@ -1,8 +1,9 @@
-import { AuthError, User, ConfirmationResult } from '@firebase/auth';
+import type { AuthError, User, ConfirmationResult } from '@firebase/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch } from 'react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import type { Dispatch } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import type { Asserts } from 'yup';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';

@@ -4,7 +4,7 @@ import {
   VariantDisplayFragmentDoc,
   VariantValueDisplayFragmentDoc,
 } from '../../../../graphql/fragments/ProductVariantsFragments.graphql';
-import * as Types from '../../../../graphql/graphql';
+import type * as Types from '../../../../graphql/graphql';
 import { ProductQuickViewFragmentDoc } from './ProductQuickViewFragment.graphql';
 
 const defaultOptions = {} as const;

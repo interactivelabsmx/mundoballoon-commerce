@@ -1,14 +1,10 @@
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  NormalizedCacheObject,
-} from '@apollo/client';
+import type { NormalizedCacheObject } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import merge from 'deepmerge';
 import isEqual from 'lodash.isequal';
 import { useMemo } from 'react';
-import BaseObject from '@lib/utils/BaseObject';
+import type BaseObject from '@lib/utils/BaseObject';
 import { APOLLO_STATE_PROP_NAME, getGraphqlURL } from '@lib/utils/sharedConsts';
 import typePolicies from './typePolicies';
 
