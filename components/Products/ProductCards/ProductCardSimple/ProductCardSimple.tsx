@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import PrimaryLink from '@components/UI/links/PrimaryLink';
 import Modal from '@components/UI/modal/Modal';
@@ -54,13 +54,11 @@ const ProductCardSimple = ({ product }: IProductCardSimple) => {
           {t('Details')}
         </PrimaryLink>
       </div>
-      <Suspense fallback="...Loading">
+      {product.productId && (
         <Modal open={quickViewOpen} setOpen={setQuickViewOpen}>
-          {product.productId && (
-            <QuickViewLoader productId={product.productId} />
-          )}
+          <QuickViewLoader productId={product.productId} />
         </Modal>
-      </Suspense>
+      )}
     </div>
   );
 };

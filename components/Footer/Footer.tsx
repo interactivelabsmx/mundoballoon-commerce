@@ -1,7 +1,10 @@
 import useTranslation from 'next-translate/useTranslation';
+import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import LogoSmall from '@components/UI/logo/LogoSmall';
 import type { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
 import type { NavCategoryFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import { Locales } from '@lib/utils/sharedConsts';
+import { useCommerce } from '@providers/CommerceProvider';
 import FooterLink from './FooterLink';
 
 interface IFooter {
@@ -9,7 +12,10 @@ interface IFooter {
 }
 
 const Footer = ({ navOptions }: IFooter) => {
-  const { t } = useTranslation('common');
+  const { t, lang } = useTranslation('common');
+  const { setLocale } = useCommerce();
+  const langTo = lang === Locales.es ? Locales.en : Locales.es;
+  const onSetLocale = () => setLocale(langTo);
   return (
     <footer aria-labelledby="footer-heading" className="bg-gray-50">
       <h2 id="footer-heading" className="sr-only">
@@ -35,6 +41,11 @@ const Footer = ({ navOptions }: IFooter) => {
                   </ul>
                 </div>
               ))}
+              <div>
+                <PrimaryTextButton onClick={onSetLocale}>
+                  Set to {langTo}
+                </PrimaryTextButton>
+              </div>
             </div>
           </div>
         </div>
