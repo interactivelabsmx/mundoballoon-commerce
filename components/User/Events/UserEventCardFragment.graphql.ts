@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import * as Types from '../../graphql';
+import * as Types from '../../../graphql/graphql';
 
 export type UserEventCardFragment = {
   __typename?: 'UserEvent';

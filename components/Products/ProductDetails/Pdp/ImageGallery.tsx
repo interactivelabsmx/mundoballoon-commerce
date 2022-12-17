@@ -1,7 +1,7 @@
 import { Tab } from '@headlessui/react';
 import Image from 'next/image';
-import type { MediaFragmentFragment } from '@graphql/fragments/MediaFragment.graphql';
 import classNames from '@lib/utils/classnames';
+import type { MediaFragmentFragment } from './MediaFragment.graphql';
 
 interface IImageGallery {
   images: MediaFragmentFragment[] | null | undefined;

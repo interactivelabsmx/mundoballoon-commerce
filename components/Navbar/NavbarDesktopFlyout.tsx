@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import { getTransitionFadeInProps } from '@components/UI/transitions/transitionPropsConstants';
-import type { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import type { NavItemFragment } from '@layouts/NavItemFragment.graphql';
 import classNames from '@lib/utils/classnames';
 import hasFeaturedOptions from '@lib/utils/hasFeaturedOptions';
 

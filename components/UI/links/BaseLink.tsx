@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { AnchorHTMLAttributes } from 'react';
+import type { AnchorHTMLAttributes } from 'react';
 import classNames from '@lib/utils/classnames';
 
 const baseClassNames =

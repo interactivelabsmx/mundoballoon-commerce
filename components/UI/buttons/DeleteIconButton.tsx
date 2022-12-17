@@ -1,5 +1,5 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import SecundaryButton from './SecundaryButton';
 
 const DeleteIconButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => (

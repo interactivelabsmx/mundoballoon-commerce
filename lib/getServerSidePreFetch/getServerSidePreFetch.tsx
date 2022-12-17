@@ -1,8 +1,9 @@
-import { ApolloProvider, NormalizedCacheObject } from '@apollo/client';
+import type { NormalizedCacheObject } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import { getDataFromTree } from '@apollo/client/react/ssr';
-import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 import { getClient } from '@lib/apollo/apolloClient';
 import { APOLLO_STATE_PROP_NAME } from '@lib/utils/sharedConsts';
 import getNextRouterFromCtx from './getNextRouterFromCtx';

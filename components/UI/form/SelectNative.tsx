@@ -1,10 +1,6 @@
-import {
-  ForwardedRef,
-  forwardRef,
-  InputHTMLAttributes,
-  ReactNode,
-} from 'react';
-import BaseObject from '@lib/utils/BaseObject';
+import type { ForwardedRef, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
+import type BaseObject from '@lib/utils/BaseObject';
 import classNames from '@lib/utils/classnames';
 import ErrorText from './ErrorText';
 import LabelBase from './LabelBase';

@@ -1,14 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch, Fragment } from 'react';
+import type { Dispatch } from 'react';
+import { Fragment } from 'react';
 import {
   getTransitionFadeInLinearProps,
   getTransitionRightSlideInProps,
 } from '@components/UI/transitions/transitionPropsConstants';
-import { ProductCategory, VariantValue } from '@graphql/graphql';
+import type { ProductCategory, VariantValue } from '@graphql/graphql';
 import type { GetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';
-import { IActiveFilter } from './FilterBar';
+import type { IActiveFilter } from './FilterBar';
 import FilterPopoverMobile from './FilterPopoverMobile';
 
 interface IFilterDialogMobile {

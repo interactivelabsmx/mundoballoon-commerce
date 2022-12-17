@@ -1,11 +1,11 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import { MediaFragmentFragmentDoc } from '../../../../graphql/fragments/MediaFragment.graphql';
 import {
   VariantDisplayFragmentDoc,
   VariantValueDisplayFragmentDoc,
 } from '../../../../graphql/fragments/ProductVariantsFragments.graphql';
-import * as Types from '../../../../graphql/graphql';
+import type * as Types from '../../../../graphql/graphql';
+import { MediaFragmentFragmentDoc } from './MediaFragment.graphql';
 
 const defaultOptions = {} as const;
 export type GetProductDetailsQueryVariables = Types.Exact<{

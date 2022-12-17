@@ -1,5 +1,5 @@
-import { User, AuthError, AuthProvider } from '@firebase/auth';
-import { Dispatch, FC, SVGProps } from 'react';
+import type { User, AuthError, AuthProvider } from '@firebase/auth';
+import type { Dispatch, FC, SVGProps } from 'react';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import getOpenSignInWithPopupFuction from '@lib/firebaseAuth/getOpenSignInWithPopupFuction';

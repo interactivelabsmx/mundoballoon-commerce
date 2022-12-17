@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import * as Types from '../../graphql';
+import type * as Types from '../../../graphql/graphql';
 
 const defaultOptions = {} as const;
 export type GetUserEventByIdQueryVariables = Types.Exact<{

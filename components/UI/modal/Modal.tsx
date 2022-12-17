@@ -1,5 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Dispatch, Fragment, ReactNode } from 'react';
+import type { Dispatch, ReactNode } from 'react';
+import { Fragment } from 'react';
 import {
   getTransitionFadeInProps,
   getTransitionGrowInProps,

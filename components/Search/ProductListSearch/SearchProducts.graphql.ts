@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import * as Types from '../../graphql';
-import { ProductSimpleCardFragmentDoc } from './ProductSimpleCardFragment.graphql';
+import type * as Types from '../../../graphql/graphql';
+import { ProductSimpleCardFragmentDoc } from '../../../graphql/queries/products/ProductSimpleCardFragment.graphql';
 
 const defaultOptions = {} as const;
 export type SearchProductsQueryVariables = Types.Exact<{

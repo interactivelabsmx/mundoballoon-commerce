@@ -1,4 +1,4 @@
-import {
+import type {
   VariantFragment,
   VariantValueFragment,
 } from '@graphql/queries/products/ProductFragments.graphql';

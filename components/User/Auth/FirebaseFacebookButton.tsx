@@ -1,10 +1,10 @@
-import { FacebookAuthProvider, User } from '@firebase/auth';
+import type { User } from '@firebase/auth';
+import { FacebookAuthProvider } from '@firebase/auth';
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch } from 'react';
+import type { Dispatch } from 'react';
 import FacebookIcon from '@components/UI/Icons/FacebookIcon';
-import FirebaseSocialButton, {
-  IFirebaseSocialButton,
-} from './FirebaseSoccialButton';
+import type { IFirebaseSocialButton } from './FirebaseSoccialButton';
+import FirebaseSocialButton from './FirebaseSoccialButton';
 
 interface IFirebaseFacebookButton {
   onAuthComplete: (user: User) => void;

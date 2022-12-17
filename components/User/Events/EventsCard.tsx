@@ -6,10 +6,10 @@ import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
 import Modal from '@components/UI/modal/Modal';
-import { useGetUserEventsLazyQuery } from '@graphql/queries/users/GetUserEvents.graphql';
 import AddEvent from './AddEvent';
 import DeleteEvent from './DeleteEvent';
 import Details from './Details';
+import { useGetUserEventsLazyQuery } from './GetUserEvents.graphql';
 
 const EventsCard = () => {
   const { t } = useTranslation('common');

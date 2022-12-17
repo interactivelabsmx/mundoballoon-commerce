@@ -4,7 +4,7 @@ import { JsonFileLoader } from '@graphql-tools/json-file-loader';
 import { loadSchema } from '@graphql-tools/load';
 import { addMocksToSchema } from '@graphql-tools/mock';
 import { render as rtlRender } from '@testing-library/react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { AuthProvider } from '@providers/AuthProvider';
 
 export default async function renderWithGraphql(

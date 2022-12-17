@@ -1,4 +1,4 @@
-import { Auth, AuthError, User } from '@firebase/auth';
+import type { Auth, AuthError, User } from '@firebase/auth';
 
 export interface IBaeFunctionAuth {
   auth: Auth;

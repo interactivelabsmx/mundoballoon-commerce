@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes } from 'react';
+import type { AnchorHTMLAttributes } from 'react';
 import classNames from '@lib/utils/classnames';
 import BaseLink from './BaseLink';
 

@@ -1,6 +1,6 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch } from 'react';
+import type { Dispatch } from 'react';
 
 interface ICloseModalButtonIcon {
   setOpen: Dispatch<boolean>;

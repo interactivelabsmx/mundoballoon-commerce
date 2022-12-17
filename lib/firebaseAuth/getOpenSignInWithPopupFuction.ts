@@ -1,5 +1,6 @@
-import { AuthProvider, signInWithPopup } from '@firebase/auth';
-import { IBaeFunctionAuth } from './firebaseAuthTypes';
+import type { AuthProvider } from '@firebase/auth';
+import { signInWithPopup } from '@firebase/auth';
+import type { IBaeFunctionAuth } from './firebaseAuthTypes';
 
 interface IGetOpenSignInWithPopupFuction extends IBaeFunctionAuth {
   provider: AuthProvider;

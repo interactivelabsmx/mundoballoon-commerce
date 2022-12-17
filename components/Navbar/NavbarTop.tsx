@@ -5,11 +5,12 @@ import {
 } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
-import { Dispatch, useEffect, useState } from 'react';
+import type { Dispatch } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetUserCartLazyQuery } from '@components/Cart/GetUserCart.graphql';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { NavItemFragment } from '@graphql/queries/site/NavItemFragment.graphql';
+import type { NavItemFragment } from '@layouts/NavItemFragment.graphql';
 import { useAuth } from '@providers/AuthProvider';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';

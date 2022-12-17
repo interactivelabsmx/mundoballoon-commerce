@@ -1,4 +1,4 @@
-import { IActiveFilter } from './FilterBar';
+import type { IActiveFilter } from './FilterBar';
 
 interface IFilterBarCheckbox {
   id: number | null | undefined;

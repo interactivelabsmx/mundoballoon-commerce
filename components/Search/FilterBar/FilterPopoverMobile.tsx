@@ -1,9 +1,10 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import classNames from '@lib/utils/classnames';
-import { IActiveFilter } from './FilterBar';
+import type { IActiveFilter } from './FilterBar';
 import FilterBarCheckbox from './FilterBarCheckbox';
-import { getOptionIdValue, IFilterPopover } from './FilterPopoverDesktop';
+import type { IFilterPopover } from './FilterPopoverDesktop';
+import { getOptionIdValue } from './FilterPopoverDesktop';
 
 const FilterOpenChevronMobile = ({ openFilter }: { openFilter: boolean }) => (
   <span className="ml-6 flex items-center">

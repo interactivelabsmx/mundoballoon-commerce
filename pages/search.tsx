@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FilterBar from '@components/Search/FilterBar';
-import { IActiveFilter } from '@components/Search/FilterBar/FilterBar';
-import { SortOption } from '@components/Search/FilterBar/FilterBarSort';
+import type { IActiveFilter } from '@components/Search/FilterBar/FilterBar';
+import type { SortOption } from '@components/Search/FilterBar/FilterBarSort';
 import ProductListSearch from '@components/Search/ProductListSearch';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useGetSearchFiltersQuery } from '@graphql/queries/site/GetSearchFilters.graphql';

@@ -1,6 +1,6 @@
 
 declare module '*/GetUserCart.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetUserCart: DocumentNode;
 
@@ -9,7 +9,7 @@ declare module '*/GetUserCart.graphql' {
     
 
 declare module '*/AddToCart.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const AddToCart: DocumentNode;
 
@@ -18,7 +18,7 @@ declare module '*/AddToCart.graphql' {
     
 
 declare module '*/AddToEventCart.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const AddToEventCart: DocumentNode;
 
@@ -27,7 +27,7 @@ declare module '*/AddToEventCart.graphql' {
     
 
 declare module '*/GetUserEventsSelect.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetUserEventsSelect: DocumentNode;
 
@@ -36,7 +36,7 @@ declare module '*/GetUserEventsSelect.graphql' {
     
 
 declare module '*/UserEventSelectFragment.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const UserEventSelect: DocumentNode;
 
@@ -45,7 +45,7 @@ declare module '*/UserEventSelectFragment.graphql' {
     
 
 declare module '*/GetProductDetails.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetProductDetails: DocumentNode;
 
@@ -53,8 +53,17 @@ declare module '*/GetProductDetails.graphql' {
 }
     
 
+declare module '*/MediaFragment.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MediaFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetProductQuickView.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetProductQuickView: DocumentNode;
 
@@ -63,7 +72,7 @@ declare module '*/GetProductQuickView.graphql' {
     
 
 declare module '*/ProductQuickViewFragment.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const ProductVariantQuickview: DocumentNode;
 export const ProductQuickView: DocumentNode;
@@ -72,27 +81,17 @@ export const ProductQuickView: DocumentNode;
 }
     
 
-declare module '*/MediaFragment.graphql' {
-  import { DocumentNode } from 'graphql';
+declare module '*/SearchProducts.graphql' {
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const MediaFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/ProductVariantsFragments.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const VariantDisplay: DocumentNode;
-export const VariantValueDisplay: DocumentNode;
+  export const SearchProducts: DocumentNode;
 
   export default defaultDocument;
 }
     
 
 declare module '*/CreateUser.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const CreateUser: DocumentNode;
 
@@ -100,8 +99,17 @@ declare module '*/CreateUser.graphql' {
 }
     
 
+declare module '*/GetCountryCodes.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetCountryCodes: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/CreateUserEvent.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const CreateUserEvent: DocumentNode;
 
@@ -110,7 +118,7 @@ declare module '*/CreateUserEvent.graphql' {
     
 
 declare module '*/DeleteEvent.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const DeleteUSerEvent: DocumentNode;
 
@@ -118,26 +126,45 @@ declare module '*/DeleteEvent.graphql' {
 }
     
 
-declare module '*/DeleteProductUser.graphql' {
-  import { DocumentNode } from 'graphql';
+declare module '*/GetUserEventById.graphql' {
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const DeleteUserCart: DocumentNode;
+  export const GetUserEventById: DocumentNode;
 
   export default defaultDocument;
 }
     
 
-declare module '*/GetCountryCodes.graphql' {
-  import { DocumentNode } from 'graphql';
+declare module '*/GetUserEvents.graphql' {
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const GetCountryCodes: DocumentNode;
+  export const GetUserEvents: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/UserEventCardFragment.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const UserEventCard: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/ProductVariantsFragments.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const VariantDisplay: DocumentNode;
+export const VariantValueDisplay: DocumentNode;
 
   export default defaultDocument;
 }
     
 
 declare module '*/GetHomepageProducts.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetHomepageProducts: DocumentNode;
 
@@ -146,7 +173,7 @@ declare module '*/GetHomepageProducts.graphql' {
     
 
 declare module '*/ProductFragments.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const VariantValue: DocumentNode;
 export const Variant: DocumentNode;
@@ -156,7 +183,7 @@ export const Variant: DocumentNode;
     
 
 declare module '*/ProductSimpleCardFragment.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const CategoryName: DocumentNode;
 export const MediaUrlAndType: DocumentNode;
@@ -168,7 +195,7 @@ export const ProductSimpleCard: DocumentNode;
     
 
 declare module '*/ProductsDictionaryFragment.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const ProductsDictionary: DocumentNode;
 
@@ -176,26 +203,8 @@ declare module '*/ProductsDictionaryFragment.graphql' {
 }
     
 
-declare module '*/SearchProducts.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const SearchProducts: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/GetNavOptions.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const GetNavOptions: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/GetSearchFilters.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetSearchFilters: DocumentNode;
 
@@ -203,38 +212,20 @@ declare module '*/GetSearchFilters.graphql' {
 }
     
 
+declare module '*/GetNavOptions.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetNavOptions: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/NavItemFragment.graphql' {
-  import { DocumentNode } from 'graphql';
+  import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const NavCategory: DocumentNode;
 export const NavItem: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/GetUserEventById.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const GetUserEventById: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/GetUserEvents.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const GetUserEvents: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/UserEventCardFragment.graphql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const UserEventCard: DocumentNode;
 
   export default defaultDocument;
 }

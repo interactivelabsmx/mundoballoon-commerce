@@ -1,10 +1,10 @@
 import ProductCardSimple from '@components/Products/ProductCards/ProductCardSimple';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { ProductFilterInput, ProductSortInput } from '@graphql/graphql';
-import { useSearchProductsQuery } from '@graphql/queries/products/SearchProducts.graphql';
-import { IActiveFilter } from '../FilterBar/FilterBar';
-import { SortOption } from '../FilterBar/FilterBarSort';
+import type { ProductFilterInput, ProductSortInput } from '@graphql/graphql';
+import type { IActiveFilter } from '../FilterBar/FilterBar';
+import type { SortOption } from '../FilterBar/FilterBarSort';
+import { useSearchProductsQuery } from './SearchProducts.graphql';
 
 interface IProductListSearch {
   activeFilters: IActiveFilter[];

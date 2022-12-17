@@ -1,13 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import useTranslation from 'next-translate/useTranslation';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import type { SubmitHandler } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import type { Asserts } from 'yup';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import Input from '@components/UI/form/Input';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useCreateUserEventMutation } from '@graphql/mutations/users/CreateUserEvent.graphql';
+import { useCreateUserEventMutation } from './CreateUserEvent.graphql';
 
 export const userEventSchema = yup
   .object({

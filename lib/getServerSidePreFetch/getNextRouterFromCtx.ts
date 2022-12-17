@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext } from 'next';
+import type { GetServerSidePropsContext } from 'next';
 import type { NextRouter } from 'next/router';
 
 const getNextRouterFromCtx = (ctx: GetServerSidePropsContext): NextRouter => {

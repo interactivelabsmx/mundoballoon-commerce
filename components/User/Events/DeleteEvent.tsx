@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useDeleteUSerEventMutation } from '@graphql/mutations/users/DeleteEvent.graphql';
+import { useDeleteUSerEventMutation } from './DeleteEvent.graphql';
 
 interface IDeleteEvent {
   userEventId: number;
@@ -41,4 +41,5 @@ const DeleteEvent = ({ userEventId }: IDeleteEvent) => {
     </div>
   );
 };
+
 export default DeleteEvent;

@@ -2,8 +2,8 @@ import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { Fragment } from 'react';
 import { getTransitionSmallDropdownProps } from '@components/UI/transitions/transitionPropsConstants';
-import { ProductCategory, VariantValue } from '@graphql/graphql';
-import { IActiveFilter } from './FilterBar';
+import type { ProductCategory, VariantValue } from '@graphql/graphql';
+import type { IActiveFilter } from './FilterBar';
 import FilterBarCheckbox from './FilterBarCheckbox';
 
 export interface IFilterPopover {

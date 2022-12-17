@@ -1,11 +1,10 @@
+import type { AuthError, ConfirmationResult } from '@firebase/auth';
 import {
   getAuth,
-  AuthError,
   RecaptchaVerifier,
-  ConfirmationResult,
   signInWithPhoneNumber,
 } from '@firebase/auth';
-import { IBaeFunctionAuth } from './firebaseAuthTypes';
+import type { IBaeFunctionAuth } from './firebaseAuthTypes';
 
 declare global {
   interface Window {

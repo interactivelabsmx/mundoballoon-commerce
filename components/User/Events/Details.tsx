@@ -5,7 +5,7 @@ import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import LabelBase from '@components/UI/form/LabelBase';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetUserEventByIdLazyQuery } from '@graphql/queries/users/GetUserEventById.graphql';
+import { useGetUserEventByIdLazyQuery } from './GetUserEventById.graphql';
 
 interface IDetailsView {
   userEventId: number;

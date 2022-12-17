@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch } from 'react';
+import type { Dispatch } from 'react';
 import Modal from '@components/UI/modal/Modal';
 import CartItems from './CartItems';
 

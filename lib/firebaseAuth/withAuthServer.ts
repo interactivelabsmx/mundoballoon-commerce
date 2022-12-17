@@ -1,6 +1,7 @@
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
-import { getAuth, UserRecord } from 'firebase-admin/auth';
-import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import type { UserRecord } from 'firebase-admin/auth';
+import { getAuth } from 'firebase-admin/auth';
+import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { parseCookies, destroyCookie } from 'nookies';
 import { cleanObject, FI } from './utils';
 

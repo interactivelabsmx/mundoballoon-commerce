@@ -1,9 +1,9 @@
 import { ApolloProvider } from '@apollo/client';
 import useTranslation from 'next-translate/useTranslation';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useApollo } from '@lib/apollo/apolloClient';
 import { getCookieIdToken } from '@lib/firebaseAuth/utils';
-import BaseObject from '@lib/utils/BaseObject';
+import type BaseObject from '@lib/utils/BaseObject';
 import { getGraphqlURL } from '@lib/utils/sharedConsts';
 
 interface IAppContexts {

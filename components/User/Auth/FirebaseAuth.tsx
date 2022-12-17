@@ -1,10 +1,10 @@
-import { User } from '@firebase/auth';
+import type { User } from '@firebase/auth';
 import useTranslation from 'next-translate/useTranslation';
 import { useState, useEffect } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
-import { useCreateUserMutation } from '@graphql/mutations/users/CreateUser.graphql';
 import { setRecaptchaVerifier } from '@lib/firebaseAuth/phoneAuth';
 import { useAuth } from '@providers/AuthProvider';
+import { useCreateUserMutation } from './CreateUser.graphql';
 import FirebaseEmailAuth from './FirebaseEmailAuth';
 import FirebaseFacebookButton from './FirebaseFacebookButton';
 import FirebaseGoogleButton from './FirebaseGoogleButton';

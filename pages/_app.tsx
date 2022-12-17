@@ -1,11 +1,11 @@
-import { AppProps } from 'next/dist/shared/lib/router/router';
+import type { AppProps } from 'next/dist/shared/lib/router/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
 import 'styles/index.css';
 import AppContexts from '@providers/AppContexts';
 import { CommerceProvider } from '@providers/CommerceProvider';
-import { IAuthProvider } from '../providers/AuthProvider';
+import type { IAuthProvider } from '../providers/AuthProvider';
 
 const AuthProviderLoader = dynamic<IAuthProvider>(
   () => import('@providers/AuthProvider').then((module) => module.AuthProvider),

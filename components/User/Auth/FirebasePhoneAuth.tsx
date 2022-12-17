@@ -1,7 +1,8 @@
-import { ConfirmationResult, User } from '@firebase/auth';
+import type { ConfirmationResult, User } from '@firebase/auth';
 import { PhoneIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
-import { Dispatch, useState } from 'react';
+import type { Dispatch } from 'react';
+import { useState } from 'react';
 import SecundaryButton from '@components/UI/buttons/SecundaryButton';
 import Modal from '@components/UI/modal/Modal';
 import FirebasePhoneCodeForm from './FirebasePhoneCodeForm';
