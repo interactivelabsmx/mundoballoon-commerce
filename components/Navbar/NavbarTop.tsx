@@ -41,7 +41,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
   }, [user, loadUserCart]);
   if (error) return <SimpleTextError text={error} />;
   if (loading || (user && !data)) return <LoadingText />;
-  const { userCart } = data || {};
+  const { userCarts } = data || {};
   const openCart = () => setCartOpen(true);
   return (
     <header className="relative z-20">
@@ -90,7 +90,7 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                         aria-hidden="true"
                       />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        {userCart?.length}
+                        {userCarts?.length}
                       </span>
                       <span className="sr-only">{t('sr_cart_count')}</span>
                     </button>

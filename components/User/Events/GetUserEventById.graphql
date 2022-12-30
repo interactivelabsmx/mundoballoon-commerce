@@ -1,5 +1,5 @@
 query GetUserEventById($userEventId: Int!) {
-  userEventById(userEventid: $userEventId) {
+  userEventById(userEventId: $userEventId) {
     userEventId
     userId
     name

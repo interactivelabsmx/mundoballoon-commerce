@@ -31,7 +31,7 @@ export type GetUserEventByIdQuery = {
 
 export const GetUserEventByIdDocument = gql`
   query GetUserEventById($userEventId: Int!) {
-    userEventById(userEventid: $userEventId) {
+    userEventById(userEventId: $userEventId) {
       userEventId
       userId
       name

@@ -17,6 +17,7 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
+  Decimal: any;
   Upload: any;
 };
 
@@ -231,9 +232,13 @@ export type ListFilterInputTypeOfVariantValueFilterInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addOrder: Orders;
+  addOrderProductDetails: OrderProductsDetails;
   addProductVariantReview?: Maybe<ProductVariant>;
   addToCart: UserCart;
   addToEventCart: EventCartDetail;
+  addUserAddresses: UserAddresses;
+  addUserProfile: UserProfile;
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -242,20 +247,37 @@ export type Mutation = {
   createVariant: Variant;
   createVariantValue: VariantValue;
   createVariantsType: VariantsType;
+  deleteOrder: Scalars['Boolean'];
   deleteProduct: Scalars['Boolean'];
   deleteProductVariant: Scalars['Boolean'];
   deleteProductVariantMedia: Scalars['Boolean'];
   deleteProductVariantValue: Scalars['Boolean'];
   deleteUser: Scalars['Boolean'];
+  deleteUserAddresses: Scalars['Boolean'];
   deleteUserCartProduct: Scalars['Boolean'];
   deleteUserEvent: Scalars['Boolean'];
+  deleteUserProfile: Scalars['Boolean'];
   grantAdminUser: Scalars['Boolean'];
   productVariantAddMedia?: Maybe<ProductVariant>;
   productVariantAddValue: ProductVariant;
   revokeAdminUser: Scalars['Boolean'];
   updateProduct: Product;
   updateProductVariant: ProductVariant;
+  updateUserAddresses: UserAddresses;
   updateUserEvent: UserEvent;
+  updateUserProfile: UserProfile;
+};
+
+export type MutationAddOrderArgs = {
+  userAddressesId: Scalars['Int'];
+  userProfileId: Scalars['Int'];
+};
+
+export type MutationAddOrderProductDetailsArgs = {
+  amount: Scalars['Int'];
+  orderId: Scalars['Int'];
+  price: Scalars['Decimal'];
+  productVariantId: Scalars['Int'];
 };
 
 export type MutationAddProductVariantReviewArgs = {
@@ -273,6 +295,21 @@ export type MutationAddToEventCartArgs = {
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
   userEventId: Scalars['Int'];
+};
+
+export type MutationAddUserAddressesArgs = {
+  address1: Scalars['String'];
+  address2: Scalars['String'];
+  city: Scalars['String'];
+  country: Scalars['String'];
+  state: Scalars['String'];
+  zipCode: Scalars['String'];
+};
+
+export type MutationAddUserProfileArgs = {
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['Int'];
 };
 
 export type MutationCreateProductArgs = {
@@ -308,6 +345,10 @@ export type MutationCreateVariantsTypeArgs = {
   variantsType: Scalars['String'];
 };
 
+export type MutationDeleteOrderArgs = {
+  orderId: Scalars['Int'];
+};
+
 export type MutationDeleteProductArgs = {
   productId: Scalars['Int'];
 };
@@ -330,12 +371,20 @@ export type MutationDeleteUserArgs = {
   userId: Scalars['String'];
 };
 
+export type MutationDeleteUserAddressesArgs = {
+  userAddressesId: Scalars['Int'];
+};
+
 export type MutationDeleteUserCartProductArgs = {
   sku: Scalars['String'];
 };
 
 export type MutationDeleteUserEventArgs = {
   userEventId: Scalars['Int'];
+};
+
+export type MutationDeleteUserProfileArgs = {
+  userProfileId: Scalars['Int'];
 };
 
 export type MutationGrantAdminUserArgs = {
@@ -363,8 +412,25 @@ export type MutationUpdateProductVariantArgs = {
   input: ProductVariantEntityInput;
 };
 
+export type MutationUpdateUserAddressesArgs = {
+  address1: Scalars['String'];
+  address2: Scalars['String'];
+  city: Scalars['String'];
+  country: Scalars['String'];
+  state: Scalars['String'];
+  userAddressesId: Scalars['Int'];
+  zipCode: Scalars['String'];
+};
+
 export type MutationUpdateUserEventArgs = {
   input: UserEventInput;
+};
+
+export type MutationUpdateUserProfileArgs = {
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['Int'];
+  userProfileId: Scalars['Int'];
 };
 
 export type NavCategory = {
@@ -382,6 +448,28 @@ export type NavOption = {
   name: Scalars['String'];
   options?: Maybe<Array<NavCategory>>;
   order: Scalars['Int'];
+};
+
+export type OrderProductsDetails = {
+  __typename?: 'OrderProductsDetails';
+  amount: Scalars['Int'];
+  order?: Maybe<Orders>;
+  orderDetailsProductsId: Scalars['Int'];
+  orderId: Scalars['Int'];
+  price: Scalars['Decimal'];
+  productVariantId: Scalars['Int'];
+  variant?: Maybe<ProductVariant>;
+};
+
+export type Orders = {
+  __typename?: 'Orders';
+  addresses?: Maybe<UserAddresses>;
+  orderId: Scalars['Int'];
+  profile?: Maybe<UserProfile>;
+  user?: Maybe<User>;
+  userAddressesId: Scalars['Int'];
+  userId: Scalars['String'];
+  userProfileId: Scalars['Int'];
 };
 
 /** Information about pagination in a connection. */
@@ -694,6 +782,8 @@ export type Query = {
   homepageProducts: Array<KeyValuePairOfStringAndListOfProduct>;
   loggedInUser?: Maybe<User>;
   navOptions: Array<NavOption>;
+  orders: Array<Orders>;
+  ordersProductDetails: Array<OrderProductsDetails>;
   productById?: Maybe<Product>;
   productCategories: Array<ProductCategory>;
   productQuickView: Product;
@@ -703,10 +793,12 @@ export type Query = {
   productsEntity?: Maybe<ProductsEntityConnection>;
   searchProducts?: Maybe<SearchProductsConnection>;
   sortOptions: Array<Scalars['String']>;
+  userAddresses: Array<UserAddresses>;
   userById?: Maybe<FirebaseUser>;
-  userCart: Array<UserCart>;
+  userCarts: Array<UserCart>;
   userEventById?: Maybe<UserEvent>;
   userEvents: Array<UserEvent>;
+  userProfile: Array<UserProfile>;
   users?: Maybe<UsersConnection>;
   variantValues: Array<VariantValue>;
   variants: Array<Variant>;
@@ -716,6 +808,14 @@ export type Query = {
 export type QueryHomepageProductsArgs = {
   includeBestSellingProducts: Scalars['Boolean'];
   includeNewestProducts: Scalars['Boolean'];
+};
+
+export type QueryOrdersArgs = {
+  userId: Scalars['String'];
+};
+
+export type QueryOrdersProductDetailsArgs = {
+  orderDetailsProductsId: Scalars['Int'];
 };
 
 export type QueryProductByIdArgs = {
@@ -755,12 +855,20 @@ export type QuerySearchProductsArgs = {
   where?: InputMaybe<ProductFilterInput>;
 };
 
+export type QueryUserAddressesArgs = {
+  userId: Scalars['String'];
+};
+
 export type QueryUserByIdArgs = {
   userId: Scalars['String'];
 };
 
 export type QueryUserEventByIdArgs = {
-  userEventid: Scalars['Int'];
+  userEventId: Scalars['Int'];
+};
+
+export type QueryUserProfileArgs = {
+  userId: Scalars['String'];
 };
 
 export type QueryUsersArgs = {
@@ -848,6 +956,20 @@ export type User = {
   paymentProfiles?: Maybe<Array<UserPaymentProfile>>;
   reviews?: Maybe<Array<ProductVariantReview>>;
   userId: Scalars['String'];
+};
+
+export type UserAddresses = {
+  __typename?: 'UserAddresses';
+  address1: Scalars['String'];
+  address2: Scalars['String'];
+  city: Scalars['String'];
+  country: Scalars['String'];
+  isBilling: Scalars['Int'];
+  isShipping: Scalars['Int'];
+  state: Scalars['String'];
+  userAddressesId: Scalars['Int'];
+  userId: Scalars['String'];
+  zipcode: Scalars['String'];
 };
 
 export type UserCart = {
@@ -957,6 +1079,15 @@ export type UserPaymentProfileFilterInput = {
 export type UserPaymentProfileInput = {
   processorId: Scalars['String'];
   user?: InputMaybe<UserInput>;
+  userId: Scalars['String'];
+  userProfileId: Scalars['Int'];
+};
+
+export type UserProfile = {
+  __typename?: 'UserProfile';
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['Int'];
   userId: Scalars['String'];
   userProfileId: Scalars['Int'];
 };

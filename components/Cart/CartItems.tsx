@@ -15,7 +15,7 @@ const CartItems = () => {
   }, [loadUserCart]);
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-  const { userCart } = data;
+  const { userCarts } = data;
   return (
     <>
       <section aria-labelledby="cart-heading">
@@ -23,7 +23,7 @@ const CartItems = () => {
           role="list"
           className="divide-y divide-gray-200 border-t border-b border-gray-200"
         >
-          {userCart.map(
+          {userCarts.map(
             (event) =>
               event.variant && (
                 <li key={event.variant.sku} className="flex py-6">

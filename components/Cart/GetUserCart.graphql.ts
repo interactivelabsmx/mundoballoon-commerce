@@ -7,7 +7,7 @@ export type GetUserCartQueryVariables = Types.Exact<{ [key: string]: never }>;
 
 export type GetUserCartQuery = {
   __typename?: 'Query';
-  userCart: Array<{
+  userCarts: Array<{
     __typename?: 'UserCart';
     quantity: number;
     price: number;
@@ -27,7 +27,7 @@ export type GetUserCartQuery = {
 
 export const GetUserCartDocument = gql`
   query GetUserCart {
-    userCart {
+    userCarts {
       quantity
       price
       variant {

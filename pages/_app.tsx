@@ -7,9 +7,8 @@ import AppContexts from '@providers/AppContexts';
 import { CommerceProvider } from '@providers/CommerceProvider';
 import type { IAuthProvider } from '../providers/AuthProvider';
 
-const AuthProviderLoader = dynamic<IAuthProvider>(
-  () => import('@providers/AuthProvider').then((module) => module.AuthProvider),
-  { ssr: false }
+const AuthProviderLoader = dynamic<IAuthProvider>(() =>
+  import('@providers/AuthProvider').then((module) => module.AuthProvider)
 );
 
 const App = ({ Component, pageProps }: AppProps) => (

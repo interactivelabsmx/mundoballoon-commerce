@@ -1,5 +1,5 @@
 query GetUserCart {
-  userCart {
+  userCarts {
     quantity
     price
     variant {
