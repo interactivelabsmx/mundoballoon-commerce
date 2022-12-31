@@ -1,6 +1,5 @@
 import type { Auth, User } from '@firebase/auth';
 import { signOut, getAuth, onAuthStateChanged } from '@firebase/auth';
-import { destroyCookie, setCookie } from 'nookies';
 import type { ReactNode } from 'react';
 import React, {
   useState,
@@ -11,13 +10,12 @@ import React, {
   useRef,
 } from 'react';
 import '@lib/firebaseAuth/firebaseClient';
-import {
-  FI,
-  FI_COOKIE_OPTIONS,
-  checkForExpiredCookieToken,
-} from '@lib/firebaseAuth/utils';
 
 type HandleAuth = (user: User) => void;
+
+export type GetIdTokenFn = (
+  forceRefresh?: boolean | undefined
+) => Promise<string>;
 
 interface IAuthContext {
   user?: User;
@@ -41,36 +39,27 @@ export interface IAuthProvider {
   children: ReactNode;
 }
 
-export function AuthProvider({ children }: IAuthProvider) {
+export const AuthProvider = ({ children }: IAuthProvider) => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [auth, setAuth] = useState<Auth | undefined>(undefined);
-  const [user, setUser] = useState<User | undefined>(undefined);
-  const onAuth = useRef<HandleAuth | undefined>(undefined);
+  const [auth, setAuth] = useState<Auth | undefined>();
+  const [user, setUser] = useState<User | undefined>();
+  const onAuth = useRef<HandleAuth | undefined>();
 
-  const onOAuth = useCallback(
-    async (user: User) => {
-      setUser(user);
-      if (onAuth.current && typeof onAuth.current === 'function') {
-        onAuth.current(user);
-        onAuth.current = undefined;
-      }
-      setCookie({}, FI, await user.getIdToken(), FI_COOKIE_OPTIONS);
-    },
-    [setUser]
-  );
-
-  const refreshIdToken = useCallback(async () => {
-    setCookie({}, FI, (await user?.getIdToken(true)) || '', FI_COOKIE_OPTIONS);
-  }, [user]);
+  const onOAuth = useCallback((user: User) => {
+    setUser(user);
+    if (onAuth.current && typeof onAuth.current === 'function') {
+      onAuth.current(user);
+      onAuth.current = undefined;
+    }
+  }, []);
 
   const logout = useCallback(() => {
     if (auth)
       signOut(auth).then(() => {
         // TODO: Inform User of Logout
       });
-    destroyCookie(null, FI, { path: '/' });
     setUser(undefined);
-  }, [setUser, auth]);
+  }, [auth]);
 
   const openAuthModal = useCallback((handleAuth?: (user: User) => void) => {
     if (handleAuth) onAuth.current = handleAuth;
@@ -79,7 +68,6 @@ export function AuthProvider({ children }: IAuthProvider) {
 
   const closeAuthModal = useCallback(() => setAuthModalOpen(false), []);
 
-  useEffect(() => checkForExpiredCookieToken(refreshIdToken), [refreshIdToken]);
   useEffect(() => setAuth(getAuth()), []);
   useEffect(() => {
     if (auth) onAuthStateChanged(auth, (user) => !!user && onOAuth(user));
@@ -100,6 +88,6 @@ export function AuthProvider({ children }: IAuthProvider) {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export const useAuth = () => useContext(AuthContext);
