@@ -5610,10 +5610,10 @@ human-signals@^3.0.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-3.0.1.tgz#c740920859dafa50e5a3222da9d3bf4bb0e5eef5"
   integrity sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==
 
-husky@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.2.tgz#5816a60db02650f1f22c8b69b928fd6bcd77a236"
-  integrity sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==
+husky@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
+  integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
 
 iconv-lite@0.6.3:
   version "0.6.3"
@@ -7443,10 +7443,10 @@ react-error-boundary@^3.1.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-react-hook-form@7.41.3:
-  version "7.41.3"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.3.tgz#1b85e95e70cb743d41cd9230ea2df71359d00151"
-  integrity sha512-5QNTmqJtDb88WV5n41b6+AmcDMVyaJ3tccPgHAgS215w3jZ3bmJhDO27kNTr8u4YHNYXmS7p1/4/KachBAlUtw==
+react-hook-form@7.41.4:
+  version "7.41.4"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.4.tgz#2cb949bd27e7ee5127b119f85d2d8956449d37d8"
+  integrity sha512-75TOP2OJNj+wmeDvzD4FxDNBitJzqqwobf5q0FegvkNpXDnoAsjFD9O1c7PQOvmIVenUDGcAat5QQARWboDnnQ==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
@@ -8501,10 +8501,10 @@ vite-node@0.26.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vite@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-4.0.3.tgz#de27ad3f263a03ae9419cdc8bc07721eadcba8b9"
-  integrity sha512-HvuNv1RdE7deIfQb8mPk51UKjqptO/4RXZ5yXSAvurd5xOckwS/gg8h9Tky3uSbnjYTgUm0hVCet1cyhKd73ZA==
+vite@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-4.0.4.tgz#4612ce0b47bbb233a887a54a4ae0c6e240a0da31"
+  integrity sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==
   dependencies:
     esbuild "^0.16.3"
     postcss "^8.4.20"
