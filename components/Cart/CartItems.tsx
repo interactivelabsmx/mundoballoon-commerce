@@ -1,21 +1,19 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
-import { useEffect } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import PrimaryLinkButton from '@components/UI/links/PrimaryLinkButton';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetUserCartLazyQuery } from './GetUserCart.graphql';
+import { useCommerce } from '@providers/CommerceProvider';
 
 const CartItems = () => {
   const { t } = useTranslation('common');
-  const [loadUserCart, { loading, error, data }] = useGetUserCartLazyQuery();
-  useEffect(() => {
-    loadUserCart();
-  }, [loadUserCart]);
+  const { cart } = useCommerce();
+  const { loading, error, data } = cart.useCart();
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
   const { userCarts } = data;
+
   return (
     <>
       <section aria-labelledby="cart-heading">

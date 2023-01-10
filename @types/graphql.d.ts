@@ -1,31 +1,4 @@
 
-declare module '*/GetUserCart.graphql' {
-  import type { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const GetUserCart: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/AddToCart.graphql' {
-  import type { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const AddToCart: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/AddToEventCart.graphql' {
-  import type { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const AddToEventCart: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/GetUserEventsSelect.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -226,6 +199,33 @@ declare module '*/NavItemFragment.graphql' {
   const defaultDocument: DocumentNode;
   export const NavCategory: DocumentNode;
 export const NavItem: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/AddToCart.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddToCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/AddToEventCart.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddToEventCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetUserCart.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserCart: DocumentNode;
 
   export default defaultDocument;
 }

@@ -6,9 +6,8 @@ import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useAuth } from '@providers/AuthProvider';
+import { useCommerce } from '@providers/CommerceProvider';
 import type { ProductVariantQuickviewFragment } from '../QuickView/ProductQuickViewFragment.graphql';
-import { useAddToCartMutation } from './AddToCart.graphql';
-import { useAddToEventCartMutation } from './AddToEventCart.graphql';
 import { useGetUserEventsSelectLazyQuery } from './GetUserEventsSelect.graphql';
 import type { UserEventSelectFragment } from './UserEventSelectFragment.graphql';
 
@@ -19,13 +18,14 @@ interface IAddToEventCart {
 const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
   const { t } = useTranslation('common');
   const { user, openAuthModal } = useAuth();
+  const { cart } = useCommerce();
 
   const [addToCartMutation, { loading: loadingCart, error: errorCart }] =
-    useAddToCartMutation();
+    cart.useAddItem();
   const [
     addToEventCartMutation,
     { loading: loadingEventCart, error: errorEventCart },
-  ] = useAddToEventCartMutation();
+  ] = cart.useAddEventItem();
   const [loadUserEvents, { loading, error, data }] =
     useGetUserEventsSelectLazyQuery();
 
