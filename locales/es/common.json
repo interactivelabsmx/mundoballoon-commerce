@@ -75,5 +75,6 @@
   "size": "Tamaño",
   "choose_size": "Escoje un tamaño",
   "star_rating_sr": "{{rating}} de 5 estrellas",
-  "review_count": "{{count}} reviews"
+  "review_count": "{{count}} reviews",
+  "Your_order": "Tu orden"
 }
