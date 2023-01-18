@@ -1,19 +1,14 @@
-import useTranslation from 'next-translate/useTranslation';
+
 import Image from 'next/image';
-import CartItems from './CartItems';
+import CheckoutForm from './CheckoutForm';
 import { policies } from './policies';
 
-const CheckoutCart = () => {
-  const { t } = useTranslation('common');
+const CheckoutCart = () => {  
   return (
     <div className="bg-white">
+      <CheckoutForm />
       <main className="mx-auto max-w-7xl px-4 pt-4 pb-16 sm:px-6 sm:pt-8 sm:pb-24 lg:px-8 xl:px-2 xl:pt-14">
-        <div className="mx-auto w-full max-w-lg">
-          <h1 className="text-center text-xl font-bold py-8">
-            {t('Shopping_Cart')}
-          </h1>
-          <CartItems />
-        </div>
+        <div className="mx-auto w-full max-w-lg"></div>
 
         <section aria-labelledby="policies-heading">
           <div className="mx-auto max-w-7xl py-24 px-4 sm:px-6 sm:py-32 lg:px-8">

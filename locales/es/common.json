@@ -62,5 +62,6 @@
   "Taxes": "Impuestos",
   "Shipping": "Envío",
   "Remove": "Quitar",
-  "Shipping_And_Taxes": "El envío y los impuestos se calcularán al finalizar la compra"
+  "Shipping_And_Taxes": "El envío y los impuestos se calcularán al finalizar la compra",
+  "Your_order": "Tu orden"
 }

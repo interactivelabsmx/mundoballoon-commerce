@@ -855,10 +855,6 @@ export type QuerySearchProductsArgs = {
   where?: InputMaybe<ProductFilterInput>;
 };
 
-export type QueryUserAddressesArgs = {
-  userId: Scalars['String'];
-};
-
 export type QueryUserByIdArgs = {
   userId: Scalars['String'];
 };
