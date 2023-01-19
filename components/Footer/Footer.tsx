@@ -45,7 +45,7 @@ const Footer = ({ navOptions }: IFooter) => {
               ))}
               <div>
                 <PrimaryTextButton onClick={onSetLocale}>
-                  Set to {langTo}
+                  {t('set_to', { lang: langTo })}
                 </PrimaryTextButton>
               </div>
             </div>

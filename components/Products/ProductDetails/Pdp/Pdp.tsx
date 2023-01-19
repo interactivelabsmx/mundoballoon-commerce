@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
@@ -13,6 +14,7 @@ export interface IPdp {
 }
 
 const Pdp = ({ productId }: IPdp) => {
+  const { t } = useTranslation('common');
   const [variantIndex, setVariantIndex] = useState(0);
   const { loading, error, data } = useGetProductDetailsQuery({
     variables: { productId },
@@ -37,10 +39,9 @@ const Pdp = ({ productId }: IPdp) => {
             <h1 className="text-2xl font-bold text-gray-900 sm:pr-12">
               {product?.name}
             </h1>
-
             <section aria-labelledby="information-heading" className="mt-2">
               <h3 id="information-heading" className="sr-only">
-                Product information
+                {t('product_information')}
               </h3>
               <p className="text-2xl text-gray-900">${product?.price}</p>
               <div className="mt-6">
@@ -57,7 +58,7 @@ const Pdp = ({ productId }: IPdp) => {
             </section>
             <section aria-labelledby="options-heading" className="mt-10">
               <h3 id="options-heading" className="sr-only">
-                Product options
+                {t('product_options')}
               </h3>
               <form>
                 {variants && variantValues && (

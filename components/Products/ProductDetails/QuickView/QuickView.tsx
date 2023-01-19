@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
@@ -13,6 +14,7 @@ interface IQuickView {
 }
 
 const QuickView = ({ productId }: IQuickView) => {
+  const { t } = useTranslation('common');
   const [variantIndex, setVariantIndex] = useState(0);
   const [loadProductQuickView, { loading, error, data }] =
     useGetProductQuickViewLazyQuery({
@@ -50,7 +52,7 @@ const QuickView = ({ productId }: IQuickView) => {
 
         <section aria-labelledby="information-heading" className="mt-2">
           <h3 id="information-heading" className="sr-only">
-            Product information
+            {t('product_information')}
           </h3>
           <p className="text-2xl text-gray-900">${product?.price}</p>
           <div className="mt-6">
@@ -61,7 +63,7 @@ const QuickView = ({ productId }: IQuickView) => {
             />
           </div>
           <div className="mt-6">
-            <h4 className="sr-only">Description</h4>
+            <h4 className="sr-only">{t('description')}</h4>
             <span>{product?.description}</span>
           </div>
           <br />

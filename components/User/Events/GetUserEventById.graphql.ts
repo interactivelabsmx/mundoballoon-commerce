@@ -16,16 +16,6 @@ export type GetUserEventByIdQuery = {
     name: string;
     date?: any | null;
     details: string;
-    carts?: Array<{
-      __typename?: 'EventCartDetail';
-      eventCartId: number;
-      sku: string;
-      productVariantId: number;
-      userEventId?: number | null;
-      quantity: number;
-      price: number;
-      label: string;
-    }> | null;
   } | null;
 };
 
@@ -37,15 +27,6 @@ export const GetUserEventByIdDocument = gql`
       name
       date
       details
-      carts {
-        eventCartId
-        sku
-        productVariantId
-        userEventId
-        quantity
-        price
-        label
-      }
     }
   }
 `;

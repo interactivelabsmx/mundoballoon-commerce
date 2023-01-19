@@ -5,6 +5,7 @@
   "Sign in": "Sign in",
   "Profile": "Profile",
   "Lang": "Language",
+  "set_to": "Set to {{lang}}",
   "Sign Out": "Sign Out",
   "Or continue with": "Or continue with",
   "Password": "Password",
@@ -62,5 +63,17 @@
   "Taxes": "Taxes",
   "Shipping": "Shipping",
   "Remove": "Remove",
-  "Shipping_And_Taxes": "Shipping and taxes will be calculated at checkout"
+  "Shipping_And_Taxes": "Shipping and taxes will be calculated at checkout",
+  "order_summary": "Order Summary",
+  "subtotal": "Subtotal",
+  "additional_details": "Additional details",
+  "product_information": "Product information",
+  "product_options": "Product options",
+  "description": "Description",
+  "color": "Color",
+  "choose_color": "Choose a color",
+  "size": "Size",
+  "choose_size": "Choose a size",
+  "star_rating_sr": "{{rating}} out of 5 stars",
+  "review_count": "{{count}} reviews"
 }

@@ -66,13 +66,15 @@ const CartItems = () => {
       </section>
       <section aria-labelledby="summary-heading" className="mt-10">
         <h2 id="summary-heading" className="sr-only">
-          Order summary
+          {t('order_summary')}
         </h2>
 
         <div>
           <dl className="space-y-4">
             <div className="flex items-center justify-between">
-              <dt className="text-base font-medium text-gray-900">Subtotal</dt>
+              <dt className="text-base font-medium text-gray-900">
+                {t('subtotal')}
+              </dt>
               <dd className="ml-4 text-base font-medium text-gray-900">
                 $96.00
               </dd>

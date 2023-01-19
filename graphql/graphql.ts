@@ -103,6 +103,11 @@ export type CountryCode = {
   wmo: Scalars['String'];
 };
 
+export type CreateOrderRequestsInput = {
+  order?: InputMaybe<OrdersInput>;
+  orderItems?: InputMaybe<Array<OrderProductsDetailsInput>>;
+};
+
 export type EventCartDetail = {
   __typename?: 'EventCartDetail';
   createdAt?: Maybe<Scalars['DateTime']>;
@@ -239,6 +244,7 @@ export type Mutation = {
   addToEventCart: EventCartDetail;
   addUserAddresses: UserAddresses;
   addUserProfile: UserProfile;
+  createOrder: Orders;
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -310,6 +316,10 @@ export type MutationAddUserProfileArgs = {
   firstName: Scalars['String'];
   lastName: Scalars['String'];
   phoneNumber: Scalars['Int'];
+};
+
+export type MutationCreateOrderArgs = {
+  input: CreateOrderRequestsInput;
 };
 
 export type MutationCreateProductArgs = {
@@ -454,19 +464,39 @@ export type OrderProductsDetails = {
   __typename?: 'OrderProductsDetails';
   amount: Scalars['Int'];
   order?: Maybe<Orders>;
-  orderDetailsProductsId: Scalars['Int'];
+  orderDetailsProductsId?: Maybe<Scalars['Int']>;
   orderId: Scalars['Int'];
   price: Scalars['Decimal'];
   productVariantId: Scalars['Int'];
   variant?: Maybe<ProductVariant>;
 };
 
+export type OrderProductsDetailsInput = {
+  amount: Scalars['Int'];
+  order?: InputMaybe<OrdersInput>;
+  orderDetailsProductsId?: InputMaybe<Scalars['Int']>;
+  orderId: Scalars['Int'];
+  price: Scalars['Decimal'];
+  productVariantId: Scalars['Int'];
+  variant?: InputMaybe<ProductVariantInput>;
+};
+
 export type Orders = {
   __typename?: 'Orders';
   addresses?: Maybe<UserAddresses>;
-  orderId: Scalars['Int'];
+  orderId?: Maybe<Scalars['Int']>;
   profile?: Maybe<UserProfile>;
   user?: Maybe<User>;
+  userAddressesId: Scalars['Int'];
+  userId: Scalars['String'];
+  userProfileId: Scalars['Int'];
+};
+
+export type OrdersInput = {
+  addresses?: InputMaybe<UserAddressesInput>;
+  orderId?: InputMaybe<Scalars['Int']>;
+  profile?: InputMaybe<UserProfileInput>;
+  user?: InputMaybe<UserInput>;
   userAddressesId: Scalars['Int'];
   userId: Scalars['String'];
   userProfileId: Scalars['Int'];
@@ -972,6 +1002,19 @@ export type UserAddresses = {
   zipcode: Scalars['String'];
 };
 
+export type UserAddressesInput = {
+  address1: Scalars['String'];
+  address2: Scalars['String'];
+  city: Scalars['String'];
+  country: Scalars['String'];
+  isBilling: Scalars['Int'];
+  isShipping: Scalars['Int'];
+  state: Scalars['String'];
+  userAddressesId: Scalars['Int'];
+  userId: Scalars['String'];
+  zipcode: Scalars['String'];
+};
+
 export type UserCart = {
   __typename?: 'UserCart';
   price: Scalars['Float'];
@@ -1085,6 +1128,14 @@ export type UserPaymentProfileInput = {
 
 export type UserProfile = {
   __typename?: 'UserProfile';
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  phoneNumber: Scalars['Int'];
+  userId: Scalars['String'];
+  userProfileId: Scalars['Int'];
+};
+
+export type UserProfileInput = {
   firstName: Scalars['String'];
   lastName: Scalars['String'];
   phoneNumber: Scalars['Int'];
