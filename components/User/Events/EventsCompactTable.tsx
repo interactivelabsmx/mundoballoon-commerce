@@ -26,6 +26,9 @@ const EventsCompactTable = () => {
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
   const { userEvents } = data;
+
+  if (!userEvents.length) return null;
+
   return (
     <div className="inline-block mt-5 min-w-full py-2 align-middle md:px-6 lg:px-12">
       <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
