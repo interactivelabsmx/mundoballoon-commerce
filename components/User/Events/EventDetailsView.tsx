@@ -8,7 +8,7 @@ import { useGetUserEventByIdLazyQuery } from './GetUserEventById.graphql';
 interface IDetailsView {
   userEventId: number;
 }
-const DetailsView = ({ userEventId }: IDetailsView) => {
+const EventDetailsView = ({ userEventId }: IDetailsView) => {
   const { t } = useTranslation('common');
   const [loadGreeting, { loading, error, data }] = useGetUserEventByIdLazyQuery(
     {
@@ -37,7 +37,7 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
             </dd>
           </div>
           <div className="sm:col-span-1">
-            <LabelBase htmlFor={''} label={t('Creation_Date')}></LabelBase>
+            <LabelBase htmlFor={''} label={t('Date')}></LabelBase>
             <dd className="mt-1 text-sm text-gray-900">
               {userEventById?.date}
             </dd>
@@ -54,4 +54,4 @@ const DetailsView = ({ userEventId }: IDetailsView) => {
   );
 };
 
-export default DetailsView;
+export default EventDetailsView;

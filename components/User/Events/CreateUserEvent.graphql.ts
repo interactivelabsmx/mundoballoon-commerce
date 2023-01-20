@@ -6,6 +6,7 @@ const defaultOptions = {} as const;
 export type CreateUserEventMutationVariables = Types.Exact<{
   name: Types.Scalars['String'];
   details: Types.Scalars['String'];
+  date: Types.Scalars['DateTime'];
 }>;
 
 export type CreateUserEventMutation = {
@@ -20,8 +21,12 @@ export type CreateUserEventMutation = {
 };
 
 export const CreateUserEventDocument = gql`
-  mutation CreateUserEvent($name: String!, $details: String!) {
-    createUserEvent(name: $name, details: $details) {
+  mutation CreateUserEvent(
+    $name: String!
+    $details: String!
+    $date: DateTime!
+  ) {
+    createUserEvent(name: $name, details: $details, date: $date) {
       userId
       name
       details
@@ -49,6 +54,7 @@ export type CreateUserEventMutationFn = Apollo.MutationFunction<
  *   variables: {
  *      name: // value for 'name'
  *      details: // value for 'details'
+ *      date: // value for 'date'
  *   },
  * });
  */

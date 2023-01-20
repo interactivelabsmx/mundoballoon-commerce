@@ -339,6 +339,7 @@ export type MutationCreateUserArgs = {
 };
 
 export type MutationCreateUserEventArgs = {
+  date: Scalars['DateTime'];
   details: Scalars['String'];
   name: Scalars['String'];
 };

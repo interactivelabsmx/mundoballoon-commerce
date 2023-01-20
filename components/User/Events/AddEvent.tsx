@@ -12,12 +12,14 @@ import { useCreateUserEventMutation } from './CreateUserEvent.graphql';
 
 export const userEventSchema = yup
   .object({
-    eventName: yup.string().required(),
+    name: yup.string().required(),
     details: yup.string().required(),
+    date: yup.string().required(),
   })
   .required();
 
 interface IAddEventForm extends Asserts<typeof userEventSchema> {}
+
 const AddEvent = () => {
   const { t } = useTranslation('common');
   const {
@@ -29,12 +31,9 @@ const AddEvent = () => {
   });
   const [createUserEventMutation, { data, loading, error }] =
     useCreateUserEventMutation();
-  const onSubmit: SubmitHandler<IAddEventForm> = ({ eventName, details }) => {
+  const onSubmit: SubmitHandler<IAddEventForm> = (variables) => {
     createUserEventMutation({
-      variables: {
-        name: eventName,
-        details: details,
-      },
+      variables,
     });
     if (error) return <SimpleTextError text={error.message} />;
     if (loading || !data) return <LoadingText />;
@@ -50,7 +49,7 @@ const AddEvent = () => {
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <Controller
-                name="eventName"
+                name="name"
                 control={control}
                 render={({ field }) => (
                   <Input
@@ -59,7 +58,7 @@ const AddEvent = () => {
                     placeholder=""
                     type="text"
                     autoComplete=""
-                    error={errors?.eventName?.message}
+                    error={errors?.name?.message}
                   />
                 )}
               />
@@ -78,6 +77,20 @@ const AddEvent = () => {
                 )}
               />
             </div>
+            <div>
+              <Controller
+                name="date"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label={t('Date')}
+                    type="date"
+                    error={errors?.details?.message}
+                  />
+                )}
+              />
+            </div>
             <PrimaryButton type="submit">{t('Add_Event')}</PrimaryButton>
           </form>
         </div>
@@ -85,4 +98,5 @@ const AddEvent = () => {
     </div>
   );
 };
+
 export default AddEvent;
