@@ -1,10 +1,12 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
+import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
 import { policies } from './policies';
 
 const CheckoutCart = () => {
   const { t } = useTranslation('common');
+  const { user } = useAuth();
   return (
     <div className="bg-white">
       <main className="mx-auto max-w-7xl px-4 pt-4 pb-16 sm:px-6 sm:pt-8 sm:pb-24 lg:px-8 xl:px-2 xl:pt-14">
@@ -12,7 +14,7 @@ const CheckoutCart = () => {
           <h1 className="text-center text-xl font-bold py-8">
             {t('Shopping_Cart')}
           </h1>
-          <CartItems />
+          {user && <CartItems />}
         </div>
 
         <section aria-labelledby="policies-heading">

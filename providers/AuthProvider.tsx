@@ -1,5 +1,6 @@
 import type { Auth, User } from '@firebase/auth';
 import { signOut, getAuth, onAuthStateChanged } from '@firebase/auth';
+import { destroyCookie, setCookie } from 'nookies';
 import type { ReactNode } from 'react';
 import React, {
   useState,
@@ -10,6 +11,20 @@ import React, {
   useRef,
 } from 'react';
 import '@lib/firebaseAuth/firebaseClient';
+
+export const FI_BUF = Buffer.from('FIREBASE_COOKIE');
+export const FI = FI_BUF.toString('base64');
+export const FI_TTL = 1000 * 6000;
+export const FI_COOKIE_OPTIONS = {
+  maxAge: FI_TTL,
+  sameSite: true,
+  secure: true,
+};
+
+export const setTokenCookie = async (user: User) => {
+  const token = await user.getIdToken();
+  setCookie(undefined, FI, token, FI_COOKIE_OPTIONS);
+};
 
 type HandleAuth = (user: User) => void;
 
@@ -47,6 +62,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
   const onOAuth = useCallback((user: User) => {
     setUser(user);
+    setTokenCookie(user);
     if (onAuth.current && typeof onAuth.current === 'function') {
       onAuth.current(user);
       onAuth.current = undefined;
@@ -54,10 +70,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
   }, []);
 
   const logout = useCallback(() => {
-    if (auth)
-      signOut(auth).then(() => {
-        // TODO: Inform User of Logout
-      });
+    if (auth) signOut(auth).then(() => destroyCookie(undefined, FI));
     setUser(undefined);
   }, [auth]);
 
