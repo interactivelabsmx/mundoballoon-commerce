@@ -230,3 +230,12 @@ declare module '*/GetUserCart.graphql' {
   export default defaultDocument;
 }
     
+
+declare module '*/GetUserCartCount.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const GetUserCartCount: DocumentNode;
+
+  export default defaultDocument;
+}
+    

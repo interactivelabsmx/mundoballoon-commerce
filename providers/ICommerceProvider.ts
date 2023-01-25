@@ -14,6 +14,11 @@ import type {
   GetUserCartQueryVariables,
   GetUserCartQueryHookResult,
 } from './graphql/GetUserCart.graphql';
+import type {
+  GetUserCartCountQuery,
+  GetUserCartCountQueryHookResult,
+  GetUserCartCountQueryVariables,
+} from './graphql/GetUserCartCount.graphql';
 
 export interface ICommerceProvider {
   setLocale: (newLang: string) => void;
@@ -24,6 +29,12 @@ export interface ICommerceProvider {
         GetUserCartQueryVariables
       >
     ) => GetUserCartQueryHookResult;
+    useCartCount: (
+      baseOptions?: QueryHookOptions<
+        GetUserCartCountQuery,
+        GetUserCartCountQueryVariables
+      >
+    ) => GetUserCartCountQueryHookResult;
     useAddItem: (
       baseOptions?: MutationHookOptions<
         AddToCartMutation,

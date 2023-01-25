@@ -6,9 +6,11 @@ import type { ICommerceProvider } from './ICommerceProvider';
 import { useAddToCartMutation } from './graphql/AddToCart.graphql';
 import { useAddToEventCartMutation } from './graphql/AddToEventCart.graphql';
 import { useGetUserCartQuery } from './graphql/GetUserCart.graphql';
+import { useGetUserCartCountQuery } from './graphql/GetUserCartCount.graphql';
 
 export const CartContext = {
   useCart: useGetUserCartQuery,
+  useCartCount: useGetUserCartCountQuery,
   useAddItem: useAddToCartMutation,
   useAddEventItem: useAddToEventCartMutation,
 };

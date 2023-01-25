@@ -7,36 +7,47 @@ export type GetUserCartQueryVariables = Types.Exact<{ [key: string]: never }>;
 
 export type GetUserCartQuery = {
   __typename?: 'Query';
-  userCarts: Array<{
+  userCart: {
     __typename?: 'UserCart';
-    quantity: number;
-    price: number;
-    variant?: {
-      __typename?: 'ProductVariant';
-      sku: string;
-      name: string;
-      description: string;
-      media?: Array<{
-        __typename?: 'ProductVariantMedium';
-        url?: string | null;
+    subtotal: number;
+    tax: number;
+    total: number;
+    products?: Array<{
+      __typename?: 'UserCartProduct';
+      quantity: number;
+      price: number;
+      variant?: {
+        __typename?: 'ProductVariant';
+        sku: string;
+        name: string;
         description: string;
-      }> | null;
-    } | null;
-  }>;
+        media?: Array<{
+          __typename?: 'ProductVariantMedium';
+          url?: string | null;
+          description: string;
+        }> | null;
+      } | null;
+    }> | null;
+  };
 };
 
 export const GetUserCartDocument = gql`
   query GetUserCart {
-    userCarts {
-      quantity
-      price
-      variant {
-        sku
-        name
-        description
-        media {
-          url
+    userCart {
+      subtotal
+      tax
+      total
+      products {
+        quantity
+        price
+        variant {
+          sku
+          name
           description
+          media {
+            url
+            description
+          }
         }
       }
     }

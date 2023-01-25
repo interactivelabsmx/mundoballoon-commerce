@@ -6,15 +6,15 @@ import { useCommerce } from '@providers/CommerceProvider';
 const NavbarUserCartCount = () => {
   const { t } = useTranslation('common');
   const { cart } = useCommerce();
-  const { data, error, loading } = cart.useCart();
+  const { data, error, loading } = cart.useCartCount();
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-  const { userCarts } = data || {};
+  const { userCartCount } = data || {};
 
   return (
     <>
       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-        {userCarts?.length}
+        {userCartCount}
       </span>
       <span className="sr-only">{t('sr_cart_count')}</span>
     </>

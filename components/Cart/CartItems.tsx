@@ -12,58 +12,60 @@ const CartItems = () => {
   const { loading, error, data } = cart.useCart();
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-  const { userCarts } = data;
-
+  const { userCart } = data || {};
+  const { products, subtotal } = userCart;
   return (
     <>
-      <section aria-labelledby="cart-heading">
-        <ul
-          role="list"
-          className="divide-y divide-gray-200 border-t border-b border-gray-200"
-        >
-          {userCarts.map(
-            (event) =>
-              event.variant && (
-                <li key={event.variant.sku} className="flex py-6">
-                  <div className="flex-shrink-0">
-                    {event.variant.media && (
-                      <Image
-                        height={128}
-                        width={128}
-                        src={event.variant.media[0].url || ''}
-                        alt={event.variant.media[0].description || ''}
-                        className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
-                      />
-                    )}
-                  </div>
-                  <div className="ml-4 flex flex-1 flex-col sm:ml-6">
-                    <div>
-                      <div className="flex justify-between">
-                        <h4 className="text-sm">
-                          <a className="font-medium text-gray-700 hover:text-gray-800">
-                            {event.variant?.name}
-                          </a>
-                        </h4>
-                        <p className="ml-4 text-sm font-medium text-gray-900">
-                          ${event.price}
+      {products && (
+        <section aria-labelledby="cart-heading">
+          <ul
+            role="list"
+            className="divide-y divide-gray-200 border-t border-b border-gray-200"
+          >
+            {products.map(
+              (product) =>
+                product.variant && (
+                  <li key={product.variant.sku} className="flex py-6">
+                    <div className="flex-shrink-0">
+                      {product.variant.media && (
+                        <Image
+                          height={128}
+                          width={128}
+                          src={product.variant.media[0].url || ''}
+                          alt={product.variant.media[0].description || ''}
+                          className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
+                        />
+                      )}
+                    </div>
+                    <div className="ml-4 flex flex-1 flex-col sm:ml-6">
+                      <div>
+                        <div className="flex justify-between">
+                          <h4 className="text-sm">
+                            <a className="font-medium text-gray-700 hover:text-gray-800">
+                              {product.variant?.name}
+                            </a>
+                          </h4>
+                          <p className="ml-4 text-sm font-medium text-gray-900">
+                            ${product.price}
+                          </p>
+                        </div>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {product.variant?.description}
                         </p>
                       </div>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {event.variant?.description}
-                      </p>
-                    </div>
 
-                    <div className="mt-4 flex flex-1 items-end justify-between">
-                      <div className="ml-4">
-                        <PrimaryTextButton>{t('Remove')}</PrimaryTextButton>
+                      <div className="mt-4 flex flex-1 items-end justify-between">
+                        <div className="ml-4">
+                          <PrimaryTextButton>{t('Remove')}</PrimaryTextButton>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              )
-          )}
-        </ul>
-      </section>
+                  </li>
+                )
+            )}
+          </ul>
+        </section>
+      )}
       <section aria-labelledby="summary-heading" className="mt-10">
         <h2 id="summary-heading" className="sr-only">
           {t('order_summary')}
@@ -76,7 +78,7 @@ const CartItems = () => {
                 {t('subtotal')}
               </dt>
               <dd className="ml-4 text-base font-medium text-gray-900">
-                $96.00
+                ${subtotal}
               </dd>
             </div>
           </dl>

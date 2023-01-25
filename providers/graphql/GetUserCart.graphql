@@ -1,14 +1,19 @@
 query GetUserCart {
-  userCarts {
-    quantity
-    price
-    variant {
-      sku
-      name
-      description
-      media {
-        url
+  userCart {
+    subtotal
+    tax
+    total
+    products {
+      quantity
+      price
+      variant {
+        sku
+        name
         description
+        media {
+          url
+          description
+        }
       }
     }
   }
