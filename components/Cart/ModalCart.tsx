@@ -1,5 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import type { Dispatch } from 'react';
+import PrimaryLinkButton from '@components/UI/links/PrimaryLinkButton';
 import Modal from '@components/UI/modal/Modal';
 import CartItems from './CartItems';
 
@@ -17,6 +18,11 @@ const ModalCart = ({ cartOpen, setCartOpen }: IModalCart) => {
           {t('Shopping_Cart')}
         </h1>
         <CartItems />
+        <div className="mt-10">
+          <PrimaryLinkButton href="/cart" className="w-full">
+            {t('Checkout')}
+          </PrimaryLinkButton>
+        </div>
       </div>
     </Modal>
   );

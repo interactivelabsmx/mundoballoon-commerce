@@ -5,7 +5,7 @@ import type * as Types from '../../graphql/graphql';
 const defaultOptions = {} as const;
 export type AddUserAddressMutationVariables = Types.Exact<{
   address1: Types.Scalars['String'];
-  address2: Types.Scalars['String'];
+  address2?: Types.InputMaybe<Types.Scalars['String']>;
   city: Types.Scalars['String'];
   state: Types.Scalars['String'];
   country: Types.Scalars['String'];
@@ -29,7 +29,7 @@ export type AddUserAddressMutation = {
 export const AddUserAddressDocument = gql`
   mutation addUserAddress(
     $address1: String!
-    $address2: String!
+    $address2: String
     $city: String!
     $state: String!
     $country: String!

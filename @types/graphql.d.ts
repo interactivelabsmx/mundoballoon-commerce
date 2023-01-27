@@ -1,4 +1,22 @@
 
+declare module '*/AddUserAddresses.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const addUserAddress: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetUserAddresses.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getUserAddresses: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserEventsSelect.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

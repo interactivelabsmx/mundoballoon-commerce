@@ -55,9 +55,6 @@ const AddEvent = () => {
                   <Input
                     {...field}
                     label={t('Event_Name')}
-                    placeholder=""
-                    type="text"
-                    autoComplete=""
                     error={errors?.name?.message}
                   />
                 )}
@@ -71,7 +68,6 @@ const AddEvent = () => {
                   <Input
                     {...field}
                     label={t('Details')}
-                    type="text"
                     error={errors?.details?.message}
                   />
                 )}
@@ -84,8 +80,8 @@ const AddEvent = () => {
                 render={({ field }) => (
                   <Input
                     {...field}
-                    label={t('Date')}
                     type="date"
+                    label={t('Date')}
                     error={errors?.details?.message}
                   />
                 )}

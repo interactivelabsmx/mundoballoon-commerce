@@ -62,13 +62,7 @@ const FirebasePhoneCodeForm = ({
           name="code"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              type="text"
-              placeholder=""
-              label={t('code')}
-              error={errors?.code?.message}
-            />
+            <Input {...field} label={t('code')} error={errors?.code?.message} />
           )}
         />
       </div>

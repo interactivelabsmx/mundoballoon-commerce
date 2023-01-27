@@ -22,6 +22,8 @@
   "sr_active": ", active",
   "dismiss": "Dismiss",
   "something_wrong": "Something went wrong, please try again latter.",
+  "save": "Save",
+  "edit": "Edit",
   "cancel": "Cancel",
   "confirm": "Confirm",
   "shop_now": "Shop now",
@@ -64,6 +66,7 @@
   "Shipping": "Shipping",
   "Remove": "Remove",
   "Shipping_And_Taxes": "Shipping and taxes will be calculated at checkout",
+  "confirm_order": "Confirm order",
   "order_summary": "Order Summary",
   "subtotal": "Subtotal",
   "additional_details": "Additional details",
@@ -76,5 +79,12 @@
   "choose_size": "Choose a size",
   "star_rating_sr": "{{rating}} out of 5 stars",
   "review_count": "{{count}} reviews",
-  "Your_order": "Your order"
+  "Your_order": "Your order",
+  "address": "Address",
+  "city": "City",
+  "state": "State",
+  "country": "Country",
+  "zip_code": "Zip Code",
+  "add_new_address": "Add a new address",
+  "select_address": "Select your address"
 }
