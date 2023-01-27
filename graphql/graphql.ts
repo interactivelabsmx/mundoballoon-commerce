@@ -305,7 +305,7 @@ export type MutationAddToEventCartArgs = {
 
 export type MutationAddUserAddressesArgs = {
   address1: Scalars['String'];
-  address2: Scalars['String'];
+  address2?: InputMaybe<Scalars['String']>;
   city: Scalars['String'];
   country: Scalars['String'];
   state: Scalars['String'];
@@ -843,10 +843,6 @@ export type QueryHomepageProductsArgs = {
   includeNewestProducts: Scalars['Boolean'];
 };
 
-export type QueryOrdersArgs = {
-  userId: Scalars['String'];
-};
-
 export type QueryOrdersProductDetailsArgs = {
   orderDetailsProductsId: Scalars['Int'];
 };
@@ -894,10 +890,6 @@ export type QueryUserByIdArgs = {
 
 export type QueryUserEventByIdArgs = {
   userEventId: Scalars['Int'];
-};
-
-export type QueryUserProfileArgs = {
-  userId: Scalars['String'];
 };
 
 export type QueryUsersArgs = {

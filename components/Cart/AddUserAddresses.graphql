@@ -1,6 +1,6 @@
 mutation addUserAddress(
   $address1: String!
-  $address2: String!
+  $address2: String
   $city: String!
   $state: String!
   $country: String!

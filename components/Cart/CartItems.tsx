@@ -2,7 +2,6 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
-import PrimaryLinkButton from '@components/UI/links/PrimaryLinkButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useCommerce } from '@providers/CommerceProvider';
 
@@ -70,7 +69,6 @@ const CartItems = () => {
         <h2 id="summary-heading" className="sr-only">
           {t('order_summary')}
         </h2>
-
         <div>
           <dl className="space-y-4">
             <div className="flex items-center justify-between">
@@ -85,12 +83,6 @@ const CartItems = () => {
           <p className="mt-1 text-sm text-gray-500">
             {t('Shipping_And_Taxes')}.
           </p>
-        </div>
-
-        <div className="mt-10">
-          <PrimaryLinkButton href="/cart" className="w-full">
-            {t('Checkout')}
-          </PrimaryLinkButton>
         </div>
       </section>
     </>
