@@ -3,8 +3,9 @@ import useTranslation from 'next-translate/useTranslation';
 import { useEffect } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
-import { useGetUserCartLazyQuery } from './GetUserCart.graphql';
 import UserAddresses from './UserAddresses';
+import { useGetUserCartLazyQuery } from '@providers/graphql/GetUserCart.graphql';
+
 const CheckoutForm = () => {
   const { t } = useTranslation('common');
   const [loadUserCart, { loading, error, data }] = useGetUserCartLazyQuery();
@@ -13,15 +14,14 @@ const CheckoutForm = () => {
   }, [loadUserCart]);
   if (error) return <SimpleTextError text={error.message} />;
   if (loading || !data) return <LoadingText />;
-  const { userCarts } = data;
+  const { userCart } = data;
   return (
     <div className="bg-gray-50">
       <div className="mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
           <div>
-          <UserAddresses/>
+            <UserAddresses />
             <div className="mt-10 divide-y divide-gray-200 border-t border-b border-gray-200">
-
               <button
                 type="button"
                 className="w-full cursor-auto py-6 text-left text-lg font-medium text-gray-500"
@@ -60,7 +60,7 @@ const CheckoutForm = () => {
             <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
               <h3 className="sr-only">Your order</h3>
               <ul role="list" className="divide-y divide-gray-200">
-                {userCarts.map((event) => (
+                {userCart.products?.map((event) => (
                   <li
                     key={event.variant?.sku}
                     className="flex py-6 px-4 sm:px-6"
