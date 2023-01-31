@@ -1472,7 +1472,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "UserCart",
+                  "name": "UserCartProduct",
                   "ofType": null
                 }
               }
@@ -1982,7 +1982,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ListFilterInputTypeOfUserCartFilterInput",
+        "name": "ListFilterInputTypeOfUserCartProductFilterInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -1991,7 +1991,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCartFilterInput",
+              "name": "UserCartProductFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -2015,7 +2015,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCartFilterInput",
+              "name": "UserCartProductFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -2027,7 +2027,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCartFilterInput",
+              "name": "UserCartProductFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -2490,7 +2490,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "UserCart",
+                "name": "UserCartProduct",
                 "ofType": null
               }
             },
@@ -2586,13 +2586,9 @@
                 "name": "address2",
                 "description": null,
                 "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
                 },
                 "defaultValue": null,
                 "isDeprecated": false,
@@ -2909,6 +2905,22 @@
             "name": "createUserEvent",
             "description": null,
             "args": [
+              {
+                "name": "date",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "DateTime",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
               {
                 "name": "details",
                 "description": null,
@@ -8484,7 +8496,39 @@
             "deprecationReason": null
           },
           {
-            "name": "userCarts",
+            "name": "userCart",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "UserCart",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "userCartCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "userCartProducts",
             "description": null,
             "args": [],
             "type": {
@@ -8498,7 +8542,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "UserCart",
+                    "name": "UserCartProduct",
                     "ofType": null
                   }
                 }
@@ -9399,7 +9443,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "UserCart",
+                  "name": "UserCartProduct",
                   "ofType": null
                 }
               }
@@ -9837,6 +9881,85 @@
         "description": null,
         "fields": [
           {
+            "name": "products",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "UserCartProduct",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "subtotal",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "tax",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "total",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "UserCartProduct",
+        "description": null,
+        "fields": [
+          {
             "name": "price",
             "description": null,
             "args": [],
@@ -9936,7 +10059,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserCartFilterInput",
+        "name": "UserCartProductFilterInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -9951,7 +10074,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserCartFilterInput",
+                  "name": "UserCartProductFilterInput",
                   "ofType": null
                 }
               }
@@ -9971,7 +10094,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserCartFilterInput",
+                  "name": "UserCartProductFilterInput",
                   "ofType": null
                 }
               }
@@ -10059,7 +10182,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserCartInput",
+        "name": "UserCartProductInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -10636,7 +10759,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "ListFilterInputTypeOfUserCartFilterInput",
+              "name": "ListFilterInputTypeOfUserCartProductFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -10733,7 +10856,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserCartInput",
+                  "name": "UserCartProductInput",
                   "ofType": null
                 }
               }

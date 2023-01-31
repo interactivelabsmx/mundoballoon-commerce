@@ -12,12 +12,14 @@ import { useCreateUserEventMutation } from './CreateUserEvent.graphql';
 
 export const userEventSchema = yup
   .object({
-    eventName: yup.string().required(),
+    name: yup.string().required(),
     details: yup.string().required(),
+    date: yup.string().required(),
   })
   .required();
 
 interface IAddEventForm extends Asserts<typeof userEventSchema> {}
+
 const AddEvent = () => {
   const { t } = useTranslation('common');
   const {
@@ -29,72 +31,68 @@ const AddEvent = () => {
   });
   const [createUserEventMutation, { data, loading, error }] =
     useCreateUserEventMutation();
-  const onSubmit: SubmitHandler<IAddEventForm> = ({ eventName, details }) => {
+  const onSubmit: SubmitHandler<IAddEventForm> = (variables) => {
     createUserEventMutation({
-      variables: {
-        name: eventName,
-        details: details,
-      },
+      variables,
     });
     if (error) return <SimpleTextError text={error.message} />;
     if (loading || !data) return <LoadingText />;
   };
 
   return (
-    <>
-      <div className="md:col-span-1">
-        <div className="px-4 sm:px-0">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">
-            {t('Events')}
-          </h3>
-          <br />
-          <br />
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-            {t('Add_your_event')}
-          </h2>
-          <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-6">
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md m:px-0">
-              <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-8">
-                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-                  <div>
-                    <Controller
-                      name="eventName"
-                      control={control}
-                      render={({ field }) => (
-                        <Input
-                          {...field}
-                          label={t('Event_Name')}
-                          placeholder=""
-                          type="text"
-                          autoComplete=""
-                          error={errors?.eventName?.message}
-                        />
-                      )}
-                    />
-                  </div>
-                  <div>
-                    <Controller
-                      name="details"
-                      control={control}
-                      render={({ field }) => (
-                        <Input
-                          {...field}
-                          label={t('Details')}
-                          type="text"
-                          error={errors?.details?.message}
-                        />
-                      )}
-                    />
-                  </div>
-                  <PrimaryButton type="submit">{t('Add_Event')}</PrimaryButton>
-                  <div></div>
-                </form>
-              </div>
+    <div className="px-4 sm:px-0">
+      <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+        {t('Add_your_event')}
+      </h2>
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md m:px-0">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-8">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <Controller
+                name="name"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label={t('Event_Name')}
+                    error={errors?.name?.message}
+                  />
+                )}
+              />
             </div>
-          </div>
+            <div>
+              <Controller
+                name="details"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label={t('Details')}
+                    error={errors?.details?.message}
+                  />
+                )}
+              />
+            </div>
+            <div>
+              <Controller
+                name="date"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    type="date"
+                    label={t('Date')}
+                    error={errors?.details?.message}
+                  />
+                )}
+              />
+            </div>
+            <PrimaryButton type="submit">{t('Add_Event')}</PrimaryButton>
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
+
 export default AddEvent;

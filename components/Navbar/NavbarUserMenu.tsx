@@ -34,6 +34,7 @@ const NavbarUserMenu = () => {
     () => getLogedOutUserNavigation(t, onClick),
     [t, onClick]
   );
+
   return (
     <div className="flex bg-gray p-4 justify-around">
       <div className="flex items-center">

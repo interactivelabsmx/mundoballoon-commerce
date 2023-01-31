@@ -5,8 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Dispatch } from 'react';
 import { Fragment } from 'react';
-import SimpleTextError from '@components/UI/alerts/SimpleTextError';
-import LoadingText from '@components/UI/loading/LoadingText';
 import {
   getTransitionFadeInLinearProps,
   getTransitionLeftSlideInProps,
@@ -19,17 +17,9 @@ interface INavbarMobile {
   open: boolean;
   setOpen: Dispatch<boolean>;
   navOptions: NavItemFragment[];
-  loading: boolean;
-  error?: string;
 }
 
-const NavbarMobileMenu = ({
-  open,
-  setOpen,
-  navOptions,
-  loading,
-  error,
-}: INavbarMobile) => {
+const NavbarMobileMenu = ({ open, setOpen, navOptions }: INavbarMobile) => {
   const { t } = useTranslation('common');
   const featuredTabOptions = navOptions.filter((option) =>
     hasFeaturedOptions(option)
@@ -58,8 +48,6 @@ const NavbarMobileMenu = ({
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
-              {error && <SimpleTextError text={error} />}
-              {loading && <LoadingText />}
               {featuredTabOptions.length > 0 && (
                 <Tab.Group as="div" className="mt-2">
                   <div className="border-b border-gray-200">

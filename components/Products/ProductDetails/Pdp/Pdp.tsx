@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import { useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
@@ -8,7 +9,6 @@ import AditionalDetails, { detailsMock } from './AditionalDetails';
 import { useGetProductDetailsQuery } from './GetProductDetails.graphql';
 import ImageGallery from './ImageGallery';
 import Reviews from './Reviews';
-import useTranslation from 'next-translate/useTranslation';
 
 export interface IPdp {
   productId: number;
@@ -40,7 +40,6 @@ const Pdp = ({ productId }: IPdp) => {
             <h1 className="text-2xl font-bold text-gray-900 sm:pr-12">
               {product?.name}
             </h1>
-
             <section aria-labelledby="information-heading" className="mt-2">
               <h3 id="information-heading" className="sr-only">
                 {t('Product_information')}

@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 import classNames from '@lib/utils/classnames';
 
-const baseClassNames =
+export const baseClassNames =
   'rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2';
 
 const BaseTextButton = ({

@@ -1,14 +1,39 @@
 
 import Image from 'next/image';
-import CheckoutForm from './CheckoutForm';
+import PrimaryButton from '@components/UI/buttons/PrimaryButton';
+import { useAuth } from '@providers/AuthProvider';
+import CartItems from './CartItems';
+import UserAddresses from './UserAddresses';
 import { policies } from './policies';
+import useTranslation from 'next-translate/useTranslation';
+import CheckoutForm from './CheckoutForm';
 
-const CheckoutCart = () => {  
+const CheckoutCart = () => {
+  const { t } = useTranslation('common');
+  const { user } = useAuth();
   return (
     <div className="bg-white">
       <CheckoutForm />
       <main className="mx-auto max-w-7xl px-4 pt-4 pb-16 sm:px-6 sm:pt-8 sm:pb-24 lg:px-8 xl:px-2 xl:pt-14">
         <div className="mx-auto w-full max-w-lg"></div>
+        <h1 className="text-center text-xl font-bold py-8">{t('Checkout')}</h1>
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+          <div className="mx-auto w-full max-w-lg">
+            <h2 className="text-l font-semibold my-4">
+              {t('Shipping_Address')}
+            </h2>
+            {user && <UserAddresses />}
+          </div>
+          <div className="mx-auto w-full max-w-lg">
+            <h2 className="text-l font-semibold my-4">{t('order_summary')}</h2>
+            {user && <CartItems />}
+            <div className="mt-10">
+              <PrimaryButton className="w-full">
+                {t('confirm_order')}
+              </PrimaryButton>
+            </div>
+          </div>
+        </div>
 
         <section aria-labelledby="policies-heading">
           <div className="mx-auto max-w-7xl py-24 px-4 sm:px-6 sm:py-32 lg:px-8">
@@ -21,11 +46,11 @@ const CheckoutCart = () => {
                   <div className="md:flex-shrink-0">
                     <div className="flow-root">
                       <Image
+                        alt=""
                         width={100}
                         height={100}
                         className="-my-1 mx-auto h-24 w-auto"
                         src={policy.imageUrl}
-                        alt=""
                       />
                     </div>
                   </div>

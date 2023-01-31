@@ -1,48 +1,27 @@
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingCartIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import type { Dispatch } from 'react';
-import { useEffect, useState } from 'react';
-import { useGetUserCartLazyQuery } from '@components/Cart/GetUserCart.graphql';
-import SimpleTextError from '@components/UI/alerts/SimpleTextError';
-import LoadingText from '@components/UI/loading/LoadingText';
 import type { NavItemFragment } from '@layouts/NavItemFragment.graphql';
-import { useAuth } from '@providers/AuthProvider';
 import NavbarLogo from '../UI/logo/LogoSmall';
 import NavbarDesktopFlyout from './NavbarDesktopFlyout';
 
-const NavbarUserMenuLoader = dynamic(
-  () => import('@components/Navbar/NavbarUserMenu'),
-  { ssr: false }
-);
+const NavbarUserMenuLoader = dynamic(() => import('./NavbarUserMenu'), {
+  ssr: false,
+});
 
-const ModalCartLoader = dynamic(() => import('../Cart/ModalCart'), {
+const NavbarUserCartLoader = dynamic(() => import('./NavbarUserCart'), {
   ssr: false,
 });
 
 interface INavbarTop {
   setOpen: Dispatch<boolean>;
   navOptions: NavItemFragment[];
-  loading: boolean;
-  error?: string;
 }
 
-const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
+const NavbarTop = ({ setOpen, navOptions }: INavbarTop) => {
   const { t } = useTranslation('common');
-  const [cartOpen, setCartOpen] = useState(false);
-  const { user } = useAuth();
-  const [loadUserCart, { data }] = useGetUserCartLazyQuery();
-  useEffect(() => {
-    if (user) loadUserCart();
-  }, [user, loadUserCart]);
-  if (error) return <SimpleTextError text={error} />;
-  if (loading || (user && !data)) return <LoadingText />;
-  const { userCarts } = data || {};
-  const openCart = () => setCartOpen(true);
+
   return (
     <header className="relative z-20">
       <nav aria-label="Top">
@@ -52,8 +31,6 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
               <div className="hidden lg:flex-1 lg:flex lg:items-center">
                 <NavbarLogo />
               </div>
-              {error && <SimpleTextError text={error} />}
-              {loading && <LoadingText />}
               <NavbarDesktopFlyout navOptions={navOptions} />
               <div className="flex-1 flex items-center lg:hidden">
                 <button
@@ -75,32 +52,13 @@ const NavbarTop = ({ setOpen, navOptions, loading, error }: INavbarTop) => {
                   <MagnifyingGlassIcon className="w-6 h-6" aria-hidden="true" />
                 </button>
                 <NavbarUserMenuLoader />
-                <div className="flex items-center lg:ml-8">
-                  <span
-                    className="mx-4 h-6 w-px bg-gray-400 lg:mx-6"
-                    aria-hidden="true"
-                  />
-                  <div className="ml-4 flow-root lg:ml-8">
-                    <button
-                      className="group -m-2 p-2 flex items-center"
-                      onClick={openCart}
-                    >
-                      <ShoppingCartIcon
-                        className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        {userCarts?.length}
-                      </span>
-                      <span className="sr-only">{t('sr_cart_count')}</span>
-                    </button>
-                  </div>
-                </div>
+                <span
+                  className="mx-4 h-6 w-px bg-gray-400 lg:mx-6"
+                  aria-hidden="true"
+                />
+                <NavbarUserCartLoader />
               </div>
             </div>
-            {user && (
-              <ModalCartLoader cartOpen={cartOpen} setCartOpen={setCartOpen} />
-            )}
           </div>
         </div>
       </nav>

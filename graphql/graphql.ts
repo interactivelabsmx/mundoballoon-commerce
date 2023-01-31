@@ -155,7 +155,7 @@ export type EventCartDetailInput = {
 
 export type FirebaseUser = {
   __typename?: 'FirebaseUser';
-  carts?: Maybe<Array<UserCart>>;
+  carts?: Maybe<Array<UserCartProduct>>;
   claims?: Maybe<Array<Maybe<Scalars['String']>>>;
   displayName?: Maybe<Scalars['String']>;
   email?: Maybe<Scalars['String']>;
@@ -207,11 +207,11 @@ export type ListFilterInputTypeOfProductVariantValueFilterInput = {
   some?: InputMaybe<ProductVariantValueFilterInput>;
 };
 
-export type ListFilterInputTypeOfUserCartFilterInput = {
-  all?: InputMaybe<UserCartFilterInput>;
+export type ListFilterInputTypeOfUserCartProductFilterInput = {
+  all?: InputMaybe<UserCartProductFilterInput>;
   any?: InputMaybe<Scalars['Boolean']>;
-  none?: InputMaybe<UserCartFilterInput>;
-  some?: InputMaybe<UserCartFilterInput>;
+  none?: InputMaybe<UserCartProductFilterInput>;
+  some?: InputMaybe<UserCartProductFilterInput>;
 };
 
 export type ListFilterInputTypeOfUserEventFilterInput = {
@@ -239,8 +239,8 @@ export type Mutation = {
   __typename?: 'Mutation';
   addOrder: Orders;
   addOrderProductDetails: OrderProductsDetails;
-  addProductVariantReview: ProductVariantReview;
-  addToCart: UserCart;
+  addProductVariantReview?: Maybe<ProductVariant>;
+  addToCart: UserCartProduct;
   addToEventCart: EventCartDetail;
   addUserAddresses: UserAddresses;
   addUserProfile: UserProfile;
@@ -309,7 +309,7 @@ export type MutationAddToEventCartArgs = {
 
 export type MutationAddUserAddressesArgs = {
   address1: Scalars['String'];
-  address2: Scalars['String'];
+  address2?: InputMaybe<Scalars['String']>;
   city: Scalars['String'];
   country: Scalars['String'];
   state: Scalars['String'];
@@ -343,6 +343,7 @@ export type MutationCreateUserArgs = {
 };
 
 export type MutationCreateUserEventArgs = {
+  date: Scalars['DateTime'];
   details: Scalars['String'];
   name: Scalars['String'];
 };
@@ -844,8 +845,9 @@ export type Query = {
   sortOptions: Array<Scalars['String']>;
   userAddresses: Array<UserAddresses>;
   userById?: Maybe<FirebaseUser>;
-  userCarts: Array<UserCart>;
-  userCartsByProductId: Array<UserCart>;
+  userCart: UserCart;
+  userCartCount: Scalars['Int'];
+  userCartProducts: Array<UserCartProduct>;
   userEventById?: Maybe<UserEvent>;
   userEvents: Array<UserEvent>;
   userProfile: Array<UserProfile>;
@@ -1005,7 +1007,7 @@ export type UiRegistryInput = {
 
 export type User = {
   __typename?: 'User';
-  carts?: Maybe<Array<UserCart>>;
+  carts?: Maybe<Array<UserCartProduct>>;
   events?: Maybe<Array<UserEvent>>;
   paymentProfiles?: Maybe<Array<UserPaymentProfile>>;
   reviews?: Maybe<Array<ProductVariantReview>>;
@@ -1041,6 +1043,14 @@ export type UserAddressesInput = {
 
 export type UserCart = {
   __typename?: 'UserCart';
+  products?: Maybe<Array<UserCartProduct>>;
+  subtotal: Scalars['Float'];
+  tax: Scalars['Float'];
+  total: Scalars['Float'];
+};
+
+export type UserCartProduct = {
+  __typename?: 'UserCartProduct';
   price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
@@ -1049,9 +1059,9 @@ export type UserCart = {
   variant?: Maybe<ProductVariant>;
 };
 
-export type UserCartFilterInput = {
-  and?: InputMaybe<Array<UserCartFilterInput>>;
-  or?: InputMaybe<Array<UserCartFilterInput>>;
+export type UserCartProductFilterInput = {
+  and?: InputMaybe<Array<UserCartProductFilterInput>>;
+  or?: InputMaybe<Array<UserCartProductFilterInput>>;
   price?: InputMaybe<ComparableDoubleOperationFilterInput>;
   productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
   quantity?: InputMaybe<ComparableDoubleOperationFilterInput>;
@@ -1060,7 +1070,7 @@ export type UserCartFilterInput = {
   variant?: InputMaybe<ProductVariantFilterInput>;
 };
 
-export type UserCartInput = {
+export type UserCartProductInput = {
   price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
@@ -1110,7 +1120,7 @@ export type UserEventInput = {
 
 export type UserFilterInput = {
   and?: InputMaybe<Array<UserFilterInput>>;
-  carts?: InputMaybe<ListFilterInputTypeOfUserCartFilterInput>;
+  carts?: InputMaybe<ListFilterInputTypeOfUserCartProductFilterInput>;
   events?: InputMaybe<ListFilterInputTypeOfUserEventFilterInput>;
   or?: InputMaybe<Array<UserFilterInput>>;
   paymentProfiles?: InputMaybe<ListFilterInputTypeOfUserPaymentProfileFilterInput>;
@@ -1119,7 +1129,7 @@ export type UserFilterInput = {
 };
 
 export type UserInput = {
-  carts?: InputMaybe<Array<UserCartInput>>;
+  carts?: InputMaybe<Array<UserCartProductInput>>;
   events?: InputMaybe<Array<UserEventInput>>;
   paymentProfiles?: InputMaybe<Array<UserPaymentProfileInput>>;
   reviews?: InputMaybe<Array<ProductVariantReviewInput>>;

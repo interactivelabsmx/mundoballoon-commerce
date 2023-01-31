@@ -14,7 +14,7 @@ describe('Index', () => {
       },
     });
     expect(screen.getByText('Loading')).not.toBeNull();
-    const title = await screen.findByText('Featured');
+    const title = await screen.findAllByText('Featured');
     expect(title).not.toBeNull();
   });
 });

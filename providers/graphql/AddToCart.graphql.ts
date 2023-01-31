@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-import type * as Types from '../../../../graphql/graphql';
+import type * as Types from '../../graphql/graphql';
 
 const defaultOptions = {} as const;
 export type AddToCartMutationVariables = Types.Exact<{
@@ -13,7 +13,7 @@ export type AddToCartMutationVariables = Types.Exact<{
 export type AddToCartMutation = {
   __typename?: 'Mutation';
   addToCart: {
-    __typename?: 'UserCart';
+    __typename?: 'UserCartProduct';
     sku: string;
     quantity: number;
     price: number;

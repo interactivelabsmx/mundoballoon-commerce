@@ -1,0 +1,20 @@
+query GetUserCart {
+  userCart {
+    subtotal
+    tax
+    total
+    products {
+      quantity
+      price
+      variant {
+        sku
+        name
+        description
+        media {
+          url
+          description
+        }
+      }
+    }
+  }
+}
