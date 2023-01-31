@@ -40,25 +40,31 @@ const UserAddresses = () => {
             >
               {({ checked, active }) => (
                 <>
-                  <RadioGroup.Label className="cursor-pointer">
-                    <span className="block text-sm font-medium text-gray-900">
-                      {userAdds.address1}
+                  <span className="flex flex-1">
+                    <span className="flex flex-col w-full">
+                      <RadioGroup.Label className="cursor-pointer">
+                        <span className="block text-sm font-medium text-gray-900">
+                          {userAdds.address1}
+                        </span>
+                      </RadioGroup.Label>
+                      <RadioGroup.Description>
+                        <span className="block text-sm font-medium text-gray-900">
+                          {userAdds.address2}
+                        </span>
+                        <span className="mt-1 block text-sm text-gray-500">
+                          {userAdds.city}
+                        </span>
+                        <span className="block text-sm text-gray-500">
+                          {userAdds.state}, {userAdds.country}
+                        </span>
+                        <span className="block text-sm text-gray-500">
+                          {userAdds.zipcode}
+                        </span>
+                      </RadioGroup.Description>
+                      <span className="block mt-2 text-right">
+                        <PrimaryTextButton>{t('edit')}</PrimaryTextButton>
+                      </span>
                     </span>
-                    <span className="block text-sm font-medium text-gray-900">
-                      {userAdds.address2}
-                    </span>
-                    <span className="mt-1 block text-sm text-gray-500">
-                      {userAdds.city}
-                    </span>
-                    <span className="block text-sm text-gray-500">
-                      {userAdds.state}, {userAdds.country}
-                    </span>
-                    <span className="block text-sm text-gray-500">
-                      {userAdds.zipcode}
-                    </span>
-                  </RadioGroup.Label>
-                  <span className="block mt-2 text-right">
-                    <PrimaryTextButton>{t('edit')}</PrimaryTextButton>
                   </span>
                   <CheckCircleIcon
                     aria-hidden="true"
@@ -82,11 +88,13 @@ const UserAddresses = () => {
         </div>
       </RadioGroup>
       <Popover>
-        <Popover.Button
-          className={cx('mt-4', primaryClassNames, baseClassNames)}
-        >
-          {t('add_new_address')}
-        </Popover.Button>
+        <div className="w-full text-right">
+          <Popover.Button
+            className={cx('mt-4', primaryClassNames, baseClassNames)}
+          >
+            {t('add_new_address')}
+          </Popover.Button>
+        </div>
         <Transition as={Fragment} {...getTransitionSmallDropdownProps()}>
           <Popover.Panel className="mt-8">
             <AddUserAddressForm />

@@ -2,10 +2,9 @@ import type { NormalizedCacheObject } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import { getDataFromTree } from '@apollo/client/react/ssr';
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
-import { getAuth } from 'firebase-admin/auth';
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { destroyCookie, parseCookies } from 'nookies';
+import { parseCookies } from 'nookies';
 import type { ComponentType } from 'react';
 import { getClient } from '@lib/apollo/apolloClient';
 import { APOLLO_STATE_PROP_NAME } from '@lib/utils/sharedConsts';
@@ -40,24 +39,14 @@ export default function getServerSidePreFetch<
   ): Promise<GetServerSidePropsResult<P>> => {
     const { req } = ctx;
 
-    const auth = getAuth();
     const client = getClient();
     const router = getNextRouterFromCtx(ctx);
     const cookies = parseCookies({ req });
     const token = cookies[FI];
 
+    let apolloHeaders = {};
     if (token) {
-      try {
-        const decodedIdToken = await auth.verifyIdToken(cookies[FI]);
-        const user = await auth.getUser(decodedIdToken.uid);
-        // This means the user is supposed to be loged in and there is an error
-        if (!user)
-          return { redirect: { destination: '/login', permanent: false } };
-      } catch (e) {
-        destroyCookie(ctx, FI);
-        // This means the user is supposed to be loged in and there is an error
-        return { redirect: { destination: '/login', permanent: false } };
-      }
+      apolloHeaders = { authorization: `Bearer ${token}` };
     }
 
     let initialState = {};
@@ -68,12 +57,11 @@ export default function getServerSidePreFetch<
             <Page />
           </ApolloProvider>
         </RouterContext.Provider>,
-        { headers: { authorization: `Bearer ${token}` } }
+        { headers: apolloHeaders }
       );
       initialState = client.cache.extract();
-    } catch (error) {
+    } catch {
       // Purposfully Empty to Avoid SSR to show something
-      // console.log(error);
     }
 
     if (getServerSideProps) {
