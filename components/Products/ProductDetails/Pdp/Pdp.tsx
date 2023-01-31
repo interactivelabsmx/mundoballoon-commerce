@@ -7,12 +7,15 @@ import VariantsDisplay from '../VariantsDisplay';
 import AditionalDetails, { detailsMock } from './AditionalDetails';
 import { useGetProductDetailsQuery } from './GetProductDetails.graphql';
 import ImageGallery from './ImageGallery';
+import Reviews from './Reviews';
+import useTranslation from 'next-translate/useTranslation';
 
 export interface IPdp {
   productId: number;
 }
 
 const Pdp = ({ productId }: IPdp) => {
+  const {t} = useTranslation('common');
   const [variantIndex, setVariantIndex] = useState(0);
   const { loading, error, data } = useGetProductDetailsQuery({
     variables: { productId },
@@ -40,7 +43,7 @@ const Pdp = ({ productId }: IPdp) => {
 
             <section aria-labelledby="information-heading" className="mt-2">
               <h3 id="information-heading" className="sr-only">
-                Product information
+                {t('Product_information')}
               </h3>
               <p className="text-2xl text-gray-900">${product?.price}</p>
               <div className="mt-6">
@@ -51,13 +54,13 @@ const Pdp = ({ productId }: IPdp) => {
                 />
               </div>
               <div className="mt-6">
-                <h4 className="sr-only">Description</h4>
+                <h4 className="sr-only">{t('Description')}</h4>
                 <p className="text-sm text-gray-700">{product?.description}</p>
               </div>
             </section>
             <section aria-labelledby="options-heading" className="mt-10">
               <h3 id="options-heading" className="sr-only">
-                Product options
+                {t('Product_options')}
               </h3>
               <form>
                 {variants && variantValues && (
@@ -78,6 +81,7 @@ const Pdp = ({ productId }: IPdp) => {
           </div>
         </div>
       </div>
+      <Reviews productId={productId} />
     </div>
   );
 };

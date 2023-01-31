@@ -9,10 +9,12 @@ export type GetUserCartQuery = {
   __typename?: 'Query';
   userCarts: Array<{
     __typename?: 'UserCart';
+    productVariantId: number;
     quantity: number;
     price: number;
     variant?: {
       __typename?: 'ProductVariant';
+      productId: number;
       sku: string;
       name: string;
       description: string;
@@ -28,9 +30,11 @@ export type GetUserCartQuery = {
 export const GetUserCartDocument = gql`
   query GetUserCart {
     userCarts {
+      productVariantId
       quantity
       price
       variant {
+        productId
         sku
         name
         description

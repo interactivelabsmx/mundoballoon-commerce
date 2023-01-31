@@ -1,0 +1,15 @@
+query getProductVariantReviews($productId: Int!) {
+  productVariantReviews(productId: $productId) {
+    productVariantReviewId
+    userId
+    rating
+    comments
+    createdAt
+    productVariant {
+      name
+      description
+      sku
+      productVariantId
+    }
+  }
+}

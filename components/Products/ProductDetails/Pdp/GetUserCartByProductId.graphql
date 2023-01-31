@@ -1,0 +1,13 @@
+query getUserCartByProductId($productId: Int!) {
+  userCartsByProductId(productId: $productId) {
+    productVariantId
+    sku
+    quantity
+    price
+    variant {
+      description
+      name
+      productId
+    }
+  }
+}

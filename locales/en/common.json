@@ -63,5 +63,22 @@
   "Shipping": "Shipping",
   "Remove": "Remove",
   "Shipping_And_Taxes": "Shipping and taxes will be calculated at checkout",
-  "Your_order": "Your order"
+  "Your_order": "Your order",
+  "Post": "Post",
+  "Add_your_review": "Add your review",
+  "Your_post_will": "Your_post_will be public",
+  "Product_information":"Product information",
+  "Description":"Description",
+  "Product_options":"Product options",
+  "Customer_reviews":"Customer reviews",
+  "It_has_been_realized":"It has been realized",
+  "reviews":"reviews",
+  "Share_your_thoughts":"Share your thoughts",
+  "If_you’ve_used_this_product":"If you’ve used this product, share your thoughts with other customers",
+  "Write_a_review":"Write a review",
+  "Recent_reviews":"Recent_reviews",
+  "Rating":"Rating",
+  "Add_your_comment":"Add your comment",
+  "Product_or_products_you_purchased":"Product or products you purchased"
+
 }
