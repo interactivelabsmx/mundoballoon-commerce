@@ -18,6 +18,7 @@ export type Scalars = {
   Float: number;
   DateTime: any;
   Decimal: any;
+  Long: any;
   Upload: any;
 };
 
@@ -245,6 +246,7 @@ export type Mutation = {
   addUserAddresses: UserAddresses;
   addUserProfile: UserProfile;
   createOrder: Orders;
+  createPaymentIntent: Scalars['String'];
   createProduct: Product;
   createProductCategory: ProductCategory;
   createProductVariant: ProductVariant;
@@ -320,6 +322,10 @@ export type MutationAddUserProfileArgs = {
 
 export type MutationCreateOrderArgs = {
   input: CreateOrderRequestsInput;
+};
+
+export type MutationCreatePaymentIntentArgs = {
+  amount: Scalars['Long'];
 };
 
 export type MutationCreateProductArgs = {

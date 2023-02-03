@@ -6,7 +6,7 @@ import {
 } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 
-const PaymentForm = () => {
+const StripePaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -94,4 +94,4 @@ const PaymentForm = () => {
   );
 };
 
-export default PaymentForm;
+export default StripePaymentForm;

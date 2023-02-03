@@ -8,6 +8,15 @@ declare module '*/AddUserAddresses.graphql' {
 }
     
 
+declare module '*/CreatePaymentIntent.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const CreatePaymentIntent: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserAddresses.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
