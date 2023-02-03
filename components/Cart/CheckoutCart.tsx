@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
+import StripePayment from './StripePayment';
 import UserAddresses from './UserAddresses';
 import { policies } from './policies';
 
@@ -19,6 +20,7 @@ const CheckoutCart = () => {
               {t('Shipping_Address')}
             </h2>
             {user && <UserAddresses />}
+            {user && <StripePayment />}
           </div>
           <div className="mx-auto w-full max-w-lg">
             <h2 className="text-l font-semibold my-4">{t('order_summary')}</h2>
