@@ -1,3 +1,4 @@
+import type { User } from '@firebase/auth';
 import { Elements } from '@stripe/react-stripe-js';
 import type { StripeElementsOptions } from '@stripe/stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -10,7 +11,11 @@ import StripePaymentForm from './StripePaymentForm';
 // This is your test publishable API key.
 const stripe = loadStripe('pk_test_b8SZC99Ac6LFHWr18HmLKPB5');
 
-const StripePayment = () => {
+interface IStripePayment {
+  user: User;
+}
+
+const StripePayment = ({ user }: IStripePayment) => {
   const [clientSecret, setClientSecret] = useState('');
   const [createPaymentIntentMutation] = useCreatePaymentIntentMutation();
 
@@ -25,7 +30,7 @@ const StripePayment = () => {
     callMutation();
   }, [createPaymentIntentMutation]);
 
-  const appearance = { theme: 'stripe' };
+  const appearance = { theme: 'flat' };
 
   const options = {
     clientSecret,
@@ -36,7 +41,7 @@ const StripePayment = () => {
     <div className="App">
       {clientSecret && (
         <Elements options={options} stripe={stripe}>
-          <StripePaymentForm />
+          <StripePaymentForm user={user} />
         </Elements>
       )}
     </div>

@@ -1,6 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
-import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
 import StripePayment from './StripePayment';
@@ -20,16 +19,11 @@ const CheckoutCart = () => {
               {t('Shipping_Address')}
             </h2>
             {user && <UserAddresses />}
-            {user && <StripePayment />}
+            {user && <StripePayment user={user} />}
           </div>
           <div className="mx-auto w-full max-w-lg">
             <h2 className="text-l font-semibold my-4">{t('order_summary')}</h2>
             {user && <CartItems />}
-            <div className="mt-10">
-              <PrimaryButton className="w-full">
-                {t('confirm_order')}
-              </PrimaryButton>
-            </div>
           </div>
         </div>
 
