@@ -245,6 +245,7 @@ export type Mutation = {
   addToEventCart: EventCartDetail;
   addUserAddresses: UserAddresses;
   addUserProfile: UserProfile;
+  createCustomer?: Maybe<Scalars['String']>;
   createOrder: Orders;
   createPaymentIntent: Scalars['String'];
   createProduct: Product;
@@ -326,6 +327,7 @@ export type MutationCreateOrderArgs = {
 
 export type MutationCreatePaymentIntentArgs = {
   amount: Scalars['Long'];
+  customerId: Scalars['String'];
 };
 
 export type MutationCreateProductArgs = {

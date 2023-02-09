@@ -3,6 +3,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import type { StripeElementsOptions } from '@stripe/stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useState, useEffect } from 'react';
+import { useCommerce } from '@providers/CommerceProvider';
 import { useCreatePaymentIntentMutation } from './CreatePaymentIntent.graphql';
 import StripePaymentForm from './StripePaymentForm';
 
@@ -12,8 +13,11 @@ interface IStripePayment {
   user: User;
 }
 
-const StripePayment = ({ user }: IStripePayment) => {
+const StripePaymentCustomer = ({ user }: IStripePayment) => {
   const [clientSecret, setClientSecret] = useState('');
+  const { payments } = useCommerce();
+  const { data, loading, error } = payments.createCustomer();
+
   const [createPaymentIntentMutation] = useCreatePaymentIntentMutation();
 
   useEffect(() => {
@@ -45,4 +49,4 @@ const StripePayment = ({ user }: IStripePayment) => {
   );
 };
 
-export default StripePayment;
+export default StripePaymentCustomer;

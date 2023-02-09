@@ -14,6 +14,7 @@ import type { FormEventHandler } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingSpinner from '@components/UI/loading/LoadingSpinner';
+import StripeAddressForm from './StripeAddressForm';
 
 interface IStripePaymentForm {
   user: User;
@@ -56,31 +57,42 @@ const StripePaymentForm = ({ user }: IStripePaymentForm) => {
 
   const paymentElementOptions = {
     layout: 'tabs',
+    readOnly: !email,
   } as StripePaymentElementOptions;
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-      <LinkAuthenticationElement
-        id="link-authentication-element"
-        onChange={handleEmailChange}
-        options={{ defaultValues: { email } }}
-      />
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <PrimaryButton
-        className="w-full mt-4"
-        disabled={isLoading || !stripe || !elements}
-        type="submit"
-        id="submit"
-      >
-        <span id="button-text">
-          {isLoading ? <LoadingSpinner /> : 'Pay now'}
-        </span>
-      </PrimaryButton>
-      {message && (
-        <div className="mt-4">
-          <SimpleTextError text={message} />{' '}
-        </div>
-      )}
+      <div>
+        <LinkAuthenticationElement
+          id="link-authentication-element"
+          onChange={handleEmailChange}
+          options={{ defaultValues: { email } }}
+        />
+      </div>
+      <div className="mt-8">
+        <StripeAddressForm />
+      </div>
+      <div className="mt-8">
+        <h3 className="mb-4">Billing Information</h3>
+        <PaymentElement id="payment-element" options={paymentElementOptions} />
+      </div>
+      <div className="mt-8">
+        <PrimaryButton
+          className="w-full mt-4"
+          disabled={isLoading || !stripe || !elements}
+          type="submit"
+          id="submit"
+        >
+          <span id="button-text">
+            {isLoading ? <LoadingSpinner /> : 'Pay now'}
+          </span>
+        </PrimaryButton>
+        {message && (
+          <div className="mt-4">
+            <SimpleTextError text={message} />{' '}
+          </div>
+        )}
+      </div>
     </form>
   );
 };

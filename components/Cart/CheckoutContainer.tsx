@@ -2,11 +2,10 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
-import StripePayment from './StripePayment';
-import UserAddresses from './UserAddresses';
+import StripePaymentCustomer from './StripePaymentCustomer';
 import { policies } from './policies';
 
-const CheckoutCart = () => {
+const CheckoutContainer = () => {
   const { t } = useTranslation('common');
   const { user } = useAuth();
   return (
@@ -15,11 +14,7 @@ const CheckoutCart = () => {
         <h1 className="text-center text-xl font-bold py-8">{t('Checkout')}</h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
           <div className="mx-auto w-full max-w-lg">
-            <h2 className="text-l font-semibold my-4">
-              {t('Shipping_Address')}
-            </h2>
-            {user && <UserAddresses />}
-            {user && <StripePayment user={user} />}
+            {user && <StripePaymentCustomer user={user} />}
           </div>
           <div className="mx-auto w-full max-w-lg">
             <h2 className="text-l font-semibold my-4">{t('order_summary')}</h2>
@@ -64,4 +59,4 @@ const CheckoutCart = () => {
   );
 };
 
-export default CheckoutCart;
+export default CheckoutContainer;

@@ -1,26 +1,20 @@
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import setLanguage from 'next-translate/setLanguage';
 import { setCookie } from 'nookies';
 import type { ReactNode } from 'react';
 import { createContext, useCallback, useContext } from 'react';
+import { CartContext } from './CartContext';
 import type { ICommerceProvider } from './ICommerceProvider';
-import { useAddToCartMutation } from './graphql/AddToCart.graphql';
-import { useAddToEventCartMutation } from './graphql/AddToEventCart.graphql';
-import { useGetUserCartQuery } from './graphql/GetUserCart.graphql';
-import { useGetUserCartCountQuery } from './graphql/GetUserCartCount.graphql';
-
-export const CartContext = {
-  useCart: useGetUserCartQuery,
-  useCartCount: useGetUserCartCountQuery,
-  useAddItem: useAddToCartMutation,
-  useAddEventItem: useAddToEventCartMutation,
-};
+import { PaymentsContext } from './PaymentsContext';
 
 export const Commerce = createContext<ICommerceProvider>({
   setLocale: () => undefined,
   cart: CartContext,
+  payments: PaymentsContext,
 });
 
 interface ICommerce {
+  client: ApolloClient<NormalizedCacheObject>;
   children: ReactNode;
 }
 
@@ -47,6 +41,7 @@ export function CommerceProvider({ children }: ICommerce) {
   const value = {
     setLocale,
     cart: CartContext,
+    payments: PaymentsContext,
   };
 
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;

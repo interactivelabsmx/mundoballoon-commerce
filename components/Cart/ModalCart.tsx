@@ -19,7 +19,7 @@ const ModalCart = ({ cartOpen, setCartOpen }: IModalCart) => {
         </h1>
         <CartItems />
         <div className="mt-10">
-          <PrimaryLinkButton href="/cart" className="w-full">
+          <PrimaryLinkButton href="/checkout" className="w-full">
             {t('Checkout')}
           </PrimaryLinkButton>
         </div>

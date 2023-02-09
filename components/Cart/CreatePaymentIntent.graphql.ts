@@ -5,6 +5,7 @@ import type * as Types from '../../graphql/graphql';
 const defaultOptions = {} as const;
 export type CreatePaymentIntentMutationVariables = Types.Exact<{
   amount: Types.Scalars['Long'];
+  customerId: Types.Scalars['String'];
 }>;
 
 export type CreatePaymentIntentMutation = {
@@ -13,8 +14,8 @@ export type CreatePaymentIntentMutation = {
 };
 
 export const CreatePaymentIntentDocument = gql`
-  mutation CreatePaymentIntent($amount: Long!) {
-    createPaymentIntent(amount: $amount)
+  mutation CreatePaymentIntent($amount: Long!, $customerId: String!) {
+    createPaymentIntent(amount: $amount, customerId: $customerId)
   }
 `;
 export type CreatePaymentIntentMutationFn = Apollo.MutationFunction<
@@ -36,6 +37,7 @@ export type CreatePaymentIntentMutationFn = Apollo.MutationFunction<
  * const [createPaymentIntentMutation, { data, loading, error }] = useCreatePaymentIntentMutation({
  *   variables: {
  *      amount: // value for 'amount'
+ *      customerId: // value for 'customerId'
  *   },
  * });
  */

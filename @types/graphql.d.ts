@@ -249,6 +249,15 @@ declare module '*/AddToEventCart.graphql' {
 }
     
 
+declare module '*/CreateCustomer.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const CreateCustomer: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserCart.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
