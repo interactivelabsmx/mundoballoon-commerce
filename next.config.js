@@ -1,5 +1,5 @@
 const BundleAnalyzer = require('@next/bundle-analyzer');
-const nextTranslate = require('next-translate');
+const nextTranslate = require('next-translate-plugin');
 
 const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',

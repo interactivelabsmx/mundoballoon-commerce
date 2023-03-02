@@ -1,51 +1,30 @@
-import type { User } from '@firebase/auth';
-import { Elements } from '@stripe/react-stripe-js';
-import type { StripeElementsOptions } from '@stripe/stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import LoadingSpinner from '@components/UI/loading/LoadingSpinner';
 import { useCommerce } from '@providers/CommerceProvider';
-import { useCreatePaymentIntentMutation } from './CreatePaymentIntent.graphql';
-import StripePaymentForm from './StripePaymentForm';
-
-const stripe = loadStripe('pk_test_b8SZC99Ac6LFHWr18HmLKPB5');
-
-interface IStripePayment {
-  user: User;
-}
+import type { IStripePayment } from './StripePayment';
+import StripePaymentFlow from './StripePaymentFlow';
 
 const StripePaymentCustomer = ({ user }: IStripePayment) => {
-  const [clientSecret, setClientSecret] = useState('');
   const { payments } = useCommerce();
-  const { data, loading, error } = payments.createCustomer();
-
-  const [createPaymentIntentMutation] = useCreatePaymentIntentMutation();
+  const [loadingCustomer, setLoadingCustomer] = useState(true);
+  const [customerId, setCustomerId] = useState<string>('');
+  const [createCustomerMutation] = payments.createCustomer();
 
   useEffect(() => {
     async function callMutation() {
-      const result = await createPaymentIntentMutation({
-        variables: { amount: 100 },
-      });
-      const secret = result.data?.createPaymentIntent || '';
-      setClientSecret(secret);
+      const { data } = await createCustomerMutation();
+      setCustomerId(data?.createCustomer || '');
+      setLoadingCustomer(false);
     }
     callMutation();
-  }, [createPaymentIntentMutation]);
+  }, [createCustomerMutation]);
 
-  const appearance = { theme: 'flat' };
-
-  const options = {
-    clientSecret,
-    appearance,
-  } as StripeElementsOptions;
-
-  return (
-    <div className="App">
-      {clientSecret && (
-        <Elements options={options} stripe={stripe}>
-          <StripePaymentForm user={user} />
-        </Elements>
-      )}
-    </div>
+  return loadingCustomer ? (
+    <LoadingSpinner />
+  ) : (
+    <>
+      {customerId && <StripePaymentFlow user={user} customerId={customerId} />}
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
-import StripePaymentCustomer from './StripePaymentCustomer';
+import StripePayment from './StripePayment';
 import { policies } from './policies';
 
 const CheckoutContainer = () => {
@@ -14,7 +14,7 @@ const CheckoutContainer = () => {
         <h1 className="text-center text-xl font-bold py-8">{t('Checkout')}</h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
           <div className="mx-auto w-full max-w-lg">
-            {user && <StripePaymentCustomer user={user} />}
+            {user && <StripePayment user={user} />}
           </div>
           <div className="mx-auto w-full max-w-lg">
             <h2 className="text-l font-semibold my-4">{t('order_summary')}</h2>
