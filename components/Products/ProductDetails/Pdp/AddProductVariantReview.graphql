@@ -1,0 +1,16 @@
+mutation AddProductVariantReview(
+  $productVariantId: Int!
+  $rating: Int!
+  $comments: String!
+) {
+  addProductVariantReview(
+    productVariantId: $productVariantId
+    rating: $rating
+    comments: $comments
+  ) {
+    productVariantId
+    productVariantReviewId
+    rating
+    comments
+  }
+}

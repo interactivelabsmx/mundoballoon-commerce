@@ -259,6 +259,7 @@ export type Mutation = {
   deleteProduct: Scalars['Boolean'];
   deleteProductVariant: Scalars['Boolean'];
   deleteProductVariantMedia: Scalars['Boolean'];
+  deleteProductVariantReview: Scalars['Boolean'];
   deleteProductVariantValue: Scalars['Boolean'];
   deleteUser: Scalars['Boolean'];
   deleteUserAddresses: Scalars['Boolean'];
@@ -271,6 +272,7 @@ export type Mutation = {
   revokeAdminUser: Scalars['Boolean'];
   updateProduct: Product;
   updateProductVariant: ProductVariant;
+  updateProductVariantReview: ProductVariantReview;
   updateUserAddresses: UserAddresses;
   updateUserEvent: UserEvent;
   updateUserProfile: UserProfile;
@@ -289,7 +291,9 @@ export type MutationAddOrderProductDetailsArgs = {
 };
 
 export type MutationAddProductVariantReviewArgs = {
-  input: ProductVariantReviewInput;
+  comments: Scalars['String'];
+  productVariantId: Scalars['Int'];
+  rating: Scalars['Int'];
 };
 
 export type MutationAddToCartArgs = {
@@ -378,6 +382,10 @@ export type MutationDeleteProductVariantMediaArgs = {
   productVariantMediaId: Scalars['Int'];
 };
 
+export type MutationDeleteProductVariantReviewArgs = {
+  productVariantReviewId: Scalars['Int'];
+};
+
 export type MutationDeleteProductVariantValueArgs = {
   productVariantId: Scalars['Int'];
   variantId: Scalars['Int'];
@@ -427,6 +435,13 @@ export type MutationUpdateProductArgs = {
 
 export type MutationUpdateProductVariantArgs = {
   input: ProductVariantEntityInput;
+};
+
+export type MutationUpdateProductVariantReviewArgs = {
+  comments: Scalars['String'];
+  productVariantId: Scalars['Int'];
+  productVariantReviewId: Scalars['Int'];
+  rating: Scalars['Int'];
 };
 
 export type MutationUpdateUserAddressesArgs = {
@@ -825,9 +840,13 @@ export type Query = {
   productCategories: Array<ProductCategory>;
   productQuickView: Product;
   productVariantById?: Maybe<ProductVariant>;
+  productVariantReviews: Array<ProductVariantReview>;
+  productVariantReviewsByRating: Array<ProductVariantReview>;
+  productVariantReviewsByUser: Array<ProductVariantReview>;
   productVariants: ProductVariants;
   productVariantsEntityById: Array<ProductVariantEntity>;
   productsEntity?: Maybe<ProductsEntityConnection>;
+  productsVariantsByUserId: Array<ProductVariant>;
   searchProducts?: Maybe<SearchProductsConnection>;
   sortOptions: Array<Scalars['String']>;
   userAddresses: Array<UserAddresses>;
@@ -865,6 +884,14 @@ export type QueryProductVariantByIdArgs = {
   productVariantId: Scalars['Int'];
 };
 
+export type QueryProductVariantReviewsArgs = {
+  productId: Scalars['Int'];
+};
+
+export type QueryProductVariantReviewsByRatingArgs = {
+  rating: Scalars['Int'];
+};
+
 export type QueryProductVariantsArgs = {
   productId: Scalars['Int'];
 };
@@ -881,6 +908,10 @@ export type QueryProductsEntityArgs = {
   order?: InputMaybe<Array<ProductEntitySortInput>>;
 };
 
+export type QueryProductsVariantsByUserIdArgs = {
+  userId: Scalars['String'];
+};
+
 export type QuerySearchProductsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -892,6 +923,10 @@ export type QuerySearchProductsArgs = {
 
 export type QueryUserByIdArgs = {
   userId: Scalars['String'];
+};
+
+export type QueryUserCartsByProductIdArgs = {
+  productId: Scalars['Int'];
 };
 
 export type QueryUserEventByIdArgs = {

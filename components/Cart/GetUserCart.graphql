@@ -1,0 +1,17 @@
+query GetUserCart {
+  userCarts {
+    productVariantId
+    quantity
+    price
+    variant {
+      productId
+      sku
+      name
+      description
+      media {
+        url
+        description
+      }
+    }
+  }
+}

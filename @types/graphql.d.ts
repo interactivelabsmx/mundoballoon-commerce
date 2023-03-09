@@ -26,6 +26,24 @@ declare module '*/GetUserAddresses.graphql' {
 }
     
 
+declare module '*/GetUserCart.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const addUserAddress: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetUserAddresses.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getUserAddresses: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserEventsSelect.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -44,10 +62,37 @@ declare module '*/UserEventSelectFragment.graphql' {
 }
     
 
+declare module '*/AddProductVariantReview.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddProductVariantReview: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetProductDetails.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetProductDetails: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetProductVariantReviews.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getProductVariantReviews: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/GetUserCartByProductId.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const getUserCartByProductId: DocumentNode;
 
   export default defaultDocument;
 }

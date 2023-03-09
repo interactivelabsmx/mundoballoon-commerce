@@ -1,17 +1,21 @@
-import useTranslation from 'next-translate/useTranslation';
+
 import Image from 'next/image';
 import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
 import StripePayment from './StripePayment';
 import UserAddresses from './UserAddresses';
 import { policies } from './policies';
+import useTranslation from 'next-translate/useTranslation';
+import CheckoutForm from './CheckoutForm';
 
 const CheckoutCart = () => {
   const { t } = useTranslation('common');
   const { user } = useAuth();
   return (
     <div className="bg-white">
+      <CheckoutForm />
       <main className="mx-auto max-w-7xl px-4 pt-4 pb-16 sm:px-6 sm:pt-8 sm:pb-24 lg:px-8 xl:px-2 xl:pt-14">
+        <div className="mx-auto w-full max-w-lg"></div>
         <h1 className="text-center text-xl font-bold py-8">{t('Checkout')}</h1>
         <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
           <div className="mx-auto w-full max-w-lg">
