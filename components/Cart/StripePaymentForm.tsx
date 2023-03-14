@@ -14,7 +14,6 @@ import type { FormEventHandler } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingSpinner from '@components/UI/loading/LoadingSpinner';
-import StripeAddressForm from './StripeAddressForm';
 
 interface IStripePaymentForm {
   user: User;
@@ -61,16 +60,13 @@ const StripePaymentForm = ({ user }: IStripePaymentForm) => {
   } as StripePaymentElementOptions;
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form id="payment-form" className="mt-8" onSubmit={handleSubmit}>
       <div>
         <LinkAuthenticationElement
           id="link-authentication-element"
           onChange={handleEmailChange}
           options={{ defaultValues: { email } }}
         />
-      </div>
-      <div className="mt-8">
-        <StripeAddressForm />
       </div>
       <div className="mt-8">
         <h3 className="mb-4">Billing Information</h3>

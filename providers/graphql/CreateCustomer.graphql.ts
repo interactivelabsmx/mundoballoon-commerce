@@ -9,12 +9,34 @@ export type CreateCustomerMutationVariables = Types.Exact<{
 
 export type CreateCustomerMutation = {
   __typename?: 'Mutation';
-  createCustomer?: string | null;
+  createCustomer?: {
+    __typename?: 'Customer';
+    id: string;
+    address: {
+      __typename?: 'Address';
+      city: string;
+      country: string;
+      line1: string;
+      line2: string;
+      postalCode: string;
+      state: string;
+    };
+  } | null;
 };
 
 export const CreateCustomerDocument = gql`
   mutation CreateCustomer {
-    createCustomer
+    createCustomer {
+      id
+      address {
+        city
+        country
+        line1
+        line2
+        postalCode
+        state
+      }
+    }
   }
 `;
 export type CreateCustomerMutationFn = Apollo.MutationFunction<

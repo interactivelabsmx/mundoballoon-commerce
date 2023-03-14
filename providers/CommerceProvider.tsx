@@ -5,7 +5,8 @@ import type { ReactNode } from 'react';
 import { createContext, useCallback, useContext } from 'react';
 import { CartContext } from './CartContext';
 import type { ICommerceProvider } from './ICommerceProvider';
-import { PaymentsContext } from './PaymentsContext';
+import type { IPaymentsContext } from './PaymentsContext';
+import { usePaymentsContext, PaymentsContext } from './PaymentsContext';
 
 export const Commerce = createContext<ICommerceProvider>({
   setLocale: () => undefined,
@@ -28,7 +29,7 @@ export const UL_COOKIE_OPTIONS = {
   secure: true,
 };
 
-export function CommerceProvider({ children }: ICommerce) {
+export function CommerceProvider({ children, client }: ICommerce) {
   const setLanguageCookie = useCallback(async (locale: string) => {
     setCookie({}, UL, locale, UL_COOKIE_OPTIONS);
   }, []);
@@ -38,10 +39,12 @@ export function CommerceProvider({ children }: ICommerce) {
     setLanguageCookie(locale);
   };
 
+  const payments: IPaymentsContext = usePaymentsContext(client);
+
   const value = {
     setLocale,
     cart: CartContext,
-    payments: PaymentsContext,
+    payments,
   };
 
   return <Commerce.Provider value={value}>{children}</Commerce.Provider>;

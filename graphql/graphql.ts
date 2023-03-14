@@ -22,74 +22,25 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Address = {
+  __typename?: 'Address';
+  city: Scalars['String'];
+  country: Scalars['String'];
+  line1: Scalars['String'];
+  line2: Scalars['String'];
+  postalCode: Scalars['String'];
+  state: Scalars['String'];
+};
+
 export enum ApplyPolicy {
   AfterResolver = 'AFTER_RESOLVER',
   BeforeResolver = 'BEFORE_RESOLVER',
+  Validation = 'VALIDATION',
 }
 
 export type BooleanOperationFilterInput = {
   eq?: InputMaybe<Scalars['Boolean']>;
   neq?: InputMaybe<Scalars['Boolean']>;
-};
-
-export type ComparableDoubleOperationFilterInput = {
-  eq?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  neq?: InputMaybe<Scalars['Float']>;
-  ngt?: InputMaybe<Scalars['Float']>;
-  ngte?: InputMaybe<Scalars['Float']>;
-  nin?: InputMaybe<Array<Scalars['Float']>>;
-  nlt?: InputMaybe<Scalars['Float']>;
-  nlte?: InputMaybe<Scalars['Float']>;
-};
-
-export type ComparableInt32OperationFilterInput = {
-  eq?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  neq?: InputMaybe<Scalars['Int']>;
-  ngt?: InputMaybe<Scalars['Int']>;
-  ngte?: InputMaybe<Scalars['Int']>;
-  nin?: InputMaybe<Array<Scalars['Int']>>;
-  nlt?: InputMaybe<Scalars['Int']>;
-  nlte?: InputMaybe<Scalars['Int']>;
-};
-
-export type ComparableNullableOfDateTimeOperationFilterInput = {
-  eq?: InputMaybe<Scalars['DateTime']>;
-  gt?: InputMaybe<Scalars['DateTime']>;
-  gte?: InputMaybe<Scalars['DateTime']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  lt?: InputMaybe<Scalars['DateTime']>;
-  lte?: InputMaybe<Scalars['DateTime']>;
-  neq?: InputMaybe<Scalars['DateTime']>;
-  ngt?: InputMaybe<Scalars['DateTime']>;
-  ngte?: InputMaybe<Scalars['DateTime']>;
-  nin?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  nlt?: InputMaybe<Scalars['DateTime']>;
-  nlte?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type ComparableNullableOfInt32OperationFilterInput = {
-  eq?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  neq?: InputMaybe<Scalars['Int']>;
-  ngt?: InputMaybe<Scalars['Int']>;
-  ngte?: InputMaybe<Scalars['Int']>;
-  nin?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
-  nlt?: InputMaybe<Scalars['Int']>;
-  nlte?: InputMaybe<Scalars['Int']>;
 };
 
 export type CountryCode = {
@@ -109,6 +60,27 @@ export type CreateOrderRequestsInput = {
   orderItems?: InputMaybe<Array<OrderProductsDetailsInput>>;
 };
 
+export type Customer = {
+  __typename?: 'Customer';
+  address: Address;
+  id: Scalars['String'];
+};
+
+export type DateTimeOperationFilterInput = {
+  eq?: InputMaybe<Scalars['DateTime']>;
+  gt?: InputMaybe<Scalars['DateTime']>;
+  gte?: InputMaybe<Scalars['DateTime']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  lt?: InputMaybe<Scalars['DateTime']>;
+  lte?: InputMaybe<Scalars['DateTime']>;
+  neq?: InputMaybe<Scalars['DateTime']>;
+  ngt?: InputMaybe<Scalars['DateTime']>;
+  ngte?: InputMaybe<Scalars['DateTime']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  nlt?: InputMaybe<Scalars['DateTime']>;
+  nlte?: InputMaybe<Scalars['DateTime']>;
+};
+
 export type EventCartDetail = {
   __typename?: 'EventCartDetail';
   createdAt?: Maybe<Scalars['DateTime']>;
@@ -126,17 +98,17 @@ export type EventCartDetail = {
 
 export type EventCartDetailFilterInput = {
   and?: InputMaybe<Array<EventCartDetailFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  eventCartId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
+  eventCartId?: InputMaybe<IntOperationFilterInput>;
   label?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<EventCartDetailFilterInput>>;
-  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
-  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  quantity?: InputMaybe<ComparableDoubleOperationFilterInput>;
+  price?: InputMaybe<FloatOperationFilterInput>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
+  quantity?: InputMaybe<FloatOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
   userEvent?: InputMaybe<UserEventFilterInput>;
-  userEventId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  userEventId?: InputMaybe<IntOperationFilterInput>;
   variant?: InputMaybe<ProductVariantFilterInput>;
 };
 
@@ -165,6 +137,36 @@ export type FirebaseUser = {
   phoneNumber?: Maybe<Scalars['String']>;
   reviews?: Maybe<Array<ProductVariantReview>>;
   userId: Scalars['String'];
+};
+
+export type FloatOperationFilterInput = {
+  eq?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  neq?: InputMaybe<Scalars['Float']>;
+  ngt?: InputMaybe<Scalars['Float']>;
+  ngte?: InputMaybe<Scalars['Float']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  nlt?: InputMaybe<Scalars['Float']>;
+  nlte?: InputMaybe<Scalars['Float']>;
+};
+
+export type IntOperationFilterInput = {
+  eq?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  neq?: InputMaybe<Scalars['Int']>;
+  ngt?: InputMaybe<Scalars['Int']>;
+  ngte?: InputMaybe<Scalars['Int']>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  nlt?: InputMaybe<Scalars['Int']>;
+  nlte?: InputMaybe<Scalars['Int']>;
 };
 
 export type KeyValuePairOfStringAndListOfProduct = {
@@ -245,7 +247,7 @@ export type Mutation = {
   addToEventCart: EventCartDetail;
   addUserAddresses: UserAddresses;
   addUserProfile: UserProfile;
-  createCustomer?: Maybe<Scalars['String']>;
+  createCustomer?: Maybe<Customer>;
   createOrder: Orders;
   createPaymentIntent: Scalars['String'];
   createProduct: Product;
@@ -549,7 +551,7 @@ export type ProductCategoryFilterInput = {
   description?: InputMaybe<StringOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductCategoryFilterInput>>;
-  productCategoryId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  productCategoryId?: InputMaybe<IntOperationFilterInput>;
 };
 
 export type ProductCategoryInput = {
@@ -592,14 +594,14 @@ export type ProductEntitySortInput = {
 export type ProductFilterInput = {
   and?: InputMaybe<Array<ProductFilterInput>>;
   category?: InputMaybe<ProductCategoryFilterInput>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   description?: InputMaybe<StringOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductFilterInput>>;
-  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
-  productCategoryId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  productId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  price?: InputMaybe<FloatOperationFilterInput>;
+  productCategoryId?: InputMaybe<IntOperationFilterInput>;
+  productId?: InputMaybe<IntOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
   variants?: InputMaybe<ListFilterInputTypeOfProductVariantFilterInput>;
 };
 
@@ -664,9 +666,9 @@ export type ProductVariantFilterInput = {
   media?: InputMaybe<ListFilterInputTypeOfProductVariantMediumFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantFilterInput>>;
-  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
-  productId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  productVariantId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  price?: InputMaybe<FloatOperationFilterInput>;
+  productId?: InputMaybe<IntOperationFilterInput>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
   reviews?: InputMaybe<ListFilterInputTypeOfProductVariantReviewFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
   variantValues?: InputMaybe<ListFilterInputTypeOfProductVariantValueFilterInput>;
@@ -703,8 +705,8 @@ export type ProductVariantMediumFilterInput = {
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantMediumFilterInput>>;
   productVariant?: InputMaybe<ProductVariantFilterInput>;
-  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  productVariantMediaId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
+  productVariantMediaId?: InputMaybe<IntOperationFilterInput>;
   quality?: InputMaybe<StringOperationFilterInput>;
   url?: InputMaybe<StringOperationFilterInput>;
 };
@@ -736,13 +738,13 @@ export type ProductVariantReview = {
 export type ProductVariantReviewFilterInput = {
   and?: InputMaybe<Array<ProductVariantReviewFilterInput>>;
   comments?: InputMaybe<StringOperationFilterInput>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   or?: InputMaybe<Array<ProductVariantReviewFilterInput>>;
   productVariant?: InputMaybe<ProductVariantFilterInput>;
-  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  productVariantReviewId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  rating?: InputMaybe<ComparableInt32OperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
+  productVariantReviewId?: InputMaybe<IntOperationFilterInput>;
+  rating?: InputMaybe<IntOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
   user?: InputMaybe<UserFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
 };
@@ -773,11 +775,11 @@ export type ProductVariantValueFilterInput = {
   and?: InputMaybe<Array<ProductVariantValueFilterInput>>;
   or?: InputMaybe<Array<ProductVariantValueFilterInput>>;
   productVariant?: InputMaybe<ProductVariantFilterInput>;
-  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
   variant?: InputMaybe<VariantFilterInput>;
-  variantId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variantId?: InputMaybe<IntOperationFilterInput>;
   variantValue?: InputMaybe<VariantValueFilterInput>;
-  variantValueId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variantValueId?: InputMaybe<IntOperationFilterInput>;
 };
 
 export type ProductVariantValueInput = {
@@ -963,11 +965,11 @@ export type UiRegistry = {
 export type UiRegistryFilterInput = {
   and?: InputMaybe<Array<UiRegistryFilterInput>>;
   componentId?: InputMaybe<StringOperationFilterInput>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   deprecated?: InputMaybe<BooleanOperationFilterInput>;
   or?: InputMaybe<Array<UiRegistryFilterInput>>;
-  uiRegistryId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  uiRegistryId?: InputMaybe<IntOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
 };
 
 export type UiRegistryInput = {
@@ -1035,9 +1037,9 @@ export type UserCartProduct = {
 export type UserCartProductFilterInput = {
   and?: InputMaybe<Array<UserCartProductFilterInput>>;
   or?: InputMaybe<Array<UserCartProductFilterInput>>;
-  price?: InputMaybe<ComparableDoubleOperationFilterInput>;
-  productVariantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  quantity?: InputMaybe<ComparableDoubleOperationFilterInput>;
+  price?: InputMaybe<FloatOperationFilterInput>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
+  quantity?: InputMaybe<FloatOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
   variant?: InputMaybe<ProductVariantFilterInput>;
@@ -1068,14 +1070,14 @@ export type UserEvent = {
 export type UserEventFilterInput = {
   and?: InputMaybe<Array<UserEventFilterInput>>;
   carts?: InputMaybe<ListFilterInputTypeOfEventCartDetailFilterInput>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  date?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
+  date?: InputMaybe<DateTimeOperationFilterInput>;
   details?: InputMaybe<StringOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<UserEventFilterInput>>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
   user?: InputMaybe<UserFilterInput>;
-  userEventId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  userEventId?: InputMaybe<IntOperationFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
 };
 
@@ -1123,7 +1125,7 @@ export type UserPaymentProfileFilterInput = {
   processorId?: InputMaybe<StringOperationFilterInput>;
   user?: InputMaybe<UserFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
-  userProfileId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  userProfileId?: InputMaybe<IntOperationFilterInput>;
 };
 
 export type UserPaymentProfileInput = {
@@ -1185,15 +1187,15 @@ export type Variant = {
 
 export type VariantFilterInput = {
   and?: InputMaybe<Array<VariantFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   name?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<VariantFilterInput>>;
   uiRegistry?: InputMaybe<UiRegistryFilterInput>;
-  uiRegistryId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
-  variantId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  uiRegistryId?: InputMaybe<IntOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
+  variantId?: InputMaybe<IntOperationFilterInput>;
   variantType?: InputMaybe<VariantsTypeFilterInput>;
-  variantTypeId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variantTypeId?: InputMaybe<IntOperationFilterInput>;
   variantValues?: InputMaybe<ListFilterInputTypeOfVariantValueFilterInput>;
 };
 
@@ -1222,8 +1224,8 @@ export type VariantValueFilterInput = {
   or?: InputMaybe<Array<VariantValueFilterInput>>;
   productVariantValues?: InputMaybe<ListFilterInputTypeOfProductVariantValueFilterInput>;
   value?: InputMaybe<StringOperationFilterInput>;
-  variantId?: InputMaybe<ComparableInt32OperationFilterInput>;
-  variantValueId?: InputMaybe<ComparableNullableOfInt32OperationFilterInput>;
+  variantId?: InputMaybe<IntOperationFilterInput>;
+  variantValueId?: InputMaybe<IntOperationFilterInput>;
 };
 
 export type VariantValueInput = {
@@ -1243,11 +1245,11 @@ export type VariantsType = {
 
 export type VariantsTypeFilterInput = {
   and?: InputMaybe<Array<VariantsTypeFilterInput>>;
-  createdAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   or?: InputMaybe<Array<VariantsTypeFilterInput>>;
-  updatedAt?: InputMaybe<ComparableNullableOfDateTimeOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
   variantType?: InputMaybe<StringOperationFilterInput>;
-  variantTypeId?: InputMaybe<ComparableInt32OperationFilterInput>;
+  variantTypeId?: InputMaybe<IntOperationFilterInput>;
 };
 
 export type VariantsTypeInput = {
