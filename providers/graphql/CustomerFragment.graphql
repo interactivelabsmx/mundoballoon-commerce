@@ -1,0 +1,16 @@
+fragment AddressFragment on Address {
+  city
+  country
+  line1
+  line2
+  postalCode
+  state
+}
+
+fragment CustomerFragment on Customer {
+  id
+  name
+  address {
+    ...AddressFragment
+  }
+}

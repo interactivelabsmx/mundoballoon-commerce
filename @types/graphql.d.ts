@@ -258,6 +258,16 @@ declare module '*/CreateCustomer.graphql' {
 }
     
 
+declare module '*/CustomerFragment.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddressFragment: DocumentNode;
+export const CustomerFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserCart.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -271,6 +281,15 @@ declare module '*/GetUserCartCount.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetUserCartCount: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/UpdateCustomerAddress.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const UpdateCustomerAddress: DocumentNode;
 
   export default defaultDocument;
 }

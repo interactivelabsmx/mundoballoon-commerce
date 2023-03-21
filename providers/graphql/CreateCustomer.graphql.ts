@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import type * as Types from '../../graphql/graphql';
+import { CustomerFragmentFragmentDoc } from './CustomerFragment.graphql';
 
 const defaultOptions = {} as const;
 export type CreateCustomerMutationVariables = Types.Exact<{
@@ -12,7 +13,8 @@ export type CreateCustomerMutation = {
   createCustomer?: {
     __typename?: 'Customer';
     id: string;
-    address: {
+    name: string;
+    address?: {
       __typename?: 'Address';
       city: string;
       country: string;
@@ -20,24 +22,17 @@ export type CreateCustomerMutation = {
       line2: string;
       postalCode: string;
       state: string;
-    };
+    } | null;
   } | null;
 };
 
 export const CreateCustomerDocument = gql`
   mutation CreateCustomer {
     createCustomer {
-      id
-      address {
-        city
-        country
-        line1
-        line2
-        postalCode
-        state
-      }
+      ...CustomerFragment
     }
   }
+  ${CustomerFragmentFragmentDoc}
 `;
 export type CreateCustomerMutationFn = Apollo.MutationFunction<
   CreateCustomerMutation,

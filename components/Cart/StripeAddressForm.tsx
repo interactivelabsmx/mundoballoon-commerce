@@ -6,18 +6,37 @@ import type {
 import useTranslation from 'next-translate/useTranslation';
 import React, { useRef, useState } from 'react';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
+import type { AddressInput } from '@graphql/graphql';
+import { useCommerce } from '@providers/CommerceProvider';
 
 const StripeAddressForm = () => {
   const { t } = useTranslation();
   const [isCompleted, setIsCompleted] = useState(false);
-  const address = useRef<StripeAddressElementChangeEvent['value']>();
+  const {
+    payments: { customer, updateCustomerAddress },
+  } = useCommerce();
+  const addressForm = useRef<StripeAddressElementChangeEvent['value']>();
   const onChange = ({ value, complete }: StripeAddressElementChangeEvent) => {
-    address.current = value;
+    addressForm.current = value;
     if (complete !== isCompleted) setIsCompleted(complete);
   };
   const onSaveClick = () => {
-    if (isCompleted) {
-      console.log('Address Complete:', address.current);
+    if (isCompleted && addressForm.current) {
+      const name = addressForm.current.name || '';
+      const addressValues = addressForm.current.address;
+      const address = {
+        city: addressValues.city,
+        country: addressValues.country,
+        line1: addressValues.line1,
+        line2: addressValues.line2,
+        postalCode: addressValues.postal_code,
+        state: addressValues.state,
+      } as AddressInput;
+      updateCustomerAddress({
+        name,
+        address,
+        customerId: customer?.id || '',
+      });
     }
   };
   const options = {

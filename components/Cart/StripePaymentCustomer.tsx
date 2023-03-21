@@ -14,7 +14,7 @@ const StripePaymentCustomer = ({ user }: IStripePayment) => {
     return <LoadingText />;
   }
 
-  return customer && <StripePaymentFlow user={user} customer={customer} />;
+  return customer && <StripePaymentFlow user={user} />;
 };
 
 export default StripePaymentCustomer;

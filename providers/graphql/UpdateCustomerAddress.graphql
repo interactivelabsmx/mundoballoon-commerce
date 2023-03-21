@@ -1,0 +1,13 @@
+mutation UpdateCustomerAddress(
+  $customerId: String!
+  $name: String!
+  $address: AddressInput!
+) {
+  updateCustomerAddress(
+    customerId: $customerId
+    name: $name
+    address: $address
+  ) {
+    ...CustomerFragment
+  }
+}

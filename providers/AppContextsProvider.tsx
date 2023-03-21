@@ -21,6 +21,7 @@ const AppContextsProvider = ({ children, pageProps }: IAppContextsProvider) => {
     graphQLUrl: getGraphqlURL(),
     locale: langs,
   });
+
   if (user) setTokenFn(user);
 
   return (
