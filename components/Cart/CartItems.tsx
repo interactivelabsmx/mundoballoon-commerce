@@ -1,18 +1,18 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
-import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useCommerce } from '@providers/CommerceProvider';
 
 const CartItems = () => {
   const { t } = useTranslation('common');
-  const { cart } = useCommerce();
-  const { loading, error, data } = cart.useCart();
-  if (error) return <SimpleTextError text={error.message} />;
-  if (loading || !data) return <LoadingText />;
-  const { userCart } = data || {};
-  const { products, subtotal } = userCart;
+  const {
+    cart: { products, subtotal, getUserCart },
+  } = useCommerce();
+  if (!products || !subtotal) {
+    getUserCart();
+    return <LoadingText />;
+  }
   return (
     <>
       {products && (

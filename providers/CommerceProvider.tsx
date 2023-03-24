@@ -3,10 +3,14 @@ import setLanguage from 'next-translate/setLanguage';
 import { setCookie } from 'nookies';
 import type { ReactNode } from 'react';
 import { createContext, useCallback, useContext } from 'react';
-import { CartContext } from './CartContext';
+import type { ICartContext } from './CommerceContext/CartContext';
+import { CartContext, useCartContext } from './CommerceContext/CartContext';
+import type { IPaymentsContext } from './CommerceContext/PaymentsContext';
+import {
+  usePaymentsContext,
+  PaymentsContext,
+} from './CommerceContext/PaymentsContext';
 import type { ICommerceProvider } from './ICommerceProvider';
-import type { IPaymentsContext } from './PaymentsContext';
-import { usePaymentsContext, PaymentsContext } from './PaymentsContext';
 
 export const Commerce = createContext<ICommerceProvider>({
   setLocale: () => undefined,
@@ -40,10 +44,11 @@ export function CommerceProvider({ children, client }: ICommerce) {
   };
 
   const payments: IPaymentsContext = usePaymentsContext(client);
+  const cart: ICartContext = useCartContext(client);
 
   const value = {
     setLocale,
-    cart: CartContext,
+    cart,
     payments,
   };
 

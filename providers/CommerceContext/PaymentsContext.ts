@@ -1,10 +1,11 @@
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { useReducer } from 'react';
 import type { Customer } from '@graphql/graphql';
-import { CreateCustomerDocument } from './graphql/CreateCustomer.graphql';
-import { CreatePaymentIntentDocument } from './graphql/CreatePaymentIntent.graphql';
-import { UpdateCustomerAddressDocument } from './graphql/UpdateCustomerAddress.graphql';
-import type { UpdateCustomerAddressMutationVariables } from './graphql/UpdateCustomerAddress.graphql';
+import { CreateCustomerDocument } from '../graphql/CreateCustomer.graphql';
+import { CreatePaymentIntentDocument } from '../graphql/CreatePaymentIntent.graphql';
+import type { CreatePaymentIntentMutationVariables } from '../graphql/CreatePaymentIntent.graphql';
+import { UpdateCustomerAddressDocument } from '../graphql/UpdateCustomerAddress.graphql';
+import type { UpdateCustomerAddressMutationVariables } from '../graphql/UpdateCustomerAddress.graphql';
 
 enum PaymentsActions {
   SET_CUSTOMER,
@@ -39,20 +40,20 @@ function PaymentsReducer(state: IPaymentsState, action: IPaymentsAction) {
   }
 }
 
-export interface IPaymentsContext {
-  customer?: Customer;
-  clientSecret?: string;
-  createCustomer: () => void;
+export type IPaymentsContext = {
+  createCustomer: () => Promise<void>;
   updateCustomerAddress: (
     variables: UpdateCustomerAddressMutationVariables
-  ) => void;
-  createPaymentIntent: () => void;
-}
+  ) => Promise<void>;
+  createPaymentIntent: (
+    variables: CreatePaymentIntentMutationVariables
+  ) => Promise<void>;
+} & IPaymentsState;
 
 export const PaymentsContext = {
-  createCustomer: () => undefined,
-  updateCustomerAddress: () => undefined,
-  createPaymentIntent: () => undefined,
+  createCustomer: async () => undefined,
+  updateCustomerAddress: async () => undefined,
+  createPaymentIntent: async () => undefined,
 };
 
 export const usePaymentsContext = (
@@ -85,9 +86,12 @@ export const usePaymentsContext = (
     });
   };
 
-  const createPaymentIntent = async () => {
+  const createPaymentIntent = async (
+    variables: CreatePaymentIntentMutationVariables
+  ) => {
     const { data, errors } = await client.mutate({
       mutation: CreatePaymentIntentDocument,
+      variables,
     });
     if (errors) throw new Error(errors.toString());
     reducer({
