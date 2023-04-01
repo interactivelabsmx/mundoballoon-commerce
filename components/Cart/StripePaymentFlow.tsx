@@ -13,9 +13,10 @@ const stripe = loadStripe('pk_test_b8SZC99Ac6LFHWr18HmLKPB5');
 const StripePaymentFlow = ({ user }: IStripePayment) => {
   const {
     payments: { customer, clientSecret, createPaymentIntent },
+    cart: { total },
   } = useCommerce();
   if (customer?.address && !clientSecret) {
-    createPaymentIntent({ customerId: customer.id, amount: 100 });
+    createPaymentIntent({ customerId: customer.id, amount: total });
     return <LoadingText />;
   }
   const appearance = { theme: 'flat' };

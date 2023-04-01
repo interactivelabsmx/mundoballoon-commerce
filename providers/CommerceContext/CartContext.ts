@@ -54,7 +54,6 @@ function CartReducer(state: ICartState, action: ICartAction): ICartState {
       };
     }
     case CartActions.SET_CART_COUNT: {
-      1;
       const { userCartCount } = payload as GetUserCartCountQuery;
       return {
         ...state,

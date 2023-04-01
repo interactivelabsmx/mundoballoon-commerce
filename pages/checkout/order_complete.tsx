@@ -4,21 +4,22 @@ import StripePaymentResult from '@components/Cart/StripePaymentResult';
 import Layout from '@layouts/Layout';
 import getServerSidePreFetch from '@lib/getServerSidePreFetch';
 
-const CheckoutComplete = () => {
+const OrderComplete = () => {
   const router = useRouter();
-  console.log(router.query);
+  const { status } = router.query;
 
   return (
     <Layout>
+      <h1>Order Complete</h1>
       <StripeElements>
-        <StripePaymentResult clientSecret="absasdad" />
+        <StripePaymentResult status={status?.toString() || ''} />
       </StripeElements>
     </Layout>
   );
 };
 
 export const getServerSideProps = getServerSidePreFetch({
-  Page: CheckoutComplete,
+  Page: OrderComplete,
 });
 
-export default CheckoutComplete;
+export default OrderComplete;

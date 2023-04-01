@@ -42,6 +42,14 @@ const StripeAddressForm = () => {
   const options = {
     mode: 'billing',
     allowedCountries: ['MX', 'US'],
+    fields: {
+      phone: 'always',
+    },
+    validation: {
+      phone: {
+        required: 'auto',
+      },
+    },
   } as StripeAddressElementOptions;
   return (
     <div className="mt-8">
