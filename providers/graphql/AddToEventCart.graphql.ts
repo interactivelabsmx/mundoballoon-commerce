@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type AddToEventCartMutationVariables = Types.Exact<{
   userEventId: Types.Scalars['Int'];
   productVariantId: Types.Scalars['Int'];
-  quantity: Types.Scalars['Float'];
+  quantity: Types.Scalars['Decimal'];
 }>;
 
 export type AddToEventCartMutation = {
@@ -23,7 +23,7 @@ export const AddToEventCartDocument = gql`
   mutation AddToEventCart(
     $userEventId: Int!
     $productVariantId: Int!
-    $quantity: Float!
+    $quantity: Decimal!
   ) {
     addToEventCart(
       userEventId: $userEventId

@@ -86,5 +86,7 @@
   "country": "Pais",
   "zip_code": "Codigo Postal",
   "add_new_address": "Agregar una dirección",
-  "select_address": "Selecciona una dirección"
+  "select_address": "Selecciona una dirección",
+  "add": "Agregar",
+  "substract": "Restar"
 }

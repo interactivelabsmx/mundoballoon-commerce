@@ -86,5 +86,7 @@
   "country": "Country",
   "zip_code": "Zip Code",
   "add_new_address": "Add a new address",
-  "select_address": "Select your address"
+  "select_address": "Select your address",
+  "add": "Add",
+  "substract": "Substract"
 }

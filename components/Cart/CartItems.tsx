@@ -1,8 +1,11 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
+import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
+import AddRemoveComboInput from '@components/UI/form/AddRemoveComboInput';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useCommerce } from '@providers/CommerceProvider';
+import type { UserCartProductFragment } from '@providers/graphql/GetUserCart.graphql';
 
 const CartItems = () => {
   const { t } = useTranslation('common');
@@ -13,6 +16,11 @@ const CartItems = () => {
     getUserCart();
     return <LoadingText />;
   }
+  const onAdd = (product: UserCartProductFragment) =>
+    console.log('Add:', product);
+
+  const onSubstract = (product: UserCartProductFragment) =>
+    console.log('Substract:', product);
   return (
     <>
       {products && (
@@ -48,14 +56,25 @@ const CartItems = () => {
                             ${product.price}
                           </p>
                         </div>
-                        <p className="mt-1 text-sm text-gray-500">
+                        <p className="mt-1 text-xs text-gray-500">
                           {product.variant?.description}
                         </p>
                       </div>
 
                       <div className="mt-4 flex flex-1 items-end justify-between">
+                        <div className="text-sm text-gray-500">
+                          {/* <SimpleTextError text={error?.message} /> */}
+                          <AddRemoveComboInput
+                            quantity={product.quantity}
+                            loading={false}
+                            onAdd={() => onAdd(product)}
+                            onSubstract={() => onSubstract(product)}
+                          />
+                        </div>
                         <div className="ml-4">
-                          <PrimaryTextButton>{t('Remove')}</PrimaryTextButton>
+                          <PrimaryTextButton className="text-sm">
+                            {t('Remove')}
+                          </PrimaryTextButton>
                         </div>
                       </div>
                     </div>

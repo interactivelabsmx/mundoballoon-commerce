@@ -1,20 +1,25 @@
+fragment UserCartProduct on UserCartProduct {
+  quantity
+  price
+  productVariantId
+  variant {
+    sku
+    name
+    description
+    media {
+      url
+      description
+    }
+  }
+}
+
 query GetUserCart {
   userCart {
     subtotal
     tax
     total
     products {
-      quantity
-      price
-      variant {
-        sku
-        name
-        description
-        media {
-          url
-          description
-        }
-      }
+      ...UserCartProduct
     }
   }
 }

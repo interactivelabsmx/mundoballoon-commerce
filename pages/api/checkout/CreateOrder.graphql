@@ -1,0 +1,5 @@
+mutation CreateOrder($paymentId: String!) {
+  createOrder(paymentId: $paymentId) {
+    orderId
+  }
+}

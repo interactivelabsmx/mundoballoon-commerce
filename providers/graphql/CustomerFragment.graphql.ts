@@ -3,26 +3,26 @@ import * as Types from '../../graphql/graphql';
 
 export type AddressFragmentFragment = {
   __typename?: 'Address';
-  city: string;
-  country: string;
-  line1: string;
-  line2: string;
-  postalCode: string;
-  state: string;
+  city?: string | null;
+  country?: string | null;
+  line1?: string | null;
+  line2?: string | null;
+  postalCode?: string | null;
+  state?: string | null;
 };
 
 export type CustomerFragmentFragment = {
   __typename?: 'Customer';
   id: string;
-  name: string;
+  name?: string | null;
   address?: {
     __typename?: 'Address';
-    city: string;
-    country: string;
-    line1: string;
-    line2: string;
-    postalCode: string;
-    state: string;
+    city?: string | null;
+    country?: string | null;
+    line1?: string | null;
+    line2?: string | null;
+    postalCode?: string | null;
+    state?: string | null;
   } | null;
 };
 

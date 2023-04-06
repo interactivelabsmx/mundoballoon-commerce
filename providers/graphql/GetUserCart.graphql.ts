@@ -3,19 +3,38 @@ import * as Apollo from '@apollo/client';
 import type * as Types from '../../graphql/graphql';
 
 const defaultOptions = {} as const;
+export type UserCartProductFragment = {
+  __typename?: 'UserCartProduct';
+  quantity: any;
+  price: any;
+  productVariantId: number;
+  variant?: {
+    __typename?: 'ProductVariant';
+    sku: string;
+    name: string;
+    description: string;
+    media?: Array<{
+      __typename?: 'ProductVariantMedium';
+      url?: string | null;
+      description: string;
+    }> | null;
+  } | null;
+};
+
 export type GetUserCartQueryVariables = Types.Exact<{ [key: string]: never }>;
 
 export type GetUserCartQuery = {
   __typename?: 'Query';
   userCart: {
     __typename?: 'UserCart';
-    subtotal: number;
-    tax: number;
-    total: number;
+    subtotal: any;
+    tax: any;
+    total: any;
     products?: Array<{
       __typename?: 'UserCartProduct';
-      quantity: number;
-      price: number;
+      quantity: any;
+      price: any;
+      productVariantId: number;
       variant?: {
         __typename?: 'ProductVariant';
         sku: string;
@@ -31,6 +50,22 @@ export type GetUserCartQuery = {
   };
 };
 
+export const UserCartProductFragmentDoc = gql`
+  fragment UserCartProduct on UserCartProduct {
+    quantity
+    price
+    productVariantId
+    variant {
+      sku
+      name
+      description
+      media {
+        url
+        description
+      }
+    }
+  }
+`;
 export const GetUserCartDocument = gql`
   query GetUserCart {
     userCart {
@@ -38,20 +73,11 @@ export const GetUserCartDocument = gql`
       tax
       total
       products {
-        quantity
-        price
-        variant {
-          sku
-          name
-          description
-          media {
-            url
-            description
-          }
-        }
+        ...UserCartProduct
       }
     }
   }
+  ${UserCartProductFragmentDoc}
 `;
 
 /**

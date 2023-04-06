@@ -1,31 +1,4 @@
 
-declare module '*/AddUserAddresses.graphql' {
-  import type { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const addUserAddress: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/CreatePaymentIntent.graphql' {
-  import type { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const CreatePaymentIntent: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/GetUserAddresses.graphql' {
-  import type { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const getUserAddresses: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/GetUserEventsSelect.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -231,6 +204,15 @@ export const NavItem: DocumentNode;
 }
     
 
+declare module '*/CreateOrder.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const CreateOrder: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/AddToCart.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -258,6 +240,15 @@ declare module '*/CreateCustomer.graphql' {
 }
     
 
+declare module '*/CreatePaymentIntent.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const CreatePaymentIntent: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/CustomerFragment.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -271,7 +262,8 @@ export const CustomerFragment: DocumentNode;
 declare module '*/GetUserCart.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const GetUserCart: DocumentNode;
+  export const UserCartProduct: DocumentNode;
+export const GetUserCart: DocumentNode;
 
   export default defaultDocument;
 }
