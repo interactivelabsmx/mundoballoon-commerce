@@ -8,7 +8,7 @@ export interface IAddRemoveComboInput {
   quantity: number;
   loading?: boolean;
   onAdd: MouseEventHandler<HTMLButtonElement>;
-  onSubstract: MouseEventHandler<HTMLButtonElement>;
+  onSubtract: MouseEventHandler<HTMLButtonElement>;
 }
 
 const baseComboIconButtonCss =
@@ -18,7 +18,7 @@ const AddRemoveComboInput = ({
   quantity,
   loading,
   onAdd,
-  onSubstract,
+  onSubtract,
 }: IAddRemoveComboInput) => {
   const { t } = useTranslation();
   return (
@@ -37,7 +37,7 @@ const AddRemoveComboInput = ({
       </span>
       <button
         type="button"
-        onClick={onSubstract}
+        onClick={onSubtract}
         className={classNames(baseComboIconButtonCss, '-ml-px rounded-r-md')}
       >
         <span className="sr-only">{t('substract')}</span>

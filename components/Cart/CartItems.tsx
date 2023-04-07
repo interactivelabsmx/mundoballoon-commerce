@@ -1,26 +1,26 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
+// import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import AddRemoveComboInput from '@components/UI/form/AddRemoveComboInput';
 import LoadingText from '@components/UI/loading/LoadingText';
+import useAddRemoveCartItems from '@hooks/useAddRemoveCartItems';
 import { useCommerce } from '@providers/CommerceProvider';
-import type { UserCartProductFragment } from '@providers/graphql/GetUserCart.graphql';
 
 const CartItems = () => {
   const { t } = useTranslation('common');
   const {
     cart: { products, subtotal, getUserCart },
   } = useCommerce();
+  const { onAdd, onSubtract, onRemove, loading, error } =
+    useAddRemoveCartItems();
+
   if (!products || !subtotal) {
     getUserCart();
     return <LoadingText />;
   }
-  const onAdd = (product: UserCartProductFragment) =>
-    console.log('Add:', product);
 
-  const onSubstract = (product: UserCartProductFragment) =>
-    console.log('Substract:', product);
   return (
     <>
       {products && (
@@ -63,16 +63,19 @@ const CartItems = () => {
 
                       <div className="mt-4 flex flex-1 items-end justify-between">
                         <div className="text-sm text-gray-500">
-                          {/* <SimpleTextError text={error?.message} /> */}
+                          <SimpleTextError text={error?.message} />
                           <AddRemoveComboInput
                             quantity={product.quantity}
-                            loading={false}
+                            loading={loading}
                             onAdd={() => onAdd(product)}
-                            onSubstract={() => onSubstract(product)}
+                            onSubtract={() => onSubtract(product)}
                           />
                         </div>
                         <div className="ml-4">
-                          <PrimaryTextButton className="text-sm">
+                          <PrimaryTextButton
+                            className="text-sm"
+                            onClick={() => onRemove(product)}
+                          >
                             {t('Remove')}
                           </PrimaryTextButton>
                         </div>

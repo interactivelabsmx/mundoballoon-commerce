@@ -213,6 +213,15 @@ declare module '*/CreateOrder.graphql' {
 }
     
 
+declare module '*/AddItemToCart.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddItemToCart: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/AddToCart.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -259,6 +268,15 @@ export const CustomerFragment: DocumentNode;
 }
     
 
+declare module '*/DeleteUserCartProduct.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const DeleteUserCartProduct: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/GetUserCart.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -273,6 +291,15 @@ declare module '*/GetUserCartCount.graphql' {
   import type { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetUserCartCount: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/SubtractItemToCart.graphql' {
+  import type { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const SubtractItemToCart: DocumentNode;
 
   export default defaultDocument;
 }

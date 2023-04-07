@@ -17,7 +17,6 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
-  Decimal: any;
   Long: any;
   Upload: any;
 };
@@ -86,33 +85,15 @@ export type DateTimeOperationFilterInput = {
   nlte?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type DecimalOperationFilterInput = {
-  eq?: InputMaybe<Scalars['Decimal']>;
-  gt?: InputMaybe<Scalars['Decimal']>;
-  gte?: InputMaybe<Scalars['Decimal']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['Decimal']>>>;
-  lt?: InputMaybe<Scalars['Decimal']>;
-  lte?: InputMaybe<Scalars['Decimal']>;
-  neq?: InputMaybe<Scalars['Decimal']>;
-  ngt?: InputMaybe<Scalars['Decimal']>;
-  ngte?: InputMaybe<Scalars['Decimal']>;
-  nin?: InputMaybe<Array<InputMaybe<Scalars['Decimal']>>>;
-  nlt?: InputMaybe<Scalars['Decimal']>;
-  nlte?: InputMaybe<Scalars['Decimal']>;
-};
-
 export type EventCartDetail = {
   __typename?: 'EventCartDetail';
   createdAt?: Maybe<Scalars['DateTime']>;
   eventCartId: Scalars['Int'];
-  label: Scalars['String'];
-  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
-  sku: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
   userEvent?: Maybe<UserEvent>;
-  userEventId?: Maybe<Scalars['Int']>;
+  userEventId: Scalars['Int'];
   variant?: Maybe<ProductVariant>;
 };
 
@@ -120,12 +101,9 @@ export type EventCartDetailFilterInput = {
   and?: InputMaybe<Array<EventCartDetailFilterInput>>;
   createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   eventCartId?: InputMaybe<IntOperationFilterInput>;
-  label?: InputMaybe<StringOperationFilterInput>;
   or?: InputMaybe<Array<EventCartDetailFilterInput>>;
-  price?: InputMaybe<FloatOperationFilterInput>;
   productVariantId?: InputMaybe<IntOperationFilterInput>;
   quantity?: InputMaybe<FloatOperationFilterInput>;
-  sku?: InputMaybe<StringOperationFilterInput>;
   updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
   userEvent?: InputMaybe<UserEventFilterInput>;
   userEventId?: InputMaybe<IntOperationFilterInput>;
@@ -135,14 +113,11 @@ export type EventCartDetailFilterInput = {
 export type EventCartDetailInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   eventCartId: Scalars['Int'];
-  label: Scalars['String'];
-  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
-  sku: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   userEvent?: InputMaybe<UserEventInput>;
-  userEventId?: InputMaybe<Scalars['Int']>;
+  userEventId: Scalars['Int'];
   variant?: InputMaybe<ProductVariantInput>;
 };
 
@@ -260,6 +235,7 @@ export type ListFilterInputTypeOfVariantValueFilterInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addItemToCart?: Maybe<UserCartProduct>;
   addProductVariantReview: ProductVariantReview;
   addToCart: UserCartProduct;
   addToEventCart: EventCartDetail;
@@ -287,11 +263,16 @@ export type Mutation = {
   productVariantAddMedia?: Maybe<ProductVariant>;
   productVariantAddValue: ProductVariant;
   revokeAdminUser: Scalars['Boolean'];
+  subtractItemToCart?: Maybe<UserCartProduct>;
   updateCustomerAddress?: Maybe<Customer>;
   updateProduct: Product;
   updateProductVariant: ProductVariant;
   updateProductVariantReview: ProductVariantReview;
   updateUserEvent: UserEvent;
+};
+
+export type MutationAddItemToCartArgs = {
+  sku: Scalars['String'];
 };
 
 export type MutationAddProductVariantReviewArgs = {
@@ -301,15 +282,15 @@ export type MutationAddProductVariantReviewArgs = {
 };
 
 export type MutationAddToCartArgs = {
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
 };
 
 export type MutationAddToEventCartArgs = {
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   userEventId: Scalars['Int'];
 };
 
@@ -411,6 +392,10 @@ export type MutationRevokeAdminUserArgs = {
   userId: Scalars['String'];
 };
 
+export type MutationSubtractItemToCartArgs = {
+  sku: Scalars['String'];
+};
+
 export type MutationUpdateCustomerAddressArgs = {
   address: AddressInput;
   customerId: Scalars['String'];
@@ -459,7 +444,7 @@ export type OrderProductsDetails = {
   order?: Maybe<Orders>;
   orderDetailsProductsId?: Maybe<Scalars['Int']>;
   orderId?: Maybe<Scalars['Int']>;
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
   variant?: Maybe<ProductVariant>;
 };
@@ -970,16 +955,16 @@ export type User = {
 export type UserCart = {
   __typename?: 'UserCart';
   products?: Maybe<Array<UserCartProduct>>;
-  subtotal: Scalars['Decimal'];
-  tax: Scalars['Decimal'];
-  total: Scalars['Decimal'];
+  subtotal: Scalars['Float'];
+  tax: Scalars['Float'];
+  total: Scalars['Float'];
 };
 
 export type UserCartProduct = {
   __typename?: 'UserCartProduct';
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
   userId: Scalars['String'];
   variant?: Maybe<ProductVariant>;
@@ -988,18 +973,18 @@ export type UserCartProduct = {
 export type UserCartProductFilterInput = {
   and?: InputMaybe<Array<UserCartProductFilterInput>>;
   or?: InputMaybe<Array<UserCartProductFilterInput>>;
-  price?: InputMaybe<DecimalOperationFilterInput>;
+  price?: InputMaybe<FloatOperationFilterInput>;
   productVariantId?: InputMaybe<IntOperationFilterInput>;
-  quantity?: InputMaybe<DecimalOperationFilterInput>;
+  quantity?: InputMaybe<FloatOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
   variant?: InputMaybe<ProductVariantFilterInput>;
 };
 
 export type UserCartProductInput = {
-  price: Scalars['Decimal'];
+  price: Scalars['Float'];
   productVariantId: Scalars['Int'];
-  quantity: Scalars['Decimal'];
+  quantity: Scalars['Float'];
   sku: Scalars['String'];
   userId: Scalars['String'];
   variant?: InputMaybe<ProductVariantInput>;

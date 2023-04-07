@@ -604,179 +604,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "SCALAR",
-        "name": "Decimal",
-        "description": "The built-in `Decimal` scalar type.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "DecimalOperationFilterInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "eq",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "gt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "gte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Decimal",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "lt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "lte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "neq",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ngt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ngte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "nin",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Decimal",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "nlt",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "nlte",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Decimal",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
         "name": "EventCartDetail",
         "description": null,
@@ -803,38 +630,6 @@
               "ofType": {
                 "kind": "SCALAR",
                 "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "label",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "price",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Float",
                 "ofType": null
               }
             },
@@ -874,22 +669,6 @@
             "deprecationReason": null
           },
           {
-            "name": "sku",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "updatedAt",
             "description": null,
             "args": [],
@@ -918,9 +697,13 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -994,18 +777,6 @@
             "deprecationReason": null
           },
           {
-            "name": "label",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringOperationFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "or",
             "description": null,
             "type": {
@@ -1020,18 +791,6 @@
                   "ofType": null
                 }
               }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "price",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "FloatOperationFilterInput",
-              "ofType": null
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -1055,18 +814,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "FloatOperationFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "sku",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringOperationFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -1161,38 +908,6 @@
             "deprecationReason": null
           },
           {
-            "name": "label",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "price",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "productVariantId",
             "description": null,
             "type": {
@@ -1217,22 +932,6 @@
               "ofType": {
                 "kind": "SCALAR",
                 "name": "Float",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "sku",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               }
             },
@@ -1268,9 +967,13 @@
             "name": "userEventId",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -2396,6 +2099,35 @@
         "description": null,
         "fields": [
           {
+            "name": "addItemToCart",
+            "description": null,
+            "args": [
+              {
+                "name": "sku",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "UserCartProduct",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "addProductVariantReview",
             "description": null,
             "args": [
@@ -2472,7 +2204,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Decimal",
+                    "name": "Float",
                     "ofType": null
                   }
                 },
@@ -2504,7 +2236,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Decimal",
+                    "name": "Float",
                     "ofType": null
                   }
                 },
@@ -2569,7 +2301,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Decimal",
+                    "name": "Float",
                     "ofType": null
                   }
                 },
@@ -3470,6 +3202,35 @@
             "deprecationReason": null
           },
           {
+            "name": "subtractItemToCart",
+            "description": null,
+            "args": [
+              {
+                "name": "sku",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "UserCartProduct",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "updateCustomerAddress",
             "description": null,
             "args": [
@@ -3948,7 +3709,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -8973,7 +8734,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -8989,7 +8750,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -9005,7 +8766,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -9032,7 +8793,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -9064,7 +8825,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -9172,7 +8933,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "DecimalOperationFilterInput",
+              "name": "FloatOperationFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -9196,7 +8957,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "DecimalOperationFilterInput",
+              "name": "FloatOperationFilterInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -9258,7 +9019,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },
@@ -9290,7 +9051,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Decimal",
+                "name": "Float",
                 "ofType": null
               }
             },

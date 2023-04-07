@@ -5,8 +5,8 @@ import type * as Types from '../../graphql/graphql';
 const defaultOptions = {} as const;
 export type AddToCartMutationVariables = Types.Exact<{
   sku: Types.Scalars['String'];
-  quantity: Types.Scalars['Decimal'];
-  price: Types.Scalars['Decimal'];
+  quantity: Types.Scalars['Float'];
+  price: Types.Scalars['Float'];
   productVariantId: Types.Scalars['Int'];
 }>;
 
@@ -15,8 +15,8 @@ export type AddToCartMutation = {
   addToCart: {
     __typename?: 'UserCartProduct';
     sku: string;
-    quantity: any;
-    price: any;
+    quantity: number;
+    price: number;
     productVariantId: number;
   };
 };
@@ -24,8 +24,8 @@ export type AddToCartMutation = {
 export const AddToCartDocument = gql`
   mutation AddToCart(
     $sku: String!
-    $quantity: Decimal!
-    $price: Decimal!
+    $quantity: Float!
+    $price: Float!
     $productVariantId: Int!
   ) {
     addToCart(

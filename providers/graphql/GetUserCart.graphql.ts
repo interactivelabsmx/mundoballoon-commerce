@@ -5,8 +5,8 @@ import type * as Types from '../../graphql/graphql';
 const defaultOptions = {} as const;
 export type UserCartProductFragment = {
   __typename?: 'UserCartProduct';
-  quantity: any;
-  price: any;
+  quantity: number;
+  price: number;
   productVariantId: number;
   variant?: {
     __typename?: 'ProductVariant';
@@ -27,13 +27,13 @@ export type GetUserCartQuery = {
   __typename?: 'Query';
   userCart: {
     __typename?: 'UserCart';
-    subtotal: any;
-    tax: any;
-    total: any;
+    subtotal: number;
+    tax: number;
+    total: number;
     products?: Array<{
       __typename?: 'UserCartProduct';
-      quantity: any;
-      price: any;
+      quantity: number;
+      price: number;
       productVariantId: number;
       variant?: {
         __typename?: 'ProductVariant';
