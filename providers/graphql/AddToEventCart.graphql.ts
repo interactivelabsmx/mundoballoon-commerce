@@ -12,7 +12,7 @@ export type AddToEventCartMutationVariables = Types.Exact<{
 export type AddToEventCartMutation = {
   __typename?: 'Mutation';
   addToEventCart: {
-    __typename?: 'EventCartDetail';
+    __typename?: 'UserEventCartDetail';
     productVariantId: number;
     userEventId: number;
     quantity: number;

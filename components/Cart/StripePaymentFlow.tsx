@@ -15,7 +15,7 @@ const StripePaymentFlow = ({ user }: IStripePayment) => {
     payments: { customer, clientSecret, createPaymentIntent },
     cart: { total },
   } = useCommerce();
-  if (customer?.address && !clientSecret) {
+  if (customer?.address && !clientSecret && total) {
     createPaymentIntent({ customerId: customer.id, amount: total });
     return <LoadingText />;
   }

@@ -85,42 +85,6 @@ export type DateTimeOperationFilterInput = {
   nlte?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type EventCartDetail = {
-  __typename?: 'EventCartDetail';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  eventCartId: Scalars['Int'];
-  productVariantId: Scalars['Int'];
-  quantity: Scalars['Float'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  userEvent?: Maybe<UserEvent>;
-  userEventId: Scalars['Int'];
-  variant?: Maybe<ProductVariant>;
-};
-
-export type EventCartDetailFilterInput = {
-  and?: InputMaybe<Array<EventCartDetailFilterInput>>;
-  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
-  eventCartId?: InputMaybe<IntOperationFilterInput>;
-  or?: InputMaybe<Array<EventCartDetailFilterInput>>;
-  productVariantId?: InputMaybe<IntOperationFilterInput>;
-  quantity?: InputMaybe<FloatOperationFilterInput>;
-  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
-  userEvent?: InputMaybe<UserEventFilterInput>;
-  userEventId?: InputMaybe<IntOperationFilterInput>;
-  variant?: InputMaybe<ProductVariantFilterInput>;
-};
-
-export type EventCartDetailInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  eventCartId: Scalars['Int'];
-  productVariantId: Scalars['Int'];
-  quantity: Scalars['Float'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  userEvent?: InputMaybe<UserEventInput>;
-  userEventId: Scalars['Int'];
-  variant?: InputMaybe<ProductVariantInput>;
-};
-
 export type FirebaseUser = {
   __typename?: 'FirebaseUser';
   carts?: Maybe<Array<UserCartProduct>>;
@@ -170,13 +134,6 @@ export type KeyValuePairOfStringAndListOfProduct = {
   value: Array<Product>;
 };
 
-export type ListFilterInputTypeOfEventCartDetailFilterInput = {
-  all?: InputMaybe<EventCartDetailFilterInput>;
-  any?: InputMaybe<Scalars['Boolean']>;
-  none?: InputMaybe<EventCartDetailFilterInput>;
-  some?: InputMaybe<EventCartDetailFilterInput>;
-};
-
 export type ListFilterInputTypeOfProductVariantFilterInput = {
   all?: InputMaybe<ProductVariantFilterInput>;
   any?: InputMaybe<Scalars['Boolean']>;
@@ -212,6 +169,13 @@ export type ListFilterInputTypeOfUserCartProductFilterInput = {
   some?: InputMaybe<UserCartProductFilterInput>;
 };
 
+export type ListFilterInputTypeOfUserEventCartDetailFilterInput = {
+  all?: InputMaybe<UserEventCartDetailFilterInput>;
+  any?: InputMaybe<Scalars['Boolean']>;
+  none?: InputMaybe<UserEventCartDetailFilterInput>;
+  some?: InputMaybe<UserEventCartDetailFilterInput>;
+};
+
 export type ListFilterInputTypeOfUserEventFilterInput = {
   all?: InputMaybe<UserEventFilterInput>;
   any?: InputMaybe<Scalars['Boolean']>;
@@ -238,7 +202,7 @@ export type Mutation = {
   addItemToCart?: Maybe<UserCartProduct>;
   addProductVariantReview: ProductVariantReview;
   addToCart: UserCartProduct;
-  addToEventCart: EventCartDetail;
+  addToEventCart: UserEventCartDetail;
   createCustomer?: Maybe<Customer>;
   createOrder: Orders;
   createPaymentIntent: Scalars['String'];
@@ -786,7 +750,6 @@ export type Query = {
   userCart: UserCart;
   userCartCount: Scalars['Int'];
   userCartProducts: Array<UserCartProduct>;
-  userCartsByProductId: Array<UserCartProduct>;
   userEventById?: Maybe<UserEvent>;
   userEvents: Array<UserEvent>;
   users?: Maybe<UsersConnection>;
@@ -855,10 +818,6 @@ export type QuerySearchProductsArgs = {
 
 export type QueryUserByIdArgs = {
   userId: Scalars['String'];
-};
-
-export type QueryUserCartsByProductIdArgs = {
-  productId: Scalars['Int'];
 };
 
 export type QueryUserEventByIdArgs = {
@@ -966,6 +925,7 @@ export type UserCartProduct = {
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
   sku: Scalars['String'];
+  userCartId: Scalars['Int'];
   userId: Scalars['String'];
   variant?: Maybe<ProductVariant>;
 };
@@ -977,6 +937,7 @@ export type UserCartProductFilterInput = {
   productVariantId?: InputMaybe<IntOperationFilterInput>;
   quantity?: InputMaybe<FloatOperationFilterInput>;
   sku?: InputMaybe<StringOperationFilterInput>;
+  userCartId?: InputMaybe<IntOperationFilterInput>;
   userId?: InputMaybe<StringOperationFilterInput>;
   variant?: InputMaybe<ProductVariantFilterInput>;
 };
@@ -986,13 +947,14 @@ export type UserCartProductInput = {
   productVariantId: Scalars['Int'];
   quantity: Scalars['Float'];
   sku: Scalars['String'];
+  userCartId: Scalars['Int'];
   userId: Scalars['String'];
   variant?: InputMaybe<ProductVariantInput>;
 };
 
 export type UserEvent = {
   __typename?: 'UserEvent';
-  carts?: Maybe<Array<EventCartDetail>>;
+  carts?: Maybe<Array<UserEventCartDetail>>;
   createdAt?: Maybe<Scalars['DateTime']>;
   date?: Maybe<Scalars['DateTime']>;
   details: Scalars['String'];
@@ -1003,9 +965,45 @@ export type UserEvent = {
   userId: Scalars['String'];
 };
 
+export type UserEventCartDetail = {
+  __typename?: 'UserEventCartDetail';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  productVariantId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  userEvent?: Maybe<UserEvent>;
+  userEventCartDetailId: Scalars['Int'];
+  userEventId: Scalars['Int'];
+  variant?: Maybe<ProductVariant>;
+};
+
+export type UserEventCartDetailFilterInput = {
+  and?: InputMaybe<Array<UserEventCartDetailFilterInput>>;
+  createdAt?: InputMaybe<DateTimeOperationFilterInput>;
+  or?: InputMaybe<Array<UserEventCartDetailFilterInput>>;
+  productVariantId?: InputMaybe<IntOperationFilterInput>;
+  quantity?: InputMaybe<FloatOperationFilterInput>;
+  updatedAt?: InputMaybe<DateTimeOperationFilterInput>;
+  userEvent?: InputMaybe<UserEventFilterInput>;
+  userEventCartDetailId?: InputMaybe<IntOperationFilterInput>;
+  userEventId?: InputMaybe<IntOperationFilterInput>;
+  variant?: InputMaybe<ProductVariantFilterInput>;
+};
+
+export type UserEventCartDetailInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  productVariantId: Scalars['Int'];
+  quantity: Scalars['Float'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  userEvent?: InputMaybe<UserEventInput>;
+  userEventCartDetailId: Scalars['Int'];
+  userEventId: Scalars['Int'];
+  variant?: InputMaybe<ProductVariantInput>;
+};
+
 export type UserEventFilterInput = {
   and?: InputMaybe<Array<UserEventFilterInput>>;
-  carts?: InputMaybe<ListFilterInputTypeOfEventCartDetailFilterInput>;
+  carts?: InputMaybe<ListFilterInputTypeOfUserEventCartDetailFilterInput>;
   createdAt?: InputMaybe<DateTimeOperationFilterInput>;
   date?: InputMaybe<DateTimeOperationFilterInput>;
   details?: InputMaybe<StringOperationFilterInput>;
@@ -1018,7 +1016,7 @@ export type UserEventFilterInput = {
 };
 
 export type UserEventInput = {
-  carts?: InputMaybe<Array<EventCartDetailInput>>;
+  carts?: InputMaybe<Array<UserEventCartDetailInput>>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   date?: InputMaybe<Scalars['DateTime']>;
   details: Scalars['String'];

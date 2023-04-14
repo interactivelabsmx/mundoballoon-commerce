@@ -3,6 +3,7 @@ import type {
   MutationHookOptions,
   NormalizedCacheObject,
 } from '@apollo/client';
+import isEqual from 'lodash.isequal';
 import { useReducer } from 'react';
 import type {
   AddToCartMutation,
@@ -105,6 +106,16 @@ export const useCartContext = (client: ApolloClient<NormalizedCacheObject>) => {
     if (errors) throw new Error(errors.toString());
     reducer({ type: CartActions.SET_CART_COUNT, payload: data });
   };
+
+  if (state.products) {
+    const handleCarUpdate = client.watchQuery({ query: GetUserCartDocument });
+    handleCarUpdate.subscribe({
+      next: ({ data }) => {
+        if (isEqual(data.userCart.products, state.products)) return;
+        reducer({ type: CartActions.SET_CART_RESPONSE, payload: data });
+      },
+    });
+  }
 
   return {
     ...state,

@@ -63,7 +63,7 @@ const CartItems = () => {
 
                       <div className="mt-4 flex flex-1 items-end justify-between">
                         <div className="text-sm text-gray-500">
-                          <SimpleTextError text={error?.message} />
+                          {error && <SimpleTextError text={error?.message} />}
                           <AddRemoveComboInput
                             quantity={product.quantity}
                             loading={loading}
