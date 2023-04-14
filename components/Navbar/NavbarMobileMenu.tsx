@@ -34,7 +34,6 @@ const NavbarMobileMenu = ({ open, setOpen, navOptions }: INavbarMobile) => {
         <Transition.Child as={Fragment} {...getTransitionFadeInLinearProps()}>
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
-
         <div className="fixed inset-0 flex z-40">
           <Transition.Child as={Fragment} {...getTransitionLeftSlideInProps()}>
             <Dialog.Panel className="relative max-w-xs w-full bg-gray-100 shadow-xl pb-12 flex flex-col overflow-y-auto">

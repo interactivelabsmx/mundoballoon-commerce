@@ -9,6 +9,7 @@ import type {
   StripeLinkAuthenticationElementChangeEvent,
   StripePaymentElementOptions,
 } from '@stripe/stripe-js';
+import useTranslation from 'next-translate/useTranslation';
 import React, { useState } from 'react';
 import type { FormEventHandler } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
@@ -20,6 +21,7 @@ interface IStripePaymentForm {
 }
 
 const StripePaymentForm = ({ user }: IStripePaymentForm) => {
+  const { t } = useTranslation('common');
   const stripe = useStripe();
   const elements = useElements();
 
@@ -69,18 +71,18 @@ const StripePaymentForm = ({ user }: IStripePaymentForm) => {
         />
       </div>
       <div className="mt-8">
-        <h3 className="mb-4">Billing Information</h3>
+        <h3 className="mb-4">{t('billing_info')}</h3>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
       </div>
       <div className="mt-8">
         <PrimaryButton
+          id="submit"
+          type="submit"
           className="w-full mt-4"
           disabled={isLoading || !stripe || !elements}
-          type="submit"
-          id="submit"
         >
           <span id="button-text">
-            {isLoading ? <LoadingSpinner /> : 'Pay now'}
+            {isLoading ? <LoadingSpinner /> : t('confirm_order')}
           </span>
         </PrimaryButton>
         {message && (

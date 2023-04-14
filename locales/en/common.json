@@ -88,5 +88,8 @@
   "add_new_address": "Add a new address",
   "select_address": "Select your address",
   "add": "Add",
-  "substract": "Substract"
+  "substract": "Substract",
+  "empty_cart": "The Cart is Empty",
+  "billing_address": "Billing Address",
+  "billing_info": "Billing Information"
 }

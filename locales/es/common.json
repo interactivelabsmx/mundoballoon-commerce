@@ -88,5 +88,8 @@
   "add_new_address": "Agregar una dirección",
   "select_address": "Selecciona una dirección",
   "add": "Agregar",
-  "substract": "Restar"
+  "substract": "Restar",
+  "empty_cart": "El carrito esta vacio",
+  "billing_address": "Dirección de Pago",
+  "billing_info": "Información de Pago"
 }

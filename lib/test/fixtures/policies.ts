@@ -25,6 +25,6 @@ export const policies = [
     imageUrl:
       'https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg',
     description:
-      'We’ve pledged 1% of sales to the preservation and restoration of the natural environment.',
+      "We've pledged 1% of sales to the preservation and restoration of the natural environment.",
   },
 ];

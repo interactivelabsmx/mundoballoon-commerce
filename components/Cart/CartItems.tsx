@@ -1,25 +1,20 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
-// import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryTextButton from '@components/UI/buttons/PrimaryTextButton';
 import AddRemoveComboInput from '@components/UI/form/AddRemoveComboInput';
-import LoadingText from '@components/UI/loading/LoadingText';
 import useAddRemoveCartItems from '@hooks/useAddRemoveCartItems';
 import { useCommerce } from '@providers/CommerceProvider';
 
 const CartItems = () => {
   const { t } = useTranslation('common');
   const {
-    cart: { products, subtotal, getUserCart },
+    cart: { products, subtotal },
   } = useCommerce();
   const { onAdd, onSubtract, onRemove, loading, error } =
     useAddRemoveCartItems();
 
-  if (!products || !subtotal) {
-    getUserCart();
-    return <LoadingText />;
-  }
+  if (!products || !subtotal) return <div>{t('empty_cart')}</div>;
 
   return (
     <>
@@ -36,8 +31,8 @@ const CartItems = () => {
                     <div className="flex-shrink-0">
                       {product.variant.media && (
                         <Image
-                          height={128}
                           width={128}
+                          height={128}
                           src={product.variant.media[0].url || ''}
                           alt={product.variant.media[0].description || ''}
                           className="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
@@ -60,7 +55,6 @@ const CartItems = () => {
                           {product.variant?.description}
                         </p>
                       </div>
-
                       <div className="mt-4 flex flex-1 items-end justify-between">
                         <div className="text-sm text-gray-500">
                           {error && <SimpleTextError text={error?.message} />}
@@ -103,7 +97,7 @@ const CartItems = () => {
             </div>
           </dl>
           <p className="mt-1 text-sm text-gray-500">
-            {t('Shipping_And_Taxes')}.
+            {t('Shipping_And_Taxes')}
           </p>
         </div>
       </section>

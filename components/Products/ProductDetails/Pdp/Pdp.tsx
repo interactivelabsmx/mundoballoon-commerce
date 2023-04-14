@@ -3,9 +3,10 @@ import { useState } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import LoadingText from '@components/UI/loading/LoadingText';
 import StarsYellow from '@components/UI/reviews/StarsYellow';
+import { productAditionalDetails } from '@lib/test/fixtures/productAditionalDetails';
 import AddToEventCart from '../AddToEventCart';
 import VariantsDisplay from '../VariantsDisplay';
-import AditionalDetails, { detailsMock } from './AditionalDetails';
+import AditionalDetails from './AditionalDetails';
 import { useGetProductDetailsQuery } from './GetProductDetails.graphql';
 import ImageGallery from './ImageGallery';
 
@@ -75,7 +76,7 @@ const Pdp = ({ productId }: IPdp) => {
                 </div>
               </form>
             </section>
-            <AditionalDetails details={detailsMock} />
+            <AditionalDetails details={productAditionalDetails} />
           </div>
         </div>
       </div>

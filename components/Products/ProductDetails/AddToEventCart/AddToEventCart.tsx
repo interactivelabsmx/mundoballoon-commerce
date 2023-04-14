@@ -7,6 +7,7 @@ import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingText from '@components/UI/loading/LoadingText';
 import { useAuth } from '@providers/AuthProvider';
 import { useCommerce } from '@providers/CommerceProvider';
+import { GetUserCartDocument } from '@providers/graphql/GetUserCart.graphql';
 import type { ProductVariantQuickviewFragment } from '../QuickView/ProductQuickViewFragment.graphql';
 import { useGetUserEventsSelectLazyQuery } from './GetUserEventsSelect.graphql';
 import type { UserEventSelectFragment } from './UserEventSelectFragment.graphql';
@@ -19,7 +20,6 @@ const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
   const { t } = useTranslation('common');
   const { user, openAuthModal } = useAuth();
   const { cart } = useCommerce();
-
   const [addToCartMutation, { loading: loadingCart, error: errorCart }] =
     cart.useAddItem();
   const [
@@ -47,14 +47,18 @@ const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
     const token = await authUser.getIdToken(true);
     if (authUser && !loadingCart)
       addToCartMutation({
-        context: { headers: { authorization: `Bearer ${token}` } },
         variables: addToCartData,
+        refetchQueries: [{ query: GetUserCartDocument }],
+        context: { headers: { authorization: `Bearer ${token}` } },
       });
   };
 
   const onAddToCart = () => {
     if (user) {
-      return addToCartMutation({ variables: addToCartData });
+      return addToCartMutation({
+        variables: addToCartData,
+        refetchQueries: [{ query: GetUserCartDocument }],
+      });
     }
     openAuthModal(handleOnAuth);
   };

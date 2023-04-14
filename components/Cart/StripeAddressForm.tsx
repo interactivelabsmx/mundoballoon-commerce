@@ -53,7 +53,7 @@ const StripeAddressForm = () => {
   } as StripeAddressElementOptions;
   return (
     <div className="mt-8">
-      <h3 className="mb-4">Billing Address</h3>
+      <h3 className="mb-4">{t('billing_address')}</h3>
       <AddressElement onChange={onChange} options={options} />
       <div className="mt-8 text-right">
         <PrimaryButton onClick={onSaveClick} disabled={!isCompleted}>

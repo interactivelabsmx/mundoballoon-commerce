@@ -1,9 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
+import { policies } from '@lib/test/fixtures/policies';
 import { useAuth } from '@providers/AuthProvider';
 import CartItems from './CartItems';
 import StripePayment from './StripePayment';
-import { policies } from './policies';
 
 const CheckoutContainer = () => {
   const { t } = useTranslation('common');
