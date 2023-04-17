@@ -39,7 +39,7 @@ const StripePaymentForm = ({ user }: IStripePaymentForm) => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'http://localhost:3000/api/checkout/callback',
+        return_url: 'api/checkout/callback',
         receipt_email: email,
       },
     });

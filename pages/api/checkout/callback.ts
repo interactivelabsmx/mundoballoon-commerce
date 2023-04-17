@@ -1,6 +1,8 @@
 import type { PaymentIntent } from '@stripe/stripe-js';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { parseCookies } from 'nookies';
 import { getClient } from '@lib/apollo/apolloClient';
+import { FI } from '@providers/AuthProvider';
 import { CreateOrderDocument } from './CreateOrder.graphql';
 import type { CreateOrderMutationVariables } from './CreateOrder.graphql';
 
@@ -24,9 +26,12 @@ export default async function handler(
         paymentId: paymentIntent.id,
       };
 
+      const cookies = parseCookies({ req });
+      const token = cookies[FI];
       const { data, errors } = await client.mutate({
         mutation: CreateOrderDocument,
         variables,
+        context: { headers: { authorization: `Bearer ${token}` } },
       });
 
       if (errors) return res.redirect('/checkout?status=error');
