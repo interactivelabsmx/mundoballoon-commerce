@@ -16,7 +16,7 @@ const DismissAlertButton = ({ type, onClick }: IDismissAlertButton) => {
         type="button"
         onClick={onClick}
         className={`inline-flex ${DismissAlertButtonColors[type].map(
-          (k) => ` ${k} `
+          (k) => ` ${k} `,
         )} rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 `}
       >
         <span className="sr-only">{t('dismiss')}</span>

@@ -45,12 +45,12 @@ export function useCreateOrderMutation(
   baseOptions?: Apollo.MutationHookOptions<
     CreateOrderMutation,
     CreateOrderMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<CreateOrderMutation, CreateOrderMutationVariables>(
     CreateOrderDocument,
-    options
+    options,
   );
 }
 export type CreateOrderMutationHookResult = ReturnType<

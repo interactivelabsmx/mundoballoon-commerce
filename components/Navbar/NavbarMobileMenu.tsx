@@ -22,10 +22,10 @@ interface INavbarMobile {
 const NavbarMobileMenu = ({ open, setOpen, navOptions }: INavbarMobile) => {
   const { t } = useTranslation('common');
   const featuredTabOptions = navOptions.filter((option) =>
-    hasFeaturedOptions(option)
+    hasFeaturedOptions(option),
   );
   const linkOptions = navOptions.filter(
-    (option) => !hasFeaturedOptions(option)
+    (option) => !hasFeaturedOptions(option),
   );
 
   return (
@@ -59,7 +59,7 @@ const NavbarMobileMenu = ({ open, setOpen, navOptions }: INavbarMobile) => {
                               selected
                                 ? 'text-indigo-600 border-indigo-600'
                                 : 'text-gray-900 border-transparent',
-                              'flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium'
+                              'flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium',
                             )
                           }
                         >

@@ -71,7 +71,7 @@ export default function PrimarySelectMenu<T extends BaseObject>({
                     className={({ active }) =>
                       classNames(
                         active ? 'text-white bg-indigo-600' : 'text-gray-900',
-                        'cursor-default select-none p-4 text-sm'
+                        'cursor-default select-none p-4 text-sm',
                       )
                     }
                   >
@@ -101,7 +101,7 @@ export default function PrimarySelectMenu<T extends BaseObject>({
                         <p
                           className={classNames(
                             active ? 'text-indigo-200' : 'text-gray-500',
-                            'mt-2'
+                            'mt-2',
                           )}
                         >
                           {option[description]}

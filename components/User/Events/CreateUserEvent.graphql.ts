@@ -62,7 +62,7 @@ export function useCreateUserEventMutation(
   baseOptions?: Apollo.MutationHookOptions<
     CreateUserEventMutation,
     CreateUserEventMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

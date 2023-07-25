@@ -13,7 +13,7 @@ const EventDetailsView = ({ userEventId }: IDetailsView) => {
   const [loadGreeting, { loading, error, data }] = useGetUserEventByIdLazyQuery(
     {
       variables: { userEventId },
-    }
+    },
   );
   useEffect(() => {
     loadGreeting();

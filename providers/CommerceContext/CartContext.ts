@@ -71,13 +71,13 @@ export type ICartContext = {
     baseOptions?: MutationHookOptions<
       AddToCartMutation,
       AddToCartMutationVariables
-    >
+    >,
   ) => AddToCartMutationHookResult;
   useAddEventItem: (
     baseOptions?: MutationHookOptions<
       AddToEventCartMutation,
       AddToEventCartMutationVariables
-    >
+    >,
   ) => AddToEventCartMutationHookResult;
   getUserCart: () => Promise<void>;
   getUserCartCount: () => Promise<void>;

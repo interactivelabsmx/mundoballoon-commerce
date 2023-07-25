@@ -7,7 +7,7 @@ import AppContextsProvider from '@providers/AppContextsProvider';
 import type { IAuthProvider } from '../providers/AuthProvider';
 
 const AuthProviderLoader = dynamic<IAuthProvider>(() =>
-  import('@providers/AuthProvider').then((module) => module.AuthProvider)
+  import('@providers/AuthProvider').then((module) => module.AuthProvider),
 );
 
 const App = ({ Component, pageProps }: AppProps) => (

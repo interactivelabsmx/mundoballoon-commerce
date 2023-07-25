@@ -73,24 +73,24 @@ export function useSearchProductsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     SearchProductsQuery,
     SearchProductsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<SearchProductsQuery, SearchProductsQueryVariables>(
     SearchProductsDocument,
-    options
+    options,
   );
 }
 export function useSearchProductsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     SearchProductsQuery,
     SearchProductsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<SearchProductsQuery, SearchProductsQueryVariables>(
     SearchProductsDocument,
-    options
+    options,
   );
 }
 export type SearchProductsQueryHookResult = ReturnType<

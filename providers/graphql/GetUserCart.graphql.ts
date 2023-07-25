@@ -99,24 +99,24 @@ export function useGetUserCartQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetUserCartQuery,
     GetUserCartQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetUserCartQuery, GetUserCartQueryVariables>(
     GetUserCartDocument,
-    options
+    options,
   );
 }
 export function useGetUserCartLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetUserCartQuery,
     GetUserCartQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetUserCartQuery, GetUserCartQueryVariables>(
     GetUserCartDocument,
-    options
+    options,
   );
 }
 export type GetUserCartQueryHookResult = ReturnType<typeof useGetUserCartQuery>;

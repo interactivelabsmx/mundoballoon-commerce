@@ -45,12 +45,12 @@ export function useCreateUserMutation(
   baseOptions?: Apollo.MutationHookOptions<
     CreateUserMutation,
     CreateUserMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(
     CreateUserDocument,
-    options
+    options,
   );
 }
 export type CreateUserMutationHookResult = ReturnType<

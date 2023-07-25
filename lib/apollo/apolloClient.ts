@@ -70,7 +70,7 @@ export const initializeApollo = ({
       arrayMerge: (destinationArray, sourceArray) => [
         ...sourceArray,
         ...destinationArray.filter((d) =>
-          sourceArray.every((s) => !isEqual(d, s))
+          sourceArray.every((s) => !isEqual(d, s)),
         ),
       ],
     });
@@ -86,12 +86,12 @@ export const initializeApollo = ({
 
 export const useApollo = (
   pageProps: BaseObject,
-  options: ICreateApolloClient
+  options: ICreateApolloClient,
 ) => {
   const initialState = pageProps[APOLLO_STATE_PROP_NAME];
   const store = useMemo(
     () => initializeApollo({ initialState, options }),
-    [initialState, options]
+    [initialState, options],
   );
   return store;
 };

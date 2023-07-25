@@ -26,7 +26,7 @@ export default defineConfig({
       '@providers': path.resolve(__dirname, './providers'),
       'firebase-admin': path.resolve(
         __dirname,
-        './/node_modules/firebase-admin/lib'
+        './/node_modules/firebase-admin/lib',
       ),
     },
   },

@@ -15,10 +15,10 @@ interface INavbarDesktopFlyout {
 const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
   const { t } = useTranslation('common');
   const featuredTabOptions = navOptions.filter((option) =>
-    hasFeaturedOptions(option)
+    hasFeaturedOptions(option),
   );
   const linkOptions = navOptions.filter(
-    (option) => !hasFeaturedOptions(option)
+    (option) => !hasFeaturedOptions(option),
   );
   return (
     <div className="hidden h-full lg:flex">
@@ -34,7 +34,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                         open
                           ? 'text-indigo-600'
                           : 'text-gray-700 hover:text-gray-800',
-                        'relative flex items-center justify-center transition-colors ease-out duration-200 text-sm font-semibold tracking-wider'
+                        'relative flex items-center justify-center transition-colors ease-out duration-200 text-sm font-semibold tracking-wider',
                       )}
                     >
                       {category.name}
@@ -42,7 +42,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                         aria-hidden="true"
                         className={classNames(
                           open ? 'bg-indigo-600' : '',
-                          'absolute z-20 -bottom-px inset-x-0 h-0.5 transition ease-out duration-200'
+                          'absolute z-20 -bottom-px inset-x-0 h-0.5 transition ease-out duration-200',
                         )}
                       />
                     </Popover.Button>
@@ -60,7 +60,7 @@ const NavbarDesktopFlyout = ({ navOptions }: INavbarDesktopFlyout) => {
                         <div
                           className={classNames(
                             open ? 'bg-gray-200' : 'bg-transparent',
-                            'w-full h-px transition-colors ease-out duration-200'
+                            'w-full h-px transition-colors ease-out duration-200',
                           )}
                         />
                       </div>

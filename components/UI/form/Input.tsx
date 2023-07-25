@@ -13,7 +13,7 @@ type IInput = InputHTMLAttributes<HTMLInputElement> & {
 
 const Input = (
   { label, error, leading, type = 'text', ...input }: IInput,
-  ref: LegacyRef<HTMLInputElement> | undefined
+  ref: LegacyRef<HTMLInputElement> | undefined,
 ) => (
   <>
     <LabelBase label={label} htmlFor={input.name || ''} />
@@ -31,7 +31,7 @@ const Input = (
         className={classNames(
           input.className,
           (leading && 'pl-7') || '',
-          'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md'
+          'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md',
         )}
       />
     </div>

@@ -29,7 +29,7 @@ const SelectNative = <T extends BaseObject>(
     addToOptionsComponent,
     ...input
   }: ISelectNative<T>,
-  ref: ForwardedRef<HTMLSelectElement>
+  ref: ForwardedRef<HTMLSelectElement>,
 ) => (
   <div className="w-full">
     <LabelBase label={label} htmlFor={input.name || ''} />
@@ -40,7 +40,7 @@ const SelectNative = <T extends BaseObject>(
         className={classNames(
           'flex-1 min-w-0 block w-full px-3 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm',
           !addToOptionsComponent ? 'rounded-md' : 'rounded-none rounded-l-md',
-          input.className
+          input.className,
         )}
       >
         {options.map((opt) => (
@@ -56,5 +56,5 @@ const SelectNative = <T extends BaseObject>(
 );
 
 export default forwardRef(SelectNative) as <T>(
-  props: ISelectNative<T> & { ref: ForwardedRef<HTMLSelectElement> }
+  props: ISelectNative<T> & { ref: ForwardedRef<HTMLSelectElement> },
 ) => JSX.Element;

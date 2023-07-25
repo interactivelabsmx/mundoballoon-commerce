@@ -45,7 +45,7 @@ export function useAddItemToCartMutation(
   baseOptions?: Apollo.MutationHookOptions<
     AddItemToCartMutation,
     AddItemToCartMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

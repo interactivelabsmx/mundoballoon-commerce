@@ -14,7 +14,7 @@ const BaseButton = ({
     className={classNames(
       baseClassNames,
       className,
-      (props.disabled && 'disabled:opacity-50') || ''
+      (props.disabled && 'disabled:opacity-50') || '',
     )}
     {...props}
   >

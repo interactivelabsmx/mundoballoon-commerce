@@ -14,7 +14,7 @@ import '@lib/firebaseAuth/firebaseClient';
 
 export const FI_BUF = Buffer.from('FIREBASE_COOKIE');
 export const FI = FI_BUF.toString('base64');
-export const FI_TTL = 1000 * 6000;
+export const FI_TTL = 30;
 export const FI_COOKIE_OPTIONS = {
   maxAge: FI_TTL,
   sameSite: true,
@@ -29,7 +29,7 @@ export const setTokenCookie = async (user: User) => {
 type HandleAuth = (user: User) => void;
 
 export type GetIdTokenFn = (
-  forceRefresh?: boolean | undefined
+  forceRefresh?: boolean | undefined,
 ) => Promise<string>;
 
 interface IAuthContext {

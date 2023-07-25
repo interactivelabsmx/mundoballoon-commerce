@@ -21,9 +21,9 @@ interface IPhoneAuth extends IBaeFunctionAuth {
 export const setRecaptchaVerifier = () => {
   const auth = getAuth();
   window.recaptchaVerifier = new RecaptchaVerifier(
+    auth,
     'recaptcha-verifier-container',
     { size: 'invisible' },
-    auth
   );
 };
 

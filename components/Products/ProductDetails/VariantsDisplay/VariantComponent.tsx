@@ -21,7 +21,7 @@ const VariantComponent = ({ variant, variantValues }: IVariantComponent) => {
 
   const Component = VariantComponentRegistry[componentId];
   const values = variantValues.filter(
-    (vv) => vv.variantId === variant.variantId
+    (vv) => vv.variantId === variant.variantId,
   );
 
   return (

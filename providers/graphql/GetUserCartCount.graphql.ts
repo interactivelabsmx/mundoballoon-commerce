@@ -37,19 +37,19 @@ export function useGetUserCartCountQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetUserCartCountQuery,
     GetUserCartCountQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetUserCartCountQuery, GetUserCartCountQueryVariables>(
     GetUserCartCountDocument,
-    options
+    options,
   );
 }
 export function useGetUserCartCountLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetUserCartCountQuery,
     GetUserCartCountQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

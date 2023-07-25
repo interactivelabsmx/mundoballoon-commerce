@@ -76,7 +76,7 @@ const CartItems = () => {
                       </div>
                     </div>
                   </li>
-                )
+                ),
             )}
           </ul>
         </section>

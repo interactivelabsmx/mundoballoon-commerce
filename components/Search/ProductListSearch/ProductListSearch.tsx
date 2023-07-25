@@ -21,14 +21,14 @@ const getCategoryFilters = (activeFilters: IActiveFilter[]) =>
   activeFilters.reduce(
     (agg: number[], af) =>
       af.id.indexOf('category') > -1 ? [getNumberId(af.id), ...agg] : agg,
-    []
+    [],
   );
 
 const getVariantFilters = (activeFilters: IActiveFilter[]) =>
   activeFilters.reduce(
     (agg: number[], af) =>
       af.id.indexOf('category') == -1 ? [getNumberId(af.id), ...agg] : agg,
-    []
+    [],
   );
 
 const ProductListSearch = ({ activeFilters, sort }: IProductListSearch) => {

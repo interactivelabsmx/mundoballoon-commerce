@@ -52,24 +52,24 @@ export function useGetNavOptionsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetNavOptionsQuery,
     GetNavOptionsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetNavOptionsQuery, GetNavOptionsQueryVariables>(
     GetNavOptionsDocument,
-    options
+    options,
   );
 }
 export function useGetNavOptionsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetNavOptionsQuery,
     GetNavOptionsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetNavOptionsQuery, GetNavOptionsQueryVariables>(
     GetNavOptionsDocument,
-    options
+    options,
   );
 }
 export type GetNavOptionsQueryHookResult = ReturnType<

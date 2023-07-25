@@ -15,12 +15,12 @@ import { useAuth } from '@providers/AuthProvider';
 
 const FirebaseAuthLoader = dynamic(
   () => import('@components/User/Auth/FirebaseAuth'),
-  { ssr: false }
+  { ssr: false },
 );
 
 const EventsCardLoader = dynamic(
   () => import('@components/User/Events/EventsCard'),
-  { ssr: false }
+  { ssr: false },
 );
 
 const NavbarUserMenu = () => {
@@ -32,7 +32,7 @@ const NavbarUserMenu = () => {
   const openEvents = () => setEventsOpen(true);
   const LogedOutUserNavigation = useMemo(
     () => getLogedOutUserNavigation(t, onClick),
-    [t, onClick]
+    [t, onClick],
   );
 
   return (
@@ -71,7 +71,7 @@ const NavbarUserMenu = () => {
                     {({ active }) => (
                       <button
                         className={`w-full flex items-center justify-between ${getNavbarUserMenuLinkStyle(
-                          active
+                          active,
                         )}`}
                         onClick={openEvents}
                       >
@@ -83,7 +83,7 @@ const NavbarUserMenu = () => {
                     {({ active }) => (
                       <button
                         className={`w-full flex items-center justify-between ${getNavbarUserMenuLinkStyle(
-                          active
+                          active,
                         )}`}
                         onClick={logout}
                       >
@@ -107,7 +107,7 @@ const NavbarUserMenu = () => {
                         <button
                           onClick={item.onClick}
                           className={`w-full text-left ${getNavbarUserMenuLinkStyle(
-                            active
+                            active,
                           )}`}
                         >
                           {item.name}

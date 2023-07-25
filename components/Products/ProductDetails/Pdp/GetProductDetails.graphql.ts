@@ -123,7 +123,7 @@ export function useGetProductDetailsQuery(
   baseOptions: Apollo.QueryHookOptions<
     GetProductDetailsQuery,
     GetProductDetailsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -135,7 +135,7 @@ export function useGetProductDetailsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetProductDetailsQuery,
     GetProductDetailsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

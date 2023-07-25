@@ -43,10 +43,10 @@ function PaymentsReducer(state: IPaymentsState, action: IPaymentsAction) {
 export type IPaymentsContext = {
   createCustomer: () => Promise<void>;
   updateCustomerAddress: (
-    variables: UpdateCustomerAddressMutationVariables
+    variables: UpdateCustomerAddressMutationVariables,
   ) => Promise<void>;
   createPaymentIntent: (
-    variables: CreatePaymentIntentMutationVariables
+    variables: CreatePaymentIntentMutationVariables,
   ) => Promise<void>;
 } & IPaymentsState;
 
@@ -57,7 +57,7 @@ export const PaymentsContext = {
 };
 
 export const usePaymentsContext = (
-  client: ApolloClient<NormalizedCacheObject>
+  client: ApolloClient<NormalizedCacheObject>,
 ) => {
   const [state, reducer] = useReducer(PaymentsReducer, {});
 
@@ -73,7 +73,7 @@ export const usePaymentsContext = (
   };
 
   const updateCustomerAddress = async (
-    variables: UpdateCustomerAddressMutationVariables
+    variables: UpdateCustomerAddressMutationVariables,
   ) => {
     const { data, errors } = await client.mutate({
       mutation: UpdateCustomerAddressDocument,
@@ -87,7 +87,7 @@ export const usePaymentsContext = (
   };
 
   const createPaymentIntent = async (
-    variables: CreatePaymentIntentMutationVariables
+    variables: CreatePaymentIntentMutationVariables,
   ) => {
     const { data, errors } = await client.mutate({
       mutation: CreatePaymentIntentDocument,

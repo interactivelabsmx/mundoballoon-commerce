@@ -64,19 +64,19 @@ export function useGetSearchFiltersQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetSearchFiltersQuery,
     GetSearchFiltersQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetSearchFiltersQuery, GetSearchFiltersQueryVariables>(
     GetSearchFiltersDocument,
-    options
+    options,
   );
 }
 export function useGetSearchFiltersLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetSearchFiltersQuery,
     GetSearchFiltersQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

@@ -43,7 +43,7 @@ export function useDeleteUserCartProductMutation(
   baseOptions?: Apollo.MutationHookOptions<
     DeleteUserCartProductMutation,
     DeleteUserCartProductMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

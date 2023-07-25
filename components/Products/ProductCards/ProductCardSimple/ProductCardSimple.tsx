@@ -10,7 +10,7 @@ import type { ProductSimpleCardFragment } from '@graphql/queries/products/Produc
 import { getFirstMedia } from '@lib/products/getFirstMedia';
 
 const QuickViewLoader = dynamic(
-  () => import('@components/Products/ProductDetails/QuickView')
+  () => import('@components/Products/ProductDetails/QuickView'),
 );
 
 interface IProductCardSimple {

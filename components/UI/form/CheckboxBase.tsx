@@ -11,7 +11,7 @@ type ICheckboxBase = InputHTMLAttributes<HTMLInputElement> & {
 
 const CheckboxBase = (
   { label, error, ...input }: ICheckboxBase,
-  ref: LegacyRef<HTMLInputElement> | undefined
+  ref: LegacyRef<HTMLInputElement> | undefined,
 ) => (
   <div className="relative flex items-start">
     <div className="flex h-5 items-center">

@@ -59,7 +59,7 @@ export function useCreateCustomerMutation(
   baseOptions?: Apollo.MutationHookOptions<
     CreateCustomerMutation,
     CreateCustomerMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

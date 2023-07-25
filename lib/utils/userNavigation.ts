@@ -9,7 +9,7 @@ export interface IUserNavigationItem {
 
 export const getLogedOutUserNavigation = (
   t: Translate,
-  onClick: () => void
+  onClick: () => void,
 ) => [
   { name: t('auth:sign_in'), onClick },
   { name: t('common:see_everything'), href: '/search' },
@@ -18,5 +18,5 @@ export const getLogedOutUserNavigation = (
 export const getNavbarUserMenuLinkStyle = (active: boolean) =>
   classNames(
     active ? 'bg-gray-100' : '',
-    'block py-4 px-4 text-sm text-gray-700'
+    'block py-4 px-4 text-sm text-gray-700',
   );

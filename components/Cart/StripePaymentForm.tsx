@@ -15,6 +15,7 @@ import type { FormEventHandler } from 'react';
 import SimpleTextError from '@components/UI/alerts/SimpleTextError';
 import PrimaryButton from '@components/UI/buttons/PrimaryButton';
 import LoadingSpinner from '@components/UI/loading/LoadingSpinner';
+import { setTokenCookie } from '@providers/AuthProvider';
 
 interface IStripePaymentForm {
   user: User;
@@ -36,10 +37,12 @@ const StripePaymentForm = ({ user }: IStripePaymentForm) => {
 
     setIsLoading(true);
 
+    setTokenCookie(user);
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'api/checkout/callback',
+        return_url: 'https://dev.mundoballoon.com/api/checkout/callback',
         receipt_email: email,
       },
     });

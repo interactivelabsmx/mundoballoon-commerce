@@ -51,19 +51,19 @@ export function useGetUserEventByIdQuery(
   baseOptions: Apollo.QueryHookOptions<
     GetUserEventByIdQuery,
     GetUserEventByIdQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetUserEventByIdQuery, GetUserEventByIdQueryVariables>(
     GetUserEventByIdDocument,
-    options
+    options,
   );
 }
 export function useGetUserEventByIdLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetUserEventByIdQuery,
     GetUserEventByIdQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

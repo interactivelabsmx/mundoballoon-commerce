@@ -30,7 +30,7 @@ const AditionalDetails = ({ details }: IAditionalDetails) => {
                     <span
                       className={classNames(
                         open ? 'text-indigo-600' : 'text-gray-900',
-                        'text-sm font-medium'
+                        'text-sm font-medium',
                       )}
                     >
                       {detail.name}

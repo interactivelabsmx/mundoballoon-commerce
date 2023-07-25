@@ -46,19 +46,19 @@ export function useGetCountryCodesQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetCountryCodesQuery,
     GetCountryCodesQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetCountryCodesQuery, GetCountryCodesQueryVariables>(
     GetCountryCodesDocument,
-    options
+    options,
   );
 }
 export function useGetCountryCodesLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetCountryCodesQuery,
     GetCountryCodesQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

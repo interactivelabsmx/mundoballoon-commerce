@@ -19,7 +19,7 @@ if (getApps().length < 1) {
 }
 
 type IGetServerSideProps<P> = (
-  ctx: GetServerSidePropsContext
+  ctx: GetServerSidePropsContext,
 ) => Promise<GetServerSidePropsResult<P>>;
 
 interface WithServerSidePreFetch<T> {
@@ -32,10 +32,10 @@ export interface WithServerSidePreFetchResult {
 }
 
 export default function getServerSidePreFetch<
-  P extends WithServerSidePreFetchResult
+  P extends WithServerSidePreFetchResult,
 >({ getServerSideProps, Page }: WithServerSidePreFetch<P>) {
   return async (
-    ctx: GetServerSidePropsContext
+    ctx: GetServerSidePropsContext,
   ): Promise<GetServerSidePropsResult<P>> => {
     const { req } = ctx;
 
@@ -57,7 +57,7 @@ export default function getServerSidePreFetch<
             <Page />
           </ApolloProvider>
         </RouterContext.Provider>,
-        { headers: apolloHeaders }
+        { headers: apolloHeaders },
       );
       initialState = client.cache.extract();
     } catch {

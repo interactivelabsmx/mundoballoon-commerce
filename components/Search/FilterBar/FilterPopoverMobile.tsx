@@ -11,7 +11,7 @@ const FilterOpenChevronMobile = ({ openFilter }: { openFilter: boolean }) => (
     <ChevronDownIcon
       className={classNames(
         openFilter ? '-rotate-180' : 'rotate-0',
-        'h-5 w-5 transform'
+        'h-5 w-5 transform',
       )}
       aria-hidden="true"
     />

@@ -43,7 +43,7 @@ export function useDeleteUSerEventMutation(
   baseOptions?: Apollo.MutationHookOptions<
     DeleteUSerEventMutation,
     DeleteUSerEventMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

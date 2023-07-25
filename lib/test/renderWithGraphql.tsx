@@ -9,7 +9,7 @@ import { AuthProvider } from '@providers/AuthProvider';
 
 export default async function renderWithGraphql(
   component: ReactNode,
-  mocks = {}
+  mocks = {},
 ) {
   const schema = await loadSchema('graphql/graphql.schema.json', {
     loaders: [new JsonFileLoader()],
@@ -27,6 +27,6 @@ export default async function renderWithGraphql(
   return rtlRender(
     <AuthProvider>
       <ApolloProvider client={client}>{component}</ApolloProvider>
-    </AuthProvider>
+    </AuthProvider>,
   );
 }

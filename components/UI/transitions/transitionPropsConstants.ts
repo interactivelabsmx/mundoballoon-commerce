@@ -1,7 +1,7 @@
 export const getTransitionFadeInProps = (
   duration = 300,
   enterEfect = 'ease-out',
-  leaveEfect = 'ease-in'
+  leaveEfect = 'ease-in',
 ) => ({
   enter: `transition ${enterEfect} duration-${duration}`,
   enterFrom: 'opacity-0',

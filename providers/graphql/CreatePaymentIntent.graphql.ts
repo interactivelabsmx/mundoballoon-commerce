@@ -45,7 +45,7 @@ export function useCreatePaymentIntentMutation(
   baseOptions?: Apollo.MutationHookOptions<
     CreatePaymentIntentMutation,
     CreatePaymentIntentMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

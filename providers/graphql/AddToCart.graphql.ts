@@ -70,12 +70,12 @@ export function useAddToCartMutation(
   baseOptions?: Apollo.MutationHookOptions<
     AddToCartMutation,
     AddToCartMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<AddToCartMutation, AddToCartMutationVariables>(
     AddToCartDocument,
-    options
+    options,
   );
 }
 export type AddToCartMutationHookResult = ReturnType<

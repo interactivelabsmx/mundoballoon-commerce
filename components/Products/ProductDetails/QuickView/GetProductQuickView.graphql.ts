@@ -95,7 +95,7 @@ export function useGetProductQuickViewQuery(
   baseOptions: Apollo.QueryHookOptions<
     GetProductQuickViewQuery,
     GetProductQuickViewQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -107,7 +107,7 @@ export function useGetProductQuickViewLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetProductQuickViewQuery,
     GetProductQuickViewQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

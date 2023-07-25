@@ -40,7 +40,7 @@ const AddToEventCart = ({ productVariant }: IAddToEventCart) => {
       price: productVariant.price,
       productVariantId: productVariant.productVariantId || 0,
     }),
-    [productVariant]
+    [productVariant],
   );
 
   const handleOnAuth = async (authUser: User) => {

@@ -46,7 +46,7 @@ export function useGetUserEventsSelectQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetUserEventsSelectQuery,
     GetUserEventsSelectQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -58,7 +58,7 @@ export function useGetUserEventsSelectLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetUserEventsSelectQuery,
     GetUserEventsSelectQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

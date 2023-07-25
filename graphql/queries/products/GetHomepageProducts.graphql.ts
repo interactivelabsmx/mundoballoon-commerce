@@ -69,7 +69,7 @@ export function useGetHomepageProductsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetHomepageProductsQuery,
     GetHomepageProductsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
@@ -81,7 +81,7 @@ export function useGetHomepageProductsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetHomepageProductsQuery,
     GetHomepageProductsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<

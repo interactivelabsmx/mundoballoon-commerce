@@ -32,10 +32,10 @@ vi.mock('firebase/app', () => ({
 
 vi.mock('@firebase/auth', () => ({
   createUserWithEmailAndPassword: vi.fn(() =>
-    Promise.resolve('createUserWithEmailAndPassword')
+    Promise.resolve('createUserWithEmailAndPassword'),
   ),
   signInWithEmailAndPassword: vi.fn(() =>
-    Promise.resolve('signInWithEmailAndPassword')
+    Promise.resolve('signInWithEmailAndPassword'),
   ),
   signInWithPopup: vi.fn(() => Promise.resolve('signInWithPopup')),
   onAuthStateChanged: vi.fn(() => ({ user })),

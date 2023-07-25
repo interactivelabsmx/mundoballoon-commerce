@@ -34,7 +34,7 @@ const VariantColors = ({
                   SelectedVariantValueColorToCSS[color.value],
                   active && checked ? 'ring ring-offset-1' : '',
                   !active && checked ? 'ring-2' : '',
-                  '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
+                  '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none',
                 )
               }
             >
@@ -45,7 +45,7 @@ const VariantColors = ({
                 aria-hidden="true"
                 className={classNames(
                   BgVariantValueColorToCSS[color.value],
-                  'h-8 w-8 border border-black border-opacity-10 rounded-full'
+                  'h-8 w-8 border border-black border-opacity-10 rounded-full',
                 )}
               />
             </RadioGroup.Option>

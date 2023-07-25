@@ -45,7 +45,7 @@ export function useSubtractItemToCartMutation(
   baseOptions?: Apollo.MutationHookOptions<
     SubtractItemToCartMutation,
     SubtractItemToCartMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

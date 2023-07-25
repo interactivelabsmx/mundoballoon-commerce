@@ -6,7 +6,7 @@ import type {
 
 export const getFirstMedia = (
   product: ProductSimpleCardFragment | ProductQuickViewFragment,
-  variantIndex = 0
+  variantIndex = 0,
 ): MediaUrlAndTypeFragment => {
   const firstVariant = product.variants && product.variants[variantIndex];
   const media = firstVariant?.media && firstVariant.media[variantIndex];

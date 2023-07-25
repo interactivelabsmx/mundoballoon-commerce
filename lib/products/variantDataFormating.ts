@@ -5,23 +5,23 @@ import type {
 
 export const getProductVariantValuesNames = (
   variants: VariantValueFragment[],
-  agregate: string[]
+  agregate: string[],
 ) =>
   variants.reduce(
     (agg, v) =>
       agg.some((item) => item === v.variant?.name)
         ? [...agg]
         : [...agg, v.variant?.name || ''],
-    [...agregate] as string[]
+    [...agregate] as string[],
   );
 
 export const getProductVariantValueValuesByName = (
   variantNames: string,
-  variants: VariantValueFragment[]
+  variants: VariantValueFragment[],
 ) =>
   variants.reduce(
     (agg, v) => ({ [variantNames]: v.variantValue?.value, ...agg }),
-    {}
+    {},
   );
 
 export const getProductVariantNames = (variants: VariantFragment[]) =>
@@ -30,14 +30,14 @@ export const getProductVariantNames = (variants: VariantFragment[]) =>
       v.variantValues
         ? [...agg, ...getProductVariantValuesNames(v.variantValues, agg)]
         : [...agg],
-    [] as string[]
+    [] as string[],
   );
 
 export const getProductVariantValuesByName = (
   variantNames: string,
-  variants: VariantValueFragment[]
+  variants: VariantValueFragment[],
 ) =>
   variants.reduce(
     (agg, v) => ({ [variantNames]: v.variantValue?.value, ...agg }),
-    {}
+    {},
   );

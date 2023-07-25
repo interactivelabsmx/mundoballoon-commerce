@@ -48,24 +48,24 @@ export function useGetUserEventsQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetUserEventsQuery,
     GetUserEventsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetUserEventsQuery, GetUserEventsQueryVariables>(
     GetUserEventsDocument,
-    options
+    options,
   );
 }
 export function useGetUserEventsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetUserEventsQuery,
     GetUserEventsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetUserEventsQuery, GetUserEventsQueryVariables>(
     GetUserEventsDocument,
-    options
+    options,
   );
 }
 export type GetUserEventsQueryHookResult = ReturnType<

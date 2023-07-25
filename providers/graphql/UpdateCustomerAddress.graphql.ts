@@ -72,7 +72,7 @@ export function useUpdateCustomerAddressMutation(
   baseOptions?: Apollo.MutationHookOptions<
     UpdateCustomerAddressMutation,
     UpdateCustomerAddressMutationVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<

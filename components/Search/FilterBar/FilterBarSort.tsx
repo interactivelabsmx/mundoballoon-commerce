@@ -50,12 +50,12 @@ const FilterBarSort = ({ sortOptions, onSetSort }: IFilterBarSort) => {
                     onClick={() =>
                       handleSort(
                         option.toLowerCase() as Option,
-                        getDirection(sort)
+                        getDirection(sort),
                       )
                     }
                     className={classNames(
                       'font-medium text-gray-900 w-full px-4 py-2 text-sm flex',
-                      active ? 'bg-gray-100' : ''
+                      active ? 'bg-gray-100' : '',
                     )}
                   >
                     {sort && sort.option === option.toLowerCase() ? (
