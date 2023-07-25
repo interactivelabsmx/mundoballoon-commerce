@@ -35,7 +35,7 @@
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
     "dev:no-tls": "USE_TLS=false yarn dev",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
-    "format": "prettier --loglevel=warn --write .",
+    "format": "prettier --log-level=warn --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js --fix",
     "codegen": "graphql-codegen --config codegen.yml && yarn format && yarn lint",
     "test:lint": "yarn lint && yarn tsc",
